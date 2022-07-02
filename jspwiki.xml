@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<system>
+	<pattern name="Factory Method">
+		<instance>
+			<role name="Creator" element="com.ecyrd.jspwiki.auth.acl.AclManager" />
+			<role name="FactoryMethod()" element="com.ecyrd.jspwiki.auth.acl.AclManager::parseAcl(com.ecyrd.jspwiki.WikiPage, java.lang.String):com.ecyrd.jspwiki.auth.acl.Acl" />
+			<role name="FactoryMethod()" element="com.ecyrd.jspwiki.auth.acl.AclManager::getPermissions(com.ecyrd.jspwiki.WikiPage):com.ecyrd.jspwiki.auth.acl.Acl" />
+		</instance>
+		<instance>
+			<role name="Creator" element="com.ecyrd.jspwiki.dav.DavProvider" />
+			<role name="FactoryMethod()" element="com.ecyrd.jspwiki.dav.DavProvider::getItem(com.ecyrd.jspwiki.dav.DavPath):com.ecyrd.jspwiki.dav.items.DavItem" />
+		</instance>
+		<instance>
+			<role name="Creator" element="com.ecyrd.jspwiki.providers.WikiAttachmentProvider" />
+			<role name="FactoryMethod()" element="com.ecyrd.jspwiki.providers.WikiAttachmentProvider::getAttachmentInfo(com.ecyrd.jspwiki.WikiPage, java.lang.String, int):com.ecyrd.jspwiki.attachment.Attachment" />
+		</instance>
+		<instance>
+			<role name="Creator" element="com.ecyrd.jspwiki.providers.WikiPageProvider" />
+			<role name="FactoryMethod()" element="com.ecyrd.jspwiki.providers.WikiPageProvider::getPageInfo(java.lang.String, int):com.ecyrd.jspwiki.WikiPage" />
+		</instance>
+		<instance>
+			<role name="Creator" element="com.ecyrd.jspwiki.ui.AbstractCommand" />
+			<role name="FactoryMethod()" element="com.ecyrd.jspwiki.ui.AbstractCommand::targetedCommand(java.lang.Object):com.ecyrd.jspwiki.ui.Command" />
+		</instance>
+	</pattern>
+	<pattern name="Prototype" />
+	<pattern name="Singleton">
+		<instance>
+			<role name="Singleton" element="com.ecyrd.jspwiki.event.WikiEventManager" />
+			<role name="uniqueInstance" element="com.ecyrd.jspwiki.event.WikiEventManager::c_instance:com.ecyrd.jspwiki.event.WikiEventManager" />
+		</instance>
+	</pattern>
+	<pattern name="(Object)Adapter">
+		<instance>
+			<role name="Adaptee" element="com.ecyrd.jspwiki.util.WatchDog" />
+			<role name="Adapter" element="com.ecyrd.jspwiki.rss.RSSThread" />
+			<role name="adaptee" element="com.ecyrd.jspwiki.rss.RSSThread::m_watchdog:com.ecyrd.jspwiki.util.WatchDog" />
+			<role name="Request()" element="com.ecyrd.jspwiki.rss.RSSThread::backgroundTask():void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="com.ecyrd.jspwiki.WikiEngine" />
+			<role name="Adapter" element="com.ecyrd.jspwiki.PageManager" />
+			<role name="adaptee" element="com.ecyrd.jspwiki.PageManager::m_engine:com.ecyrd.jspwiki.WikiEngine" />
+			<role name="Request()" element="com.ecyrd.jspwiki.PageManager::actionPerformed(com.ecyrd.jspwiki.event.WikiEvent):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="com.ecyrd.jspwiki.WikiEngine" />
+			<role name="Adapter" element="com.ecyrd.jspwiki.auth.authorize.GroupManager" />
+			<role name="adaptee" element="com.ecyrd.jspwiki.auth.authorize.GroupManager::m_engine:com.ecyrd.jspwiki.WikiEngine" />
+			<role name="Request()" element="com.ecyrd.jspwiki.auth.authorize.GroupManager::initialize(com.ecyrd.jspwiki.WikiEngine, java.util.Properties):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="com.ecyrd.jspwiki.WikiEngine" />
+			<role name="Adapter" element="com.ecyrd.jspwiki.render.RenderingManager" />
+			<role name="adaptee" element="com.ecyrd.jspwiki.render.RenderingManager::m_engine:com.ecyrd.jspwiki.WikiEngine" />
+			<role name="Request()" element="com.ecyrd.jspwiki.render.RenderingManager::actionPerformed(com.ecyrd.jspwiki.event.WikiEvent):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="com.ecyrd.jspwiki.tags.CheckVersionTag$VersionMode" />
+			<role name="Adapter" element="com.ecyrd.jspwiki.tags.CheckVersionTag" />
+			<role name="adaptee" element="com.ecyrd.jspwiki.tags.CheckVersionTag::m_mode:com.ecyrd.jspwiki.tags.CheckVersionTag$VersionMode" />
+			<role name="Request()" element="com.ecyrd.jspwiki.tags.CheckVersionTag::doWikiStartTag():int" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="com.ecyrd.jspwiki.workflow.Outcome" />
+			<role name="Adapter" element="com.ecyrd.jspwiki.workflow.AbstractStep" />
+			<role name="adaptee" element="com.ecyrd.jspwiki.workflow.AbstractStep::m_outcome:com.ecyrd.jspwiki.workflow.Outcome" />
+			<role name="Request()" element="com.ecyrd.jspwiki.workflow.AbstractStep::setOutcome(com.ecyrd.jspwiki.workflow.Outcome):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="com.ecyrd.jspwiki.workflow.Workflow" />
+			<role name="Adapter" element="com.ecyrd.jspwiki.workflow.AbstractStep" />
+			<role name="adaptee" element="com.ecyrd.jspwiki.workflow.AbstractStep::m_workflow:com.ecyrd.jspwiki.workflow.Workflow" />
+			<role name="Request()" element="com.ecyrd.jspwiki.workflow.AbstractStep::getMessageArguments():java.io.Serializable[]" />
+			<role name="Request()" element="com.ecyrd.jspwiki.workflow.AbstractStep::getOwner():java.security.Principal" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="com.ecyrd.jspwiki.providers.CachingProvider$CacheItemCollector" />
+			<role name="Adapter" element="com.ecyrd.jspwiki.providers.CachingProvider" />
+			<role name="adaptee" element="com.ecyrd.jspwiki.providers.CachingProvider::m_allCollector:com.ecyrd.jspwiki.providers.CachingProvider$CacheItemCollector" />
+			<role name="Request()" element="com.ecyrd.jspwiki.providers.CachingProvider::getAllPages():java.util.Collection" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="com.ecyrd.jspwiki.plugin.PageViewPlugin$PageViewManager" />
+			<role name="Adapter" element="com.ecyrd.jspwiki.plugin.PageViewPlugin" />
+			<role name="adaptee" element="com.ecyrd.jspwiki.plugin.PageViewPlugin::c_singleton:com.ecyrd.jspwiki.plugin.PageViewPlugin$PageViewManager" />
+			<role name="Request()" element="com.ecyrd.jspwiki.plugin.PageViewPlugin::execute(com.ecyrd.jspwiki.WikiContext, java.util.Map):java.lang.String" />
+			<role name="Request()" element="com.ecyrd.jspwiki.plugin.PageViewPlugin::initialize(com.ecyrd.jspwiki.WikiEngine):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="com.ecyrd.jspwiki.providers.CachingAttachmentProvider" />
+			<role name="Adaptee" element="com.ecyrd.jspwiki.providers.CachingAttachmentProvider$CachedAttachmentCollector" />
+			<role name="adaptee" element="com.ecyrd.jspwiki.providers.CachingAttachmentProvider::m_allCollector:com.ecyrd.jspwiki.providers.CachingAttachmentProvider$CachedAttachmentCollector" />
+			<role name="Request()" element="com.ecyrd.jspwiki.providers.CachingAttachmentProvider::listAllChanged(java.util.Date):java.util.List" />
+			<role name="Request()" element="com.ecyrd.jspwiki.providers.CachingAttachmentProvider::moveAttachmentsForPage(java.lang.String, java.lang.String):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="com.ecyrd.jspwiki.WikiContext" />
+			<role name="Adaptee" element="com.ecyrd.jspwiki.WikiEngine" />
+			<role name="adaptee" element="com.ecyrd.jspwiki.WikiContext::m_engine:com.ecyrd.jspwiki.WikiEngine" />
+			<role name="Request()" element="com.ecyrd.jspwiki.WikiContext::requiredPermission():java.security.Permission" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="com.ecyrd.jspwiki.search.LuceneSearchProvider" />
+			<role name="Adapter" element="com.ecyrd.jspwiki.search.LuceneSearchProvider$LuceneUpdater" />
+			<role name="adaptee" element="com.ecyrd.jspwiki.search.LuceneSearchProvider$LuceneUpdater::m_provider:com.ecyrd.jspwiki.search.LuceneSearchProvider" />
+			<role name="Request()" element="com.ecyrd.jspwiki.search.LuceneSearchProvider$LuceneUpdater::backgroundTask():void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="com.ecyrd.jspwiki.WikiContext" />
+			<role name="Adapter" element="com.ecyrd.jspwiki.xmlrpc.AbstractRPCHandler" />
+			<role name="adaptee" element="com.ecyrd.jspwiki.xmlrpc.AbstractRPCHandler::m_context:com.ecyrd.jspwiki.WikiContext" />
+			<role name="Request()" element="com.ecyrd.jspwiki.xmlrpc.AbstractRPCHandler::initialize(com.ecyrd.jspwiki.WikiContext):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="com.ecyrd.jspwiki.WikiEngine" />
+			<role name="Adapter" element="com.ecyrd.jspwiki.dav.AttachmentDavProvider" />
+			<role name="adaptee" element="com.ecyrd.jspwiki.dav.AttachmentDavProvider::m_engine:com.ecyrd.jspwiki.WikiEngine" />
+			<role name="Request()" element="com.ecyrd.jspwiki.dav.AttachmentDavProvider::getItem(com.ecyrd.jspwiki.dav.DavPath):com.ecyrd.jspwiki.dav.items.DavItem" />
+			<role name="Request()" element="com.ecyrd.jspwiki.dav.AttachmentDavProvider::getURL(com.ecyrd.jspwiki.dav.DavPath):java.lang.String" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="com.ecyrd.jspwiki.WikiEngine" />
+			<role name="Adapter" element="com.ecyrd.jspwiki.auth.acl.DefaultAclManager" />
+			<role name="adaptee" element="com.ecyrd.jspwiki.auth.acl.DefaultAclManager::m_engine:com.ecyrd.jspwiki.WikiEngine" />
+			<role name="Request()" element="com.ecyrd.jspwiki.auth.acl.DefaultAclManager::initialize(com.ecyrd.jspwiki.WikiEngine, java.util.Properties):void" />
+			<role name="Request()" element="com.ecyrd.jspwiki.auth.acl.DefaultAclManager::getPermissions(com.ecyrd.jspwiki.WikiPage):com.ecyrd.jspwiki.auth.acl.Acl" />
+			<role name="Request()" element="com.ecyrd.jspwiki.auth.acl.DefaultAclManager::setPermissions(com.ecyrd.jspwiki.WikiPage, com.ecyrd.jspwiki.auth.acl.Acl):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="com.ecyrd.jspwiki.WikiEngine" />
+			<role name="Adapter" element="com.ecyrd.jspwiki.search.LuceneSearchProvider" />
+			<role name="adaptee" element="com.ecyrd.jspwiki.search.LuceneSearchProvider::m_engine:com.ecyrd.jspwiki.WikiEngine" />
+			<role name="Request()" element="com.ecyrd.jspwiki.search.LuceneSearchProvider::reindexPage(com.ecyrd.jspwiki.WikiPage):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="com.ecyrd.jspwiki.WikiContext" />
+			<role name="Adaptee" element="com.ecyrd.jspwiki.WikiPage" />
+			<role name="adaptee" element="com.ecyrd.jspwiki.WikiContext::m_page:com.ecyrd.jspwiki.WikiPage" />
+			<role name="Request()" element="com.ecyrd.jspwiki.WikiContext::getName():java.lang.String" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="com.ecyrd.jspwiki.WikiEngine" />
+			<role name="Adapter" element="com.ecyrd.jspwiki.url.DefaultURLConstructor" />
+			<role name="adaptee" element="com.ecyrd.jspwiki.url.DefaultURLConstructor::m_engine:com.ecyrd.jspwiki.WikiEngine" />
+			<role name="Request()" element="com.ecyrd.jspwiki.url.DefaultURLConstructor::initialize(com.ecyrd.jspwiki.WikiEngine, java.util.Properties):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="com.ecyrd.jspwiki.auth.authorize.GroupDatabase" />
+			<role name="Adapter" element="com.ecyrd.jspwiki.auth.authorize.GroupManager" />
+			<role name="adaptee" element="com.ecyrd.jspwiki.auth.authorize.GroupManager::m_groupDatabase:com.ecyrd.jspwiki.auth.authorize.GroupDatabase" />
+			<role name="Request()" element="com.ecyrd.jspwiki.auth.authorize.GroupManager::initialize(com.ecyrd.jspwiki.WikiEngine, java.util.Properties):void" />
+			<role name="Request()" element="com.ecyrd.jspwiki.auth.authorize.GroupManager::actionPerformed(com.ecyrd.jspwiki.event.WikiEvent):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="com.ecyrd.jspwiki.auth.AuthorizationManager" />
+			<role name="Adapter" element="com.ecyrd.jspwiki.auth.acl.DefaultAclManager" />
+			<role name="adaptee" element="com.ecyrd.jspwiki.auth.acl.DefaultAclManager::m_auth:com.ecyrd.jspwiki.auth.AuthorizationManager" />
+			<role name="Request()" element="com.ecyrd.jspwiki.auth.acl.DefaultAclManager::parseAcl(com.ecyrd.jspwiki.WikiPage, java.lang.String):com.ecyrd.jspwiki.auth.acl.Acl" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="com.ecyrd.jspwiki.WikiEngine" />
+			<role name="Adapter" element="com.ecyrd.jspwiki.auth.authorize.JDBCGroupDatabase" />
+			<role name="adaptee" element="com.ecyrd.jspwiki.auth.authorize.JDBCGroupDatabase::m_engine:com.ecyrd.jspwiki.WikiEngine" />
+			<role name="Request()" element="com.ecyrd.jspwiki.auth.authorize.JDBCGroupDatabase::groups():com.ecyrd.jspwiki.auth.authorize.Group[]" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="com.ecyrd.jspwiki.WikiEngine" />
+			<role name="Adapter" element="com.ecyrd.jspwiki.auth.authorize.XMLGroupDatabase" />
+			<role name="adaptee" element="com.ecyrd.jspwiki.auth.authorize.XMLGroupDatabase::m_engine:com.ecyrd.jspwiki.WikiEngine" />
+			<role name="Request()" element="com.ecyrd.jspwiki.auth.authorize.XMLGroupDatabase::initialize(com.ecyrd.jspwiki.WikiEngine, java.util.Properties):void" />
+		</instance>
+	</pattern>
+	<pattern name="Command" />
+	<pattern name="Composite" />
+	<pattern name="Decorator">
+		<instance>
+			<role name="Component" element="com.ecyrd.jspwiki.providers.WikiPageProvider" />
+			<role name="Decorator" element="com.ecyrd.jspwiki.providers.CachingProvider" />
+			<role name="component" element="com.ecyrd.jspwiki.providers.CachingProvider::m_provider:com.ecyrd.jspwiki.providers.WikiPageProvider" />
+			<role name="Operation()" element="com.ecyrd.jspwiki.providers.CachingProvider::pageExists(java.lang.String):boolean" />
+			<role name="Operation()" element="com.ecyrd.jspwiki.providers.CachingProvider::getPageText(java.lang.String, int):java.lang.String" />
+			<role name="Operation()" element="com.ecyrd.jspwiki.providers.CachingProvider::putPageText(com.ecyrd.jspwiki.WikiPage, java.lang.String):void" />
+			<role name="Operation()" element="com.ecyrd.jspwiki.providers.CachingProvider::getAllPages():java.util.Collection" />
+			<role name="Operation()" element="com.ecyrd.jspwiki.providers.CachingProvider::getAllChangedSince(java.util.Date):java.util.Collection" />
+			<role name="Operation()" element="com.ecyrd.jspwiki.providers.CachingProvider::getPageCount():int" />
+			<role name="Operation()" element="com.ecyrd.jspwiki.providers.CachingProvider::findPages(com.ecyrd.jspwiki.QueryItem[]):java.util.Collection" />
+			<role name="Operation()" element="com.ecyrd.jspwiki.providers.CachingProvider::getPageInfo(java.lang.String, int):com.ecyrd.jspwiki.WikiPage" />
+			<role name="Operation()" element="com.ecyrd.jspwiki.providers.CachingProvider::getVersionHistory(java.lang.String):java.util.List" />
+			<role name="Operation()" element="com.ecyrd.jspwiki.providers.CachingProvider::deleteVersion(java.lang.String, int):void" />
+			<role name="Operation()" element="com.ecyrd.jspwiki.providers.CachingProvider::deletePage(java.lang.String):void" />
+			<role name="Operation()" element="com.ecyrd.jspwiki.providers.CachingProvider::movePage(java.lang.String, java.lang.String):void" />
+		</instance>
+		<instance>
+			<role name="Component" element="com.ecyrd.jspwiki.ui.Command" />
+			<role name="Decorator" element="com.ecyrd.jspwiki.WikiContext" />
+			<role name="component" element="com.ecyrd.jspwiki.WikiContext::m_command:com.ecyrd.jspwiki.ui.Command" />
+			<role name="Operation()" element="com.ecyrd.jspwiki.WikiContext::getContentTemplate():java.lang.String" />
+			<role name="Operation()" element="com.ecyrd.jspwiki.WikiContext::getRequestContext():java.lang.String" />
+			<role name="Operation()" element="com.ecyrd.jspwiki.WikiContext::getTarget():java.lang.Object" />
+			<role name="Operation()" element="com.ecyrd.jspwiki.WikiContext::getURLPattern():java.lang.String" />
+			<role name="Operation()" element="com.ecyrd.jspwiki.WikiContext::getName():java.lang.String" />
+			<role name="Operation()" element="com.ecyrd.jspwiki.WikiContext::requiredPermission():java.security.Permission" />
+			<role name="Operation()" element="com.ecyrd.jspwiki.WikiContext::targetedCommand(java.lang.Object):com.ecyrd.jspwiki.ui.Command" />
+		</instance>
+		<instance>
+			<role name="Component" element="com.ecyrd.jspwiki.providers.WikiAttachmentProvider" />
+			<role name="Decorator" element="com.ecyrd.jspwiki.providers.CachingAttachmentProvider" />
+			<role name="component" element="com.ecyrd.jspwiki.providers.CachingAttachmentProvider::m_provider:com.ecyrd.jspwiki.providers.WikiAttachmentProvider" />
+			<role name="Operation()" element="com.ecyrd.jspwiki.providers.CachingAttachmentProvider::putAttachmentData(com.ecyrd.jspwiki.attachment.Attachment, java.io.InputStream):void" />
+			<role name="Operation()" element="com.ecyrd.jspwiki.providers.CachingAttachmentProvider::getAttachmentData(com.ecyrd.jspwiki.attachment.Attachment):java.io.InputStream" />
+			<role name="Operation()" element="com.ecyrd.jspwiki.providers.CachingAttachmentProvider::findAttachments(com.ecyrd.jspwiki.QueryItem[]):java.util.Collection" />
+			<role name="Operation()" element="com.ecyrd.jspwiki.providers.CachingAttachmentProvider::listAllChanged(java.util.Date):java.util.List" />
+			<role name="Operation()" element="com.ecyrd.jspwiki.providers.CachingAttachmentProvider::getAttachmentInfo(com.ecyrd.jspwiki.WikiPage, java.lang.String, int):com.ecyrd.jspwiki.attachment.Attachment" />
+			<role name="Operation()" element="com.ecyrd.jspwiki.providers.CachingAttachmentProvider::getVersionHistory(com.ecyrd.jspwiki.attachment.Attachment):java.util.List" />
+			<role name="Operation()" element="com.ecyrd.jspwiki.providers.CachingAttachmentProvider::deleteVersion(com.ecyrd.jspwiki.attachment.Attachment):void" />
+			<role name="Operation()" element="com.ecyrd.jspwiki.providers.CachingAttachmentProvider::deleteAttachment(com.ecyrd.jspwiki.attachment.Attachment):void" />
+			<role name="Operation()" element="com.ecyrd.jspwiki.providers.CachingAttachmentProvider::moveAttachmentsForPage(java.lang.String, java.lang.String):void" />
+		</instance>
+	</pattern>
+	<pattern name="Observer">
+		<instance>
+			<role name="Observer" element="com.ecyrd.jspwiki.auth.acl.AclEntry" />
+			<role name="Subject" element="com.ecyrd.jspwiki.auth.acl.AclImpl" />
+			<role name="Notify()" element="com.ecyrd.jspwiki.auth.acl.AclImpl::findPrincipals(java.security.Permission):java.security.Principal[]" />
+			<role name="Notify()" element="com.ecyrd.jspwiki.auth.acl.AclImpl::hasEntry(com.ecyrd.jspwiki.auth.acl.AclEntry):boolean" />
+			<role name="Notify()" element="com.ecyrd.jspwiki.auth.acl.AclImpl::getEntry(java.security.Principal):com.ecyrd.jspwiki.auth.acl.AclEntry" />
+			<role name="Notify()" element="com.ecyrd.jspwiki.auth.acl.AclImpl::toString():java.lang.String" />
+		</instance>
+	</pattern>
+	<pattern name="State">
+		<instance>
+			<role name="Context" element="com.ecyrd.jspwiki.event.WikiEventManager" />
+			<role name="State" element="com.ecyrd.jspwiki.event.WikiEventListener" />
+			<role name="state" element="com.ecyrd.jspwiki.event.WikiEventManager::c_monitor:com.ecyrd.jspwiki.event.WikiEventListener" />
+			<role name="Request()" element="com.ecyrd.jspwiki.event.WikiEventManager::fireEvent(java.lang.Object, com.ecyrd.jspwiki.event.WikiEvent):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="com.ecyrd.jspwiki.auth.AuthorizationManager" />
+			<role name="State" element="com.ecyrd.jspwiki.auth.Authorizer" />
+			<role name="state" element="com.ecyrd.jspwiki.auth.AuthorizationManager::m_authorizer:com.ecyrd.jspwiki.auth.Authorizer" />
+			<role name="Request()" element="com.ecyrd.jspwiki.auth.AuthorizationManager::initialize(com.ecyrd.jspwiki.WikiEngine, java.util.Properties):void" />
+			<role name="Request()" element="com.ecyrd.jspwiki.auth.AuthorizationManager::resolvePrincipal(java.lang.String):java.security.Principal" />
+		</instance>
+		<instance>
+			<role name="Context" element="com.ecyrd.jspwiki.workflow.Workflow" />
+			<role name="State" element="com.ecyrd.jspwiki.workflow.Step" />
+			<role name="state" element="com.ecyrd.jspwiki.workflow.Workflow::m_currentStep:com.ecyrd.jspwiki.workflow.Step" />
+			<role name="state" element="com.ecyrd.jspwiki.workflow.Workflow::m_firstStep:com.ecyrd.jspwiki.workflow.Step" />
+			<role name="Request()" element="com.ecyrd.jspwiki.workflow.Workflow::abort():void" />
+			<role name="Request()" element="com.ecyrd.jspwiki.workflow.Workflow::getCurrentActor():java.security.Principal" />
+			<role name="Request()" element="com.ecyrd.jspwiki.workflow.Workflow::getStartTime():java.util.Date" />
+			<role name="Request()" element="com.ecyrd.jspwiki.workflow.Workflow::processCurrentStep():void" />
+		</instance>
+		<instance>
+			<role name="Context" element="com.ecyrd.jspwiki.auth.UserManager" />
+			<role name="State" element="com.ecyrd.jspwiki.auth.user.UserDatabase" />
+			<role name="state" element="com.ecyrd.jspwiki.auth.UserManager::m_database:com.ecyrd.jspwiki.auth.user.UserDatabase" />
+			<role name="Request()" element="com.ecyrd.jspwiki.auth.UserManager::getUserDatabase():com.ecyrd.jspwiki.auth.user.UserDatabase" />
+		</instance>
+		<instance>
+			<role name="Context" element="com.ecyrd.jspwiki.diff.DifferenceManager" />
+			<role name="State" element="com.ecyrd.jspwiki.diff.DiffProvider" />
+			<role name="state" element="com.ecyrd.jspwiki.diff.DifferenceManager::m_provider:com.ecyrd.jspwiki.diff.DiffProvider" />
+			<role name="Request()" element="com.ecyrd.jspwiki.diff.DifferenceManager::makeDiff(com.ecyrd.jspwiki.WikiContext, java.lang.String, java.lang.String):java.lang.String" />
+		</instance>
+		<instance>
+			<role name="State" element="com.ecyrd.jspwiki.providers.WikiAttachmentProvider" />
+			<role name="Context" element="com.ecyrd.jspwiki.attachment.AttachmentManager" />
+			<role name="state" element="com.ecyrd.jspwiki.attachment.AttachmentManager::m_provider:com.ecyrd.jspwiki.providers.WikiAttachmentProvider" />
+			<role name="Request()" element="com.ecyrd.jspwiki.attachment.AttachmentManager::getAttachmentInfo(com.ecyrd.jspwiki.WikiContext, java.lang.String, int):com.ecyrd.jspwiki.attachment.Attachment" />
+			<role name="Request()" element="com.ecyrd.jspwiki.attachment.AttachmentManager::listAttachments(com.ecyrd.jspwiki.WikiPage):java.util.Collection" />
+			<role name="Request()" element="com.ecyrd.jspwiki.attachment.AttachmentManager::getAttachmentStream(com.ecyrd.jspwiki.WikiContext, com.ecyrd.jspwiki.attachment.Attachment):java.io.InputStream" />
+			<role name="Request()" element="com.ecyrd.jspwiki.attachment.AttachmentManager::storeAttachment(com.ecyrd.jspwiki.attachment.Attachment, java.io.InputStream):void" />
+			<role name="Request()" element="com.ecyrd.jspwiki.attachment.AttachmentManager::getVersionHistory(java.lang.String):java.util.List" />
+			<role name="Request()" element="com.ecyrd.jspwiki.attachment.AttachmentManager::getAllAttachments():java.util.Collection" />
+			<role name="Request()" element="com.ecyrd.jspwiki.attachment.AttachmentManager::deleteVersion(com.ecyrd.jspwiki.attachment.Attachment):void" />
+			<role name="Request()" element="com.ecyrd.jspwiki.attachment.AttachmentManager::deleteAttachment(com.ecyrd.jspwiki.attachment.Attachment):void" />
+		</instance>
+		<instance>
+			<role name="State" element="com.ecyrd.jspwiki.search.SearchProvider" />
+			<role name="Context" element="com.ecyrd.jspwiki.search.SearchManager" />
+			<role name="state" element="com.ecyrd.jspwiki.search.SearchManager::m_searchProvider:com.ecyrd.jspwiki.search.SearchProvider" />
+			<role name="Request()" element="com.ecyrd.jspwiki.search.SearchManager::findPages(java.lang.String):java.util.Collection" />
+			<role name="Request()" element="com.ecyrd.jspwiki.search.SearchManager::pageRemoved(com.ecyrd.jspwiki.WikiPage):void" />
+			<role name="Request()" element="com.ecyrd.jspwiki.search.SearchManager::reindexPage(com.ecyrd.jspwiki.WikiPage):void" />
+		</instance>
+		<instance>
+			<role name="State" element="com.ecyrd.jspwiki.providers.WikiPageProvider" />
+			<role name="Context" element="com.ecyrd.jspwiki.PageManager" />
+			<role name="state" element="com.ecyrd.jspwiki.PageManager::m_provider:com.ecyrd.jspwiki.providers.WikiPageProvider" />
+			<role name="Request()" element="com.ecyrd.jspwiki.PageManager::getAllPages():java.util.Collection" />
+			<role name="Request()" element="com.ecyrd.jspwiki.PageManager::getPageText(java.lang.String, int):java.lang.String" />
+			<role name="Request()" element="com.ecyrd.jspwiki.PageManager::putPageText(com.ecyrd.jspwiki.WikiPage, java.lang.String):void" />
+			<role name="Request()" element="com.ecyrd.jspwiki.PageManager::getPageInfo(java.lang.String, int):com.ecyrd.jspwiki.WikiPage" />
+			<role name="Request()" element="com.ecyrd.jspwiki.PageManager::getVersionHistory(java.lang.String):java.util.List" />
+			<role name="Request()" element="com.ecyrd.jspwiki.PageManager::getTotalPageCount():int" />
+			<role name="Request()" element="com.ecyrd.jspwiki.PageManager::pageExists(java.lang.String):boolean" />
+			<role name="Request()" element="com.ecyrd.jspwiki.PageManager::pageExists(java.lang.String, int):boolean" />
+			<role name="Request()" element="com.ecyrd.jspwiki.PageManager::deleteVersion(com.ecyrd.jspwiki.WikiPage):void" />
+			<role name="Request()" element="com.ecyrd.jspwiki.PageManager::deletePage(com.ecyrd.jspwiki.WikiPage):void" />
+		</instance>
+		<instance>
+			<role name="State" element="com.ecyrd.jspwiki.auth.acl.AclManager" />
+			<role name="Context" element="com.ecyrd.jspwiki.WikiEngine" />
+			<role name="state" element="com.ecyrd.jspwiki.WikiEngine::m_aclManager:com.ecyrd.jspwiki.auth.acl.AclManager" />
+			<role name="Request()" element="com.ecyrd.jspwiki.WikiEngine::getAclManager():com.ecyrd.jspwiki.auth.acl.AclManager" />
+		</instance>
+		<instance>
+			<role name="State" element="com.ecyrd.jspwiki.url.URLConstructor" />
+			<role name="Context" element="com.ecyrd.jspwiki.WikiEngine" />
+			<role name="state" element="com.ecyrd.jspwiki.WikiEngine::m_urlConstructor:com.ecyrd.jspwiki.url.URLConstructor" />
+			<role name="Request()" element="com.ecyrd.jspwiki.WikiEngine::initialize(java.util.Properties):void" />
+			<role name="Request()" element="com.ecyrd.jspwiki.WikiEngine::getEditURL(java.lang.String):java.lang.String" />
+			<role name="Request()" element="com.ecyrd.jspwiki.WikiEngine::getAttachmentURL(java.lang.String):java.lang.String" />
+			<role name="Request()" element="com.ecyrd.jspwiki.WikiEngine::getURL(java.lang.String, java.lang.String, java.lang.String, boolean):java.lang.String" />
+		</instance>
+		<instance>
+			<role name="Context" element="com.ecyrd.jspwiki.auth.authorize.GroupManager" />
+			<role name="State" element="com.ecyrd.jspwiki.auth.authorize.GroupDatabase" />
+			<role name="state" element="com.ecyrd.jspwiki.auth.authorize.GroupManager::m_groupDatabase:com.ecyrd.jspwiki.auth.authorize.GroupDatabase" />
+			<role name="Request()" element="com.ecyrd.jspwiki.auth.authorize.GroupManager::getGroupDatabase():com.ecyrd.jspwiki.auth.authorize.GroupDatabase" />
+			<role name="Request()" element="com.ecyrd.jspwiki.auth.authorize.GroupManager::initialize(com.ecyrd.jspwiki.WikiEngine, java.util.Properties):void" />
+			<role name="Request()" element="com.ecyrd.jspwiki.auth.authorize.GroupManager::removeGroup(java.lang.String):void" />
+			<role name="Request()" element="com.ecyrd.jspwiki.auth.authorize.GroupManager::setGroup(com.ecyrd.jspwiki.WikiSession, com.ecyrd.jspwiki.auth.authorize.Group):void" />
+			<role name="Request()" element="com.ecyrd.jspwiki.auth.authorize.GroupManager::actionPerformed(com.ecyrd.jspwiki.event.WikiEvent):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="com.ecyrd.jspwiki.WikiPage" />
+			<role name="State" element="com.ecyrd.jspwiki.auth.acl.Acl" />
+			<role name="state" element="com.ecyrd.jspwiki.WikiPage::m_accessList:com.ecyrd.jspwiki.auth.acl.Acl" />
+			<role name="Request()" element="com.ecyrd.jspwiki.WikiPage::clone():java.lang.Object" />
+		</instance>
+		<instance>
+			<role name="Context" element="com.ecyrd.jspwiki.util.WatchDog" />
+			<role name="State" element="com.ecyrd.jspwiki.util.Watchable" />
+			<role name="state" element="com.ecyrd.jspwiki.util.WatchDog::m_watchable:com.ecyrd.jspwiki.util.Watchable" />
+			<role name="Request()" element="com.ecyrd.jspwiki.util.WatchDog::enterState(java.lang.String, int):void" />
+			<role name="Request()" element="com.ecyrd.jspwiki.util.WatchDog::exitState(java.lang.String):void" />
+			<role name="Request()" element="com.ecyrd.jspwiki.util.WatchDog::check():void" />
+			<role name="Request()" element="com.ecyrd.jspwiki.util.WatchDog::dumpStackTraceForWatchable():void" />
+		</instance>
+		<instance>
+			<role name="Context" element="com.ecyrd.jspwiki.auth.UserManager$SaveUserProfileTask" />
+			<role name="State" element="com.ecyrd.jspwiki.auth.user.UserDatabase" />
+			<role name="state" element="com.ecyrd.jspwiki.auth.UserManager$SaveUserProfileTask::m_db:com.ecyrd.jspwiki.auth.user.UserDatabase" />
+			<role name="Request()" element="com.ecyrd.jspwiki.auth.UserManager$SaveUserProfileTask::execute():com.ecyrd.jspwiki.workflow.Outcome" />
+		</instance>
+	</pattern>
+	<pattern name="Strategy" />
+	<pattern name="Bridge" />
+	<pattern name="Template Method">
+		<instance>
+			<role name="AbstractClass" element="com.ecyrd.jspwiki.auth.user.AbstractUserDatabase" />
+			<role name="TemplateMethod()" element="com.ecyrd.jspwiki.auth.user.AbstractUserDatabase::find(java.lang.String):com.ecyrd.jspwiki.auth.user.UserProfile" />
+			<role name="TemplateMethod()" element="com.ecyrd.jspwiki.auth.user.AbstractUserDatabase::getPrincipals(java.lang.String):java.security.Principal[]" />
+			<role name="TemplateMethod()" element="com.ecyrd.jspwiki.auth.user.AbstractUserDatabase::validatePassword(java.lang.String, java.lang.String):boolean" />
+		</instance>
+		<instance>
+			<role name="AbstractClass" element="com.ecyrd.jspwiki.tags.WikiBodyTag" />
+			<role name="TemplateMethod()" element="com.ecyrd.jspwiki.tags.WikiBodyTag::doStartTag():int" />
+		</instance>
+		<instance>
+			<role name="AbstractClass" element="com.ecyrd.jspwiki.tags.WikiTagBase" />
+			<role name="TemplateMethod()" element="com.ecyrd.jspwiki.tags.WikiTagBase::doStartTag():int" />
+		</instance>
+		<instance>
+			<role name="AbstractClass" element="com.ecyrd.jspwiki.ui.admin.WikiFormAdminBean" />
+			<role name="TemplateMethod()" element="com.ecyrd.jspwiki.ui.admin.WikiFormAdminBean::doGet(com.ecyrd.jspwiki.WikiContext):java.lang.String" />
+		</instance>
+		<instance>
+			<role name="AbstractClass" element="com.ecyrd.jspwiki.util.WikiBackgroundThread" />
+			<role name="TemplateMethod()" element="com.ecyrd.jspwiki.util.WikiBackgroundThread::run():void" />
+		</instance>
+		<instance>
+			<role name="AbstractClass" element="com.ecyrd.jspwiki.xmlrpc.AbstractRPCHandler" />
+			<role name="TemplateMethod()" element="com.ecyrd.jspwiki.xmlrpc.AbstractRPCHandler::getRecentChanges(java.util.Date):java.util.Vector" />
+		</instance>
+	</pattern>
+	<pattern name="Visitor" />
+	<pattern name="Proxy" />
+	<pattern name="Proxy2" />
+	<pattern name="Chain of Responsibility" />
+</system>
+

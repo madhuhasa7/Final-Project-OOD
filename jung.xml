@@ -1,0 +1,1064 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<system>
+	<pattern name="Factory Method">
+		<instance>
+			<role name="Creator" element="edu.uci.ics.jung.visualization.renderers.Renderer$VertexLabel" />
+			<role name="FactoryMethod()" element="edu.uci.ics.jung.visualization.renderers.Renderer$VertexLabel::getPositioner():edu.uci.ics.jung.visualization.renderers.Renderer$VertexLabel$Positioner" />
+		</instance>
+	</pattern>
+	<pattern name="Prototype" />
+	<pattern name="Singleton">
+		<instance>
+			<role name="Singleton" element="edu.uci.ics.jung.graph.util.Context" />
+			<role name="uniqueInstance" element="edu.uci.ics.jung.graph.util.Context::instance:edu.uci.ics.jung.graph.util.Context" />
+		</instance>
+		<instance>
+			<role name="Singleton" element="edu.uci.ics.jung.io.PajekNetReader$ListTagPred" />
+			<role name="uniqueInstance" element="edu.uci.ics.jung.io.PajekNetReader$ListTagPred::instance:edu.uci.ics.jung.io.PajekNetReader$ListTagPred" />
+		</instance>
+	</pattern>
+	<pattern name="(Object)Adapter">
+		<instance>
+			<role name="Adaptee" element="edu.uci.ics.jung.algorithms.layout.Layout" />
+			<role name="Adapter" element="edu.uci.ics.jung.visualization.layout.LayoutTransition" />
+			<role name="adaptee" element="edu.uci.ics.jung.visualization.layout.LayoutTransition::transitionLayout:edu.uci.ics.jung.algorithms.layout.Layout" />
+			<role name="adaptee" element="edu.uci.ics.jung.visualization.layout.LayoutTransition::endLayout:edu.uci.ics.jung.algorithms.layout.Layout" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.layout.LayoutTransition::step():void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="edu.uci.ics.jung.visualization.VisualizationViewer" />
+			<role name="Adapter" element="edu.uci.ics.jung.visualization.layout.LayoutTransition" />
+			<role name="adaptee" element="edu.uci.ics.jung.visualization.layout.LayoutTransition::vv:edu.uci.ics.jung.visualization.VisualizationViewer" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.layout.LayoutTransition::step():void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="edu.uci.ics.jung.graph.Hypergraph" />
+			<role name="Adapter" element="edu.uci.ics.jung.algorithms.scoring.AbstractIterativeScorer" />
+			<role name="adaptee" element="edu.uci.ics.jung.algorithms.scoring.AbstractIterativeScorer::graph:edu.uci.ics.jung.graph.Hypergraph" />
+			<role name="Request()" element="edu.uci.ics.jung.algorithms.scoring.AbstractIterativeScorer::step():void" />
+			<role name="Request()" element="edu.uci.ics.jung.algorithms.scoring.AbstractIterativeScorer::getVertexScore(V):java.lang.Object" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="edu.uci.ics.jung.visualization.VisualizationViewer" />
+			<role name="Adapter" element="edu.uci.ics.jung.samples.MultiViewDemo$BannerLabel" />
+			<role name="adaptee" element="edu.uci.ics.jung.samples.MultiViewDemo$BannerLabel::vv:edu.uci.ics.jung.visualization.VisualizationViewer" />
+			<role name="Request()" element="edu.uci.ics.jung.samples.MultiViewDemo$BannerLabel::paint(java.awt.Graphics):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="edu.uci.ics.jung.visualization.VisualizationViewer" />
+			<role name="Adapter" element="edu.uci.ics.jung.samples.SatelliteViewDemo$ViewGrid" />
+			<role name="adaptee" element="edu.uci.ics.jung.samples.SatelliteViewDemo$ViewGrid::master:edu.uci.ics.jung.visualization.VisualizationViewer" />
+			<role name="adaptee" element="edu.uci.ics.jung.samples.SatelliteViewDemo$ViewGrid::vv:edu.uci.ics.jung.visualization.VisualizationViewer" />
+			<role name="Request()" element="edu.uci.ics.jung.samples.SatelliteViewDemo$ViewGrid::paint(java.awt.Graphics):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="edu.uci.ics.jung.visualization.VisualizationViewer" />
+			<role name="Adapter" element="edu.uci.ics.jung.visualization.control.SatelliteVisualizationViewer$ViewLens" />
+			<role name="adaptee" element="edu.uci.ics.jung.visualization.control.SatelliteVisualizationViewer$ViewLens::master:edu.uci.ics.jung.visualization.VisualizationViewer" />
+			<role name="adaptee" element="edu.uci.ics.jung.visualization.control.SatelliteVisualizationViewer$ViewLens::vv:edu.uci.ics.jung.visualization.VisualizationViewer" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.control.SatelliteVisualizationViewer$ViewLens::paint(java.awt.Graphics):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="edu.uci.ics.jung.visualization.DefaultVisualizationModel" />
+			<role name="Adaptee" element="edu.uci.ics.jung.algorithms.layout.Layout" />
+			<role name="adaptee" element="edu.uci.ics.jung.visualization.DefaultVisualizationModel::layout:edu.uci.ics.jung.algorithms.layout.Layout" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.DefaultVisualizationModel::setGraphLayout(edu.uci.ics.jung.algorithms.layout.Layout, java.awt.Dimension):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="edu.uci.ics.jung.visualization.BasicTransformer" />
+			<role name="Adaptee" element="edu.uci.ics.jung.visualization.transform.MutableTransformer" />
+			<role name="adaptee" element="edu.uci.ics.jung.visualization.BasicTransformer::layoutTransformer:edu.uci.ics.jung.visualization.transform.MutableTransformer" />
+			<role name="adaptee" element="edu.uci.ics.jung.visualization.BasicTransformer::viewTransformer:edu.uci.ics.jung.visualization.transform.MutableTransformer" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.BasicTransformer::setToIdentity():void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="edu.uci.ics.jung.visualization.RenderContext" />
+			<role name="Adapter" element="edu.uci.ics.jung.visualization.transform.shape.ViewLensSupport" />
+			<role name="adaptee" element="edu.uci.ics.jung.visualization.transform.shape.ViewLensSupport::renderContext:edu.uci.ics.jung.visualization.RenderContext" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.transform.shape.ViewLensSupport::activate():void" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.transform.shape.ViewLensSupport::deactivate():void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="edu.uci.ics.jung.visualization.BasicVisualizationServer" />
+			<role name="Adaptee" element="edu.uci.ics.jung.visualization.RenderContext" />
+			<role name="adaptee" element="edu.uci.ics.jung.visualization.BasicVisualizationServer::renderContext:edu.uci.ics.jung.visualization.RenderContext" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.BasicVisualizationServer::setPickedVertexState(edu.uci.ics.jung.visualization.picking.PickedState):void" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.BasicVisualizationServer::setPickedEdgeState(edu.uci.ics.jung.visualization.picking.PickedState):void" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.BasicVisualizationServer::getPickSupport():edu.uci.ics.jung.algorithms.layout.GraphElementAccessor" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.BasicVisualizationServer::setPickSupport(edu.uci.ics.jung.algorithms.layout.GraphElementAccessor):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="edu.uci.ics.jung.visualization3d.control.MouseTranslate" />
+			<role name="Adapter" element="edu.uci.ics.jung.visualization3d.control.PickTranslateBehavior" />
+			<role name="adaptee" element="edu.uci.ics.jung.visualization3d.control.PickTranslateBehavior::translate:edu.uci.ics.jung.visualization3d.control.MouseTranslate" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization3d.control.PickTranslateBehavior::updateScene(int, int):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="edu.uci.ics.jung.visualization3d.control.MouseZoom" />
+			<role name="Adapter" element="edu.uci.ics.jung.visualization3d.control.PickZoomBehavior" />
+			<role name="adaptee" element="edu.uci.ics.jung.visualization3d.control.PickZoomBehavior::zoom:edu.uci.ics.jung.visualization3d.control.MouseZoom" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization3d.control.PickZoomBehavior::updateScene(int, int):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="edu.uci.ics.jung.algorithms.layout.BalloonLayout" />
+			<role name="Adapter" element="edu.uci.ics.jung.samples.BalloonLayoutDemo$Rings" />
+			<role name="adaptee" element="edu.uci.ics.jung.samples.BalloonLayoutDemo$Rings::layout:edu.uci.ics.jung.algorithms.layout.BalloonLayout" />
+			<role name="Request()" element="edu.uci.ics.jung.samples.BalloonLayoutDemo$Rings::paint(java.awt.Graphics):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="edu.uci.ics.jung.visualization.RenderContext" />
+			<role name="Adapter" element="edu.uci.ics.jung.visualization.annotations.AnnotationPaintable" />
+			<role name="adaptee" element="edu.uci.ics.jung.visualization.annotations.AnnotationPaintable::rc:edu.uci.ics.jung.visualization.RenderContext" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.annotations.AnnotationPaintable::paint(java.awt.Graphics):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="edu.uci.ics.jung.visualization.RenderContext" />
+			<role name="Adapter" element="edu.uci.ics.jung.visualization.layout.BoundingRectanglePaintable" />
+			<role name="adaptee" element="edu.uci.ics.jung.visualization.layout.BoundingRectanglePaintable::rc:edu.uci.ics.jung.visualization.RenderContext" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.layout.BoundingRectanglePaintable::paint(java.awt.Graphics):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="edu.uci.ics.jung.visualization.BasicVisualizationServer" />
+			<role name="Adaptee" element="edu.uci.ics.jung.visualization.VisualizationModel" />
+			<role name="adaptee" element="edu.uci.ics.jung.visualization.BasicVisualizationServer::model:edu.uci.ics.jung.visualization.VisualizationModel" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.BasicVisualizationServer::setGraphLayout(edu.uci.ics.jung.algorithms.layout.Layout):void" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.BasicVisualizationServer::getGraphLayout():edu.uci.ics.jung.algorithms.layout.Layout" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.BasicVisualizationServer::setVisible(boolean):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="edu.uci.ics.jung.io.graphml.GraphMLDocument" />
+			<role name="Adapter" element="edu.uci.ics.jung.io.graphml.GraphMLReader2" />
+			<role name="adaptee" element="edu.uci.ics.jung.io.graphml.GraphMLReader2::document:edu.uci.ics.jung.io.graphml.GraphMLDocument" />
+			<role name="Request()" element="edu.uci.ics.jung.io.graphml.GraphMLReader2::close():void" />
+			<role name="Request()" element="edu.uci.ics.jung.io.graphml.GraphMLReader2::readGraph():edu.uci.ics.jung.graph.Hypergraph" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="edu.uci.ics.jung.io.graphml.parser.ElementParserRegistry" />
+			<role name="Adapter" element="edu.uci.ics.jung.io.graphml.GraphMLReader2" />
+			<role name="adaptee" element="edu.uci.ics.jung.io.graphml.GraphMLReader2::parserRegistry:edu.uci.ics.jung.io.graphml.parser.ElementParserRegistry" />
+			<role name="Request()" element="edu.uci.ics.jung.io.graphml.GraphMLReader2::readGraph():edu.uci.ics.jung.graph.Hypergraph" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="edu.uci.ics.jung.visualization.RenderContext" />
+			<role name="Adapter" element="edu.uci.ics.jung.visualization.jai.PerspectiveViewTransformSupport" />
+			<role name="adaptee" element="edu.uci.ics.jung.visualization.jai.PerspectiveViewTransformSupport::renderContext:edu.uci.ics.jung.visualization.RenderContext" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.jai.PerspectiveViewTransformSupport::activate():void" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.jai.PerspectiveViewTransformSupport::deactivate():void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="edu.uci.ics.jung.graph.Hypergraph" />
+			<role name="Adapter" element="edu.uci.ics.jung.algorithms.shortestpath.DijkstraDistance" />
+			<role name="adaptee" element="edu.uci.ics.jung.algorithms.shortestpath.DijkstraDistance::g:edu.uci.ics.jung.graph.Hypergraph" />
+			<role name="Request()" element="edu.uci.ics.jung.algorithms.shortestpath.DijkstraDistance::getDistance(V, V):java.lang.Number" />
+			<role name="Request()" element="edu.uci.ics.jung.algorithms.shortestpath.DijkstraDistance::getDistanceMap(V):java.util.Map" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="edu.uci.ics.jung.visualization.VisualizationServer" />
+			<role name="Adapter" element="edu.uci.ics.jung.visualization.picking.ClosestShapePickSupport" />
+			<role name="adaptee" element="edu.uci.ics.jung.visualization.picking.ClosestShapePickSupport::vv:edu.uci.ics.jung.visualization.VisualizationServer" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.picking.ClosestShapePickSupport::getVertex(edu.uci.ics.jung.algorithms.layout.Layout, double, double):java.lang.Object" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="edu.uci.ics.jung.visualization.VisualizationServer" />
+			<role name="Adapter" element="edu.uci.ics.jung.visualization.picking.ShapePickSupport" />
+			<role name="adaptee" element="edu.uci.ics.jung.visualization.picking.ShapePickSupport::vv:edu.uci.ics.jung.visualization.VisualizationServer" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.picking.ShapePickSupport::getVertex(edu.uci.ics.jung.algorithms.layout.Layout, double, double):java.lang.Object" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.picking.ShapePickSupport::getVertices(edu.uci.ics.jung.algorithms.layout.Layout, java.awt.Shape):java.util.Collection" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.picking.ShapePickSupport::getEdge(edu.uci.ics.jung.algorithms.layout.Layout, double, double):java.lang.Object" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="edu.uci.ics.jung.visualization.jai.PerspectiveShapeTransformer" />
+			<role name="Adapter" element="edu.uci.ics.jung.visualization.jai.AbstractPerspectiveTransformSupport$Lens" />
+			<role name="adaptee" element="edu.uci.ics.jung.visualization.jai.AbstractPerspectiveTransformSupport$Lens::perspectiveTransformer:edu.uci.ics.jung.visualization.jai.PerspectiveShapeTransformer" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.jai.AbstractPerspectiveTransformSupport$Lens::paint(java.awt.Graphics):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="edu.uci.ics.jung.visualization.transform.AffineTransformer" />
+			<role name="Adapter" element="edu.uci.ics.jung.visualization.annotations.AnnotationPaintable" />
+			<role name="adaptee" element="edu.uci.ics.jung.visualization.annotations.AnnotationPaintable::transformer:edu.uci.ics.jung.visualization.transform.AffineTransformer" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.annotations.AnnotationPaintable::paint(java.awt.Graphics):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="edu.uci.ics.jung.visualization.BasicVisualizationServer" />
+			<role name="Adaptee" element="edu.uci.ics.jung.visualization.picking.PickedState" />
+			<role name="adaptee" element="edu.uci.ics.jung.visualization.BasicVisualizationServer::pickedVertexState:edu.uci.ics.jung.visualization.picking.PickedState" />
+			<role name="adaptee" element="edu.uci.ics.jung.visualization.BasicVisualizationServer::pickedEdgeState:edu.uci.ics.jung.visualization.picking.PickedState" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.BasicVisualizationServer::setPickedVertexState(edu.uci.ics.jung.visualization.picking.PickedState):void" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.BasicVisualizationServer::setPickedEdgeState(edu.uci.ics.jung.visualization.picking.PickedState):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="edu.uci.ics.jung.algorithms.layout.util.Relaxer" />
+			<role name="Adapter" element="edu.uci.ics.jung.visualization.DefaultVisualizationModel" />
+			<role name="adaptee" element="edu.uci.ics.jung.visualization.DefaultVisualizationModel::relaxer:edu.uci.ics.jung.algorithms.layout.util.Relaxer" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.DefaultVisualizationModel::setGraphLayout(edu.uci.ics.jung.algorithms.layout.Layout, java.awt.Dimension):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="edu.uci.ics.jung.algorithms.util.IterativeContext" />
+			<role name="Adapter" element="edu.uci.ics.jung.algorithms.layout.util.VisRunner" />
+			<role name="adaptee" element="edu.uci.ics.jung.algorithms.layout.util.VisRunner::process:edu.uci.ics.jung.algorithms.util.IterativeContext" />
+			<role name="Request()" element="edu.uci.ics.jung.algorithms.layout.util.VisRunner::prerelax():void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="edu.uci.ics.jung.visualization.renderers.Renderer$VertexLabel$Positioner" />
+			<role name="Adapter" element="edu.uci.ics.jung.visualization.renderers.BasicVertexLabelRenderer" />
+			<role name="adaptee" element="edu.uci.ics.jung.visualization.renderers.BasicVertexLabelRenderer::positioner:edu.uci.ics.jung.visualization.renderers.Renderer$VertexLabel$Positioner" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.renderers.BasicVertexLabelRenderer::labelVertex(edu.uci.ics.jung.visualization.RenderContext, edu.uci.ics.jung.algorithms.layout.Layout, V, java.lang.String):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="edu.uci.ics.jung.visualization.renderers.Renderer$VertexLabel" />
+			<role name="Adapter" element="edu.uci.ics.jung.visualization.renderers.BasicRenderer" />
+			<role name="adaptee" element="edu.uci.ics.jung.visualization.renderers.BasicRenderer::vertexLabelRenderer:edu.uci.ics.jung.visualization.renderers.Renderer$VertexLabel" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.renderers.BasicRenderer::renderVertexLabel(edu.uci.ics.jung.visualization.RenderContext, edu.uci.ics.jung.algorithms.layout.Layout, V):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="edu.uci.ics.jung.visualization.renderers.Renderer$Edge" />
+			<role name="Adapter" element="edu.uci.ics.jung.visualization.renderers.BasicRenderer" />
+			<role name="adaptee" element="edu.uci.ics.jung.visualization.renderers.BasicRenderer::edgeRenderer:edu.uci.ics.jung.visualization.renderers.Renderer$Edge" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.renderers.BasicRenderer::renderEdge(edu.uci.ics.jung.visualization.RenderContext, edu.uci.ics.jung.algorithms.layout.Layout, E):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="edu.uci.ics.jung.visualization.renderers.Renderer$EdgeLabel" />
+			<role name="Adapter" element="edu.uci.ics.jung.visualization.renderers.BasicRenderer" />
+			<role name="adaptee" element="edu.uci.ics.jung.visualization.renderers.BasicRenderer::edgeLabelRenderer:edu.uci.ics.jung.visualization.renderers.Renderer$EdgeLabel" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.renderers.BasicRenderer::renderEdgeLabel(edu.uci.ics.jung.visualization.RenderContext, edu.uci.ics.jung.algorithms.layout.Layout, E):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="edu.uci.ics.jung.visualization.renderers.Renderer$Vertex" />
+			<role name="Adapter" element="edu.uci.ics.jung.visualization.renderers.BasicRenderer" />
+			<role name="adaptee" element="edu.uci.ics.jung.visualization.renderers.BasicRenderer::vertexRenderer:edu.uci.ics.jung.visualization.renderers.Renderer$Vertex" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.renderers.BasicRenderer::renderVertex(edu.uci.ics.jung.visualization.RenderContext, edu.uci.ics.jung.algorithms.layout.Layout, V):void" />
+		</instance>
+	</pattern>
+	<pattern name="Command" />
+	<pattern name="Composite" />
+	<pattern name="Decorator">
+		<instance>
+			<role name="Component" element="edu.uci.ics.jung.algorithms.layout.Layout" />
+			<role name="Decorator" element="edu.uci.ics.jung.algorithms.layout.AggregateLayout" />
+			<role name="component" element="edu.uci.ics.jung.algorithms.layout.AggregateLayout::delegate:edu.uci.ics.jung.algorithms.layout.Layout" />
+			<role name="Operation()" element="edu.uci.ics.jung.algorithms.layout.AggregateLayout::getGraph():edu.uci.ics.jung.graph.Graph" />
+			<role name="Operation()" element="edu.uci.ics.jung.algorithms.layout.AggregateLayout::getSize():java.awt.Dimension" />
+			<role name="Operation()" element="edu.uci.ics.jung.algorithms.layout.AggregateLayout::initialize():void" />
+			<role name="Operation()" element="edu.uci.ics.jung.algorithms.layout.AggregateLayout::isLocked(V):boolean" />
+			<role name="Operation()" element="edu.uci.ics.jung.algorithms.layout.AggregateLayout::lock(V, boolean):void" />
+			<role name="Operation()" element="edu.uci.ics.jung.algorithms.layout.AggregateLayout::reset():void" />
+			<role name="Operation()" element="edu.uci.ics.jung.algorithms.layout.AggregateLayout::setGraph(edu.uci.ics.jung.graph.Graph):void" />
+			<role name="Operation()" element="edu.uci.ics.jung.algorithms.layout.AggregateLayout::setInitializer(org.apache.commons.collections15.Transformer):void" />
+			<role name="Operation()" element="edu.uci.ics.jung.algorithms.layout.AggregateLayout::setLocation(V, java.awt.geom.Point2D):void" />
+			<role name="Operation()" element="edu.uci.ics.jung.algorithms.layout.AggregateLayout::setSize(java.awt.Dimension):void" />
+		</instance>
+		<instance>
+			<role name="Component" element="edu.uci.ics.jung.algorithms.layout.Layout" />
+			<role name="Decorator" element="edu.uci.ics.jung.algorithms.layout.LayoutDecorator" />
+			<role name="component" element="edu.uci.ics.jung.algorithms.layout.LayoutDecorator::delegate:edu.uci.ics.jung.algorithms.layout.Layout" />
+			<role name="Operation()" element="edu.uci.ics.jung.algorithms.layout.LayoutDecorator::initialize():void" />
+			<role name="Operation()" element="edu.uci.ics.jung.algorithms.layout.LayoutDecorator::setInitializer(org.apache.commons.collections15.Transformer):void" />
+			<role name="Operation()" element="edu.uci.ics.jung.algorithms.layout.LayoutDecorator::setLocation(V, java.awt.geom.Point2D):void" />
+			<role name="Operation()" element="edu.uci.ics.jung.algorithms.layout.LayoutDecorator::getSize():java.awt.Dimension" />
+			<role name="Operation()" element="edu.uci.ics.jung.algorithms.layout.LayoutDecorator::getGraph():edu.uci.ics.jung.graph.Graph" />
+			<role name="Operation()" element="edu.uci.ics.jung.algorithms.layout.LayoutDecorator::lock(V, boolean):void" />
+			<role name="Operation()" element="edu.uci.ics.jung.algorithms.layout.LayoutDecorator::isLocked(V):boolean" />
+			<role name="Operation()" element="edu.uci.ics.jung.algorithms.layout.LayoutDecorator::setSize(java.awt.Dimension):void" />
+			<role name="Operation()" element="edu.uci.ics.jung.algorithms.layout.LayoutDecorator::reset():void" />
+			<role name="Operation()" element="edu.uci.ics.jung.algorithms.layout.LayoutDecorator::setGraph(edu.uci.ics.jung.graph.Graph):void" />
+		</instance>
+		<instance>
+			<role name="Component" element="edu.uci.ics.jung.algorithms.layout3d.Layout" />
+			<role name="Decorator" element="edu.uci.ics.jung.visualization3d.layout.LayoutDecorator" />
+			<role name="component" element="edu.uci.ics.jung.visualization3d.layout.LayoutDecorator::delegate:edu.uci.ics.jung.algorithms.layout3d.Layout" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization3d.layout.LayoutDecorator::initialize():void" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization3d.layout.LayoutDecorator::setInitializer(org.apache.commons.collections15.Transformer):void" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization3d.layout.LayoutDecorator::setLocation(V, javax.vecmath.Point3f):void" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization3d.layout.LayoutDecorator::getSize():javax.media.j3d.BoundingSphere" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization3d.layout.LayoutDecorator::getGraph():edu.uci.ics.jung.graph.Graph" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization3d.layout.LayoutDecorator::lock(V, boolean):void" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization3d.layout.LayoutDecorator::isLocked(V):boolean" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization3d.layout.LayoutDecorator::setSize(javax.media.j3d.BoundingSphere):void" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization3d.layout.LayoutDecorator::reset():void" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization3d.layout.LayoutDecorator::setGraph(edu.uci.ics.jung.graph.Graph):void" />
+		</instance>
+		<instance>
+			<role name="Component" element="edu.uci.ics.jung.graph.Graph" />
+			<role name="Decorator" element="edu.uci.ics.jung.graph.GraphDecorator" />
+			<role name="component" element="edu.uci.ics.jung.graph.GraphDecorator::delegate:edu.uci.ics.jung.graph.Graph" />
+			<role name="Operation()" element="edu.uci.ics.jung.graph.GraphDecorator::addEdge(E, V, V, edu.uci.ics.jung.graph.util.EdgeType):boolean" />
+			<role name="Operation()" element="edu.uci.ics.jung.graph.GraphDecorator::addEdge(E, V, V):boolean" />
+			<role name="Operation()" element="edu.uci.ics.jung.graph.GraphDecorator::getDest(E):java.lang.Object" />
+			<role name="Operation()" element="edu.uci.ics.jung.graph.GraphDecorator::getEndpoints(E):edu.uci.ics.jung.graph.util.Pair" />
+			<role name="Operation()" element="edu.uci.ics.jung.graph.GraphDecorator::getInEdges(V):java.util.Collection" />
+			<role name="Operation()" element="edu.uci.ics.jung.graph.GraphDecorator::getOpposite(V, E):java.lang.Object" />
+			<role name="Operation()" element="edu.uci.ics.jung.graph.GraphDecorator::getOutEdges(V):java.util.Collection" />
+			<role name="Operation()" element="edu.uci.ics.jung.graph.GraphDecorator::getPredecessorCount(V):int" />
+			<role name="Operation()" element="edu.uci.ics.jung.graph.GraphDecorator::getPredecessors(V):java.util.Collection" />
+			<role name="Operation()" element="edu.uci.ics.jung.graph.GraphDecorator::getSource(E):java.lang.Object" />
+			<role name="Operation()" element="edu.uci.ics.jung.graph.GraphDecorator::getSuccessorCount(V):int" />
+			<role name="Operation()" element="edu.uci.ics.jung.graph.GraphDecorator::getSuccessors(V):java.util.Collection" />
+			<role name="Operation()" element="edu.uci.ics.jung.graph.GraphDecorator::inDegree(V):int" />
+			<role name="Operation()" element="edu.uci.ics.jung.graph.GraphDecorator::isDest(V, E):boolean" />
+			<role name="Operation()" element="edu.uci.ics.jung.graph.GraphDecorator::isPredecessor(V, V):boolean" />
+			<role name="Operation()" element="edu.uci.ics.jung.graph.GraphDecorator::isSource(V, E):boolean" />
+			<role name="Operation()" element="edu.uci.ics.jung.graph.GraphDecorator::isSuccessor(V, V):boolean" />
+			<role name="Operation()" element="edu.uci.ics.jung.graph.GraphDecorator::outDegree(V):int" />
+		</instance>
+		<instance>
+			<role name="Component" element="edu.uci.ics.jung.graph.Graph" />
+			<role name="Decorator" element="edu.uci.ics.jung.graph.util.Graphs$SynchronizedAbstractGraph" />
+			<role name="component" element="edu.uci.ics.jung.graph.util.Graphs$SynchronizedAbstractGraph::delegate:edu.uci.ics.jung.graph.Graph" />
+			<role name="Operation()" element="edu.uci.ics.jung.graph.util.Graphs$SynchronizedAbstractGraph::addEdge(E, V, V, edu.uci.ics.jung.graph.util.EdgeType):boolean" />
+			<role name="Operation()" element="edu.uci.ics.jung.graph.util.Graphs$SynchronizedAbstractGraph::addEdge(E, V, V):boolean" />
+			<role name="Operation()" element="edu.uci.ics.jung.graph.util.Graphs$SynchronizedAbstractGraph::getEndpoints(E):edu.uci.ics.jung.graph.util.Pair" />
+			<role name="Operation()" element="edu.uci.ics.jung.graph.util.Graphs$SynchronizedAbstractGraph::getInEdges(V):java.util.Collection" />
+			<role name="Operation()" element="edu.uci.ics.jung.graph.util.Graphs$SynchronizedAbstractGraph::getOpposite(V, E):java.lang.Object" />
+			<role name="Operation()" element="edu.uci.ics.jung.graph.util.Graphs$SynchronizedAbstractGraph::getOutEdges(V):java.util.Collection" />
+			<role name="Operation()" element="edu.uci.ics.jung.graph.util.Graphs$SynchronizedAbstractGraph::getPredecessors(V):java.util.Collection" />
+			<role name="Operation()" element="edu.uci.ics.jung.graph.util.Graphs$SynchronizedAbstractGraph::getSuccessors(V):java.util.Collection" />
+			<role name="Operation()" element="edu.uci.ics.jung.graph.util.Graphs$SynchronizedAbstractGraph::inDegree(V):int" />
+			<role name="Operation()" element="edu.uci.ics.jung.graph.util.Graphs$SynchronizedAbstractGraph::isPredecessor(V, V):boolean" />
+			<role name="Operation()" element="edu.uci.ics.jung.graph.util.Graphs$SynchronizedAbstractGraph::isSuccessor(V, V):boolean" />
+			<role name="Operation()" element="edu.uci.ics.jung.graph.util.Graphs$SynchronizedAbstractGraph::getPredecessorCount(V):int" />
+			<role name="Operation()" element="edu.uci.ics.jung.graph.util.Graphs$SynchronizedAbstractGraph::getSuccessorCount(V):int" />
+			<role name="Operation()" element="edu.uci.ics.jung.graph.util.Graphs$SynchronizedAbstractGraph::outDegree(V):int" />
+			<role name="Operation()" element="edu.uci.ics.jung.graph.util.Graphs$SynchronizedAbstractGraph::getDest(E):java.lang.Object" />
+			<role name="Operation()" element="edu.uci.ics.jung.graph.util.Graphs$SynchronizedAbstractGraph::getSource(E):java.lang.Object" />
+			<role name="Operation()" element="edu.uci.ics.jung.graph.util.Graphs$SynchronizedAbstractGraph::isDest(V, E):boolean" />
+			<role name="Operation()" element="edu.uci.ics.jung.graph.util.Graphs$SynchronizedAbstractGraph::isSource(V, E):boolean" />
+		</instance>
+		<instance>
+			<role name="Component" element="edu.uci.ics.jung.graph.Graph" />
+			<role name="Decorator" element="edu.uci.ics.jung.graph.util.Graphs$UnmodifiableAbstractGraph" />
+			<role name="component" element="edu.uci.ics.jung.graph.util.Graphs$UnmodifiableAbstractGraph::delegate:edu.uci.ics.jung.graph.Graph" />
+			<role name="Operation()" element="edu.uci.ics.jung.graph.util.Graphs$UnmodifiableAbstractGraph::getEndpoints(E):edu.uci.ics.jung.graph.util.Pair" />
+			<role name="Operation()" element="edu.uci.ics.jung.graph.util.Graphs$UnmodifiableAbstractGraph::getInEdges(V):java.util.Collection" />
+			<role name="Operation()" element="edu.uci.ics.jung.graph.util.Graphs$UnmodifiableAbstractGraph::getOpposite(V, E):java.lang.Object" />
+			<role name="Operation()" element="edu.uci.ics.jung.graph.util.Graphs$UnmodifiableAbstractGraph::getOutEdges(V):java.util.Collection" />
+			<role name="Operation()" element="edu.uci.ics.jung.graph.util.Graphs$UnmodifiableAbstractGraph::getPredecessors(V):java.util.Collection" />
+			<role name="Operation()" element="edu.uci.ics.jung.graph.util.Graphs$UnmodifiableAbstractGraph::getSuccessors(V):java.util.Collection" />
+			<role name="Operation()" element="edu.uci.ics.jung.graph.util.Graphs$UnmodifiableAbstractGraph::inDegree(V):int" />
+			<role name="Operation()" element="edu.uci.ics.jung.graph.util.Graphs$UnmodifiableAbstractGraph::isPredecessor(V, V):boolean" />
+			<role name="Operation()" element="edu.uci.ics.jung.graph.util.Graphs$UnmodifiableAbstractGraph::isSuccessor(V, V):boolean" />
+			<role name="Operation()" element="edu.uci.ics.jung.graph.util.Graphs$UnmodifiableAbstractGraph::getPredecessorCount(V):int" />
+			<role name="Operation()" element="edu.uci.ics.jung.graph.util.Graphs$UnmodifiableAbstractGraph::getSuccessorCount(V):int" />
+			<role name="Operation()" element="edu.uci.ics.jung.graph.util.Graphs$UnmodifiableAbstractGraph::outDegree(V):int" />
+			<role name="Operation()" element="edu.uci.ics.jung.graph.util.Graphs$UnmodifiableAbstractGraph::getDest(E):java.lang.Object" />
+			<role name="Operation()" element="edu.uci.ics.jung.graph.util.Graphs$UnmodifiableAbstractGraph::getSource(E):java.lang.Object" />
+			<role name="Operation()" element="edu.uci.ics.jung.graph.util.Graphs$UnmodifiableAbstractGraph::isDest(V, E):boolean" />
+			<role name="Operation()" element="edu.uci.ics.jung.graph.util.Graphs$UnmodifiableAbstractGraph::isSource(V, E):boolean" />
+		</instance>
+		<instance>
+			<role name="Component" element="edu.uci.ics.jung.visualization.transform.MutableTransformer" />
+			<role name="Decorator" element="edu.uci.ics.jung.visualization.transform.MutableTransformerDecorator" />
+			<role name="component" element="edu.uci.ics.jung.visualization.transform.MutableTransformerDecorator::delegate:edu.uci.ics.jung.visualization.transform.MutableTransformer" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization.transform.MutableTransformerDecorator::concatenate(java.awt.geom.AffineTransform):void" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization.transform.MutableTransformerDecorator::getScale():double" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization.transform.MutableTransformerDecorator::getScaleX():double" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization.transform.MutableTransformerDecorator::getScaleY():double" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization.transform.MutableTransformerDecorator::getShearX():double" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization.transform.MutableTransformerDecorator::getShearY():double" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization.transform.MutableTransformerDecorator::getTransform():java.awt.geom.AffineTransform" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization.transform.MutableTransformerDecorator::getTranslateX():double" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization.transform.MutableTransformerDecorator::getTranslateY():double" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization.transform.MutableTransformerDecorator::preConcatenate(java.awt.geom.AffineTransform):void" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization.transform.MutableTransformerDecorator::rotate(double, java.awt.geom.Point2D):void" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization.transform.MutableTransformerDecorator::scale(double, double, java.awt.geom.Point2D):void" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization.transform.MutableTransformerDecorator::setScale(double, double, java.awt.geom.Point2D):void" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization.transform.MutableTransformerDecorator::setToIdentity():void" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization.transform.MutableTransformerDecorator::setTranslate(double, double):void" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization.transform.MutableTransformerDecorator::shear(double, double, java.awt.geom.Point2D):void" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization.transform.MutableTransformerDecorator::translate(double, double):void" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization.transform.MutableTransformerDecorator::getRotation():double" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization.transform.MutableTransformerDecorator::rotate(double, double, double):void" />
+		</instance>
+		<instance>
+			<role name="Decorator" element="edu.uci.ics.jung.visualization.BasicTransformer" />
+			<role name="Component" element="edu.uci.ics.jung.visualization.util.ChangeEventSupport" />
+			<role name="component" element="edu.uci.ics.jung.visualization.BasicTransformer::changeSupport:edu.uci.ics.jung.visualization.util.ChangeEventSupport" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization.BasicTransformer::addChangeListener(javax.swing.event.ChangeListener):void" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization.BasicTransformer::removeChangeListener(javax.swing.event.ChangeListener):void" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization.BasicTransformer::getChangeListeners():javax.swing.event.ChangeListener[]" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization.BasicTransformer::fireStateChanged():void" />
+		</instance>
+		<instance>
+			<role name="Decorator" element="edu.uci.ics.jung.visualization.BasicVisualizationServer" />
+			<role name="Component" element="edu.uci.ics.jung.visualization.util.ChangeEventSupport" />
+			<role name="component" element="edu.uci.ics.jung.visualization.BasicVisualizationServer::changeSupport:edu.uci.ics.jung.visualization.util.ChangeEventSupport" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization.BasicVisualizationServer::addChangeListener(javax.swing.event.ChangeListener):void" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization.BasicVisualizationServer::removeChangeListener(javax.swing.event.ChangeListener):void" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization.BasicVisualizationServer::getChangeListeners():javax.swing.event.ChangeListener[]" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization.BasicVisualizationServer::fireStateChanged():void" />
+		</instance>
+		<instance>
+			<role name="Decorator" element="edu.uci.ics.jung.visualization.DefaultVisualizationModel" />
+			<role name="Component" element="edu.uci.ics.jung.visualization.util.ChangeEventSupport" />
+			<role name="component" element="edu.uci.ics.jung.visualization.DefaultVisualizationModel::changeSupport:edu.uci.ics.jung.visualization.util.ChangeEventSupport" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization.DefaultVisualizationModel::addChangeListener(javax.swing.event.ChangeListener):void" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization.DefaultVisualizationModel::removeChangeListener(javax.swing.event.ChangeListener):void" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization.DefaultVisualizationModel::getChangeListeners():javax.swing.event.ChangeListener[]" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization.DefaultVisualizationModel::fireStateChanged():void" />
+		</instance>
+		<instance>
+			<role name="Decorator" element="edu.uci.ics.jung.visualization.layout.ObservableCachingLayout" />
+			<role name="Component" element="edu.uci.ics.jung.visualization.util.ChangeEventSupport" />
+			<role name="component" element="edu.uci.ics.jung.visualization.layout.ObservableCachingLayout::changeSupport:edu.uci.ics.jung.visualization.util.ChangeEventSupport" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization.layout.ObservableCachingLayout::addChangeListener(javax.swing.event.ChangeListener):void" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization.layout.ObservableCachingLayout::removeChangeListener(javax.swing.event.ChangeListener):void" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization.layout.ObservableCachingLayout::getChangeListeners():javax.swing.event.ChangeListener[]" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization.layout.ObservableCachingLayout::fireStateChanged():void" />
+		</instance>
+		<instance>
+			<role name="Decorator" element="edu.uci.ics.jung.visualization.transform.MutableAffineTransformer" />
+			<role name="Component" element="edu.uci.ics.jung.visualization.util.ChangeEventSupport" />
+			<role name="component" element="edu.uci.ics.jung.visualization.transform.MutableAffineTransformer::changeSupport:edu.uci.ics.jung.visualization.util.ChangeEventSupport" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization.transform.MutableAffineTransformer::addChangeListener(javax.swing.event.ChangeListener):void" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization.transform.MutableAffineTransformer::removeChangeListener(javax.swing.event.ChangeListener):void" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization.transform.MutableAffineTransformer::getChangeListeners():javax.swing.event.ChangeListener[]" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization.transform.MutableAffineTransformer::fireStateChanged():void" />
+		</instance>
+		<instance>
+			<role name="Decorator" element="edu.uci.ics.jung.visualization3d.PickVertexBehavior" />
+			<role name="Component" element="edu.uci.ics.jung.visualization.util.ChangeEventSupport" />
+			<role name="component" element="edu.uci.ics.jung.visualization3d.PickVertexBehavior::support:edu.uci.ics.jung.visualization.util.ChangeEventSupport" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization3d.PickVertexBehavior::addChangeListener(javax.swing.event.ChangeListener):void" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization3d.PickVertexBehavior::fireStateChanged():void" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization3d.PickVertexBehavior::getChangeListeners():javax.swing.event.ChangeListener[]" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization3d.PickVertexBehavior::removeChangeListener(javax.swing.event.ChangeListener):void" />
+		</instance>
+		<instance>
+			<role name="Decorator" element="edu.uci.ics.jung.visualization3d.layout.LayoutEventBroadcaster" />
+			<role name="Component" element="edu.uci.ics.jung.visualization.util.ChangeEventSupport" />
+			<role name="component" element="edu.uci.ics.jung.visualization3d.layout.LayoutEventBroadcaster::changeSupport:edu.uci.ics.jung.visualization.util.ChangeEventSupport" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization3d.layout.LayoutEventBroadcaster::addChangeListener(javax.swing.event.ChangeListener):void" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization3d.layout.LayoutEventBroadcaster::removeChangeListener(javax.swing.event.ChangeListener):void" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization3d.layout.LayoutEventBroadcaster::getChangeListeners():javax.swing.event.ChangeListener[]" />
+			<role name="Operation()" element="edu.uci.ics.jung.visualization3d.layout.LayoutEventBroadcaster::fireStateChanged():void" />
+		</instance>
+	</pattern>
+	<pattern name="Observer">
+		<instance>
+			<role name="Observer" element="edu.uci.ics.jung.visualization.VisualizationServer$Paintable" />
+			<role name="Subject" element="edu.uci.ics.jung.visualization.BasicVisualizationServer" />
+			<role name="Notify()" element="edu.uci.ics.jung.visualization.BasicVisualizationServer::renderGraph(java.awt.Graphics2D):void" />
+		</instance>
+		<instance>
+			<role name="Observer" element="edu.uci.ics.jung.graph.event.GraphEventListener" />
+			<role name="Subject" element="edu.uci.ics.jung.graph.ObservableGraph" />
+			<role name="Notify()" element="edu.uci.ics.jung.graph.ObservableGraph::fireGraphEvent(edu.uci.ics.jung.graph.event.GraphEvent):void" />
+		</instance>
+	</pattern>
+	<pattern name="State">
+		<instance>
+			<role name="State" element="edu.uci.ics.jung.graph.Graph" />
+			<role name="Context" element="edu.uci.ics.jung.algorithms.metrics.StructuralHoles" />
+			<role name="state" element="edu.uci.ics.jung.algorithms.metrics.StructuralHoles::g:edu.uci.ics.jung.graph.Graph" />
+			<role name="Request()" element="edu.uci.ics.jung.algorithms.metrics.StructuralHoles::constraint(V):double" />
+		</instance>
+		<instance>
+			<role name="State" element="edu.uci.ics.jung.graph.Graph" />
+			<role name="Context" element="edu.uci.ics.jung.algorithms.scoring.util.UniformInOut" />
+			<role name="state" element="edu.uci.ics.jung.algorithms.scoring.util.UniformInOut::graph:edu.uci.ics.jung.graph.Graph" />
+			<role name="Request()" element="edu.uci.ics.jung.algorithms.scoring.util.UniformInOut::transform(edu.uci.ics.jung.algorithms.scoring.util.VEPair):java.lang.Double" />
+		</instance>
+		<instance>
+			<role name="State" element="edu.uci.ics.jung.graph.Graph" />
+			<role name="Context" element="edu.uci.ics.jung.algorithms.shortestpath.MinimumSpanningForest" />
+			<role name="state" element="edu.uci.ics.jung.algorithms.shortestpath.MinimumSpanningForest::graph:edu.uci.ics.jung.graph.Graph" />
+			<role name="Request()" element="edu.uci.ics.jung.algorithms.shortestpath.MinimumSpanningForest::updateForest(java.util.Collection, java.util.Collection):void" />
+		</instance>
+		<instance>
+			<role name="State" element="edu.uci.ics.jung.graph.Graph" />
+			<role name="Context" element="edu.uci.ics.jung.samples.AddNodeDemo" />
+			<role name="state" element="edu.uci.ics.jung.samples.AddNodeDemo::g:edu.uci.ics.jung.graph.Graph" />
+			<role name="Request()" element="edu.uci.ics.jung.samples.AddNodeDemo::process():void" />
+		</instance>
+		<instance>
+			<role name="State" element="edu.uci.ics.jung.graph.Graph" />
+			<role name="Context" element="edu.uci.ics.jung.samples.AnimatingAddNodeDemo" />
+			<role name="state" element="edu.uci.ics.jung.samples.AnimatingAddNodeDemo::g:edu.uci.ics.jung.graph.Graph" />
+			<role name="Request()" element="edu.uci.ics.jung.samples.AnimatingAddNodeDemo::process():void" />
+		</instance>
+		<instance>
+			<role name="State" element="edu.uci.ics.jung.graph.Graph" />
+			<role name="Context" element="edu.uci.ics.jung.samples.DrawnIconVertexDemo" />
+			<role name="state" element="edu.uci.ics.jung.samples.DrawnIconVertexDemo::graph:edu.uci.ics.jung.graph.Graph" />
+			<role name="Request()" element="edu.uci.ics.jung.samples.DrawnIconVertexDemo::createEdges(java.lang.Integer[]):void" />
+		</instance>
+		<instance>
+			<role name="State" element="edu.uci.ics.jung.graph.Graph" />
+			<role name="Context" element="edu.uci.ics.jung.samples.EdgeLabelDemo" />
+			<role name="state" element="edu.uci.ics.jung.samples.EdgeLabelDemo::graph:edu.uci.ics.jung.graph.Graph" />
+			<role name="Request()" element="edu.uci.ics.jung.samples.EdgeLabelDemo::createEdges(java.lang.Integer[]):void" />
+		</instance>
+		<instance>
+			<role name="State" element="edu.uci.ics.jung.graph.Graph" />
+			<role name="Context" element="edu.uci.ics.jung.samples.PerspectiveVertexImageShaperDemo" />
+			<role name="state" element="edu.uci.ics.jung.samples.PerspectiveVertexImageShaperDemo::graph:edu.uci.ics.jung.graph.Graph" />
+			<role name="Request()" element="edu.uci.ics.jung.samples.PerspectiveVertexImageShaperDemo::createEdges(java.lang.Number[]):void" />
+		</instance>
+		<instance>
+			<role name="State" element="edu.uci.ics.jung.graph.Graph" />
+			<role name="Context" element="edu.uci.ics.jung.samples.ShortestPathDemo" />
+			<role name="state" element="edu.uci.ics.jung.samples.ShortestPathDemo::mGraph:edu.uci.ics.jung.graph.Graph" />
+			<role name="Request()" element="edu.uci.ics.jung.samples.ShortestPathDemo::isBlessed(java.lang.Number):boolean" />
+		</instance>
+		<instance>
+			<role name="State" element="edu.uci.ics.jung.graph.Graph" />
+			<role name="Context" element="edu.uci.ics.jung.samples.SubLayoutDemo" />
+			<role name="state" element="edu.uci.ics.jung.samples.SubLayoutDemo::graph:edu.uci.ics.jung.graph.Graph" />
+			<role name="Request()" element="edu.uci.ics.jung.samples.SubLayoutDemo::cluster(boolean):void" />
+		</instance>
+		<instance>
+			<role name="State" element="edu.uci.ics.jung.graph.Graph" />
+			<role name="Context" element="edu.uci.ics.jung.samples.UnicodeLabelDemo" />
+			<role name="state" element="edu.uci.ics.jung.samples.UnicodeLabelDemo::graph:edu.uci.ics.jung.graph.Graph" />
+			<role name="Request()" element="edu.uci.ics.jung.samples.UnicodeLabelDemo::createEdges(java.lang.Integer[]):void" />
+		</instance>
+		<instance>
+			<role name="State" element="edu.uci.ics.jung.graph.Graph" />
+			<role name="Context" element="edu.uci.ics.jung.samples.WorldMapGraphDemo" />
+			<role name="state" element="edu.uci.ics.jung.samples.WorldMapGraphDemo::graph:edu.uci.ics.jung.graph.Graph" />
+			<role name="Request()" element="edu.uci.ics.jung.samples.WorldMapGraphDemo::createEdges():void" />
+		</instance>
+		<instance>
+			<role name="State" element="edu.uci.ics.jung.graph.Graph" />
+			<role name="Context" element="edu.uci.ics.jung.visualization.layout.BoundingRectangleCollector" />
+			<role name="state" element="edu.uci.ics.jung.visualization.layout.BoundingRectangleCollector::graph:edu.uci.ics.jung.graph.Graph" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.layout.BoundingRectangleCollector::compute():void" />
+		</instance>
+		<instance>
+			<role name="State" element="edu.uci.ics.jung.graph.Graph" />
+			<role name="Context" element="edu.uci.ics.jung.visualization.subLayout.GraphCollapser" />
+			<role name="state" element="edu.uci.ics.jung.visualization.subLayout.GraphCollapser::originalGraph:edu.uci.ics.jung.graph.Graph" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.subLayout.GraphCollapser::expand(edu.uci.ics.jung.graph.Graph, edu.uci.ics.jung.graph.Graph):edu.uci.ics.jung.graph.Graph" />
+		</instance>
+		<instance>
+			<role name="State" element="edu.uci.ics.jung.visualization.picking.PickedInfo" />
+			<role name="Context" element="edu.uci.ics.jung.samples.PluggableRendererDemo$SeedFillColor" />
+			<role name="state" element="edu.uci.ics.jung.samples.PluggableRendererDemo$SeedFillColor::pi:edu.uci.ics.jung.visualization.picking.PickedInfo" />
+			<role name="Request()" element="edu.uci.ics.jung.samples.PluggableRendererDemo$SeedFillColor::transform(V):java.awt.Paint" />
+		</instance>
+		<instance>
+			<role name="State" element="edu.uci.ics.jung.visualization.picking.PickedInfo" />
+			<role name="Context" element="edu.uci.ics.jung.samples.PluggableRendererDemo$VertexStrokeHighlight" />
+			<role name="state" element="edu.uci.ics.jung.samples.PluggableRendererDemo$VertexStrokeHighlight::pi:edu.uci.ics.jung.visualization.picking.PickedInfo" />
+			<role name="Request()" element="edu.uci.ics.jung.samples.PluggableRendererDemo$VertexStrokeHighlight::transform(V):java.awt.Stroke" />
+		</instance>
+		<instance>
+			<role name="State" element="edu.uci.ics.jung.visualization.picking.PickedInfo" />
+			<role name="Context" element="edu.uci.ics.jung.visualization.decorators.PickableEdgePaintTransformer" />
+			<role name="state" element="edu.uci.ics.jung.visualization.decorators.PickableEdgePaintTransformer::pi:edu.uci.ics.jung.visualization.picking.PickedInfo" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.decorators.PickableEdgePaintTransformer::transform(E):java.awt.Paint" />
+		</instance>
+		<instance>
+			<role name="State" element="edu.uci.ics.jung.visualization.picking.PickedInfo" />
+			<role name="Context" element="edu.uci.ics.jung.visualization.decorators.PickableVertexIconTransformer" />
+			<role name="state" element="edu.uci.ics.jung.visualization.decorators.PickableVertexIconTransformer::pi:edu.uci.ics.jung.visualization.picking.PickedInfo" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.decorators.PickableVertexIconTransformer::transform(V):javax.swing.Icon" />
+		</instance>
+		<instance>
+			<role name="State" element="edu.uci.ics.jung.visualization.picking.PickedInfo" />
+			<role name="Context" element="edu.uci.ics.jung.visualization.decorators.PickableVertexPaintTransformer" />
+			<role name="state" element="edu.uci.ics.jung.visualization.decorators.PickableVertexPaintTransformer::pi:edu.uci.ics.jung.visualization.picking.PickedInfo" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.decorators.PickableVertexPaintTransformer::transform(V):java.awt.Paint" />
+		</instance>
+		<instance>
+			<role name="State" element="edu.uci.ics.jung.visualization.picking.PickedInfo" />
+			<role name="Context" element="edu.uci.ics.jung.visualization3d.decorators.PickableVertexPaintTransformer" />
+			<role name="state" element="edu.uci.ics.jung.visualization3d.decorators.PickableVertexPaintTransformer::pi:edu.uci.ics.jung.visualization.picking.PickedInfo" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization3d.decorators.PickableVertexPaintTransformer::transform(V):java.awt.Paint" />
+		</instance>
+		<instance>
+			<role name="State" element="edu.uci.ics.jung.visualization.RenderContext" />
+			<role name="Context" element="edu.uci.ics.jung.visualization.annotations.AnnotationManager" />
+			<role name="state" element="edu.uci.ics.jung.visualization.annotations.AnnotationManager::rc:edu.uci.ics.jung.visualization.RenderContext" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.annotations.AnnotationManager::getAnnotation(java.awt.geom.Point2D, java.util.Collection):edu.uci.ics.jung.visualization.annotations.Annotation" />
+		</instance>
+		<instance>
+			<role name="State" element="edu.uci.ics.jung.visualization.RenderContext" />
+			<role name="Context" element="edu.uci.ics.jung.visualization.layout.BoundingRectangleCollector" />
+			<role name="state" element="edu.uci.ics.jung.visualization.layout.BoundingRectangleCollector::rc:edu.uci.ics.jung.visualization.RenderContext" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.layout.BoundingRectangleCollector::compute():void" />
+		</instance>
+		<instance>
+			<role name="State" element="edu.uci.ics.jung.visualization.control.ModalGraphMouse" />
+			<role name="Context" element="edu.uci.ics.jung.visualization.annotations.AnnotatingModalGraphMouse$ModeKeyAdapter" />
+			<role name="state" element="edu.uci.ics.jung.visualization.annotations.AnnotatingModalGraphMouse$ModeKeyAdapter::graphMouse:edu.uci.ics.jung.visualization.control.ModalGraphMouse" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.annotations.AnnotatingModalGraphMouse$ModeKeyAdapter::keyTyped(java.awt.event.KeyEvent):void" />
+		</instance>
+		<instance>
+			<role name="State" element="edu.uci.ics.jung.visualization.control.ModalGraphMouse" />
+			<role name="Context" element="edu.uci.ics.jung.visualization.control.DefaultModalGraphMouse$ModeKeyAdapter" />
+			<role name="state" element="edu.uci.ics.jung.visualization.control.DefaultModalGraphMouse$ModeKeyAdapter::graphMouse:edu.uci.ics.jung.visualization.control.ModalGraphMouse" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.control.DefaultModalGraphMouse$ModeKeyAdapter::keyTyped(java.awt.event.KeyEvent):void" />
+		</instance>
+		<instance>
+			<role name="State" element="edu.uci.ics.jung.visualization.control.ModalGraphMouse" />
+			<role name="Context" element="edu.uci.ics.jung.visualization.control.EditingModalGraphMouse$ModeKeyAdapter" />
+			<role name="state" element="edu.uci.ics.jung.visualization.control.EditingModalGraphMouse$ModeKeyAdapter::graphMouse:edu.uci.ics.jung.visualization.control.ModalGraphMouse" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.control.EditingModalGraphMouse$ModeKeyAdapter::keyTyped(java.awt.event.KeyEvent):void" />
+		</instance>
+		<instance>
+			<role name="State" element="edu.uci.ics.jung.visualization.control.ModalGraphMouse" />
+			<role name="Context" element="edu.uci.ics.jung.visualization.control.ModalLensGraphMouse$ModeKeyAdapter" />
+			<role name="state" element="edu.uci.ics.jung.visualization.control.ModalLensGraphMouse$ModeKeyAdapter::graphMouse:edu.uci.ics.jung.visualization.control.ModalGraphMouse" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.control.ModalLensGraphMouse$ModeKeyAdapter::keyTyped(java.awt.event.KeyEvent):void" />
+		</instance>
+		<instance>
+			<role name="State" element="edu.uci.ics.jung.algorithms.util.IterativeContext" />
+			<role name="Context" element="edu.uci.ics.jung.visualization.util.Animator" />
+			<role name="state" element="edu.uci.ics.jung.visualization.util.Animator::process:edu.uci.ics.jung.algorithms.util.IterativeContext" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.util.Animator::run():void" />
+		</instance>
+		<instance>
+			<role name="Context" element="edu.uci.ics.jung.visualization.layout.LayoutTransition" />
+			<role name="State" element="edu.uci.ics.jung.algorithms.layout.Layout" />
+			<role name="state" element="edu.uci.ics.jung.visualization.layout.LayoutTransition::transitionLayout:edu.uci.ics.jung.algorithms.layout.Layout" />
+			<role name="state" element="edu.uci.ics.jung.visualization.layout.LayoutTransition::endLayout:edu.uci.ics.jung.algorithms.layout.Layout" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.layout.LayoutTransition::step():void" />
+		</instance>
+		<instance>
+			<role name="State" element="edu.uci.ics.jung.visualization.picking.PickedState" />
+			<role name="Context" element="edu.uci.ics.jung.samples.SubLayoutDemo" />
+			<role name="state" element="edu.uci.ics.jung.samples.SubLayoutDemo::ps:edu.uci.ics.jung.visualization.picking.PickedState" />
+			<role name="Request()" element="edu.uci.ics.jung.samples.SubLayoutDemo::cluster(boolean):void" />
+		</instance>
+		<instance>
+			<role name="State" element="edu.uci.ics.jung.graph.Hypergraph" />
+			<role name="Context" element="edu.uci.ics.jung.algorithms.scoring.util.UniformDegreeWeight" />
+			<role name="state" element="edu.uci.ics.jung.algorithms.scoring.util.UniformDegreeWeight::graph:edu.uci.ics.jung.graph.Hypergraph" />
+			<role name="Request()" element="edu.uci.ics.jung.algorithms.scoring.util.UniformDegreeWeight::transform(edu.uci.ics.jung.algorithms.scoring.util.VEPair):java.lang.Double" />
+		</instance>
+		<instance>
+			<role name="State" element="edu.uci.ics.jung.graph.Hypergraph" />
+			<role name="Context" element="edu.uci.ics.jung.io.GraphMLReader" />
+			<role name="state" element="edu.uci.ics.jung.io.GraphMLReader::current_graph:edu.uci.ics.jung.graph.Hypergraph" />
+			<role name="Request()" element="edu.uci.ics.jung.io.GraphMLReader::endElement(java.lang.String, java.lang.String, java.lang.String):void" />
+			<role name="Request()" element="edu.uci.ics.jung.io.GraphMLReader::createVertex(org.xml.sax.Attributes):void" />
+			<role name="Request()" element="edu.uci.ics.jung.io.GraphMLReader::assignEdgeSourceTarget(E, org.xml.sax.Attributes, java.util.Map):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="edu.uci.ics.jung.algorithms.scoring.DegreeScorer" />
+			<role name="State" element="edu.uci.ics.jung.graph.Hypergraph" />
+			<role name="state" element="edu.uci.ics.jung.algorithms.scoring.DegreeScorer::graph:edu.uci.ics.jung.graph.Hypergraph" />
+			<role name="Request()" element="edu.uci.ics.jung.algorithms.scoring.DegreeScorer::getVertexScore(V):java.lang.Integer" />
+		</instance>
+		<instance>
+			<role name="Context" element="edu.uci.ics.jung.algorithms.scoring.DistanceCentralityScorer" />
+			<role name="State" element="edu.uci.ics.jung.graph.Hypergraph" />
+			<role name="state" element="edu.uci.ics.jung.algorithms.scoring.DistanceCentralityScorer::graph:edu.uci.ics.jung.graph.Hypergraph" />
+			<role name="Request()" element="edu.uci.ics.jung.algorithms.scoring.DistanceCentralityScorer::getVertexScore(V):java.lang.Double" />
+		</instance>
+		<instance>
+			<role name="Context" element="edu.uci.ics.jung.visualization.DefaultVisualizationModel" />
+			<role name="State" element="edu.uci.ics.jung.algorithms.layout.Layout" />
+			<role name="state" element="edu.uci.ics.jung.visualization.DefaultVisualizationModel::layout:edu.uci.ics.jung.algorithms.layout.Layout" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.DefaultVisualizationModel::setGraphLayout(edu.uci.ics.jung.algorithms.layout.Layout, java.awt.Dimension):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="edu.uci.ics.jung.visualization.BasicTransformer" />
+			<role name="State" element="edu.uci.ics.jung.visualization.transform.MutableTransformer" />
+			<role name="state" element="edu.uci.ics.jung.visualization.BasicTransformer::layoutTransformer:edu.uci.ics.jung.visualization.transform.MutableTransformer" />
+			<role name="state" element="edu.uci.ics.jung.visualization.BasicTransformer::viewTransformer:edu.uci.ics.jung.visualization.transform.MutableTransformer" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.BasicTransformer::setToIdentity():void" />
+		</instance>
+		<instance>
+			<role name="Context" element="edu.uci.ics.jung.algorithms.generators.random.BarabasiAlbertGenerator" />
+			<role name="State" element="edu.uci.ics.jung.graph.Graph" />
+			<role name="state" element="edu.uci.ics.jung.algorithms.generators.random.BarabasiAlbertGenerator::mGraph:edu.uci.ics.jung.graph.Graph" />
+			<role name="Request()" element="edu.uci.ics.jung.algorithms.generators.random.BarabasiAlbertGenerator::createRandomEdge(java.util.Collection, V, java.util.Set):void" />
+		</instance>
+		<instance>
+			<role name="State" element="edu.uci.ics.jung.algorithms.scoring.VertexScorer" />
+			<role name="Context" element="edu.uci.ics.jung.algorithms.scoring.util.VertexScoreTransformer" />
+			<role name="state" element="edu.uci.ics.jung.algorithms.scoring.util.VertexScoreTransformer::vs:edu.uci.ics.jung.algorithms.scoring.VertexScorer" />
+			<role name="Request()" element="edu.uci.ics.jung.algorithms.scoring.util.VertexScoreTransformer::transform(V):java.lang.Object" />
+		</instance>
+		<instance>
+			<role name="State" element="edu.uci.ics.jung.algorithms.layout3d.Layout" />
+			<role name="Context" element="edu.uci.ics.jung.visualization3d.VisualizationViewer" />
+			<role name="state" element="edu.uci.ics.jung.visualization3d.VisualizationViewer::layout:edu.uci.ics.jung.algorithms.layout3d.Layout" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization3d.VisualizationViewer::setGraphLayout(edu.uci.ics.jung.algorithms.layout3d.Layout):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="edu.uci.ics.jung.visualization.renderers.VertexLabelAsShapeRenderer" />
+			<role name="State" element="edu.uci.ics.jung.visualization.RenderContext" />
+			<role name="state" element="edu.uci.ics.jung.visualization.renderers.VertexLabelAsShapeRenderer::rc:edu.uci.ics.jung.visualization.RenderContext" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.renderers.VertexLabelAsShapeRenderer::transform(V):java.awt.Shape" />
+		</instance>
+		<instance>
+			<role name="Context" element="edu.uci.ics.jung.visualization.jai.HyperbolicImageLensSupport" />
+			<role name="State" element="edu.uci.ics.jung.visualization.RenderContext" />
+			<role name="state" element="edu.uci.ics.jung.visualization.jai.HyperbolicImageLensSupport::renderContext:edu.uci.ics.jung.visualization.RenderContext" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.jai.HyperbolicImageLensSupport::activate():void" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.jai.HyperbolicImageLensSupport::deactivate():void" />
+		</instance>
+		<instance>
+			<role name="Context" element="edu.uci.ics.jung.visualization.transform.shape.MagnifyImageLensSupport" />
+			<role name="State" element="edu.uci.ics.jung.visualization.RenderContext" />
+			<role name="state" element="edu.uci.ics.jung.visualization.transform.shape.MagnifyImageLensSupport::renderContext:edu.uci.ics.jung.visualization.RenderContext" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.transform.shape.MagnifyImageLensSupport::activate():void" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.transform.shape.MagnifyImageLensSupport::deactivate():void" />
+		</instance>
+		<instance>
+			<role name="Context" element="edu.uci.ics.jung.visualization.transform.shape.ViewLensSupport" />
+			<role name="State" element="edu.uci.ics.jung.visualization.RenderContext" />
+			<role name="state" element="edu.uci.ics.jung.visualization.transform.shape.ViewLensSupport::renderContext:edu.uci.ics.jung.visualization.RenderContext" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.transform.shape.ViewLensSupport::activate():void" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.transform.shape.ViewLensSupport::deactivate():void" />
+		</instance>
+		<instance>
+			<role name="Context" element="edu.uci.ics.jung.visualization.BasicVisualizationServer" />
+			<role name="State" element="edu.uci.ics.jung.visualization.RenderContext" />
+			<role name="state" element="edu.uci.ics.jung.visualization.BasicVisualizationServer::renderContext:edu.uci.ics.jung.visualization.RenderContext" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.BasicVisualizationServer::renderGraph(java.awt.Graphics2D):void" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.BasicVisualizationServer::setPickedVertexState(edu.uci.ics.jung.visualization.picking.PickedState):void" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.BasicVisualizationServer::setPickedEdgeState(edu.uci.ics.jung.visualization.picking.PickedState):void" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.BasicVisualizationServer::getPickSupport():edu.uci.ics.jung.algorithms.layout.GraphElementAccessor" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.BasicVisualizationServer::setPickSupport(edu.uci.ics.jung.algorithms.layout.GraphElementAccessor):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="edu.uci.ics.jung.visualization.annotations.AnnotationPaintable" />
+			<role name="State" element="edu.uci.ics.jung.visualization.RenderContext" />
+			<role name="state" element="edu.uci.ics.jung.visualization.annotations.AnnotationPaintable::rc:edu.uci.ics.jung.visualization.RenderContext" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.annotations.AnnotationPaintable::paint(java.awt.Graphics):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="edu.uci.ics.jung.visualization.layout.BoundingRectanglePaintable" />
+			<role name="State" element="edu.uci.ics.jung.visualization.RenderContext" />
+			<role name="state" element="edu.uci.ics.jung.visualization.layout.BoundingRectanglePaintable::rc:edu.uci.ics.jung.visualization.RenderContext" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.layout.BoundingRectanglePaintable::paint(java.awt.Graphics):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="edu.uci.ics.jung.visualization.BasicVisualizationServer" />
+			<role name="State" element="edu.uci.ics.jung.visualization.VisualizationModel" />
+			<role name="state" element="edu.uci.ics.jung.visualization.BasicVisualizationServer::model:edu.uci.ics.jung.visualization.VisualizationModel" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.BasicVisualizationServer::setGraphLayout(edu.uci.ics.jung.algorithms.layout.Layout):void" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.BasicVisualizationServer::getGraphLayout():edu.uci.ics.jung.algorithms.layout.Layout" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.BasicVisualizationServer::setVisible(boolean):void" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.BasicVisualizationServer::renderGraph(java.awt.Graphics2D):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="edu.uci.ics.jung.algorithms.layout.ISOMLayout" />
+			<role name="State" element="edu.uci.ics.jung.algorithms.layout.GraphElementAccessor" />
+			<role name="state" element="edu.uci.ics.jung.algorithms.layout.ISOMLayout::elementAccessor:edu.uci.ics.jung.algorithms.layout.GraphElementAccessor" />
+			<role name="Request()" element="edu.uci.ics.jung.algorithms.layout.ISOMLayout::adjust():void" />
+		</instance>
+		<instance>
+			<role name="Context" element="edu.uci.ics.jung.visualization.jai.PerspectiveImageLensSupport" />
+			<role name="State" element="edu.uci.ics.jung.visualization.RenderContext" />
+			<role name="state" element="edu.uci.ics.jung.visualization.jai.PerspectiveImageLensSupport::renderContext:edu.uci.ics.jung.visualization.RenderContext" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.jai.PerspectiveImageLensSupport::activate():void" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.jai.PerspectiveImageLensSupport::deactivate():void" />
+		</instance>
+		<instance>
+			<role name="Context" element="edu.uci.ics.jung.visualization.jai.PerspectiveViewTransformSupport" />
+			<role name="State" element="edu.uci.ics.jung.visualization.RenderContext" />
+			<role name="state" element="edu.uci.ics.jung.visualization.jai.PerspectiveViewTransformSupport::renderContext:edu.uci.ics.jung.visualization.RenderContext" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.jai.PerspectiveViewTransformSupport::activate():void" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.jai.PerspectiveViewTransformSupport::deactivate():void" />
+		</instance>
+		<instance>
+			<role name="Context" element="edu.uci.ics.jung.algorithms.shortestpath.DijkstraDistance" />
+			<role name="State" element="edu.uci.ics.jung.graph.Hypergraph" />
+			<role name="state" element="edu.uci.ics.jung.algorithms.shortestpath.DijkstraDistance::g:edu.uci.ics.jung.graph.Hypergraph" />
+			<role name="Request()" element="edu.uci.ics.jung.algorithms.shortestpath.DijkstraDistance::singleSourceShortestPath(V, java.util.Collection, int):java.util.LinkedHashMap" />
+			<role name="Request()" element="edu.uci.ics.jung.algorithms.shortestpath.DijkstraDistance::getEdgesToCheck(V):java.util.Collection" />
+			<role name="Request()" element="edu.uci.ics.jung.algorithms.shortestpath.DijkstraDistance::getDistance(V, V):java.lang.Number" />
+			<role name="Request()" element="edu.uci.ics.jung.algorithms.shortestpath.DijkstraDistance::getDistanceMap(V, java.util.Collection):java.util.Map" />
+			<role name="Request()" element="edu.uci.ics.jung.algorithms.shortestpath.DijkstraDistance::getDistanceMap(V):java.util.Map" />
+			<role name="Request()" element="edu.uci.ics.jung.algorithms.shortestpath.DijkstraDistance::getDistanceMap(V, int):java.util.LinkedHashMap" />
+		</instance>
+		<instance>
+			<role name="Context" element="edu.uci.ics.jung.algorithms.shortestpath.UnweightedShortestPath" />
+			<role name="State" element="edu.uci.ics.jung.graph.Hypergraph" />
+			<role name="state" element="edu.uci.ics.jung.algorithms.shortestpath.UnweightedShortestPath::mGraph:edu.uci.ics.jung.graph.Hypergraph" />
+			<role name="Request()" element="edu.uci.ics.jung.algorithms.shortestpath.UnweightedShortestPath::computeShortestPathsFromSource(V):void" />
+		</instance>
+		<instance>
+			<role name="State" element="edu.uci.ics.jung.visualization3d.RenderContext" />
+			<role name="Context" element="edu.uci.ics.jung.visualization3d.VisualizationViewer" />
+			<role name="state" element="edu.uci.ics.jung.visualization3d.VisualizationViewer::renderContext:edu.uci.ics.jung.visualization3d.RenderContext" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization3d.VisualizationViewer::createSceneGraph(javax.media.j3d.Canvas3D):javax.media.j3d.BranchGroup" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization3d.VisualizationViewer::setGraphLayout(edu.uci.ics.jung.algorithms.layout3d.Layout):void" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization3d.VisualizationViewer::setPickedVertexState(edu.uci.ics.jung.visualization.picking.PickedState):void" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization3d.VisualizationViewer::setPickedEdgeState(edu.uci.ics.jung.visualization.picking.PickedState):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="edu.uci.ics.jung.visualization.picking.ClosestShapePickSupport" />
+			<role name="State" element="edu.uci.ics.jung.visualization.VisualizationServer" />
+			<role name="state" element="edu.uci.ics.jung.visualization.picking.ClosestShapePickSupport::vv:edu.uci.ics.jung.visualization.VisualizationServer" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.picking.ClosestShapePickSupport::getVertex(edu.uci.ics.jung.algorithms.layout.Layout, double, double):java.lang.Object" />
+		</instance>
+		<instance>
+			<role name="Context" element="edu.uci.ics.jung.visualization.picking.ShapePickSupport" />
+			<role name="State" element="edu.uci.ics.jung.visualization.VisualizationServer" />
+			<role name="state" element="edu.uci.ics.jung.visualization.picking.ShapePickSupport::vv:edu.uci.ics.jung.visualization.VisualizationServer" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.picking.ShapePickSupport::getVertex(edu.uci.ics.jung.algorithms.layout.Layout, double, double):java.lang.Object" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.picking.ShapePickSupport::getVertices(edu.uci.ics.jung.algorithms.layout.Layout, java.awt.Shape):java.util.Collection" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.picking.ShapePickSupport::getEdge(edu.uci.ics.jung.algorithms.layout.Layout, double, double):java.lang.Object" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.picking.ShapePickSupport::getTransformedEdgeShape(edu.uci.ics.jung.algorithms.layout.Layout, E):java.awt.Shape" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.picking.ShapePickSupport::verticesAreFiltered():boolean" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.picking.ShapePickSupport::edgesAreFiltered():boolean" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.picking.ShapePickSupport::isVertexRendered(edu.uci.ics.jung.graph.util.Context):boolean" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.picking.ShapePickSupport::isEdgeRendered(edu.uci.ics.jung.graph.util.Context):boolean" />
+		</instance>
+		<instance>
+			<role name="Context" element="edu.uci.ics.jung.visualization.jai.HyperbolicImageLensSupport" />
+			<role name="State" element="edu.uci.ics.jung.visualization.renderers.Renderer" />
+			<role name="state" element="edu.uci.ics.jung.visualization.jai.HyperbolicImageLensSupport::transformingRenderer:edu.uci.ics.jung.visualization.renderers.Renderer" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.jai.HyperbolicImageLensSupport::activate():void" />
+		</instance>
+		<instance>
+			<role name="Context" element="edu.uci.ics.jung.algorithms.scoring.BetweennessCentrality" />
+			<role name="State" element="edu.uci.ics.jung.graph.Graph" />
+			<role name="state" element="edu.uci.ics.jung.algorithms.scoring.BetweennessCentrality::graph:edu.uci.ics.jung.graph.Graph" />
+			<role name="Request()" element="edu.uci.ics.jung.algorithms.scoring.BetweennessCentrality::computeBetweenness(java.util.Queue, org.apache.commons.collections15.Transformer):void" />
+		</instance>
+		<instance>
+			<role name="State" element="edu.uci.ics.jung.visualization.control.GraphMouseListener" />
+			<role name="Context" element="edu.uci.ics.jung.visualization.control.MouseListenerTranslator" />
+			<role name="state" element="edu.uci.ics.jung.visualization.control.MouseListenerTranslator::gel:edu.uci.ics.jung.visualization.control.GraphMouseListener" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.control.MouseListenerTranslator::mouseClicked(java.awt.event.MouseEvent):void" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.control.MouseListenerTranslator::mousePressed(java.awt.event.MouseEvent):void" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.control.MouseListenerTranslator::mouseReleased(java.awt.event.MouseEvent):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="edu.uci.ics.jung.visualization.decorators.EdgeShape$BentLine" />
+			<role name="State" element="edu.uci.ics.jung.graph.util.EdgeIndexFunction" />
+			<role name="state" element="edu.uci.ics.jung.visualization.decorators.EdgeShape$BentLine::parallelEdgeIndexFunction:edu.uci.ics.jung.graph.util.EdgeIndexFunction" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.decorators.EdgeShape$BentLine::transform(edu.uci.ics.jung.graph.util.Context):java.awt.Shape" />
+		</instance>
+		<instance>
+			<role name="Context" element="edu.uci.ics.jung.visualization.decorators.EdgeShape$Box" />
+			<role name="State" element="edu.uci.ics.jung.graph.util.EdgeIndexFunction" />
+			<role name="state" element="edu.uci.ics.jung.visualization.decorators.EdgeShape$Box::parallelEdgeIndexFunction:edu.uci.ics.jung.graph.util.EdgeIndexFunction" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.decorators.EdgeShape$Box::transform(edu.uci.ics.jung.graph.util.Context):java.awt.Shape" />
+		</instance>
+		<instance>
+			<role name="Context" element="edu.uci.ics.jung.visualization.decorators.EdgeShape$CubicCurve" />
+			<role name="State" element="edu.uci.ics.jung.graph.util.EdgeIndexFunction" />
+			<role name="state" element="edu.uci.ics.jung.visualization.decorators.EdgeShape$CubicCurve::parallelEdgeIndexFunction:edu.uci.ics.jung.graph.util.EdgeIndexFunction" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.decorators.EdgeShape$CubicCurve::transform(edu.uci.ics.jung.graph.util.Context):java.awt.Shape" />
+		</instance>
+		<instance>
+			<role name="Context" element="edu.uci.ics.jung.visualization.decorators.EdgeShape$Loop" />
+			<role name="State" element="edu.uci.ics.jung.graph.util.EdgeIndexFunction" />
+			<role name="state" element="edu.uci.ics.jung.visualization.decorators.EdgeShape$Loop::parallelEdgeIndexFunction:edu.uci.ics.jung.graph.util.EdgeIndexFunction" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.decorators.EdgeShape$Loop::transform(edu.uci.ics.jung.graph.util.Context):java.awt.Shape" />
+		</instance>
+		<instance>
+			<role name="Context" element="edu.uci.ics.jung.visualization.decorators.EdgeShape$QuadCurve" />
+			<role name="State" element="edu.uci.ics.jung.graph.util.EdgeIndexFunction" />
+			<role name="state" element="edu.uci.ics.jung.visualization.decorators.EdgeShape$QuadCurve::parallelEdgeIndexFunction:edu.uci.ics.jung.graph.util.EdgeIndexFunction" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.decorators.EdgeShape$QuadCurve::transform(edu.uci.ics.jung.graph.util.Context):java.awt.Shape" />
+		</instance>
+		<instance>
+			<role name="Context" element="edu.uci.ics.jung.visualization.renderers.BasicEdgeRenderer" />
+			<role name="State" element="edu.uci.ics.jung.visualization.renderers.EdgeArrowRenderingSupport" />
+			<role name="state" element="edu.uci.ics.jung.visualization.renderers.BasicEdgeRenderer::edgeArrowRenderingSupport:edu.uci.ics.jung.visualization.renderers.EdgeArrowRenderingSupport" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.renderers.BasicEdgeRenderer::drawSimpleEdge(edu.uci.ics.jung.visualization.RenderContext, edu.uci.ics.jung.algorithms.layout.Layout, E):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="edu.uci.ics.jung.visualization3d.PickVertexBehavior" />
+			<role name="State" element="edu.uci.ics.jung.visualization.picking.PickedState" />
+			<role name="state" element="edu.uci.ics.jung.visualization3d.PickVertexBehavior::pickedState:edu.uci.ics.jung.visualization.picking.PickedState" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization3d.PickVertexBehavior::updateScene(int, int):void" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization3d.PickVertexBehavior::doPick(int, int):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="edu.uci.ics.jung.visualization.DefaultVisualizationModel" />
+			<role name="State" element="edu.uci.ics.jung.algorithms.layout.util.Relaxer" />
+			<role name="state" element="edu.uci.ics.jung.visualization.DefaultVisualizationModel::relaxer:edu.uci.ics.jung.algorithms.layout.util.Relaxer" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.DefaultVisualizationModel::setGraphLayout(edu.uci.ics.jung.algorithms.layout.Layout, java.awt.Dimension):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="edu.uci.ics.jung.algorithms.layout3d.ISOMLayout" />
+			<role name="State" element="edu.uci.ics.jung.algorithms.layout3d.GraphElementAccessor" />
+			<role name="state" element="edu.uci.ics.jung.algorithms.layout3d.ISOMLayout::elementAccessor:edu.uci.ics.jung.algorithms.layout3d.GraphElementAccessor" />
+			<role name="Request()" element="edu.uci.ics.jung.algorithms.layout3d.ISOMLayout::adjust():void" />
+		</instance>
+		<instance>
+			<role name="Context" element="edu.uci.ics.jung.algorithms.layout.util.VisRunner" />
+			<role name="State" element="edu.uci.ics.jung.algorithms.util.IterativeContext" />
+			<role name="state" element="edu.uci.ics.jung.algorithms.layout.util.VisRunner::process:edu.uci.ics.jung.algorithms.util.IterativeContext" />
+			<role name="Request()" element="edu.uci.ics.jung.algorithms.layout.util.VisRunner::prerelax():void" />
+			<role name="Request()" element="edu.uci.ics.jung.algorithms.layout.util.VisRunner::run():void" />
+		</instance>
+		<instance>
+			<role name="State" element="edu.uci.ics.jung.algorithms.util.SettableTransformer" />
+			<role name="Context" element="edu.uci.ics.jung.io.PajekNetReader" />
+			<role name="state" element="edu.uci.ics.jung.io.PajekNetReader::vertex_labels:edu.uci.ics.jung.algorithms.util.SettableTransformer" />
+			<role name="state" element="edu.uci.ics.jung.io.PajekNetReader::vertex_locations:edu.uci.ics.jung.algorithms.util.SettableTransformer" />
+			<role name="state" element="edu.uci.ics.jung.io.PajekNetReader::edge_weights:edu.uci.ics.jung.algorithms.util.SettableTransformer" />
+			<role name="Request()" element="edu.uci.ics.jung.io.PajekNetReader::readVertex(java.lang.String, java.util.List, int):void" />
+			<role name="Request()" element="edu.uci.ics.jung.io.PajekNetReader::readArcsOrEdges(java.lang.String, java.io.BufferedReader, edu.uci.ics.jung.graph.Graph, java.util.List, org.apache.commons.collections15.Factory):java.lang.String" />
+		</instance>
+		<instance>
+			<role name="Context" element="edu.uci.ics.jung.visualization.renderers.BasicVertexLabelRenderer" />
+			<role name="State" element="edu.uci.ics.jung.visualization.renderers.Renderer$VertexLabel$Positioner" />
+			<role name="state" element="edu.uci.ics.jung.visualization.renderers.BasicVertexLabelRenderer::positioner:edu.uci.ics.jung.visualization.renderers.Renderer$VertexLabel$Positioner" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.renderers.BasicVertexLabelRenderer::labelVertex(edu.uci.ics.jung.visualization.RenderContext, edu.uci.ics.jung.algorithms.layout.Layout, V, java.lang.String):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="edu.uci.ics.jung.algorithms.scoring.DistanceCentralityScorer" />
+			<role name="State" element="edu.uci.ics.jung.algorithms.shortestpath.Distance" />
+			<role name="state" element="edu.uci.ics.jung.algorithms.scoring.DistanceCentralityScorer::distance:edu.uci.ics.jung.algorithms.shortestpath.Distance" />
+			<role name="Request()" element="edu.uci.ics.jung.algorithms.scoring.DistanceCentralityScorer::getVertexScore(V):java.lang.Double" />
+		</instance>
+		<instance>
+			<role name="Context" element="edu.uci.ics.jung.algorithms.layout.KKLayout" />
+			<role name="State" element="edu.uci.ics.jung.algorithms.shortestpath.Distance" />
+			<role name="state" element="edu.uci.ics.jung.algorithms.layout.KKLayout::distance:edu.uci.ics.jung.algorithms.shortestpath.Distance" />
+			<role name="Request()" element="edu.uci.ics.jung.algorithms.layout.KKLayout::initialize():void" />
+		</instance>
+		<instance>
+			<role name="Context" element="edu.uci.ics.jung.visualization.BasicVisualizationServer" />
+			<role name="State" element="edu.uci.ics.jung.visualization.renderers.Renderer" />
+			<role name="state" element="edu.uci.ics.jung.visualization.BasicVisualizationServer::renderer:edu.uci.ics.jung.visualization.renderers.Renderer" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.BasicVisualizationServer::renderGraph(java.awt.Graphics2D):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="edu.uci.ics.jung.visualization.control.ScalingGraphMousePlugin" />
+			<role name="State" element="edu.uci.ics.jung.visualization.control.ScalingControl" />
+			<role name="state" element="edu.uci.ics.jung.visualization.control.ScalingGraphMousePlugin::scaler:edu.uci.ics.jung.visualization.control.ScalingControl" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.control.ScalingGraphMousePlugin::mouseWheelMoved(java.awt.event.MouseWheelEvent):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="edu.uci.ics.jung.visualization.renderers.BasicRenderer" />
+			<role name="State" element="edu.uci.ics.jung.visualization.renderers.Renderer$VertexLabel" />
+			<role name="state" element="edu.uci.ics.jung.visualization.renderers.BasicRenderer::vertexLabelRenderer:edu.uci.ics.jung.visualization.renderers.Renderer$VertexLabel" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.renderers.BasicRenderer::renderVertexLabel(edu.uci.ics.jung.visualization.RenderContext, edu.uci.ics.jung.algorithms.layout.Layout, V):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="edu.uci.ics.jung.visualization.renderers.BasicRenderer" />
+			<role name="State" element="edu.uci.ics.jung.visualization.renderers.Renderer$Edge" />
+			<role name="state" element="edu.uci.ics.jung.visualization.renderers.BasicRenderer::edgeRenderer:edu.uci.ics.jung.visualization.renderers.Renderer$Edge" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.renderers.BasicRenderer::renderEdge(edu.uci.ics.jung.visualization.RenderContext, edu.uci.ics.jung.algorithms.layout.Layout, E):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="edu.uci.ics.jung.visualization.renderers.BasicRenderer" />
+			<role name="State" element="edu.uci.ics.jung.visualization.renderers.Renderer$EdgeLabel" />
+			<role name="state" element="edu.uci.ics.jung.visualization.renderers.BasicRenderer::edgeLabelRenderer:edu.uci.ics.jung.visualization.renderers.Renderer$EdgeLabel" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.renderers.BasicRenderer::renderEdgeLabel(edu.uci.ics.jung.visualization.RenderContext, edu.uci.ics.jung.algorithms.layout.Layout, E):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="edu.uci.ics.jung.visualization.renderers.BasicRenderer" />
+			<role name="State" element="edu.uci.ics.jung.visualization.renderers.Renderer$Vertex" />
+			<role name="state" element="edu.uci.ics.jung.visualization.renderers.BasicRenderer::vertexRenderer:edu.uci.ics.jung.visualization.renderers.Renderer$Vertex" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.renderers.BasicRenderer::renderVertex(edu.uci.ics.jung.visualization.RenderContext, edu.uci.ics.jung.algorithms.layout.Layout, V):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="edu.uci.ics.jung.visualization.decorators.GradientEdgePaintTransformer" />
+			<role name="State" element="edu.uci.ics.jung.visualization.transform.BidirectionalTransformer" />
+			<role name="state" element="edu.uci.ics.jung.visualization.decorators.GradientEdgePaintTransformer::transformer:edu.uci.ics.jung.visualization.transform.BidirectionalTransformer" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.decorators.GradientEdgePaintTransformer::transform(E):java.awt.Paint" />
+		</instance>
+		<instance>
+			<role name="Context" element="edu.uci.ics.jung.visualization.renderers.GradientVertexRenderer" />
+			<role name="State" element="edu.uci.ics.jung.visualization.picking.PickedState" />
+			<role name="state" element="edu.uci.ics.jung.visualization.renderers.GradientVertexRenderer::pickedState:edu.uci.ics.jung.visualization.picking.PickedState" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.renderers.GradientVertexRenderer::paintShapeForVertex(edu.uci.ics.jung.visualization.RenderContext, V, java.awt.Shape):void" />
+		</instance>
+	</pattern>
+	<pattern name="Strategy" />
+	<pattern name="Bridge">
+		<instance>
+			<role name="Abstraction" element="edu.uci.ics.jung.algorithms.importance.AbstractRanker" />
+			<role name="Implementor" element="edu.uci.ics.jung.graph.Graph" />
+			<role name="implementor" element="edu.uci.ics.jung.algorithms.importance.AbstractRanker::mGraph:edu.uci.ics.jung.graph.Graph" />
+			<role name="Operation()" element="edu.uci.ics.jung.algorithms.importance.AbstractRanker::assignDefaultEdgeTransitionWeights():void" />
+			<role name="Operation()" element="edu.uci.ics.jung.algorithms.importance.AbstractRanker::normalizeEdgeTransitionWeights():void" />
+		</instance>
+		<instance>
+			<role name="Abstraction" element="edu.uci.ics.jung.algorithms.scoring.AbstractIterativeScorer" />
+			<role name="Implementor" element="edu.uci.ics.jung.graph.Hypergraph" />
+			<role name="implementor" element="edu.uci.ics.jung.algorithms.scoring.AbstractIterativeScorer::graph:edu.uci.ics.jung.graph.Hypergraph" />
+			<role name="Operation()" element="edu.uci.ics.jung.algorithms.scoring.AbstractIterativeScorer::step():void" />
+			<role name="Operation()" element="edu.uci.ics.jung.algorithms.scoring.AbstractIterativeScorer::getVertexScore(V):java.lang.Object" />
+			<role name="Operation()" element="edu.uci.ics.jung.algorithms.scoring.AbstractIterativeScorer::getAdjustedIncidentCount(E):int" />
+		</instance>
+	</pattern>
+	<pattern name="Template Method">
+		<instance>
+			<role name="AbstractClass" element="edu.uci.ics.jung.algorithms.importance.AbstractRanker" />
+			<role name="TemplateMethod()" element="edu.uci.ics.jung.algorithms.importance.AbstractRanker::finalizeIterations():void" />
+			<role name="TemplateMethod()" element="edu.uci.ics.jung.algorithms.importance.AbstractRanker::getVertexRankScore(V):double" />
+			<role name="TemplateMethod()" element="edu.uci.ics.jung.algorithms.importance.AbstractRanker::getEdgeRankScore(E):double" />
+			<role name="TemplateMethod()" element="edu.uci.ics.jung.algorithms.importance.AbstractRanker::setVertexRankScore(V, double):void" />
+			<role name="TemplateMethod()" element="edu.uci.ics.jung.algorithms.importance.AbstractRanker::setEdgeRankScore(E, double):void" />
+			<role name="TemplateMethod()" element="edu.uci.ics.jung.algorithms.importance.AbstractRanker::removeVertexRankScore(V):void" />
+			<role name="TemplateMethod()" element="edu.uci.ics.jung.algorithms.importance.AbstractRanker::removeEdgeRankScore(E):void" />
+		</instance>
+		<instance>
+			<role name="AbstractClass" element="edu.uci.ics.jung.algorithms.layout3d.AbstractLayout" />
+			<role name="TemplateMethod()" element="edu.uci.ics.jung.algorithms.layout3d.AbstractLayout::setGraph(edu.uci.ics.jung.graph.Graph):void" />
+			<role name="TemplateMethod()" element="edu.uci.ics.jung.algorithms.layout3d.AbstractLayout::setSize(javax.media.j3d.BoundingSphere):void" />
+		</instance>
+		<instance>
+			<role name="AbstractClass" element="edu.uci.ics.jung.algorithms.scoring.AbstractIterativeScorer" />
+			<role name="TemplateMethod()" element="edu.uci.ics.jung.algorithms.scoring.AbstractIterativeScorer::step():void" />
+		</instance>
+		<instance>
+			<role name="AbstractClass" element="edu.uci.ics.jung.algorithms.util.IterativeProcess" />
+			<role name="TemplateMethod()" element="edu.uci.ics.jung.algorithms.util.IterativeProcess::evaluate():void" />
+		</instance>
+		<instance>
+			<role name="AbstractClass" element="edu.uci.ics.jung.visualization.control.AbstractPopupGraphMousePlugin" />
+			<role name="TemplateMethod()" element="edu.uci.ics.jung.visualization.control.AbstractPopupGraphMousePlugin::mousePressed(java.awt.event.MouseEvent):void" />
+			<role name="TemplateMethod()" element="edu.uci.ics.jung.visualization.control.AbstractPopupGraphMousePlugin::mouseReleased(java.awt.event.MouseEvent):void" />
+		</instance>
+		<instance>
+			<role name="AbstractClass" element="edu.uci.ics.jung.visualization.transform.LensTransformer" />
+			<role name="TemplateMethod()" element="edu.uci.ics.jung.visualization.transform.LensTransformer::transform(java.awt.Shape):java.awt.Shape" />
+			<role name="TemplateMethod()" element="edu.uci.ics.jung.visualization.transform.LensTransformer::inverseTransform(java.awt.Shape):java.awt.Shape" />
+		</instance>
+		<instance>
+			<role name="AbstractClass" element="edu.uci.ics.jung.visualization3d.control.PickMouseBehavior" />
+			<role name="TemplateMethod()" element="edu.uci.ics.jung.visualization3d.control.PickMouseBehavior::processStimulus(java.util.Enumeration):void" />
+		</instance>
+	</pattern>
+	<pattern name="Visitor" />
+	<pattern name="Proxy" />
+	<pattern name="Proxy2">
+		<instance>
+			<role name="Proxy" element="edu.uci.ics.jung.visualization.transform.MutableTransformerDecorator" />
+			<role name="RealSubject" element="edu.uci.ics.jung.visualization.transform.MutableAffineTransformer" />
+			<role name="Subject" element="edu.uci.ics.jung.visualization.transform.MutableTransformer" />
+			<role name="subject" element="edu.uci.ics.jung.visualization.transform.MutableTransformerDecorator::delegate:edu.uci.ics.jung.visualization.transform.MutableTransformer" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.transform.MutableTransformerDecorator::concatenate(java.awt.geom.AffineTransform):void" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.transform.MutableTransformerDecorator::getScale():double" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.transform.MutableTransformerDecorator::getScaleX():double" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.transform.MutableTransformerDecorator::getScaleY():double" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.transform.MutableTransformerDecorator::getShearX():double" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.transform.MutableTransformerDecorator::getShearY():double" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.transform.MutableTransformerDecorator::getTransform():java.awt.geom.AffineTransform" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.transform.MutableTransformerDecorator::getTranslateX():double" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.transform.MutableTransformerDecorator::getTranslateY():double" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.transform.MutableTransformerDecorator::preConcatenate(java.awt.geom.AffineTransform):void" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.transform.MutableTransformerDecorator::rotate(double, java.awt.geom.Point2D):void" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.transform.MutableTransformerDecorator::scale(double, double, java.awt.geom.Point2D):void" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.transform.MutableTransformerDecorator::setScale(double, double, java.awt.geom.Point2D):void" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.transform.MutableTransformerDecorator::setToIdentity():void" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.transform.MutableTransformerDecorator::setTranslate(double, double):void" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.transform.MutableTransformerDecorator::shear(double, double, java.awt.geom.Point2D):void" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.transform.MutableTransformerDecorator::translate(double, double):void" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.transform.MutableTransformerDecorator::getRotation():double" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.transform.MutableTransformerDecorator::rotate(double, double, double):void" />
+		</instance>
+		<instance>
+			<role name="Subject" element="edu.uci.ics.jung.visualization.util.ChangeEventSupport" />
+			<role name="Proxy" element="edu.uci.ics.jung.visualization.BasicTransformer" />
+			<role name="RealSubject" element="edu.uci.ics.jung.visualization.transform.MutableAffineTransformer" />
+			<role name="subject" element="edu.uci.ics.jung.visualization.BasicTransformer::changeSupport:edu.uci.ics.jung.visualization.util.ChangeEventSupport" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.BasicTransformer::addChangeListener(javax.swing.event.ChangeListener):void" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.BasicTransformer::removeChangeListener(javax.swing.event.ChangeListener):void" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.BasicTransformer::getChangeListeners():javax.swing.event.ChangeListener[]" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.BasicTransformer::fireStateChanged():void" />
+			<role name="subject" element="edu.uci.ics.jung.visualization.transform.MutableAffineTransformer::changeSupport:edu.uci.ics.jung.visualization.util.ChangeEventSupport" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.transform.MutableAffineTransformer::addChangeListener(javax.swing.event.ChangeListener):void" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.transform.MutableAffineTransformer::removeChangeListener(javax.swing.event.ChangeListener):void" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.transform.MutableAffineTransformer::getChangeListeners():javax.swing.event.ChangeListener[]" />
+			<role name="Request()" element="edu.uci.ics.jung.visualization.transform.MutableAffineTransformer::fireStateChanged():void" />
+		</instance>
+	</pattern>
+	<pattern name="Chain of Responsibility" />
+</system>
+

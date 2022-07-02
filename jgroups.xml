@@ -1,0 +1,1955 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<system>
+	<pattern name="Factory Method">
+		<instance>
+			<role name="Creator" element="org.jgroups.blocks.BasicConnectionTable" />
+			<role name="FactoryMethod()" element="org.jgroups.blocks.BasicConnectionTable::getConnection(org.jgroups.Address):org.jgroups.blocks.BasicConnectionTable$Connection" />
+		</instance>
+		<instance>
+			<role name="Creator" element="org.jgroups.blocks.ReplCache$HashFunctionFactory" />
+			<role name="FactoryMethod()" element="org.jgroups.blocks.ReplCache$HashFunctionFactory::create():org.jgroups.blocks.ReplCache$HashFunction" />
+		</instance>
+		<instance>
+			<role name="Creator" element="org.jgroups.ChannelFactory" />
+			<role name="FactoryMethod()" element="org.jgroups.ChannelFactory::createChannel(java.lang.Object):org.jgroups.Channel" />
+			<role name="FactoryMethod()" element="org.jgroups.ChannelFactory::createChannel():org.jgroups.Channel" />
+			<role name="FactoryMethod()" element="org.jgroups.ChannelFactory::createChannel(java.lang.String):org.jgroups.Channel" />
+			<role name="FactoryMethod()" element="org.jgroups.ChannelFactory::createMultiplexerChannel(java.lang.String, java.lang.String, boolean, java.lang.String):org.jgroups.Channel" />
+		</instance>
+		<instance>
+			<role name="Creator" element="org.jgroups.protocols.TP" />
+			<role name="FactoryMethod()" element="org.jgroups.protocols.TP::getPhysicalAddress():org.jgroups.PhysicalAddress" />
+		</instance>
+		<instance>
+			<role name="Creator" element="org.jgroups.stack.Interval" />
+			<role name="FactoryMethod()" element="org.jgroups.stack.Interval::copy():org.jgroups.stack.Interval" />
+		</instance>
+	</pattern>
+	<pattern name="Prototype" />
+	<pattern name="Singleton">
+		<instance>
+			<role name="Singleton" element="org.jgroups.Event" />
+			<role name="uniqueInstance" element="org.jgroups.Event::GET_DIGEST_EVT:org.jgroups.Event" />
+		</instance>
+		<instance>
+			<role name="Singleton" element="org.jgroups.persistence.PersistenceFactory" />
+			<role name="uniqueInstance" element="org.jgroups.persistence.PersistenceFactory::_factory:org.jgroups.persistence.PersistenceFactory" />
+		</instance>
+		<instance>
+			<role name="Singleton" element="org.jgroups.protocols.PERF_TP" />
+			<role name="uniqueInstance" element="org.jgroups.protocols.PERF_TP::instance:org.jgroups.protocols.PERF_TP" />
+		</instance>
+		<instance>
+			<role name="Singleton" element="org.jgroups.util.Digest" />
+			<role name="uniqueInstance" element="org.jgroups.util.Digest::EMPTY_DIGEST:org.jgroups.util.Digest" />
+		</instance>
+		<instance>
+			<role name="Singleton" element="org.jgroups.util.RspList" />
+			<role name="uniqueInstance" element="org.jgroups.util.RspList::EMPTY_RSP_LIST:org.jgroups.util.RspList" />
+		</instance>
+	</pattern>
+	<pattern name="(Object)Adapter">
+		<instance>
+			<role name="Adaptee" element="org.jgroups.blocks.TCPConnectionMap" />
+			<role name="Adapter" element="org.jgroups.protocols.TCP" />
+			<role name="adaptee" element="org.jgroups.protocols.TCP::ct:org.jgroups.blocks.TCPConnectionMap" />
+			<role name="Request()" element="org.jgroups.protocols.TCP::printConnections():java.lang.String" />
+			<role name="Request()" element="org.jgroups.protocols.TCP::send(org.jgroups.Address, byte[], int, int):void" />
+			<role name="Request()" element="org.jgroups.protocols.TCP::retainAll(java.util.Collection):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="org.jgroups.Message" />
+			<role name="Adaptee" element="org.jgroups.util.Headers" />
+			<role name="adaptee" element="org.jgroups.Message::headers:org.jgroups.util.Headers" />
+			<role name="Request()" element="org.jgroups.Message::writeTo(java.io.DataOutputStream):void" />
+			<role name="Request()" element="org.jgroups.Message::readFrom(java.io.DataInputStream):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.jgroups.stack.IpAddress" />
+			<role name="Adapter" element="org.jgroups.protocols.UDP" />
+			<role name="adaptee" element="org.jgroups.protocols.UDP::mcast_addr:org.jgroups.stack.IpAddress" />
+			<role name="Request()" element="org.jgroups.protocols.UDP::sendMulticast(byte[], int, int):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="org.jgroups.JChannel" />
+			<role name="Adaptee" element="org.jgroups.util.Queue" />
+			<role name="adaptee" element="org.jgroups.JChannel::mq:org.jgroups.util.Queue" />
+			<role name="Request()" element="org.jgroups.JChannel::receive(long):java.lang.Object" />
+			<role name="Request()" element="org.jgroups.JChannel::peek(long):java.lang.Object" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.jgroups.blocks.DistributedTree$Node" />
+			<role name="Adapter" element="org.jgroups.blocks.DistributedTree" />
+			<role name="adaptee" element="org.jgroups.blocks.DistributedTree::root:org.jgroups.blocks.DistributedTree$Node" />
+			<role name="Request()" element="org.jgroups.blocks.DistributedTree::getState():byte[]" />
+			<role name="Request()" element="org.jgroups.blocks.DistributedTree::setState(byte[]):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.jgroups.blocks.TwoPhaseVotingAdapter" />
+			<role name="Adapter" element="org.jgroups.blocks.DistributedLockManager" />
+			<role name="adaptee" element="org.jgroups.blocks.DistributedLockManager::votingAdapter:org.jgroups.blocks.TwoPhaseVotingAdapter" />
+			<role name="Request()" element="org.jgroups.blocks.DistributedLockManager::lock(java.lang.Object, java.lang.Object, int):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.jgroups.demos.wb.GraphPanel" />
+			<role name="Adapter" element="org.jgroups.demos.wb.Whiteboard" />
+			<role name="adaptee" element="org.jgroups.demos.wb.Whiteboard::panel:org.jgroups.demos.wb.GraphPanel" />
+			<role name="Request()" element="org.jgroups.demos.wb.Whiteboard::getState():byte[]" />
+			<role name="Request()" element="org.jgroups.demos.wb.Whiteboard::setState(byte[]):void" />
+			<role name="Request()" element="org.jgroups.demos.wb.Whiteboard::viewAccepted(org.jgroups.View):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.jgroups.tests.perf.Configuration" />
+			<role name="Adapter" element="org.jgroups.tests.perf.transports.JGroupsTransport" />
+			<role name="adaptee" element="org.jgroups.tests.perf.transports.JGroupsTransport::cfg:org.jgroups.tests.perf.Configuration" />
+			<role name="Request()" element="org.jgroups.tests.perf.transports.JGroupsTransport::create(org.jgroups.tests.perf.Configuration):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.jgroups.JChannel" />
+			<role name="Adapter" element="org.jgroups.tests.perf.transports.JGroupsTransport" />
+			<role name="adaptee" element="org.jgroups.tests.perf.transports.JGroupsTransport::channel:org.jgroups.JChannel" />
+			<role name="Request()" element="org.jgroups.tests.perf.transports.JGroupsTransport::getLocalAddress():java.lang.Object" />
+			<role name="Request()" element="org.jgroups.tests.perf.transports.JGroupsTransport::create(java.util.Properties):void" />
+			<role name="Request()" element="org.jgroups.tests.perf.transports.JGroupsTransport::create(org.jgroups.tests.perf.Configuration):void" />
+			<role name="Request()" element="org.jgroups.tests.perf.transports.JGroupsTransport::start():void" />
+			<role name="Request()" element="org.jgroups.tests.perf.transports.JGroupsTransport::stop():void" />
+			<role name="Request()" element="org.jgroups.tests.perf.transports.JGroupsTransport::destroy():void" />
+			<role name="Request()" element="org.jgroups.tests.perf.transports.JGroupsTransport::dumpStats():java.util.Map" />
+			<role name="Request()" element="org.jgroups.tests.perf.transports.JGroupsTransport::send(java.lang.Object, byte[], boolean):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="org.jgroups.tests.ChannelTestBase$ChannelApplication" />
+			<role name="Adaptee" element="org.jgroups.Channel" />
+			<role name="adaptee" element="org.jgroups.tests.ChannelTestBase$ChannelApplication::channel:org.jgroups.Channel" />
+			<role name="Request()" element="org.jgroups.tests.ChannelTestBase$ChannelApplication::getName():java.lang.String" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.jgroups.util.AckCollector" />
+			<role name="Adapter" element="org.jgroups.mux.Multiplexer" />
+			<role name="adaptee" element="org.jgroups.mux.Multiplexer::service_ack_collector:org.jgroups.util.AckCollector" />
+			<role name="Request()" element="org.jgroups.mux.Multiplexer::up(org.jgroups.Event):java.lang.Object" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.jgroups.Event" />
+			<role name="Adapter" element="org.jgroups.blocks.mux.MuxUpHandler" />
+			<role name="adaptee" element="org.jgroups.blocks.mux.MuxUpHandler::lastFlushEvent:org.jgroups.Event" />
+			<role name="Request()" element="org.jgroups.blocks.mux.MuxUpHandler::up(org.jgroups.Event):java.lang.Object" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="org.jgroups.blocks.TCPConnectionMap$TCPConnection" />
+			<role name="Adaptee" element="org.jgroups.blocks.TCPConnectionMap$TCPConnection$Sender" />
+			<role name="adaptee" element="org.jgroups.blocks.TCPConnectionMap$TCPConnection::sender:org.jgroups.blocks.TCPConnectionMap$TCPConnection$Sender" />
+			<role name="Request()" element="org.jgroups.blocks.TCPConnectionMap$TCPConnection::isOpen():boolean" />
+			<role name="Request()" element="org.jgroups.blocks.TCPConnectionMap$TCPConnection::close():void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.jgroups.tests.perf.IPerf$ResultSet" />
+			<role name="Adapter" element="org.jgroups.tests.perf.IPerf" />
+			<role name="adaptee" element="org.jgroups.tests.perf.IPerf::results:org.jgroups.tests.perf.IPerf$ResultSet" />
+			<role name="Request()" element="org.jgroups.tests.perf.IPerf::receive(java.lang.Object, byte[]):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.jgroups.tests.perf.Test$ResultsPublisher" />
+			<role name="Adapter" element="org.jgroups.tests.perf.Test" />
+			<role name="adaptee" element="org.jgroups.tests.perf.Test::publisher:org.jgroups.tests.perf.Test$ResultsPublisher" />
+			<role name="Request()" element="org.jgroups.tests.perf.Test::receive(java.lang.Object, byte[]):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.jgroups.blocks.RequestOptions" />
+			<role name="Adapter" element="org.jgroups.blocks.Request" />
+			<role name="adaptee" element="org.jgroups.blocks.Request::options:org.jgroups.blocks.RequestOptions" />
+			<role name="Request()" element="org.jgroups.blocks.Request::execute():boolean" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.jgroups.util.Rsp" />
+			<role name="Adapter" element="org.jgroups.blocks.UnicastRequest" />
+			<role name="adaptee" element="org.jgroups.blocks.UnicastRequest::result:org.jgroups.util.Rsp" />
+			<role name="Request()" element="org.jgroups.blocks.UnicastRequest::receiveResponse(java.lang.Object, org.jgroups.Address):void" />
+			<role name="Request()" element="org.jgroups.blocks.UnicastRequest::suspect(org.jgroups.Address):void" />
+			<role name="Request()" element="org.jgroups.blocks.UnicastRequest::viewChange(org.jgroups.View):void" />
+			<role name="Request()" element="org.jgroups.blocks.UnicastRequest::responsesComplete():boolean" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.jgroups.logging.Log" />
+			<role name="Adapter" element="org.jgroups.blocks.DistributedLockManager" />
+			<role name="adaptee" element="org.jgroups.blocks.DistributedLockManager::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.blocks.DistributedLockManager::prepare(java.lang.Object):boolean" />
+			<role name="Request()" element="org.jgroups.blocks.DistributedLockManager::commit(java.lang.Object):boolean" />
+			<role name="Request()" element="org.jgroups.blocks.DistributedLockManager::abort(java.lang.Object):void" />
+			<role name="Request()" element="org.jgroups.blocks.DistributedLockManager::unlock(java.lang.Object, java.lang.Object):void" />
+			<role name="Request()" element="org.jgroups.blocks.DistributedLockManager::viewAccepted(org.jgroups.View):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.jgroups.logging.Log" />
+			<role name="Adapter" element="org.jgroups.blocks.DistributedQueue" />
+			<role name="adaptee" element="org.jgroups.blocks.DistributedQueue::logger:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.blocks.DistributedQueue::getState():byte[]" />
+			<role name="Request()" element="org.jgroups.blocks.DistributedQueue::setState(byte[]):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.jgroups.logging.Log" />
+			<role name="Adapter" element="org.jgroups.blocks.DistributedTree" />
+			<role name="adaptee" element="org.jgroups.blocks.DistributedTree::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.blocks.DistributedTree::getState():byte[]" />
+			<role name="Request()" element="org.jgroups.blocks.DistributedTree::setState(byte[]):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.jgroups.logging.Log" />
+			<role name="Adapter" element="org.jgroups.blocks.ReplCache" />
+			<role name="adaptee" element="org.jgroups.blocks.ReplCache::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.blocks.ReplCache::viewAccepted(org.jgroups.View):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.jgroups.logging.Log" />
+			<role name="Adapter" element="org.jgroups.blocks.VotingAdapter" />
+			<role name="adaptee" element="org.jgroups.blocks.VotingAdapter::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.blocks.VotingAdapter::viewAccepted(org.jgroups.View):void" />
+			<role name="Request()" element="org.jgroups.blocks.VotingAdapter::suspect(org.jgroups.Address):void" />
+			<role name="Request()" element="org.jgroups.blocks.VotingAdapter::block():void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.jgroups.blocks.ConnectionTable" />
+			<role name="Adapter" element="org.jgroups.tests.ConnectionTableUnitTest$MyReceiver" />
+			<role name="adaptee" element="org.jgroups.tests.ConnectionTableUnitTest$MyReceiver::ct:org.jgroups.blocks.ConnectionTable" />
+			<role name="Request()" element="org.jgroups.tests.ConnectionTableUnitTest$MyReceiver::receive(org.jgroups.Address, byte[], int, int):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.jgroups.blocks.ConnectionTableNIO" />
+			<role name="Adapter" element="org.jgroups.protocols.TCP_NIO" />
+			<role name="adaptee" element="org.jgroups.protocols.TCP_NIO::ct:org.jgroups.blocks.ConnectionTableNIO" />
+			<role name="Request()" element="org.jgroups.protocols.TCP_NIO::printConnections():java.lang.String" />
+			<role name="Request()" element="org.jgroups.protocols.TCP_NIO::send(org.jgroups.Address, byte[], int, int):void" />
+			<role name="Request()" element="org.jgroups.protocols.TCP_NIO::retainAll(java.util.Collection):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.jgroups.debug.Simulator" />
+			<role name="Adapter" element="org.jgroups.tests.SimulatorTest$ReceiverPeer" />
+			<role name="adaptee" element="org.jgroups.tests.SimulatorTest$ReceiverPeer::simulator:org.jgroups.debug.Simulator" />
+			<role name="Request()" element="org.jgroups.tests.SimulatorTest$ReceiverPeer::receive(org.jgroups.Event):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.jgroups.debug.Simulator" />
+			<role name="Adapter" element="org.jgroups.tests.SimulatorTest$SenderPeer" />
+			<role name="adaptee" element="org.jgroups.tests.SimulatorTest$SenderPeer::simulator:org.jgroups.debug.Simulator" />
+			<role name="Request()" element="org.jgroups.tests.SimulatorTest$SenderPeer::receive(org.jgroups.Event):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.jgroups.debug.Simulator" />
+			<role name="Adapter" element="org.jgroups.tests.NakackTest$ReceiverPeer" />
+			<role name="adaptee" element="org.jgroups.tests.NakackTest$ReceiverPeer::simulator:org.jgroups.debug.Simulator" />
+			<role name="Request()" element="org.jgroups.tests.NakackTest$ReceiverPeer::receive(org.jgroups.Event):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.jgroups.debug.Simulator" />
+			<role name="Adapter" element="org.jgroups.tests.NakackTest$SenderPeer" />
+			<role name="adaptee" element="org.jgroups.tests.NakackTest$SenderPeer::simulator:org.jgroups.debug.Simulator" />
+			<role name="Request()" element="org.jgroups.tests.NakackTest$SenderPeer::receive(org.jgroups.Event):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="org.jgroups.JChannel" />
+			<role name="Adaptee" element="org.jgroups.util.UUID" />
+			<role name="adaptee" element="org.jgroups.JChannel::local_addr:org.jgroups.util.UUID" />
+			<role name="Request()" element="org.jgroups.JChannel::setName(java.lang.String):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.jgroups.View" />
+			<role name="Adapter" element="org.jgroups.mux.Multiplexer" />
+			<role name="adaptee" element="org.jgroups.mux.Multiplexer::view:org.jgroups.View" />
+			<role name="Request()" element="org.jgroups.mux.Multiplexer::up(org.jgroups.Event):java.lang.Object" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.jgroups.logging.Log" />
+			<role name="Adapter" element="org.jgroups.JChannel" />
+			<role name="adaptee" element="org.jgroups.JChannel::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.JChannel::shutdown():void" />
+			<role name="Request()" element="org.jgroups.JChannel::receive(long):java.lang.Object" />
+			<role name="Request()" element="org.jgroups.JChannel::peek(long):java.lang.Object" />
+			<role name="Request()" element="org.jgroups.JChannel::setOpt(int, java.lang.Object):void" />
+			<role name="Request()" element="org.jgroups.JChannel::getOpt(int):java.lang.Object" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.jgroups.demos.ReplicatedTreeDemo$ReplicatedTreeView$MyNode" />
+			<role name="Adapter" element="org.jgroups.demos.ReplicatedTreeDemo$ReplicatedTreeView" />
+			<role name="adaptee" element="org.jgroups.demos.ReplicatedTreeDemo$ReplicatedTreeView::root:org.jgroups.demos.ReplicatedTreeDemo$ReplicatedTreeView$MyNode" />
+			<role name="Request()" element="org.jgroups.demos.ReplicatedTreeDemo$ReplicatedTreeView::nodeAdded(java.lang.String):void" />
+			<role name="Request()" element="org.jgroups.demos.ReplicatedTreeDemo$ReplicatedTreeView::nodeRemoved(java.lang.String):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="org.jgroups.blocks.ReplCache" />
+			<role name="Adaptee" element="org.jgroups.View" />
+			<role name="adaptee" element="org.jgroups.blocks.ReplCache::view:org.jgroups.View" />
+			<role name="Request()" element="org.jgroups.blocks.ReplCache::viewAccepted(org.jgroups.View):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.jgroups.stack.RouterStubManager" />
+			<role name="Adapter" element="org.jgroups.protocols.TCPGOSSIP" />
+			<role name="adaptee" element="org.jgroups.protocols.TCPGOSSIP::stubManager:org.jgroups.stack.RouterStubManager" />
+			<role name="Request()" element="org.jgroups.protocols.TCPGOSSIP::sendGetMembersRequest(java.lang.String, org.jgroups.util.Promise, boolean):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.jgroups.stack.RouterStubManager" />
+			<role name="Adapter" element="org.jgroups.protocols.TUNNEL" />
+			<role name="adaptee" element="org.jgroups.protocols.TUNNEL::stubManager:org.jgroups.stack.RouterStubManager" />
+			<role name="Request()" element="org.jgroups.protocols.TUNNEL::getInfo():java.lang.String" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.jgroups.logging.Log" />
+			<role name="Adapter" element="org.jgroups.mux.Multiplexer" />
+			<role name="adaptee" element="org.jgroups.mux.Multiplexer::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.mux.Multiplexer::up(org.jgroups.Event):java.lang.Object" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.jgroups.logging.Log" />
+			<role name="Adapter" element="org.jgroups.blocks.ReplicatedHashMap" />
+			<role name="adaptee" element="org.jgroups.blocks.ReplicatedHashMap::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.blocks.ReplicatedHashMap::_put(K, V):java.io.Serializable" />
+			<role name="Request()" element="org.jgroups.blocks.ReplicatedHashMap::_putIfAbsent(K, V):java.io.Serializable" />
+			<role name="Request()" element="org.jgroups.blocks.ReplicatedHashMap::_putAll(java.util.Map):void" />
+			<role name="Request()" element="org.jgroups.blocks.ReplicatedHashMap::_clear():void" />
+			<role name="Request()" element="org.jgroups.blocks.ReplicatedHashMap::_remove(java.lang.Object):java.io.Serializable" />
+			<role name="Request()" element="org.jgroups.blocks.ReplicatedHashMap::_remove(java.lang.Object, java.lang.Object):boolean" />
+			<role name="Request()" element="org.jgroups.blocks.ReplicatedHashMap::_replace(K, V, V):boolean" />
+			<role name="Request()" element="org.jgroups.blocks.ReplicatedHashMap::_replace(K, V):java.io.Serializable" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.jgroups.stack.ProtocolStack" />
+			<role name="Adapter" element="org.jgroups.stack.Configurator" />
+			<role name="adaptee" element="org.jgroups.stack.Configurator::stack:org.jgroups.stack.ProtocolStack" />
+			<role name="Request()" element="org.jgroups.stack.Configurator::setupProtocolStack():org.jgroups.stack.Protocol" />
+			<role name="Request()" element="org.jgroups.stack.Configurator::setupProtocolStack(org.jgroups.stack.ProtocolStack):org.jgroups.stack.Protocol" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.jgroups.blocks.ReplicatedTree" />
+			<role name="Adapter" element="org.jgroups.demos.ReplicatedTreeDemo$ReplicatedTreeView" />
+			<role name="adaptee" element="org.jgroups.demos.ReplicatedTreeDemo$ReplicatedTreeView::tree:org.jgroups.blocks.ReplicatedTree" />
+			<role name="Request()" element="org.jgroups.demos.ReplicatedTreeDemo$ReplicatedTreeView::viewChange(org.jgroups.View):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.jgroups.logging.Log" />
+			<role name="Adapter" element="org.jgroups.blocks.Request" />
+			<role name="adaptee" element="org.jgroups.blocks.Request::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.blocks.Request::execute():boolean" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.jgroups.demos.MyNode" />
+			<role name="Adapter" element="org.jgroups.demos.DistributedTreeDemo" />
+			<role name="adaptee" element="org.jgroups.demos.DistributedTreeDemo::root:org.jgroups.demos.MyNode" />
+			<role name="Request()" element="org.jgroups.demos.DistributedTreeDemo::nodeAdded(java.lang.String, java.io.Serializable):void" />
+			<role name="Request()" element="org.jgroups.demos.DistributedTreeDemo::nodeRemoved(java.lang.String):void" />
+			<role name="Request()" element="org.jgroups.demos.DistributedTreeDemo::nodeModified(java.lang.String, java.io.Serializable, java.io.Serializable):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.jgroups.MessageListener" />
+			<role name="Adapter" element="org.jgroups.blocks.MessageListenerAdapter" />
+			<role name="adaptee" element="org.jgroups.blocks.MessageListenerAdapter::stateListener:org.jgroups.MessageListener" />
+			<role name="Request()" element="org.jgroups.blocks.MessageListenerAdapter::getState(java.lang.String):byte[]" />
+			<role name="Request()" element="org.jgroups.blocks.MessageListenerAdapter::setState(java.lang.String, byte[]):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.jgroups.stack.AckSenderWindow$RetransmitCommand" />
+			<role name="Adapter" element="org.jgroups.stack.AckSenderWindow" />
+			<role name="adaptee" element="org.jgroups.stack.AckSenderWindow::retransmit_command:org.jgroups.stack.AckSenderWindow$RetransmitCommand" />
+			<role name="Request()" element="org.jgroups.stack.AckSenderWindow::retransmit(long, long, org.jgroups.Address):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.jgroups.persistence.PersistenceManager" />
+			<role name="Adapter" element="org.jgroups.blocks.ReplicatedHashMap" />
+			<role name="adaptee" element="org.jgroups.blocks.ReplicatedHashMap::persistence_mgr:org.jgroups.persistence.PersistenceManager" />
+			<role name="Request()" element="org.jgroups.blocks.ReplicatedHashMap::_put(K, V):java.io.Serializable" />
+			<role name="Request()" element="org.jgroups.blocks.ReplicatedHashMap::_putIfAbsent(K, V):java.io.Serializable" />
+			<role name="Request()" element="org.jgroups.blocks.ReplicatedHashMap::_putAll(java.util.Map):void" />
+			<role name="Request()" element="org.jgroups.blocks.ReplicatedHashMap::_clear():void" />
+			<role name="Request()" element="org.jgroups.blocks.ReplicatedHashMap::_remove(java.lang.Object):java.io.Serializable" />
+			<role name="Request()" element="org.jgroups.blocks.ReplicatedHashMap::_remove(java.lang.Object, java.lang.Object):boolean" />
+			<role name="Request()" element="org.jgroups.blocks.ReplicatedHashMap::_replace(K, V, V):boolean" />
+			<role name="Request()" element="org.jgroups.blocks.ReplicatedHashMap::_replace(K, V):java.io.Serializable" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="org.jgroups.tests.NakackTest$ReceiverPeer" />
+			<role name="Adaptee" element="org.jgroups.Message" />
+			<role name="adaptee" element="org.jgroups.tests.NakackTest$ReceiverPeer::msg:org.jgroups.Message" />
+			<role name="Request()" element="org.jgroups.tests.NakackTest$ReceiverPeer::receive(org.jgroups.Event):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="org.jgroups.tests.SimulatorTest$ReceiverPeer" />
+			<role name="Adaptee" element="org.jgroups.Message" />
+			<role name="adaptee" element="org.jgroups.tests.SimulatorTest$ReceiverPeer::msg:org.jgroups.Message" />
+			<role name="Request()" element="org.jgroups.tests.SimulatorTest$ReceiverPeer::receive(org.jgroups.Event):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.jgroups.blocks.ReplCache$HashFunction" />
+			<role name="Adapter" element="org.jgroups.blocks.ReplCache" />
+			<role name="adaptee" element="org.jgroups.blocks.ReplCache::hash_function:org.jgroups.blocks.ReplCache$HashFunction" />
+			<role name="Request()" element="org.jgroups.blocks.ReplCache::viewAccepted(org.jgroups.View):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.jgroups.logging.Log" />
+			<role name="Adapter" element="org.jgroups.persistence.DBPersistenceManager" />
+			<role name="adaptee" element="org.jgroups.persistence.DBPersistenceManager::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.persistence.DBPersistenceManager::save(java.io.Serializable, java.io.Serializable):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.jgroups.stack.Interval" />
+			<role name="Adapter" element="org.jgroups.stack.AckMcastSenderWindow$Task" />
+			<role name="adaptee" element="org.jgroups.stack.AckMcastSenderWindow$Task::intervals:org.jgroups.stack.Interval" />
+			<role name="Request()" element="org.jgroups.stack.AckMcastSenderWindow$Task::nextInterval():long" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.jgroups.stack.Interval" />
+			<role name="Adapter" element="org.jgroups.stack.Retransmitter$Task" />
+			<role name="adaptee" element="org.jgroups.stack.Retransmitter$Task::intervals:org.jgroups.stack.Interval" />
+			<role name="Request()" element="org.jgroups.stack.Retransmitter$Task::nextInterval():long" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.jgroups.stack.Interval" />
+			<role name="Adapter" element="org.jgroups.tests.TimeSchedulerTest$Entry" />
+			<role name="adaptee" element="org.jgroups.tests.TimeSchedulerTest$Entry::interval:org.jgroups.stack.Interval" />
+			<role name="Request()" element="org.jgroups.tests.TimeSchedulerTest$Entry::nextInterval():long" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.jgroups.blocks.TwoPhaseVotingListener" />
+			<role name="Adapter" element="org.jgroups.blocks.TwoPhaseVotingAdapter$TwoPhaseVoteWrapper" />
+			<role name="adaptee" element="org.jgroups.blocks.TwoPhaseVotingAdapter$TwoPhaseVoteWrapper::listener:org.jgroups.blocks.TwoPhaseVotingListener" />
+			<role name="Request()" element="org.jgroups.blocks.TwoPhaseVotingAdapter$TwoPhaseVoteWrapper::vote(java.lang.Object):boolean" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.jgroups.util.Seqno" />
+			<role name="Adapter" element="org.jgroups.stack.RangeBasedRetransmitter$RangeTask" />
+			<role name="adaptee" element="org.jgroups.stack.RangeBasedRetransmitter$RangeTask::range:org.jgroups.util.Seqno" />
+			<role name="Request()" element="org.jgroups.stack.RangeBasedRetransmitter$RangeTask::callRetransmissionCommand():void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.jgroups.util.TimeScheduler" />
+			<role name="Adapter" element="org.jgroups.blocks.ReplCache" />
+			<role name="adaptee" element="org.jgroups.blocks.ReplCache::timer:org.jgroups.util.TimeScheduler" />
+			<role name="Request()" element="org.jgroups.blocks.ReplCache::viewAccepted(org.jgroups.View):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.jgroups.logging.Log" />
+			<role name="Adapter" element="org.jgroups.tests.perf.Test" />
+			<role name="adaptee" element="org.jgroups.tests.perf.Test::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.tests.perf.Test::receive(java.lang.Object, byte[]):void" />
+		</instance>
+	</pattern>
+	<pattern name="Command">
+		<instance>
+			<role name="Receiver" element="org.jgroups.stack.NakReceiverWindow" />
+			<role name="ConcreteCommand" element="org.jgroups.tests.NakReceiverWindowStressTest" />
+			<role name="receiver" element="org.jgroups.tests.NakReceiverWindowStressTest::win:org.jgroups.stack.NakReceiverWindow" />
+			<role name="Execute()" element="org.jgroups.tests.NakReceiverWindowStressTest::retransmit(long, long, org.jgroups.Address):void" />
+		</instance>
+		<instance>
+			<role name="ConcreteCommand" element="org.jgroups.blocks.TCPConnectionMap$TCPConnection" />
+			<role name="Receiver" element="org.jgroups.blocks.TCPConnectionMap$TCPConnection$ConnectionPeerReceiver" />
+			<role name="receiver" element="org.jgroups.blocks.TCPConnectionMap$TCPConnection::connectionPeerReceiver:org.jgroups.blocks.TCPConnectionMap$TCPConnection$ConnectionPeerReceiver" />
+			<role name="Execute()" element="org.jgroups.blocks.TCPConnectionMap$TCPConnection::isOpen():boolean" />
+			<role name="Execute()" element="org.jgroups.blocks.TCPConnectionMap$TCPConnection::close():void" />
+		</instance>
+	</pattern>
+	<pattern name="Composite">
+		<instance>
+			<role name="Component" element="org.jgroups.ChannelListener" />
+			<role name="Composite" element="org.jgroups.blocks.RpcDispatcher" />
+			<role name="Operation()" element="org.jgroups.blocks.RpcDispatcher::channelConnected(org.jgroups.Channel):void" />
+			<role name="Operation()" element="org.jgroups.blocks.RpcDispatcher::channelDisconnected(org.jgroups.Channel):void" />
+			<role name="Operation()" element="org.jgroups.blocks.RpcDispatcher::channelClosed(org.jgroups.Channel):void" />
+		</instance>
+		<instance>
+			<role name="Component" element="org.jgroups.MembershipListener" />
+			<role name="Composite" element="org.jgroups.blocks.MembershipListenerAdapter" />
+			<role name="Operation()" element="org.jgroups.blocks.MembershipListenerAdapter::block():void" />
+			<role name="Operation()" element="org.jgroups.blocks.MembershipListenerAdapter::suspect(org.jgroups.Address):void" />
+			<role name="Operation()" element="org.jgroups.blocks.MembershipListenerAdapter::viewAccepted(org.jgroups.View):void" />
+		</instance>
+		<instance>
+			<role name="Component" element="org.jgroups.MembershipListener" />
+			<role name="Composite" element="org.jgroups.blocks.VotingAdapter" />
+			<role name="Operation()" element="org.jgroups.blocks.VotingAdapter::viewAccepted(org.jgroups.View):void" />
+			<role name="Operation()" element="org.jgroups.blocks.VotingAdapter::suspect(org.jgroups.Address):void" />
+			<role name="Operation()" element="org.jgroups.blocks.VotingAdapter::block():void" />
+		</instance>
+	</pattern>
+	<pattern name="Decorator">
+		<instance>
+			<role name="Component" element="org.jgroups.UpHandler" />
+			<role name="Decorator" element="org.jgroups.blocks.mux.MuxUpHandler" />
+			<role name="component" element="org.jgroups.blocks.mux.MuxUpHandler::defaultHandler:org.jgroups.UpHandler" />
+			<role name="Operation()" element="org.jgroups.blocks.mux.MuxUpHandler::up(org.jgroups.Event):java.lang.Object" />
+		</instance>
+		<instance>
+			<role name="Component" element="org.jgroups.blocks.RequestHandler" />
+			<role name="Decorator" element="org.jgroups.blocks.MessageDispatcher" />
+			<role name="component" element="org.jgroups.blocks.MessageDispatcher::req_handler:org.jgroups.blocks.RequestHandler" />
+			<role name="Operation()" element="org.jgroups.blocks.MessageDispatcher::handle(org.jgroups.Message):java.lang.Object" />
+		</instance>
+		<instance>
+			<role name="Component" element="org.jgroups.blocks.RspFilter" />
+			<role name="Decorator" element="org.jgroups.blocks.mux.NoMuxHandlerRspFilter" />
+			<role name="component" element="org.jgroups.blocks.mux.NoMuxHandlerRspFilter::filter:org.jgroups.blocks.RspFilter" />
+			<role name="Operation()" element="org.jgroups.blocks.mux.NoMuxHandlerRspFilter::isAcceptable(java.lang.Object, org.jgroups.Address):boolean" />
+			<role name="Operation()" element="org.jgroups.blocks.mux.NoMuxHandlerRspFilter::needMoreResponses():boolean" />
+		</instance>
+		<instance>
+			<role name="Component" element="org.jgroups.blocks.RpcDispatcher$Marshaller" />
+			<role name="Decorator" element="org.jgroups.blocks.RpcDispatcher$MarshallerAdapter" />
+			<role name="component" element="org.jgroups.blocks.RpcDispatcher$MarshallerAdapter::marshaller:org.jgroups.blocks.RpcDispatcher$Marshaller" />
+			<role name="Operation()" element="org.jgroups.blocks.RpcDispatcher$MarshallerAdapter::objectToByteBuffer(java.lang.Object):byte[]" />
+			<role name="Operation()" element="org.jgroups.blocks.RpcDispatcher$MarshallerAdapter::objectFromByteBuffer(byte[]):java.lang.Object" />
+		</instance>
+		<instance>
+			<role name="Component" element="org.jgroups.blocks.ReplicatedMap" />
+			<role name="Decorator" element="org.jgroups.blocks.ReplicatedHashMap$SynchronizedReplicatedMap" />
+			<role name="component" element="org.jgroups.blocks.ReplicatedHashMap$SynchronizedReplicatedMap::map:org.jgroups.blocks.ReplicatedMap" />
+			<role name="Operation()" element="org.jgroups.blocks.ReplicatedHashMap$SynchronizedReplicatedMap::_put(K, V):java.io.Serializable" />
+			<role name="Operation()" element="org.jgroups.blocks.ReplicatedHashMap$SynchronizedReplicatedMap::_putAll(java.util.Map):void" />
+			<role name="Operation()" element="org.jgroups.blocks.ReplicatedHashMap$SynchronizedReplicatedMap::_clear():void" />
+			<role name="Operation()" element="org.jgroups.blocks.ReplicatedHashMap$SynchronizedReplicatedMap::_remove(java.lang.Object):java.io.Serializable" />
+			<role name="Operation()" element="org.jgroups.blocks.ReplicatedHashMap$SynchronizedReplicatedMap::_putIfAbsent(K, V):java.io.Serializable" />
+			<role name="Operation()" element="org.jgroups.blocks.ReplicatedHashMap$SynchronizedReplicatedMap::_remove(java.lang.Object, java.lang.Object):boolean" />
+			<role name="Operation()" element="org.jgroups.blocks.ReplicatedHashMap$SynchronizedReplicatedMap::_replace(K, V, V):boolean" />
+			<role name="Operation()" element="org.jgroups.blocks.ReplicatedHashMap$SynchronizedReplicatedMap::_replace(K, V):java.io.Serializable" />
+		</instance>
+	</pattern>
+	<pattern name="Observer">
+		<instance>
+			<role name="Observer" element="org.jgroups.blocks.DistributedTree$ViewListener" />
+			<role name="Subject" element="org.jgroups.blocks.DistributedTree" />
+			<role name="Notify()" element="org.jgroups.blocks.DistributedTree::notifyViewChange(java.util.Vector, java.util.Vector):void" />
+		</instance>
+		<instance>
+			<role name="Observer" element="org.jgroups.MembershipListener" />
+			<role name="Subject" element="org.jgroups.blocks.PullPushAdapter" />
+			<role name="Notify()" element="org.jgroups.blocks.PullPushAdapter::notifyViewChange(org.jgroups.View):void" />
+			<role name="Notify()" element="org.jgroups.blocks.PullPushAdapter::notifySuspect(org.jgroups.Address):void" />
+			<role name="Notify()" element="org.jgroups.blocks.PullPushAdapter::notifyBlock():void" />
+		</instance>
+		<instance>
+			<role name="Observer" element="org.jgroups.blocks.AbstractConnectionMap$ConnectionMapListener" />
+			<role name="Subject" element="org.jgroups.blocks.AbstractConnectionMap" />
+			<role name="Notify()" element="org.jgroups.blocks.AbstractConnectionMap::notifyConnectionClosed(org.jgroups.Address):void" />
+			<role name="Notify()" element="org.jgroups.blocks.AbstractConnectionMap::notifyConnectionOpened(org.jgroups.Address, V):void" />
+		</instance>
+		<instance>
+			<role name="Observer" element="org.jgroups.blocks.BasicConnectionTable$ConnectionListener" />
+			<role name="Subject" element="org.jgroups.blocks.BasicConnectionTable" />
+			<role name="Notify()" element="org.jgroups.blocks.BasicConnectionTable::notifyConnectionOpened(org.jgroups.Address):void" />
+			<role name="Notify()" element="org.jgroups.blocks.BasicConnectionTable::notifyConnectionClosed(org.jgroups.Address):void" />
+		</instance>
+		<instance>
+			<role name="Observer" element="org.jgroups.blocks.ReplicatedTree$ReplicatedTreeListener" />
+			<role name="Subject" element="org.jgroups.blocks.ReplicatedTree" />
+			<role name="Notify()" element="org.jgroups.blocks.ReplicatedTree::notifyNodeAdded(java.lang.String):void" />
+			<role name="Notify()" element="org.jgroups.blocks.ReplicatedTree::notifyNodeRemoved(java.lang.String):void" />
+			<role name="Notify()" element="org.jgroups.blocks.ReplicatedTree::notifyNodeModified(java.lang.String):void" />
+			<role name="Notify()" element="org.jgroups.blocks.ReplicatedTree::notifyViewChange(org.jgroups.View):void" />
+		</instance>
+		<instance>
+			<role name="Observer" element="org.jgroups.blocks.DistributedQueue$Notification" />
+			<role name="Subject" element="org.jgroups.blocks.DistributedQueue" />
+			<role name="Notify()" element="org.jgroups.blocks.DistributedQueue::_add(java.lang.Object):void" />
+			<role name="Notify()" element="org.jgroups.blocks.DistributedQueue::_addAtHead(java.lang.Object):void" />
+			<role name="Notify()" element="org.jgroups.blocks.DistributedQueue::_reset():void" />
+			<role name="Notify()" element="org.jgroups.blocks.DistributedQueue::_remove():java.lang.Object" />
+			<role name="Notify()" element="org.jgroups.blocks.DistributedQueue::_addAll(java.util.Collection):void" />
+			<role name="Notify()" element="org.jgroups.blocks.DistributedQueue::sendViewChangeNotifications(java.util.Vector, java.util.Vector):void" />
+		</instance>
+		<instance>
+			<role name="Observer" element="org.jgroups.blocks.DistributedTree$DistributedTreeListener" />
+			<role name="Subject" element="org.jgroups.blocks.DistributedTree" />
+			<role name="Notify()" element="org.jgroups.blocks.DistributedTree::notifyNodeAdded(java.lang.String, java.io.Serializable):void" />
+			<role name="Notify()" element="org.jgroups.blocks.DistributedTree::notifyNodeRemoved(java.lang.String):void" />
+			<role name="Notify()" element="org.jgroups.blocks.DistributedTree::notifyNodeModified(java.lang.String, java.io.Serializable, java.io.Serializable):void" />
+		</instance>
+		<instance>
+			<role name="Observer" element="org.jgroups.MessageListener" />
+			<role name="Subject" element="org.jgroups.blocks.MessageListenerAdapter" />
+			<role name="Notify()" element="org.jgroups.blocks.MessageListenerAdapter::receive(org.jgroups.Message):void" />
+		</instance>
+		<instance>
+			<role name="Observer" element="org.jgroups.blocks.VotingListener" />
+			<role name="Subject" element="org.jgroups.blocks.VotingAdapter" />
+			<role name="Notify()" element="org.jgroups.blocks.VotingAdapter::localVote(java.lang.Object):org.jgroups.blocks.VotingAdapter$VoteResult" />
+		</instance>
+	</pattern>
+	<pattern name="State">
+		<instance>
+			<role name="Context" element="org.jgroups.logging.LogFactory" />
+			<role name="State" element="org.jgroups.logging.CustomLogFactory" />
+			<role name="state" element="org.jgroups.logging.LogFactory::custom_log_factory:org.jgroups.logging.CustomLogFactory" />
+			<role name="Request()" element="org.jgroups.logging.LogFactory::getLog(java.lang.Class):org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.logging.LogFactory::getLog(java.lang.String):org.jgroups.logging.Log" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.util.Headers" />
+			<role name="State" element="org.jgroups.Header" />
+			<role name="state" element="org.jgroups.util.Headers::hdrs:org.jgroups.Header[]" />
+			<role name="Request()" element="org.jgroups.util.Headers::marshalledSize():int" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.Address" />
+			<role name="Context" element="org.jgroups.protocols.pbcast.NAKACK" />
+			<role name="state" element="org.jgroups.protocols.pbcast.NAKACK::local_addr:org.jgroups.Address" />
+			<role name="Request()" element="org.jgroups.protocols.pbcast.NAKACK::down(org.jgroups.Event):java.lang.Object" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.Address" />
+			<role name="Context" element="org.jgroups.protocols.MERGEFAST" />
+			<role name="state" element="org.jgroups.protocols.MERGEFAST::local_addr:org.jgroups.Address" />
+			<role name="Request()" element="org.jgroups.protocols.MERGEFAST::down(org.jgroups.Event):java.lang.Object" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.Address" />
+			<role name="Context" element="org.jgroups.protocols.pbcast.FLUSH" />
+			<role name="state" element="org.jgroups.protocols.pbcast.FLUSH::localAddress:org.jgroups.Address" />
+			<role name="Request()" element="org.jgroups.protocols.pbcast.FLUSH::down(org.jgroups.Event):java.lang.Object" />
+			<role name="Request()" element="org.jgroups.protocols.pbcast.FLUSH::up(org.jgroups.Event):java.lang.Object" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.Address" />
+			<role name="Context" element="org.jgroups.protocols.DISCARD" />
+			<role name="state" element="org.jgroups.protocols.DISCARD::localAddress:org.jgroups.Address" />
+			<role name="Request()" element="org.jgroups.protocols.DISCARD::down(org.jgroups.Event):java.lang.Object" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.Address" />
+			<role name="Context" element="org.jgroups.protocols.HTOTAL" />
+			<role name="state" element="org.jgroups.protocols.HTOTAL::local_addr:org.jgroups.Address" />
+			<role name="state" element="org.jgroups.protocols.HTOTAL::coord:org.jgroups.Address" />
+			<role name="Request()" element="org.jgroups.protocols.HTOTAL::down(org.jgroups.Event):java.lang.Object" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.Address" />
+			<role name="Context" element="org.jgroups.protocols.SEQUENCER" />
+			<role name="state" element="org.jgroups.protocols.SEQUENCER::local_addr:org.jgroups.Address" />
+			<role name="Request()" element="org.jgroups.protocols.SEQUENCER::down(org.jgroups.Event):java.lang.Object" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.Address" />
+			<role name="Context" element="org.jgroups.protocols.SMACK" />
+			<role name="state" element="org.jgroups.protocols.SMACK::local_addr:org.jgroups.Address" />
+			<role name="Request()" element="org.jgroups.protocols.SMACK::down(org.jgroups.Event):java.lang.Object" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.Address" />
+			<role name="Context" element="org.jgroups.protocols.UNICAST" />
+			<role name="state" element="org.jgroups.protocols.UNICAST::local_addr:org.jgroups.Address" />
+			<role name="Request()" element="org.jgroups.protocols.UNICAST::down(org.jgroups.Event):java.lang.Object" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.Address" />
+			<role name="Context" element="org.jgroups.protocols.UNICAST2" />
+			<role name="state" element="org.jgroups.protocols.UNICAST2::local_addr:org.jgroups.Address" />
+			<role name="Request()" element="org.jgroups.protocols.UNICAST2::down(org.jgroups.Event):java.lang.Object" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.auth.AuthToken" />
+			<role name="Context" element="org.jgroups.protocols.AUTH" />
+			<role name="state" element="org.jgroups.protocols.AUTH::auth_plugin:org.jgroups.auth.AuthToken" />
+			<role name="Request()" element="org.jgroups.protocols.AUTH::up(org.jgroups.Event):java.lang.Object" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.blocks.RpcDispatcherExceptionTest" />
+			<role name="State" element="org.jgroups.Channel" />
+			<role name="state" element="org.jgroups.blocks.RpcDispatcherExceptionTest::channel:org.jgroups.Channel" />
+			<role name="Request()" element="org.jgroups.blocks.RpcDispatcherExceptionTest::setUp():void" />
+			<role name="Request()" element="org.jgroups.blocks.RpcDispatcherExceptionTest::tearDown():void" />
+			<role name="Request()" element="org.jgroups.blocks.RpcDispatcherExceptionTest::testUnserializableValue2():void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.blocks.RpcDispatcherUnicastMethodExceptionTest" />
+			<role name="State" element="org.jgroups.Channel" />
+			<role name="state" element="org.jgroups.blocks.RpcDispatcherUnicastMethodExceptionTest::channel:org.jgroups.Channel" />
+			<role name="Request()" element="org.jgroups.blocks.RpcDispatcherUnicastMethodExceptionTest::setUp():void" />
+			<role name="Request()" element="org.jgroups.blocks.RpcDispatcherUnicastMethodExceptionTest::tearDown():void" />
+			<role name="Request()" element="org.jgroups.blocks.RpcDispatcherUnicastMethodExceptionTest::testMethodWithoutException():void" />
+			<role name="Request()" element="org.jgroups.blocks.RpcDispatcherUnicastMethodExceptionTest::testMethodWithException():void" />
+			<role name="Request()" element="org.jgroups.blocks.RpcDispatcherUnicastMethodExceptionTest::testMethodWithException2():void" />
+			<role name="Request()" element="org.jgroups.blocks.RpcDispatcherUnicastMethodExceptionTest::testMethodWithError():void" />
+			<role name="Request()" element="org.jgroups.blocks.RpcDispatcherUnicastMethodExceptionTest::testMethodWithThrowable():void" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.Channel" />
+			<role name="Context" element="org.jgroups.demos.Draw2Channels" />
+			<role name="state" element="org.jgroups.demos.Draw2Channels::control_channel:org.jgroups.Channel" />
+			<role name="state" element="org.jgroups.demos.Draw2Channels::data_channel:org.jgroups.Channel" />
+			<role name="Request()" element="org.jgroups.demos.Draw2Channels::go():void" />
+			<role name="Request()" element="org.jgroups.demos.Draw2Channels::setTitle():void" />
+			<role name="Request()" element="org.jgroups.demos.Draw2Channels::sendClearPanelMsg():void" />
+			<role name="Request()" element="org.jgroups.demos.Draw2Channels::actionPerformed(java.awt.event.ActionEvent):void" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.Channel" />
+			<role name="Context" element="org.jgroups.tests.NAKACKTest2" />
+			<role name="state" element="org.jgroups.tests.NAKACKTest2::ch:org.jgroups.Channel" />
+			<role name="Request()" element="org.jgroups.tests.NAKACKTest2::start(java.lang.String, boolean):void" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.Channel" />
+			<role name="Context" element="org.jgroups.demos.CausalDemo" />
+			<role name="state" element="org.jgroups.demos.CausalDemo::channel:org.jgroups.Channel" />
+			<role name="Request()" element="org.jgroups.demos.CausalDemo::run():void" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.Channel" />
+			<role name="Context" element="org.jgroups.demos.applets.DrawApplet" />
+			<role name="state" element="org.jgroups.demos.applets.DrawApplet::channel:org.jgroups.Channel" />
+			<role name="Request()" element="org.jgroups.demos.applets.DrawApplet::init():void" />
+			<role name="Request()" element="org.jgroups.demos.applets.DrawApplet::destroy():void" />
+			<role name="Request()" element="org.jgroups.demos.applets.DrawApplet::run():void" />
+			<role name="Request()" element="org.jgroups.demos.applets.DrawApplet::mouseDragged(java.awt.event.MouseEvent):void" />
+			<role name="Request()" element="org.jgroups.demos.applets.DrawApplet::sendClearPanelMsg():void" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.Channel" />
+			<role name="Context" element="org.jgroups.tests.ChannelConcurrencyTest$Task" />
+			<role name="state" element="org.jgroups.tests.ChannelConcurrencyTest$Task::c:org.jgroups.Channel" />
+			<role name="Request()" element="org.jgroups.tests.ChannelConcurrencyTest$Task::run():void" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.Channel" />
+			<role name="Context" element="org.jgroups.tests.ConcurrentCloseTest$Closer" />
+			<role name="state" element="org.jgroups.tests.ConcurrentCloseTest$Closer::channel:org.jgroups.Channel" />
+			<role name="Request()" element="org.jgroups.tests.ConcurrentCloseTest$Closer::run():void" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.Channel" />
+			<role name="Context" element="org.jgroups.tests.DiscoveryTest" />
+			<role name="state" element="org.jgroups.tests.DiscoveryTest::ch:org.jgroups.Channel" />
+			<role name="Request()" element="org.jgroups.tests.DiscoveryTest::start(java.lang.String):void" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.Channel" />
+			<role name="Context" element="org.jgroups.tests.FifoOrderTest$Sender" />
+			<role name="state" element="org.jgroups.tests.FifoOrderTest$Sender::ch:org.jgroups.Channel" />
+			<role name="Request()" element="org.jgroups.tests.FifoOrderTest$Sender::run():void" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.Channel" />
+			<role name="Context" element="org.jgroups.tests.FragTest2" />
+			<role name="state" element="org.jgroups.tests.FragTest2::channel:org.jgroups.Channel" />
+			<role name="Request()" element="org.jgroups.tests.FragTest2::start():void" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.Channel" />
+			<role name="Context" element="org.jgroups.tests.FragTestUnicast" />
+			<role name="state" element="org.jgroups.tests.FragTestUnicast::channel:org.jgroups.Channel" />
+			<role name="Request()" element="org.jgroups.tests.FragTestUnicast::start():void" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.Channel" />
+			<role name="Context" element="org.jgroups.tests.GetStateTest" />
+			<role name="state" element="org.jgroups.tests.GetStateTest::channel:org.jgroups.Channel" />
+			<role name="Request()" element="org.jgroups.tests.GetStateTest::start():void" />
+			<role name="Request()" element="org.jgroups.tests.GetStateTest::run():void" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.Channel" />
+			<role name="Context" element="org.jgroups.tests.SharedTransportTest$ConnectTask" />
+			<role name="state" element="org.jgroups.tests.SharedTransportTest$ConnectTask::channel:org.jgroups.Channel" />
+			<role name="Request()" element="org.jgroups.tests.SharedTransportTest$ConnectTask::run():void" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.Channel" />
+			<role name="Context" element="org.jgroups.tests.SynchronousMessageSpeedTest" />
+			<role name="state" element="org.jgroups.tests.SynchronousMessageSpeedTest::channel:org.jgroups.Channel" />
+			<role name="Request()" element="org.jgroups.tests.SynchronousMessageSpeedTest::start():void" />
+			<role name="Request()" element="org.jgroups.tests.SynchronousMessageSpeedTest::sendMessages(int):void" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.Channel" />
+			<role name="Context" element="org.jgroups.tests.ViewDeliveryDemo" />
+			<role name="state" element="org.jgroups.tests.ViewDeliveryDemo::channel:org.jgroups.Channel" />
+			<role name="Request()" element="org.jgroups.tests.ViewDeliveryDemo::main(java.lang.String[]):void" />
+			<role name="Request()" element="org.jgroups.tests.ViewDeliveryDemo::send():void" />
+			<role name="Request()" element="org.jgroups.tests.ViewDeliveryDemo::reopen():void" />
+			<role name="Request()" element="org.jgroups.tests.ViewDeliveryDemo::reconnect():void" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.logging.Log" />
+			<role name="Context" element="org.jgroups.protocols.pbcast.Merger" />
+			<role name="state" element="org.jgroups.protocols.pbcast.Merger::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.protocols.pbcast.Merger::merge(java.util.Map):void" />
+			<role name="Request()" element="org.jgroups.protocols.pbcast.Merger::handleMergeRequest(org.jgroups.Address, org.jgroups.util.MergeId, java.util.Collection):void" />
+			<role name="Request()" element="org.jgroups.protocols.pbcast.Merger::handleMergeResponse(org.jgroups.protocols.pbcast.MergeData, org.jgroups.util.MergeId):void" />
+			<role name="Request()" element="org.jgroups.protocols.pbcast.Merger::handleMergeView(org.jgroups.protocols.pbcast.MergeData, org.jgroups.util.MergeId):void" />
+			<role name="Request()" element="org.jgroups.protocols.pbcast.Merger::handleMergeCancelled(org.jgroups.util.MergeId):void" />
+			<role name="Request()" element="org.jgroups.protocols.pbcast.Merger::sendMergeResponse(org.jgroups.Address, org.jgroups.View, org.jgroups.util.Digest, org.jgroups.util.MergeId):void" />
+			<role name="Request()" element="org.jgroups.protocols.pbcast.Merger::sendMergeView(java.util.Collection, org.jgroups.protocols.pbcast.MergeData, org.jgroups.util.MergeId):void" />
+			<role name="Request()" element="org.jgroups.protocols.pbcast.Merger::sendMergeRejectedResponse(org.jgroups.Address, org.jgroups.util.MergeId):void" />
+			<role name="Request()" element="org.jgroups.protocols.pbcast.Merger::sendMergeCancelledMessage(java.util.Collection, org.jgroups.util.MergeId):void" />
+			<role name="Request()" element="org.jgroups.protocols.pbcast.Merger::fetchDigestsFromAllMembersInSubPartition(java.util.List):org.jgroups.util.Digest" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.logging.Log" />
+			<role name="Context" element="org.jgroups.stack.RouterStub" />
+			<role name="state" element="org.jgroups.stack.RouterStub::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.stack.RouterStub::connectionStateChanged(org.jgroups.stack.RouterStub$ConnectionStatus):void" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.logging.Log" />
+			<role name="Context" element="org.jgroups.blocks.GridInputStream" />
+			<role name="state" element="org.jgroups.blocks.GridInputStream::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.blocks.GridInputStream::fetchNextChunk():byte[]" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.logging.Log" />
+			<role name="Context" element="org.jgroups.blocks.GridOutputStream" />
+			<role name="state" element="org.jgroups.blocks.GridOutputStream::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.blocks.GridOutputStream::flush():void" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.logging.Log" />
+			<role name="Context" element="org.jgroups.demos.wb.GraphPanel" />
+			<role name="state" element="org.jgroups.demos.wb.GraphPanel::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.demos.wb.GraphPanel::removeNode(java.lang.Object):void" />
+			<role name="Request()" element="org.jgroups.demos.wb.GraphPanel::mouseReleased(java.awt.event.MouseEvent):void" />
+			<role name="Request()" element="org.jgroups.demos.wb.GraphPanel::start(java.lang.String):void" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.logging.Log" />
+			<role name="Context" element="org.jgroups.util.Queue" />
+			<role name="state" element="org.jgroups.util.Queue::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.util.Queue::add(java.lang.Object):void" />
+			<role name="Request()" element="org.jgroups.util.Queue::addAll(java.util.Collection):void" />
+			<role name="Request()" element="org.jgroups.util.Queue::addAll(java.util.List):void" />
+			<role name="Request()" element="org.jgroups.util.Queue::remove():java.lang.Object" />
+			<role name="Request()" element="org.jgroups.util.Queue::removeElement(java.lang.Object):void" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.logging.Log" />
+			<role name="Context" element="org.jgroups.blocks.Cache" />
+			<role name="state" element="org.jgroups.blocks.Cache::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.blocks.Cache::put(K, V, long):java.lang.Object" />
+			<role name="Request()" element="org.jgroups.blocks.Cache::get(K):java.lang.Object" />
+			<role name="Request()" element="org.jgroups.blocks.Cache::getEntry(K):org.jgroups.blocks.Cache$Value" />
+			<role name="Request()" element="org.jgroups.blocks.Cache::remove(K):java.lang.Object" />
+			<role name="Request()" element="org.jgroups.blocks.Cache::evict():void" />
+			<role name="Request()" element="org.jgroups.blocks.Cache::notifyChangeListeners():void" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.logging.Log" />
+			<role name="Context" element="org.jgroups.blocks.ConnectionTableNIO$ReadHandler" />
+			<role name="state" element="org.jgroups.blocks.ConnectionTableNIO$ReadHandler::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.blocks.ConnectionTableNIO$ReadHandler::initHandler():java.nio.channels.Selector" />
+			<role name="Request()" element="org.jgroups.blocks.ConnectionTableNIO$ReadHandler::run():void" />
+			<role name="Request()" element="org.jgroups.blocks.ConnectionTableNIO$ReadHandler::readOnce(org.jgroups.blocks.ConnectionTableNIO$Connection):void" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.logging.Log" />
+			<role name="Context" element="org.jgroups.blocks.ConnectionTableNIO$WriteHandler" />
+			<role name="state" element="org.jgroups.blocks.ConnectionTableNIO$WriteHandler::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.blocks.ConnectionTableNIO$WriteHandler::initSelector():java.nio.channels.Selector" />
+			<role name="Request()" element="org.jgroups.blocks.ConnectionTableNIO$WriteHandler::run():void" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.logging.Log" />
+			<role name="Context" element="org.jgroups.blocks.MethodCall" />
+			<role name="state" element="org.jgroups.blocks.MethodCall::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.blocks.MethodCall::getAllMethods(java.lang.Class):java.lang.reflect.Method[]" />
+			<role name="Request()" element="org.jgroups.blocks.MethodCall::invoke(java.lang.Object):java.lang.Object" />
+			<role name="Request()" element="org.jgroups.blocks.MethodCall::writeExternal(java.io.ObjectOutput):void" />
+			<role name="Request()" element="org.jgroups.blocks.MethodCall::readExternal(java.io.ObjectInput):void" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.logging.Log" />
+			<role name="Context" element="org.jgroups.blocks.TCPConnectionMap" />
+			<role name="state" element="org.jgroups.blocks.TCPConnectionMap::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.blocks.TCPConnectionMap::send(org.jgroups.Address, byte[], int, int):void" />
+			<role name="Request()" element="org.jgroups.blocks.TCPConnectionMap::createServerSocket(java.lang.String, int, int):java.net.ServerSocket" />
+			<role name="Request()" element="org.jgroups.blocks.TCPConnectionMap::setSocketParameters(java.net.Socket):void" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.logging.Log" />
+			<role name="Context" element="org.jgroups.conf.ClassConfigurator" />
+			<role name="state" element="org.jgroups.conf.ClassConfigurator::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.conf.ClassConfigurator::init():void" />
+			<role name="Request()" element="org.jgroups.conf.ClassConfigurator::get(java.lang.String):java.lang.Class" />
+			<role name="Request()" element="org.jgroups.conf.ClassConfigurator::readMappings(java.lang.String):java.util.List" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.logging.Log" />
+			<role name="Context" element="org.jgroups.conf.PropertyHelper" />
+			<role name="state" element="org.jgroups.conf.PropertyHelper::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.conf.PropertyHelper::getPropertyName(java.lang.reflect.Field, java.util.Map):java.lang.String" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.logging.Log" />
+			<role name="Context" element="org.jgroups.debug.Profiler" />
+			<role name="state" element="org.jgroups.debug.Profiler::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.debug.Profiler::setFilename(java.lang.String):void" />
+			<role name="Request()" element="org.jgroups.debug.Profiler::stop(java.lang.String):void" />
+			<role name="Request()" element="org.jgroups.debug.Profiler::dump():void" />
+			<role name="Request()" element="org.jgroups.debug.Profiler::main(java.lang.String[]):void" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.logging.Log" />
+			<role name="Context" element="org.jgroups.demos.CausalDemo" />
+			<role name="state" element="org.jgroups.demos.CausalDemo::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.demos.CausalDemo::run():void" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.logging.Log" />
+			<role name="Context" element="org.jgroups.demos.applets.DrawApplet" />
+			<role name="state" element="org.jgroups.demos.applets.DrawApplet::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.demos.applets.DrawApplet::init():void" />
+			<role name="Request()" element="org.jgroups.demos.applets.DrawApplet::go():void" />
+			<role name="Request()" element="org.jgroups.demos.applets.DrawApplet::run():void" />
+			<role name="Request()" element="org.jgroups.demos.applets.DrawApplet::mouseDragged(java.awt.event.MouseEvent):void" />
+			<role name="Request()" element="org.jgroups.demos.applets.DrawApplet::sendClearPanelMsg():void" />
+			<role name="Request()" element="org.jgroups.demos.applets.DrawApplet::actionPerformed(java.awt.event.ActionEvent):void" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.logging.Log" />
+			<role name="Context" element="org.jgroups.jmx.JmxConfigurator" />
+			<role name="state" element="org.jgroups.jmx.JmxConfigurator::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.jmx.JmxConfigurator::unregisterChannel(org.jgroups.JChannel, javax.management.MBeanServer, java.lang.String, java.lang.String):void" />
+			<role name="Request()" element="org.jgroups.jmx.JmxConfigurator::internalRegister(java.lang.Object, javax.management.MBeanServer, java.lang.String):void" />
+			<role name="Request()" element="org.jgroups.jmx.JmxConfigurator::internalUnregister(java.lang.Object, javax.management.MBeanServer, java.lang.String):void" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.logging.Log" />
+			<role name="Context" element="org.jgroups.jmx.ResourceDMBean" />
+			<role name="state" element="org.jgroups.jmx.ResourceDMBean::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.jmx.ResourceDMBean::findDescription():void" />
+			<role name="Request()" element="org.jgroups.jmx.ResourceDMBean::getAttributes(java.lang.String[]):javax.management.AttributeList" />
+			<role name="Request()" element="org.jgroups.jmx.ResourceDMBean::setAttributes(javax.management.AttributeList):javax.management.AttributeList" />
+			<role name="Request()" element="org.jgroups.jmx.ResourceDMBean::exposeManagedAttribute(java.lang.reflect.Method):void" />
+			<role name="Request()" element="org.jgroups.jmx.ResourceDMBean::getNamedAttribute(java.lang.String):javax.management.Attribute" />
+			<role name="Request()" element="org.jgroups.jmx.ResourceDMBean::setNamedAttribute(javax.management.Attribute):boolean" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.logging.Log" />
+			<role name="Context" element="org.jgroups.persistence.PersistenceFactory" />
+			<role name="state" element="org.jgroups.persistence.PersistenceFactory::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.persistence.PersistenceFactory::getInstance():org.jgroups.persistence.PersistenceFactory" />
+			<role name="Request()" element="org.jgroups.persistence.PersistenceFactory::createManagerDB(java.lang.String):org.jgroups.persistence.PersistenceManager" />
+			<role name="Request()" element="org.jgroups.persistence.PersistenceFactory::createManagerFile(java.lang.String):org.jgroups.persistence.PersistenceManager" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.logging.Log" />
+			<role name="Context" element="org.jgroups.protocols.FD_PING$Pinger$Reader" />
+			<role name="state" element="org.jgroups.protocols.FD_PING$Pinger$Reader::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.protocols.FD_PING$Pinger$Reader::run():void" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.logging.Log" />
+			<role name="Context" element="org.jgroups.stack.AckMcastReceiverWindow" />
+			<role name="state" element="org.jgroups.stack.AckMcastReceiverWindow::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.stack.AckMcastReceiverWindow::suspect(java.lang.Object):void" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.logging.Log" />
+			<role name="Context" element="org.jgroups.stack.AckMcastSenderWindow" />
+			<role name="state" element="org.jgroups.stack.AckMcastSenderWindow::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.stack.AckMcastSenderWindow::_retransmit(org.jgroups.stack.AckMcastSenderWindow$Entry):void" />
+			<role name="Request()" element="org.jgroups.stack.AckMcastSenderWindow::init(org.jgroups.stack.AckMcastSenderWindow$RetransmitCommand, org.jgroups.stack.Interval, org.jgroups.util.TimeScheduler, boolean):void" />
+			<role name="Request()" element="org.jgroups.stack.AckMcastSenderWindow::suspect(org.jgroups.Address):void" />
+			<role name="Request()" element="org.jgroups.stack.AckMcastSenderWindow::waitUntilAllAcksReceived(long):void" />
+			<role name="Request()" element="org.jgroups.stack.AckMcastSenderWindow::stop():void" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.logging.Log" />
+			<role name="Context" element="org.jgroups.stack.GossipRouter" />
+			<role name="state" element="org.jgroups.stack.GossipRouter::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.stack.GossipRouter::stop():void" />
+			<role name="Request()" element="org.jgroups.stack.GossipRouter::mainLoop():void" />
+			<role name="Request()" element="org.jgroups.stack.GossipRouter::route(org.jgroups.Address, java.lang.String, byte[]):void" />
+			<role name="Request()" element="org.jgroups.stack.GossipRouter::removeEntry(java.lang.String, org.jgroups.Address):void" />
+			<role name="Request()" element="org.jgroups.stack.GossipRouter::sendToAllMembersInGroup(java.lang.String, byte[]):void" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.logging.Log" />
+			<role name="Context" element="org.jgroups.stack.NakReceiverWindow" />
+			<role name="state" element="org.jgroups.stack.NakReceiverWindow::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.stack.NakReceiverWindow::add(long, org.jgroups.Message):boolean" />
+			<role name="Request()" element="org.jgroups.stack.NakReceiverWindow::stable(long):void" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.logging.Log" />
+			<role name="Context" element="org.jgroups.tests.LogTest" />
+			<role name="state" element="org.jgroups.tests.LogTest::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.tests.LogTest::testSpeedWithSingleTraceStatement():void" />
+			<role name="Request()" element="org.jgroups.tests.LogTest::testSpeedWithSingleTraceStatementLogIsTracePreset():void" />
+			<role name="Request()" element="org.jgroups.tests.LogTest::testSpeedWithTwoTraceStatements():void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.blocks.NotificationBus" />
+			<role name="State" element="org.jgroups.Channel" />
+			<role name="state" element="org.jgroups.blocks.NotificationBus::channel:org.jgroups.Channel" />
+			<role name="Request()" element="org.jgroups.blocks.NotificationBus::getLocalAddress():org.jgroups.Address" />
+			<role name="Request()" element="org.jgroups.blocks.NotificationBus::start():void" />
+			<role name="Request()" element="org.jgroups.blocks.NotificationBus::stop():void" />
+			<role name="Request()" element="org.jgroups.blocks.NotificationBus::sendNotification(org.jgroups.Address, java.io.Serializable):void" />
+			<role name="Request()" element="org.jgroups.blocks.NotificationBus::getCacheFromMember(org.jgroups.Address, long, int):java.io.Serializable" />
+			<role name="Request()" element="org.jgroups.blocks.NotificationBus::determineCoordinator():org.jgroups.Address" />
+			<role name="Request()" element="org.jgroups.blocks.NotificationBus::handleCacheRequest(org.jgroups.Address):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.blocks.RpcDispatcherAnycastServerObject" />
+			<role name="State" element="org.jgroups.Channel" />
+			<role name="state" element="org.jgroups.blocks.RpcDispatcherAnycastServerObject::c:org.jgroups.Channel" />
+			<role name="Request()" element="org.jgroups.blocks.RpcDispatcherAnycastServerObject::callRemote(boolean, boolean):void" />
+			<role name="Request()" element="org.jgroups.blocks.RpcDispatcherAnycastServerObject::shutdown():void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.demos.ViewDemo" />
+			<role name="State" element="org.jgroups.Channel" />
+			<role name="state" element="org.jgroups.demos.ViewDemo::channel:org.jgroups.Channel" />
+			<role name="Request()" element="org.jgroups.demos.ViewDemo::start(java.lang.String):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.tests.ChannelTest$ConnectedChecker" />
+			<role name="State" element="org.jgroups.Channel" />
+			<role name="state" element="org.jgroups.tests.ChannelTest$ConnectedChecker::channel:org.jgroups.Channel" />
+			<role name="Request()" element="org.jgroups.tests.ChannelTest$ConnectedChecker::viewAccepted(org.jgroups.View):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.tests.ChannelTest$MyViewChecker" />
+			<role name="State" element="org.jgroups.Channel" />
+			<role name="state" element="org.jgroups.tests.ChannelTest$MyViewChecker::ch:org.jgroups.Channel" />
+			<role name="Request()" element="org.jgroups.tests.ChannelTest$MyViewChecker::viewAccepted(org.jgroups.View):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.tests.ChannelTest$ViewChecker" />
+			<role name="State" element="org.jgroups.Channel" />
+			<role name="state" element="org.jgroups.tests.ChannelTest$ViewChecker::channel:org.jgroups.Channel" />
+			<role name="Request()" element="org.jgroups.tests.ChannelTest$ViewChecker::viewAccepted(org.jgroups.View):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.tests.MergeStressTest$MyThread" />
+			<role name="State" element="org.jgroups.Channel" />
+			<role name="state" element="org.jgroups.tests.MergeStressTest$MyThread::ch:org.jgroups.Channel" />
+			<role name="Request()" element="org.jgroups.tests.MergeStressTest$MyThread::numMembers():int" />
+			<role name="Request()" element="org.jgroups.tests.MergeStressTest$MyThread::run():void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.tests.UnicastUnitTest$MyReceiver" />
+			<role name="State" element="org.jgroups.Channel" />
+			<role name="state" element="org.jgroups.tests.UnicastUnitTest$MyReceiver::channel:org.jgroups.Channel" />
+			<role name="Request()" element="org.jgroups.tests.UnicastUnitTest$MyReceiver::viewAccepted(org.jgroups.View):void" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.protocols.pbcast.GmsImpl" />
+			<role name="Context" element="org.jgroups.protocols.pbcast.GMS" />
+			<role name="state" element="org.jgroups.protocols.pbcast.GMS::impl:org.jgroups.protocols.pbcast.GmsImpl" />
+			<role name="Request()" element="org.jgroups.protocols.pbcast.GMS::down(org.jgroups.Event):java.lang.Object" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.stack.NakReceiverWindow" />
+			<role name="State" element="org.jgroups.stack.NakReceiverWindow$Listener" />
+			<role name="state" element="org.jgroups.stack.NakReceiverWindow::listener:org.jgroups.stack.NakReceiverWindow$Listener" />
+			<role name="Request()" element="org.jgroups.stack.NakReceiverWindow::add(long, org.jgroups.Message):boolean" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.blocks.ReplicatedHashMap" />
+			<role name="State" element="org.jgroups.Channel" />
+			<role name="state" element="org.jgroups.blocks.ReplicatedHashMap::channel:org.jgroups.Channel" />
+			<role name="Request()" element="org.jgroups.blocks.ReplicatedHashMap::start(long):void" />
+			<role name="Request()" element="org.jgroups.blocks.ReplicatedHashMap::getLocalAddress():org.jgroups.Address" />
+			<role name="Request()" element="org.jgroups.blocks.ReplicatedHashMap::stop():void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.demos.Draw" />
+			<role name="State" element="org.jgroups.Channel" />
+			<role name="state" element="org.jgroups.demos.Draw::channel:org.jgroups.Channel" />
+			<role name="Request()" element="org.jgroups.demos.Draw::sendToAll(byte[]):void" />
+			<role name="Request()" element="org.jgroups.demos.Draw::go():void" />
+			<role name="Request()" element="org.jgroups.demos.Draw::setTitle(java.lang.String):void" />
+			<role name="Request()" element="org.jgroups.demos.Draw::receive(org.jgroups.Message):void" />
+			<role name="Request()" element="org.jgroups.demos.Draw::viewAccepted(org.jgroups.View):void" />
+			<role name="Request()" element="org.jgroups.demos.Draw::sendClearPanelMsg():void" />
+			<role name="Request()" element="org.jgroups.demos.Draw::stop():void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.tests.FlushTest$SimpleReplier" />
+			<role name="State" element="org.jgroups.Channel" />
+			<role name="state" element="org.jgroups.tests.FlushTest$SimpleReplier::channel:org.jgroups.Channel" />
+			<role name="Request()" element="org.jgroups.tests.FlushTest$SimpleReplier::receive(org.jgroups.Message):void" />
+			<role name="Request()" element="org.jgroups.tests.FlushTest$SimpleReplier::viewAccepted(org.jgroups.View):void" />
+			<role name="Request()" element="org.jgroups.tests.FlushTest$SimpleReplier::block():void" />
+			<role name="Request()" element="org.jgroups.tests.FlushTest$SimpleReplier::unblock():void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.tests.LargeState" />
+			<role name="State" element="org.jgroups.Channel" />
+			<role name="state" element="org.jgroups.tests.LargeState::channel:org.jgroups.Channel" />
+			<role name="Request()" element="org.jgroups.tests.LargeState::start(boolean, int, java.lang.String, boolean):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.tests.ReconciliationTest$Cache" />
+			<role name="State" element="org.jgroups.Channel" />
+			<role name="state" element="org.jgroups.tests.ReconciliationTest$Cache::ch:org.jgroups.Channel" />
+			<role name="Request()" element="org.jgroups.tests.ReconciliationTest$Cache::put(java.lang.Object, java.lang.Object):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.tests.ReconciliationTest$MyReceiver" />
+			<role name="State" element="org.jgroups.Channel" />
+			<role name="state" element="org.jgroups.tests.ReconciliationTest$MyReceiver::channel:org.jgroups.Channel" />
+			<role name="Request()" element="org.jgroups.tests.ReconciliationTest$MyReceiver::receive(org.jgroups.Message):void" />
+			<role name="Request()" element="org.jgroups.tests.ReconciliationTest$MyReceiver::viewAccepted(org.jgroups.View):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.blocks.DistributedQueue" />
+			<role name="State" element="org.jgroups.Channel" />
+			<role name="state" element="org.jgroups.blocks.DistributedQueue::channel:org.jgroups.Channel" />
+			<role name="Request()" element="org.jgroups.blocks.DistributedQueue::start(long):void" />
+			<role name="Request()" element="org.jgroups.blocks.DistributedQueue::getLocalAddress():org.jgroups.Address" />
+			<role name="Request()" element="org.jgroups.blocks.DistributedQueue::stop():void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.blocks.DistributedTree" />
+			<role name="State" element="org.jgroups.Channel" />
+			<role name="state" element="org.jgroups.blocks.DistributedTree::channel:org.jgroups.Channel" />
+			<role name="Request()" element="org.jgroups.blocks.DistributedTree::getLocalAddress():java.lang.Object" />
+			<role name="Request()" element="org.jgroups.blocks.DistributedTree::start(long):void" />
+			<role name="Request()" element="org.jgroups.blocks.DistributedTree::stop():void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.demos.QuoteClient" />
+			<role name="State" element="org.jgroups.Channel" />
+			<role name="state" element="org.jgroups.demos.QuoteClient::channel:org.jgroups.Channel" />
+			<role name="Request()" element="org.jgroups.demos.QuoteClient::actionPerformed(java.awt.event.ActionEvent):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.demos.QuoteServer" />
+			<role name="State" element="org.jgroups.Channel" />
+			<role name="state" element="org.jgroups.demos.QuoteServer::channel:org.jgroups.Channel" />
+			<role name="Request()" element="org.jgroups.demos.QuoteServer::start():void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.demos.Topology" />
+			<role name="State" element="org.jgroups.Channel" />
+			<role name="state" element="org.jgroups.demos.Topology::channel:org.jgroups.Channel" />
+			<role name="Request()" element="org.jgroups.demos.Topology::windowClosing(java.awt.event.WindowEvent):void" />
+			<role name="Request()" element="org.jgroups.demos.Topology::start():void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.demos.wb.Whiteboard" />
+			<role name="State" element="org.jgroups.Channel" />
+			<role name="state" element="org.jgroups.demos.wb.Whiteboard::channel:org.jgroups.Channel" />
+			<role name="Request()" element="org.jgroups.demos.wb.Whiteboard::init():void" />
+			<role name="Request()" element="org.jgroups.demos.wb.Whiteboard::destroy():void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.tests.MessageDispatcherSpeedTest" />
+			<role name="State" element="org.jgroups.Channel" />
+			<role name="state" element="org.jgroups.tests.MessageDispatcherSpeedTest::channel:org.jgroups.Channel" />
+			<role name="Request()" element="org.jgroups.tests.MessageDispatcherSpeedTest::start():void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.tests.RpcDispatcherBlocking" />
+			<role name="State" element="org.jgroups.Channel" />
+			<role name="state" element="org.jgroups.tests.RpcDispatcherBlocking::channel:org.jgroups.Channel" />
+			<role name="Request()" element="org.jgroups.tests.RpcDispatcherBlocking::start():void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.tests.RpcDispatcherSpeedTest" />
+			<role name="State" element="org.jgroups.Channel" />
+			<role name="state" element="org.jgroups.tests.RpcDispatcherSpeedTest::channel:org.jgroups.Channel" />
+			<role name="Request()" element="org.jgroups.tests.RpcDispatcherSpeedTest::start():void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.tests.RpcDispatcherStressTest" />
+			<role name="State" element="org.jgroups.Channel" />
+			<role name="state" element="org.jgroups.tests.RpcDispatcherStressTest::channel:org.jgroups.Channel" />
+			<role name="Request()" element="org.jgroups.tests.RpcDispatcherStressTest::start(java.lang.String, int, long, boolean):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.tests.UpHandlerTest" />
+			<role name="State" element="org.jgroups.Channel" />
+			<role name="state" element="org.jgroups.tests.UpHandlerTest::channel:org.jgroups.Channel" />
+			<role name="Request()" element="org.jgroups.tests.UpHandlerTest::start():void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.blocks.ConnectionTableTest" />
+			<role name="State" element="org.jgroups.blocks.BasicConnectionTable" />
+			<role name="state" element="org.jgroups.blocks.ConnectionTableTest::ct1:org.jgroups.blocks.BasicConnectionTable" />
+			<role name="state" element="org.jgroups.blocks.ConnectionTableTest::ct2:org.jgroups.blocks.BasicConnectionTable" />
+			<role name="Request()" element="org.jgroups.blocks.ConnectionTableTest::testConcurrentConnect():void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.util.DefaultThreadFactory" />
+			<role name="State" element="org.jgroups.util.ThreadDecorator" />
+			<role name="state" element="org.jgroups.util.DefaultThreadFactory::threadDecorator:org.jgroups.util.ThreadDecorator" />
+			<role name="Request()" element="org.jgroups.util.DefaultThreadFactory::newThread(java.lang.ThreadGroup, java.lang.Runnable, java.lang.String, java.lang.String, java.lang.String):java.lang.Thread" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.util.ThreadManagerThreadPoolExecutor" />
+			<role name="State" element="org.jgroups.util.ThreadDecorator" />
+			<role name="state" element="org.jgroups.util.ThreadManagerThreadPoolExecutor::decorator:org.jgroups.util.ThreadDecorator" />
+			<role name="Request()" element="org.jgroups.util.ThreadManagerThreadPoolExecutor::afterExecute(java.lang.Runnable, java.lang.Throwable):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.util.TimeScheduler" />
+			<role name="State" element="org.jgroups.util.ThreadDecorator" />
+			<role name="state" element="org.jgroups.util.TimeScheduler::threadDecorator:org.jgroups.util.ThreadDecorator" />
+			<role name="Request()" element="org.jgroups.util.TimeScheduler::afterExecute(java.lang.Runnable, java.lang.Throwable):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.blocks.DistributedLockManager" />
+			<role name="State" element="org.jgroups.logging.Log" />
+			<role name="state" element="org.jgroups.blocks.DistributedLockManager::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.blocks.DistributedLockManager::unlock(java.lang.Object, java.lang.Object):void" />
+			<role name="Request()" element="org.jgroups.blocks.DistributedLockManager::unlock(java.lang.Object, java.lang.Object, long):void" />
+			<role name="Request()" element="org.jgroups.blocks.DistributedLockManager::prepare(java.lang.Object):boolean" />
+			<role name="Request()" element="org.jgroups.blocks.DistributedLockManager::commit(java.lang.Object):boolean" />
+			<role name="Request()" element="org.jgroups.blocks.DistributedLockManager::abort(java.lang.Object):void" />
+			<role name="Request()" element="org.jgroups.blocks.DistributedLockManager::checkResponse(org.jgroups.util.Rsp):int" />
+			<role name="Request()" element="org.jgroups.blocks.DistributedLockManager::viewAccepted(org.jgroups.View):void" />
+			<role name="Request()" element="org.jgroups.blocks.DistributedLockManager::removeLocksHeldBy(java.util.Map, java.lang.Object):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.blocks.DistributedQueue" />
+			<role name="State" element="org.jgroups.logging.Log" />
+			<role name="state" element="org.jgroups.blocks.DistributedQueue::logger:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.blocks.DistributedQueue::start(long):void" />
+			<role name="Request()" element="org.jgroups.blocks.DistributedQueue::add(java.lang.Object):void" />
+			<role name="Request()" element="org.jgroups.blocks.DistributedQueue::addAtHead(java.lang.Object):void" />
+			<role name="Request()" element="org.jgroups.blocks.DistributedQueue::addAll(java.util.Collection):void" />
+			<role name="Request()" element="org.jgroups.blocks.DistributedQueue::reset():void" />
+			<role name="Request()" element="org.jgroups.blocks.DistributedQueue::checkResult(org.jgroups.util.RspList, java.lang.Object):void" />
+			<role name="Request()" element="org.jgroups.blocks.DistributedQueue::remove():java.lang.Object" />
+			<role name="Request()" element="org.jgroups.blocks.DistributedQueue::remove(long):java.lang.Object" />
+			<role name="Request()" element="org.jgroups.blocks.DistributedQueue::_add(java.lang.Object):void" />
+			<role name="Request()" element="org.jgroups.blocks.DistributedQueue::_reset():void" />
+			<role name="Request()" element="org.jgroups.blocks.DistributedQueue::_remove():java.lang.Object" />
+			<role name="Request()" element="org.jgroups.blocks.DistributedQueue::_addAll(java.util.Collection):void" />
+			<role name="Request()" element="org.jgroups.blocks.DistributedQueue::getState():byte[]" />
+			<role name="Request()" element="org.jgroups.blocks.DistributedQueue::setState(byte[]):void" />
+			<role name="Request()" element="org.jgroups.blocks.DistributedQueue::initSignatures():void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.blocks.DistributedTree" />
+			<role name="State" element="org.jgroups.logging.Log" />
+			<role name="state" element="org.jgroups.blocks.DistributedTree::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.blocks.DistributedTree::start(long):void" />
+			<role name="Request()" element="org.jgroups.blocks.DistributedTree::add(java.lang.String):void" />
+			<role name="Request()" element="org.jgroups.blocks.DistributedTree::add(java.lang.String, java.io.Serializable, int):void" />
+			<role name="Request()" element="org.jgroups.blocks.DistributedTree::reset(java.lang.String, java.io.Serializable, int):void" />
+			<role name="Request()" element="org.jgroups.blocks.DistributedTree::remove(java.lang.String, int):void" />
+			<role name="Request()" element="org.jgroups.blocks.DistributedTree::set(java.lang.String, java.io.Serializable, int):void" />
+			<role name="Request()" element="org.jgroups.blocks.DistributedTree::_set(java.lang.String, java.io.Serializable):void" />
+			<role name="Request()" element="org.jgroups.blocks.DistributedTree::getState():byte[]" />
+			<role name="Request()" element="org.jgroups.blocks.DistributedTree::setState(byte[]):void" />
+			<role name="Request()" element="org.jgroups.blocks.DistributedTree::notifyAllNodesCreated(org.jgroups.blocks.DistributedTree$Node, java.lang.String):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.blocks.PartitionedHashMap" />
+			<role name="State" element="org.jgroups.logging.Log" />
+			<role name="state" element="org.jgroups.blocks.PartitionedHashMap::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.blocks.PartitionedHashMap::stop():void" />
+			<role name="Request()" element="org.jgroups.blocks.PartitionedHashMap::get(K):java.lang.Object" />
+			<role name="Request()" element="org.jgroups.blocks.PartitionedHashMap::remove(K):void" />
+			<role name="Request()" element="org.jgroups.blocks.PartitionedHashMap::_put(K, V, long):java.lang.Object" />
+			<role name="Request()" element="org.jgroups.blocks.PartitionedHashMap::_get(K):org.jgroups.blocks.Cache$Value" />
+			<role name="Request()" element="org.jgroups.blocks.PartitionedHashMap::_remove(K):java.lang.Object" />
+			<role name="Request()" element="org.jgroups.blocks.PartitionedHashMap::migrateData():void" />
+			<role name="Request()" element="org.jgroups.blocks.PartitionedHashMap::sendPut(org.jgroups.Address, K, V, long, boolean):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.blocks.ReplCache" />
+			<role name="State" element="org.jgroups.logging.Log" />
+			<role name="state" element="org.jgroups.blocks.ReplCache::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.blocks.ReplCache::put(K, V, short, long, boolean):void" />
+			<role name="Request()" element="org.jgroups.blocks.ReplCache::get(K):java.lang.Object" />
+			<role name="Request()" element="org.jgroups.blocks.ReplCache::remove(K, boolean):void" />
+			<role name="Request()" element="org.jgroups.blocks.ReplCache::_put(K, V, short, long, boolean):java.lang.Object" />
+			<role name="Request()" element="org.jgroups.blocks.ReplCache::_get(K):org.jgroups.blocks.Cache$Value" />
+			<role name="Request()" element="org.jgroups.blocks.ReplCache::_remove(K):java.lang.Object" />
+			<role name="Request()" element="org.jgroups.blocks.ReplCache::_removeMany(java.util.Set):void" />
+			<role name="Request()" element="org.jgroups.blocks.ReplCache::viewAccepted(org.jgroups.View):void" />
+			<role name="Request()" element="org.jgroups.blocks.ReplCache::notifyChangeListeners():void" />
+			<role name="Request()" element="org.jgroups.blocks.ReplCache::rebalance(java.util.List, java.util.List):void" />
+			<role name="Request()" element="org.jgroups.blocks.ReplCache::mcastEntries():void" />
+			<role name="Request()" element="org.jgroups.blocks.ReplCache::mcastPut(K, V, short, long, boolean):void" />
+			<role name="Request()" element="org.jgroups.blocks.ReplCache::mcastClear(java.util.Set, boolean):void" />
+			<role name="Request()" element="org.jgroups.blocks.ReplCache::move(org.jgroups.Address, K, V, short, long, boolean):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.blocks.VotingAdapter" />
+			<role name="State" element="org.jgroups.logging.Log" />
+			<role name="state" element="org.jgroups.blocks.VotingAdapter::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.blocks.VotingAdapter::vote(java.lang.Object, int, long, org.jgroups.blocks.VoteResponseProcessor):boolean" />
+			<role name="Request()" element="org.jgroups.blocks.VotingAdapter::checkResponse(org.jgroups.util.Rsp):int" />
+			<role name="Request()" element="org.jgroups.blocks.VotingAdapter::viewAccepted(org.jgroups.View):void" />
+			<role name="Request()" element="org.jgroups.blocks.VotingAdapter::suspect(org.jgroups.Address):void" />
+			<role name="Request()" element="org.jgroups.blocks.VotingAdapter::block():void" />
+			<role name="Request()" element="org.jgroups.blocks.VotingAdapter::localVote(java.lang.Object):org.jgroups.blocks.VotingAdapter$VoteResult" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.demos.QuoteServer" />
+			<role name="State" element="org.jgroups.logging.Log" />
+			<role name="state" element="org.jgroups.demos.QuoteServer::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.demos.QuoteServer::start():void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.demos.wb.Whiteboard" />
+			<role name="State" element="org.jgroups.logging.Log" />
+			<role name="state" element="org.jgroups.demos.wb.Whiteboard::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.demos.wb.Whiteboard::init():void" />
+			<role name="Request()" element="org.jgroups.demos.wb.Whiteboard::destroy():void" />
+			<role name="Request()" element="org.jgroups.demos.wb.Whiteboard::actionPerformed(java.awt.event.ActionEvent):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.blocks.PullPushAdapter" />
+			<role name="State" element="org.jgroups.Transport" />
+			<role name="state" element="org.jgroups.blocks.PullPushAdapter::transport:org.jgroups.Transport" />
+			<role name="Request()" element="org.jgroups.blocks.PullPushAdapter::send(java.io.Serializable, org.jgroups.Message):void" />
+			<role name="Request()" element="org.jgroups.blocks.PullPushAdapter::run():void" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.logging.Log" />
+			<role name="Context" element="org.jgroups.JChannel" />
+			<role name="state" element="org.jgroups.JChannel::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.JChannel::connect(java.lang.String, boolean):void" />
+			<role name="Request()" element="org.jgroups.JChannel::connect(java.lang.String, org.jgroups.Address, java.lang.String, long, boolean):void" />
+			<role name="Request()" element="org.jgroups.JChannel::shutdown():void" />
+			<role name="Request()" element="org.jgroups.JChannel::receive(long):java.lang.Object" />
+			<role name="Request()" element="org.jgroups.JChannel::peek(long):java.lang.Object" />
+			<role name="Request()" element="org.jgroups.JChannel::setOpt(int, java.lang.Object):void" />
+			<role name="Request()" element="org.jgroups.JChannel::getOpt(int):java.lang.Object" />
+			<role name="Request()" element="org.jgroups.JChannel::getState(org.jgroups.Address, java.lang.String, long, java.util.concurrent.Callable):boolean" />
+			<role name="Request()" element="org.jgroups.JChannel::up(org.jgroups.Event):java.lang.Object" />
+			<role name="Request()" element="org.jgroups.JChannel::down(org.jgroups.Event):void" />
+			<role name="Request()" element="org.jgroups.JChannel::downcall(org.jgroups.Event):java.lang.Object" />
+			<role name="Request()" element="org.jgroups.JChannel::init(org.jgroups.conf.ProtocolStackConfigurator):void" />
+			<role name="Request()" element="org.jgroups.JChannel::init(org.jgroups.JChannel):void" />
+			<role name="Request()" element="org.jgroups.JChannel::startStack(java.lang.String):void" />
+			<role name="Request()" element="org.jgroups.JChannel::stopStack(boolean, boolean):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.blocks.PullPushAdapter" />
+			<role name="State" element="org.jgroups.MessageListener" />
+			<role name="state" element="org.jgroups.blocks.PullPushAdapter::listener:org.jgroups.MessageListener" />
+			<role name="Request()" element="org.jgroups.blocks.PullPushAdapter::run():void" />
+			<role name="Request()" element="org.jgroups.blocks.PullPushAdapter::handleMessage(org.jgroups.Message):void" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.logging.Log" />
+			<role name="Context" element="org.jgroups.stack.IpAddress" />
+			<role name="state" element="org.jgroups.stack.IpAddress::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.stack.IpAddress::setAddressToLocalHost():void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.blocks.TCPConnectionMap" />
+			<role name="State" element="org.jgroups.util.SocketFactory" />
+			<role name="state" element="org.jgroups.blocks.TCPConnectionMap::socket_factory:org.jgroups.util.SocketFactory" />
+			<role name="Request()" element="org.jgroups.blocks.TCPConnectionMap::createServerSocket(java.lang.String, int, int):java.net.ServerSocket" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.util.ResourceManager" />
+			<role name="State" element="org.jgroups.util.SocketFactory" />
+			<role name="state" element="org.jgroups.util.ResourceManager::socket_factory:org.jgroups.util.SocketFactory" />
+			<role name="Request()" element="org.jgroups.util.ResourceManager::getNextMulticastPort(java.net.InetAddress):short" />
+			<role name="Request()" element="org.jgroups.util.ResourceManager::getNextTcpPorts(java.net.InetAddress, int):java.util.List" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.blocks.TCPConnectionMap" />
+			<role name="State" element="org.jgroups.blocks.TCPConnectionMap$Receiver" />
+			<role name="state" element="org.jgroups.blocks.TCPConnectionMap::receiver:org.jgroups.blocks.TCPConnectionMap$Receiver" />
+			<role name="Request()" element="org.jgroups.blocks.TCPConnectionMap::receive(org.jgroups.Address, byte[], int, int):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.protocols.SCOPE" />
+			<role name="State" element="org.jgroups.util.ThreadFactory" />
+			<role name="state" element="org.jgroups.protocols.SCOPE::thread_factory:org.jgroups.util.ThreadFactory" />
+			<role name="Request()" element="org.jgroups.protocols.SCOPE::setInAllThreadFactories(java.lang.String, org.jgroups.Address, java.lang.String):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.protocols.TP$ProtocolAdapter" />
+			<role name="State" element="org.jgroups.util.ThreadFactory" />
+			<role name="state" element="org.jgroups.protocols.TP$ProtocolAdapter::factory:org.jgroups.util.ThreadFactory" />
+			<role name="Request()" element="org.jgroups.protocols.TP$ProtocolAdapter::down(org.jgroups.Event):java.lang.Object" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.stack.AckMcastSenderWindow" />
+			<role name="State" element="org.jgroups.stack.AckMcastSenderWindow$RetransmitCommand" />
+			<role name="state" element="org.jgroups.stack.AckMcastSenderWindow::cmd:org.jgroups.stack.AckMcastSenderWindow$RetransmitCommand" />
+			<role name="Request()" element="org.jgroups.stack.AckMcastSenderWindow::_retransmit(org.jgroups.stack.AckMcastSenderWindow$Entry):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.util.TimeScheduler$TaskWrapper" />
+			<role name="State" element="org.jgroups.util.TimeScheduler$Task" />
+			<role name="state" element="org.jgroups.util.TimeScheduler$TaskWrapper::task:org.jgroups.util.TimeScheduler$Task" />
+			<role name="Request()" element="org.jgroups.util.TimeScheduler$TaskWrapper::doSchedule():void" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.logging.Log" />
+			<role name="Context" element="org.jgroups.mux.Multiplexer" />
+			<role name="state" element="org.jgroups.mux.Multiplexer::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.mux.Multiplexer::fetchServiceStates(org.jgroups.Address, java.util.Set, long):boolean" />
+			<role name="Request()" element="org.jgroups.mux.Multiplexer::up(org.jgroups.Event):java.lang.Object" />
+			<role name="Request()" element="org.jgroups.mux.Multiplexer::disconnect():void" />
+			<role name="Request()" element="org.jgroups.mux.Multiplexer::close():boolean" />
+			<role name="Request()" element="org.jgroups.mux.Multiplexer::shutdown():boolean" />
+			<role name="Request()" element="org.jgroups.mux.Multiplexer::sendServiceMessage(boolean, byte, java.lang.String, byte[], boolean):void" />
+			<role name="Request()" element="org.jgroups.mux.Multiplexer::handleStateRequest(org.jgroups.Event, boolean):java.lang.Object" />
+			<role name="Request()" element="org.jgroups.mux.Multiplexer::handleStateResponse(org.jgroups.Event, boolean):void" />
+			<role name="Request()" element="org.jgroups.mux.Multiplexer::handleServiceMessage(org.jgroups.mux.ServiceInfo, org.jgroups.Address):void" />
+			<role name="Request()" element="org.jgroups.mux.Multiplexer::handleServicesRsp(org.jgroups.Address, byte[]):void" />
+			<role name="Request()" element="org.jgroups.mux.Multiplexer::handleServiceDown(java.lang.String, org.jgroups.Address):void" />
+			<role name="Request()" element="org.jgroups.mux.Multiplexer::handleServiceUp(java.lang.String, org.jgroups.Address):void" />
+			<role name="Request()" element="org.jgroups.mux.Multiplexer::handleMergeView(org.jgroups.MergeView):void" />
+			<role name="Request()" element="org.jgroups.mux.Multiplexer::adjustServiceView(org.jgroups.Address):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.stack.RouterStub" />
+			<role name="State" element="org.jgroups.stack.RouterStub$ConnectionListener" />
+			<role name="state" element="org.jgroups.stack.RouterStub::conn_listener:org.jgroups.stack.RouterStub$ConnectionListener" />
+			<role name="Request()" element="org.jgroups.stack.RouterStub::connectionStateChanged(org.jgroups.stack.RouterStub$ConnectionStatus):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.tests.ChannelTestBase" />
+			<role name="State" element="org.jgroups.logging.Log" />
+			<role name="state" element="org.jgroups.tests.ChannelTestBase::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.tests.ChannelTestBase::logChannelResources(org.jgroups.Channel):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.tests.perf.IPerf" />
+			<role name="State" element="org.jgroups.tests.perf.Transport" />
+			<role name="state" element="org.jgroups.tests.perf.IPerf::transport:org.jgroups.tests.perf.Transport" />
+			<role name="Request()" element="org.jgroups.tests.perf.IPerf::start():void" />
+			<role name="Request()" element="org.jgroups.tests.perf.IPerf::send():void" />
+			<role name="Request()" element="org.jgroups.tests.perf.IPerf::sendResult(java.lang.Object, org.jgroups.tests.perf.IPerf$Entry):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.tests.perf.Test" />
+			<role name="State" element="org.jgroups.tests.perf.Transport" />
+			<role name="state" element="org.jgroups.tests.perf.Test::transport:org.jgroups.tests.perf.Transport" />
+			<role name="Request()" element="org.jgroups.tests.perf.Test::start(java.util.Properties, boolean, boolean, java.lang.String, int, int, int):void" />
+			<role name="Request()" element="org.jgroups.tests.perf.Test::stop():void" />
+			<role name="Request()" element="org.jgroups.tests.perf.Test::sendResults():void" />
+			<role name="Request()" element="org.jgroups.tests.perf.Test::sendFinalResults():void" />
+			<role name="Request()" element="org.jgroups.tests.perf.Test::sendFinalResultsOk():void" />
+			<role name="Request()" element="org.jgroups.tests.perf.Test::sendMessages(long, int, boolean, int):void" />
+			<role name="Request()" element="org.jgroups.tests.perf.Test::sendWarmupMessages(int):void" />
+			<role name="Request()" element="org.jgroups.tests.perf.Test::dumpStats(long):java.lang.String" />
+			<role name="Request()" element="org.jgroups.tests.perf.Test::dumpTransportStats():java.lang.String" />
+			<role name="Request()" element="org.jgroups.tests.perf.Test::sendStarted():void" />
+			<role name="Request()" element="org.jgroups.tests.perf.Test::sendDiscoveryRequest():void" />
+			<role name="Request()" element="org.jgroups.tests.perf.Test::sendDiscoveryResponse():void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.tests.perf.transports.JGroupsTransport" />
+			<role name="State" element="org.jgroups.tests.perf.Receiver" />
+			<role name="state" element="org.jgroups.tests.perf.transports.JGroupsTransport::receiver:org.jgroups.tests.perf.Receiver" />
+			<role name="Request()" element="org.jgroups.tests.perf.transports.JGroupsTransport::receive(org.jgroups.Message):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.demos.applets.DrawApplet" />
+			<role name="State" element="org.jgroups.ChannelFactory" />
+			<role name="state" element="org.jgroups.demos.applets.DrawApplet::factory:org.jgroups.ChannelFactory" />
+			<role name="Request()" element="org.jgroups.demos.applets.DrawApplet::init():void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.blocks.ReplicatedHashMap" />
+			<role name="State" element="org.jgroups.logging.Log" />
+			<role name="state" element="org.jgroups.blocks.ReplicatedHashMap::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.blocks.ReplicatedHashMap::start(long):void" />
+			<role name="Request()" element="org.jgroups.blocks.ReplicatedHashMap::_put(K, V):java.io.Serializable" />
+			<role name="Request()" element="org.jgroups.blocks.ReplicatedHashMap::_putIfAbsent(K, V):java.io.Serializable" />
+			<role name="Request()" element="org.jgroups.blocks.ReplicatedHashMap::_putAll(java.util.Map):void" />
+			<role name="Request()" element="org.jgroups.blocks.ReplicatedHashMap::_clear():void" />
+			<role name="Request()" element="org.jgroups.blocks.ReplicatedHashMap::_remove(java.lang.Object):java.io.Serializable" />
+			<role name="Request()" element="org.jgroups.blocks.ReplicatedHashMap::_remove(java.lang.Object, java.lang.Object):boolean" />
+			<role name="Request()" element="org.jgroups.blocks.ReplicatedHashMap::_replace(K, V, V):boolean" />
+			<role name="Request()" element="org.jgroups.blocks.ReplicatedHashMap::_replace(K, V):java.io.Serializable" />
+			<role name="Request()" element="org.jgroups.blocks.ReplicatedHashMap::getState():byte[]" />
+			<role name="Request()" element="org.jgroups.blocks.ReplicatedHashMap::setState(byte[]):void" />
+			<role name="Request()" element="org.jgroups.blocks.ReplicatedHashMap::getState(java.io.OutputStream):void" />
+			<role name="Request()" element="org.jgroups.blocks.ReplicatedHashMap::setState(java.io.InputStream):void" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.Channel" />
+			<role name="Context" element="org.jgroups.blocks.MessageDispatcher" />
+			<role name="state" element="org.jgroups.blocks.MessageDispatcher::channel:org.jgroups.Channel" />
+			<role name="Request()" element="org.jgroups.blocks.MessageDispatcher::start():void" />
+			<role name="Request()" element="org.jgroups.blocks.MessageDispatcher::stop():void" />
+			<role name="Request()" element="org.jgroups.blocks.MessageDispatcher::setChannel(org.jgroups.Channel):void" />
+			<role name="Request()" element="org.jgroups.blocks.MessageDispatcher::send(org.jgroups.Message):void" />
+			<role name="Request()" element="org.jgroups.blocks.MessageDispatcher::cast(java.util.Collection, org.jgroups.Message, org.jgroups.blocks.RequestOptions, boolean):org.jgroups.blocks.GroupRequest" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.stack.NakReceiverWindow" />
+			<role name="State" element="org.jgroups.stack.Retransmitter" />
+			<role name="state" element="org.jgroups.stack.NakReceiverWindow::retransmitter:org.jgroups.stack.Retransmitter" />
+			<role name="Request()" element="org.jgroups.stack.NakReceiverWindow::getPendingXmits():int" />
+			<role name="Request()" element="org.jgroups.stack.NakReceiverWindow::add(long, org.jgroups.Message):boolean" />
+			<role name="Request()" element="org.jgroups.stack.NakReceiverWindow::remove(boolean):org.jgroups.Message" />
+			<role name="Request()" element="org.jgroups.stack.NakReceiverWindow::removeMany(java.util.concurrent.atomic.AtomicBoolean, boolean, int):java.util.List" />
+			<role name="Request()" element="org.jgroups.stack.NakReceiverWindow::stable(long):void" />
+			<role name="Request()" element="org.jgroups.stack.NakReceiverWindow::destroy():void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.blocks.PullPushAdapter" />
+			<role name="State" element="org.jgroups.logging.Log" />
+			<role name="state" element="org.jgroups.blocks.PullPushAdapter::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.blocks.PullPushAdapter::send(java.io.Serializable, org.jgroups.Message):void" />
+			<role name="Request()" element="org.jgroups.blocks.PullPushAdapter::registerListener(java.io.Serializable, org.jgroups.MessageListener):void" />
+			<role name="Request()" element="org.jgroups.blocks.PullPushAdapter::run():void" />
+			<role name="Request()" element="org.jgroups.blocks.PullPushAdapter::handleMessage(org.jgroups.Message):void" />
+			<role name="Request()" element="org.jgroups.blocks.PullPushAdapter::notifyViewChange(org.jgroups.View):void" />
+			<role name="Request()" element="org.jgroups.blocks.PullPushAdapter::notifySuspect(org.jgroups.Address):void" />
+			<role name="Request()" element="org.jgroups.blocks.PullPushAdapter::notifyBlock():void" />
+			<role name="Request()" element="org.jgroups.blocks.PullPushAdapter::notifyUnblock():void" />
+			<role name="Request()" element="org.jgroups.blocks.PullPushAdapter::channelConnected(org.jgroups.Channel):void" />
+			<role name="Request()" element="org.jgroups.blocks.PullPushAdapter::channelDisconnected(org.jgroups.Channel):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.blocks.NotificationBus" />
+			<role name="State" element="org.jgroups.logging.Log" />
+			<role name="state" element="org.jgroups.blocks.NotificationBus::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.blocks.NotificationBus::sendNotification(org.jgroups.Address, java.io.Serializable):void" />
+			<role name="Request()" element="org.jgroups.blocks.NotificationBus::getCacheFromMember(org.jgroups.Address, long, int):java.io.Serializable" />
+			<role name="Request()" element="org.jgroups.blocks.NotificationBus::receive(org.jgroups.Message):void" />
+			<role name="Request()" element="org.jgroups.blocks.NotificationBus::handleCacheRequest(org.jgroups.Address):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.blocks.ReplicatedTree" />
+			<role name="State" element="org.jgroups.logging.Log" />
+			<role name="state" element="org.jgroups.blocks.ReplicatedTree::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.blocks.ReplicatedTree::fetchState(long):void" />
+			<role name="Request()" element="org.jgroups.blocks.ReplicatedTree::start():void" />
+			<role name="Request()" element="org.jgroups.blocks.ReplicatedTree::put(java.lang.String, java.util.HashMap):void" />
+			<role name="Request()" element="org.jgroups.blocks.ReplicatedTree::put(java.lang.String, java.lang.String, java.lang.Object):void" />
+			<role name="Request()" element="org.jgroups.blocks.ReplicatedTree::remove(java.lang.String):void" />
+			<role name="Request()" element="org.jgroups.blocks.ReplicatedTree::remove(java.lang.String, java.lang.String):void" />
+			<role name="Request()" element="org.jgroups.blocks.ReplicatedTree::receive(org.jgroups.Message):void" />
+			<role name="Request()" element="org.jgroups.blocks.ReplicatedTree::getState():byte[]" />
+			<role name="Request()" element="org.jgroups.blocks.ReplicatedTree::setState(byte[]):void" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.logging.Log" />
+			<role name="Context" element="org.jgroups.blocks.MessageDispatcher" />
+			<role name="state" element="org.jgroups.blocks.MessageDispatcher::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.blocks.MessageDispatcher::installUpHandler(org.jgroups.UpHandler, boolean):void" />
+			<role name="Request()" element="org.jgroups.blocks.MessageDispatcher::send(org.jgroups.Message):void" />
+			<role name="Request()" element="org.jgroups.blocks.MessageDispatcher::cast(java.util.Collection, org.jgroups.Message, org.jgroups.blocks.RequestOptions, boolean):org.jgroups.blocks.GroupRequest" />
+			<role name="Request()" element="org.jgroups.blocks.MessageDispatcher::sendMessage(org.jgroups.Message, org.jgroups.blocks.RequestOptions):java.lang.Object" />
+			<role name="Request()" element="org.jgroups.blocks.MessageDispatcher::sendMessageWithFuture(, org.jgroups.blocks.RequestOptions):org.jgroups.util.NotifyingFuture" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.blocks.RequestHandler" />
+			<role name="Context" element="org.jgroups.blocks.RequestCorrelator" />
+			<role name="state" element="org.jgroups.blocks.RequestCorrelator::request_handler:org.jgroups.blocks.RequestHandler" />
+			<role name="Request()" element="org.jgroups.blocks.RequestCorrelator::handleRequest(org.jgroups.Message, org.jgroups.blocks.RequestCorrelator$Header):void" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.blocks.NotificationBus$Consumer" />
+			<role name="Context" element="org.jgroups.blocks.NotificationBus" />
+			<role name="state" element="org.jgroups.blocks.NotificationBus::consumer:org.jgroups.blocks.NotificationBus$Consumer" />
+			<role name="Request()" element="org.jgroups.blocks.NotificationBus::notifyConsumer(java.io.Serializable):void" />
+			<role name="Request()" element="org.jgroups.blocks.NotificationBus::viewAccepted(org.jgroups.View):void" />
+			<role name="Request()" element="org.jgroups.blocks.NotificationBus::getCache():java.io.Serializable" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.blocks.RequestCorrelator" />
+			<role name="State" element="org.jgroups.logging.Log" />
+			<role name="state" element="org.jgroups.blocks.RequestCorrelator::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.blocks.RequestCorrelator::sendRequest(long, java.util.Collection, org.jgroups.Message, org.jgroups.blocks.RspCollector, org.jgroups.blocks.RequestOptions):void" />
+			<role name="Request()" element="org.jgroups.blocks.RequestCorrelator::sendUnicastRequest(long, org.jgroups.Address, org.jgroups.Message, org.jgroups.blocks.RspCollector):void" />
+			<role name="Request()" element="org.jgroups.blocks.RequestCorrelator::receiveSuspect(org.jgroups.Address):void" />
+			<role name="Request()" element="org.jgroups.blocks.RequestCorrelator::receiveMessage(org.jgroups.Message):boolean" />
+			<role name="Request()" element="org.jgroups.blocks.RequestCorrelator::handleRequest(org.jgroups.Message, org.jgroups.blocks.RequestCorrelator$Header):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.stack.AckMcastSenderWindow" />
+			<role name="State" element="org.jgroups.stack.Interval" />
+			<role name="state" element="org.jgroups.stack.AckMcastSenderWindow::retransmit_intervals:org.jgroups.stack.Interval" />
+			<role name="Request()" element="org.jgroups.stack.AckMcastSenderWindow::add(long, org.jgroups.Message, java.util.Vector):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.protocols.TP$DefaultBundler" />
+			<role name="State" element="org.jgroups.logging.Log" />
+			<role name="state" element="org.jgroups.protocols.TP$DefaultBundler::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.protocols.TP$DefaultBundler::sendBundledMessages(java.util.Map):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.protocols.TP$TransferQueueBundler" />
+			<role name="State" element="org.jgroups.logging.Log" />
+			<role name="state" element="org.jgroups.protocols.TP$TransferQueueBundler::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.protocols.TP$TransferQueueBundler::run():void" />
+			<role name="Request()" element="org.jgroups.protocols.TP$TransferQueueBundler::sendBundledMessages(java.util.Map):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.protocols.S3_PING$AWSAuthConnection" />
+			<role name="State" element="org.jgroups.protocols.S3_PING$CallingFormat" />
+			<role name="state" element="org.jgroups.protocols.S3_PING$AWSAuthConnection::callingFormat:org.jgroups.protocols.S3_PING$CallingFormat" />
+			<role name="Request()" element="org.jgroups.protocols.S3_PING$AWSAuthConnection::createBucket(java.lang.String, java.lang.String, java.util.Map):org.jgroups.protocols.S3_PING$Response" />
+			<role name="Request()" element="org.jgroups.protocols.S3_PING$AWSAuthConnection::makeRequest(java.lang.String, java.lang.String, java.lang.String, java.util.Map, java.util.Map, org.jgroups.protocols.S3_PING$S3Object):java.net.HttpURLConnection" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.stack.Configurator" />
+			<role name="State" element="org.jgroups.logging.Log" />
+			<role name="state" element="org.jgroups.stack.Configurator::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.stack.Configurator::determineIpVersionFromAddresses(java.util.Collection):org.jgroups.util.StackType" />
+			<role name="Request()" element="org.jgroups.stack.Configurator::setDefaultValues(java.util.Vector, java.util.Vector, org.jgroups.util.StackType):void" />
+			<role name="Request()" element="org.jgroups.stack.Configurator::resolveAndInvokePropertyMethod(java.lang.Object, java.lang.reflect.Method, java.util.Map):void" />
+			<role name="Request()" element="org.jgroups.stack.Configurator::resolveAndAssignField(java.lang.Object, java.lang.reflect.Field, java.util.Map):void" />
+			<role name="Request()" element="org.jgroups.stack.Configurator::removeDeprecatedProperties(java.lang.Object, java.util.Map):void" />
+			<role name="Request()" element="org.jgroups.stack.Configurator::grabSystemProp(org.jgroups.annotations.Property):java.lang.String" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.blocks.PartitionedHashMap" />
+			<role name="State" element="org.jgroups.blocks.PartitionedHashMap$HashFunction" />
+			<role name="state" element="org.jgroups.blocks.PartitionedHashMap::hash_function:org.jgroups.blocks.PartitionedHashMap$HashFunction" />
+			<role name="Request()" element="org.jgroups.blocks.PartitionedHashMap::stop():void" />
+			<role name="Request()" element="org.jgroups.blocks.PartitionedHashMap::getNode(K):org.jgroups.Address" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.blocks.MessageListenerAdapter" />
+			<role name="State" element="org.jgroups.MessageListener" />
+			<role name="state" element="org.jgroups.blocks.MessageListenerAdapter::stateListener:org.jgroups.MessageListener" />
+			<role name="state" element="org.jgroups.blocks.MessageListenerAdapter::messageListenersCache:org.jgroups.MessageListener[]" />
+			<role name="Request()" element="org.jgroups.blocks.MessageListenerAdapter::getState():byte[]" />
+			<role name="Request()" element="org.jgroups.blocks.MessageListenerAdapter::getState(java.lang.String):byte[]" />
+			<role name="Request()" element="org.jgroups.blocks.MessageListenerAdapter::receive(org.jgroups.Message):void" />
+			<role name="Request()" element="org.jgroups.blocks.MessageListenerAdapter::setState(byte[]):void" />
+			<role name="Request()" element="org.jgroups.blocks.MessageListenerAdapter::setState(java.lang.String, byte[]):void" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.protocols.TUNNEL$TUNNELPolicy" />
+			<role name="Context" element="org.jgroups.protocols.TUNNEL" />
+			<role name="state" element="org.jgroups.protocols.TUNNEL::tunnel_policy:org.jgroups.protocols.TUNNEL$TUNNELPolicy" />
+			<role name="Request()" element="org.jgroups.protocols.TUNNEL::handleDownEvent(org.jgroups.Event):java.lang.Object" />
+			<role name="Request()" element="org.jgroups.protocols.TUNNEL::send(org.jgroups.Message, org.jgroups.Address, boolean):void" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.stack.Retransmitter" />
+			<role name="Context" element="org.jgroups.stack.AckSenderWindow" />
+			<role name="state" element="org.jgroups.stack.AckSenderWindow::retransmitter:org.jgroups.stack.Retransmitter" />
+			<role name="Request()" element="org.jgroups.stack.AckSenderWindow::reset():void" />
+			<role name="Request()" element="org.jgroups.stack.AckSenderWindow::add(long, org.jgroups.Message):void" />
+			<role name="Request()" element="org.jgroups.stack.AckSenderWindow::addToRetransmitter(long, org.jgroups.Message):void" />
+			<role name="Request()" element="org.jgroups.stack.AckSenderWindow::toString():java.lang.String" />
+			<role name="Request()" element="org.jgroups.stack.AckSenderWindow::printDetails():java.lang.String" />
+			<role name="Request()" element="org.jgroups.stack.AckSenderWindow::removeRange(long, long):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.stack.AckSenderWindow" />
+			<role name="State" element="org.jgroups.stack.AckSenderWindow$RetransmitCommand" />
+			<role name="state" element="org.jgroups.stack.AckSenderWindow::retransmit_command:org.jgroups.stack.AckSenderWindow$RetransmitCommand" />
+			<role name="Request()" element="org.jgroups.stack.AckSenderWindow::retransmit(long, long, org.jgroups.Address):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.blocks.ReplicatedHashMap" />
+			<role name="State" element="org.jgroups.persistence.PersistenceManager" />
+			<role name="state" element="org.jgroups.blocks.ReplicatedHashMap::persistence_mgr:org.jgroups.persistence.PersistenceManager" />
+			<role name="Request()" element="org.jgroups.blocks.ReplicatedHashMap::start(long):void" />
+			<role name="Request()" element="org.jgroups.blocks.ReplicatedHashMap::_put(K, V):java.io.Serializable" />
+			<role name="Request()" element="org.jgroups.blocks.ReplicatedHashMap::_putIfAbsent(K, V):java.io.Serializable" />
+			<role name="Request()" element="org.jgroups.blocks.ReplicatedHashMap::_putAll(java.util.Map):void" />
+			<role name="Request()" element="org.jgroups.blocks.ReplicatedHashMap::_clear():void" />
+			<role name="Request()" element="org.jgroups.blocks.ReplicatedHashMap::_remove(java.lang.Object):java.io.Serializable" />
+			<role name="Request()" element="org.jgroups.blocks.ReplicatedHashMap::_remove(java.lang.Object, java.lang.Object):boolean" />
+			<role name="Request()" element="org.jgroups.blocks.ReplicatedHashMap::_replace(K, V, V):boolean" />
+			<role name="Request()" element="org.jgroups.blocks.ReplicatedHashMap::_replace(K, V):java.io.Serializable" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.blocks.ReplCache" />
+			<role name="State" element="org.jgroups.blocks.ReplCache$HashFunction" />
+			<role name="state" element="org.jgroups.blocks.ReplCache::hash_function:org.jgroups.blocks.ReplCache$HashFunction" />
+			<role name="Request()" element="org.jgroups.blocks.ReplCache::_put(K, V, short, long, boolean):java.lang.Object" />
+			<role name="Request()" element="org.jgroups.blocks.ReplCache::viewAccepted(org.jgroups.View):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.persistence.DBPersistenceManager" />
+			<role name="State" element="org.jgroups.logging.Log" />
+			<role name="state" element="org.jgroups.persistence.DBPersistenceManager::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.persistence.DBPersistenceManager::init(java.io.InputStream):void" />
+			<role name="Request()" element="org.jgroups.persistence.DBPersistenceManager::save(java.io.Serializable, java.io.Serializable):void" />
+			<role name="Request()" element="org.jgroups.persistence.DBPersistenceManager::addNewEntry(java.io.Serializable, java.io.Serializable):void" />
+			<role name="Request()" element="org.jgroups.persistence.DBPersistenceManager::getConnection():java.sql.Connection" />
+			<role name="Request()" element="org.jgroups.persistence.DBPersistenceManager::addSchemaToDB(java.sql.Connection):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.blocks.DistributedLockManagerTest" />
+			<role name="State" element="org.jgroups.blocks.LockManager" />
+			<role name="state" element="org.jgroups.blocks.DistributedLockManagerTest::lockManager1:org.jgroups.blocks.LockManager" />
+			<role name="state" element="org.jgroups.blocks.DistributedLockManagerTest::lockManager2:org.jgroups.blocks.LockManager" />
+			<role name="Request()" element="org.jgroups.blocks.DistributedLockManagerTest::test():void" />
+			<role name="Request()" element="org.jgroups.blocks.DistributedLockManagerTest::testMultiLock():void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.tests.TimeSchedulerTest$Entry" />
+			<role name="State" element="org.jgroups.stack.Interval" />
+			<role name="state" element="org.jgroups.tests.TimeSchedulerTest$Entry::interval:org.jgroups.stack.Interval" />
+			<role name="Request()" element="org.jgroups.tests.TimeSchedulerTest$Entry::nextInterval():long" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.JChannelFactory" />
+			<role name="State" element="org.jgroups.logging.Log" />
+			<role name="state" element="org.jgroups.JChannelFactory::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.JChannelFactory::unregister(java.lang.String):void" />
+			<role name="Request()" element="org.jgroups.JChannelFactory::parse(org.w3c.dom.Element, boolean):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.blocks.RpcDispatcher" />
+			<role name="State" element="org.jgroups.blocks.RpcDispatcher$Marshaller2" />
+			<role name="state" element="org.jgroups.blocks.RpcDispatcher::req_marshaller:org.jgroups.blocks.RpcDispatcher$Marshaller2" />
+			<role name="Request()" element="org.jgroups.blocks.RpcDispatcher::callRemoteMethods(java.util.Collection, org.jgroups.blocks.MethodCall, org.jgroups.blocks.RequestOptions):org.jgroups.util.RspList" />
+			<role name="Request()" element="org.jgroups.blocks.RpcDispatcher::callRemoteMethodsWithFuture(java.util.Collection, org.jgroups.blocks.MethodCall, org.jgroups.blocks.RequestOptions):org.jgroups.util.NotifyingFuture" />
+			<role name="Request()" element="org.jgroups.blocks.RpcDispatcher::callRemoteMethod(org.jgroups.Address, org.jgroups.blocks.MethodCall, org.jgroups.blocks.RequestOptions):java.lang.Object" />
+			<role name="Request()" element="org.jgroups.blocks.RpcDispatcher::callRemoteMethodWithFuture(, org.jgroups.blocks.MethodCall, org.jgroups.blocks.RequestOptions):org.jgroups.util.NotifyingFuture" />
+			<role name="Request()" element="org.jgroups.blocks.RpcDispatcher::handle(org.jgroups.Message):java.lang.Object" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.blocks.RequestCorrelator" />
+			<role name="State" element="org.jgroups.blocks.RpcDispatcher$Marshaller2" />
+			<role name="state" element="org.jgroups.blocks.RequestCorrelator::marshaller:org.jgroups.blocks.RpcDispatcher$Marshaller2" />
+			<role name="Request()" element="org.jgroups.blocks.RequestCorrelator::receiveMessage(org.jgroups.Message):boolean" />
+			<role name="Request()" element="org.jgroups.blocks.RequestCorrelator::handleRequest(org.jgroups.Message, org.jgroups.blocks.RequestCorrelator$Header):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.blocks.TwoPhaseVotingAdapter$TwoPhaseVoteWrapper" />
+			<role name="State" element="org.jgroups.blocks.TwoPhaseVotingListener" />
+			<role name="state" element="org.jgroups.blocks.TwoPhaseVotingAdapter$TwoPhaseVoteWrapper::listener:org.jgroups.blocks.TwoPhaseVotingListener" />
+			<role name="Request()" element="org.jgroups.blocks.TwoPhaseVotingAdapter$TwoPhaseVoteWrapper::vote(java.lang.Object):boolean" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.conf.XmlConfigurator" />
+			<role name="State" element="org.jgroups.logging.Log" />
+			<role name="state" element="org.jgroups.conf.XmlConfigurator::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.conf.XmlConfigurator::getInstance(java.net.URL, java.lang.Boolean):org.jgroups.conf.XmlConfigurator" />
+			<role name="Request()" element="org.jgroups.conf.XmlConfigurator::parse(org.w3c.dom.Element):org.jgroups.conf.XmlConfigurator" />
+			<role name="Request()" element="org.jgroups.conf.XmlConfigurator::main(java.lang.String[]):void" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.protocols.ENCRYPT$Observer" />
+			<role name="Context" element="org.jgroups.protocols.ENCRYPT" />
+			<role name="state" element="org.jgroups.protocols.ENCRYPT::observer:org.jgroups.protocols.ENCRYPT$Observer" />
+			<role name="Request()" element="org.jgroups.protocols.ENCRYPT::passItUp(org.jgroups.Event):java.lang.Object" />
+			<role name="Request()" element="org.jgroups.protocols.ENCRYPT::down(org.jgroups.Event):java.lang.Object" />
+			<role name="Request()" element="org.jgroups.protocols.ENCRYPT::passItDown(org.jgroups.Event):java.lang.Object" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.util.ResourceManager" />
+			<role name="State" element="org.jgroups.util.ResourceManager$IpAddressRep" />
+			<role name="state" element="org.jgroups.util.ResourceManager::rep:org.jgroups.util.ResourceManager$IpAddressRep" />
+			<role name="Request()" element="org.jgroups.util.ResourceManager::getNextMulticastAddress():java.lang.String" />
+		</instance>
+		<instance>
+			<role name="State" element="org.jgroups.blocks.ReplCache$HashFunctionFactory" />
+			<role name="Context" element="org.jgroups.blocks.ReplCache" />
+			<role name="state" element="org.jgroups.blocks.ReplCache::hash_function_factory:org.jgroups.blocks.ReplCache$HashFunctionFactory" />
+			<role name="Request()" element="org.jgroups.blocks.ReplCache::start():void" />
+			<role name="Request()" element="org.jgroups.blocks.ReplCache::stop():void" />
+			<role name="Request()" element="org.jgroups.blocks.ReplCache::rebalance(java.util.List, java.util.List):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.blocks.TCPConnectionMap$TCPConnection" />
+			<role name="State" element="org.jgroups.logging.Log" />
+			<role name="state" element="org.jgroups.blocks.TCPConnectionMap$TCPConnection::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.blocks.TCPConnectionMap$TCPConnection::readPeerAddress(java.net.Socket):org.jgroups.Address" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.tests.RoundTripMulticast$ReceiverThread" />
+			<role name="State" element="org.jgroups.tests.RoundTripMulticast$Receiver" />
+			<role name="state" element="org.jgroups.tests.RoundTripMulticast$ReceiverThread::receiver:org.jgroups.tests.RoundTripMulticast$Receiver" />
+			<role name="Request()" element="org.jgroups.tests.RoundTripMulticast$ReceiverThread::run():void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.blocks.RpcDispatcher" />
+			<role name="State" element="org.jgroups.blocks.MethodLookup" />
+			<role name="state" element="org.jgroups.blocks.RpcDispatcher::method_lookup:org.jgroups.blocks.MethodLookup" />
+			<role name="Request()" element="org.jgroups.blocks.RpcDispatcher::handle(org.jgroups.Message):java.lang.Object" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.blocks.VotingAdapter" />
+			<role name="State" element="org.jgroups.blocks.VotingListener" />
+			<role name="state" element="org.jgroups.blocks.VotingAdapter::listeners:org.jgroups.blocks.VotingListener[]" />
+			<role name="Request()" element="org.jgroups.blocks.VotingAdapter::localVote(java.lang.Object):org.jgroups.blocks.VotingAdapter$VoteResult" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.demos.NotificationBusDemo" />
+			<role name="State" element="org.jgroups.logging.Log" />
+			<role name="state" element="org.jgroups.demos.NotificationBusDemo::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.demos.NotificationBusDemo::start(java.lang.String, java.lang.String):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.tests.perf.Test" />
+			<role name="State" element="org.jgroups.logging.Log" />
+			<role name="state" element="org.jgroups.tests.perf.Test::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.tests.perf.Test::receive(java.lang.Object, byte[]):void" />
+			<role name="Request()" element="org.jgroups.tests.perf.Test::handleData(java.lang.Object, int):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.jgroups.util.TimeScheduler" />
+			<role name="State" element="org.jgroups.logging.Log" />
+			<role name="state" element="org.jgroups.util.TimeScheduler::log:org.jgroups.logging.Log" />
+			<role name="Request()" element="org.jgroups.util.TimeScheduler::&lt;clinit&gt;():void" />
+		</instance>
+	</pattern>
+	<pattern name="Strategy" />
+	<pattern name="Bridge">
+		<instance>
+			<role name="Abstraction" element="org.jgroups.stack.Protocol" />
+			<role name="Implementor" element="org.jgroups.logging.Log" />
+			<role name="implementor" element="org.jgroups.stack.Protocol::log:org.jgroups.logging.Log" />
+			<role name="Operation()" element="org.jgroups.stack.Protocol::setLevel(java.lang.String):void" />
+			<role name="Operation()" element="org.jgroups.stack.Protocol::getLevel():java.lang.String" />
+			<role name="Operation()" element="org.jgroups.stack.Protocol::getProperties():java.util.Properties" />
+			<role name="Operation()" element="org.jgroups.stack.Protocol::dumpStats():java.util.Map" />
+		</instance>
+		<instance>
+			<role name="Abstraction" element="org.jgroups.tests.ChannelTestBase$ChannelApplication" />
+			<role name="Implementor" element="org.jgroups.Channel" />
+			<role name="implementor" element="org.jgroups.tests.ChannelTestBase$ChannelApplication::channel:org.jgroups.Channel" />
+			<role name="Operation()" element="org.jgroups.tests.ChannelTestBase$ChannelApplication::init(java.lang.String):void" />
+			<role name="Operation()" element="org.jgroups.tests.ChannelTestBase$ChannelApplication::run():void" />
+			<role name="Operation()" element="org.jgroups.tests.ChannelTestBase$ChannelApplication::getMembers():java.util.List" />
+			<role name="Operation()" element="org.jgroups.tests.ChannelTestBase$ChannelApplication::getLocalAddress():org.jgroups.Address" />
+			<role name="Operation()" element="org.jgroups.tests.ChannelTestBase$ChannelApplication::getName():java.lang.String" />
+			<role name="Operation()" element="org.jgroups.tests.ChannelTestBase$ChannelApplication::cleanup():void" />
+		</instance>
+		<instance>
+			<role name="Abstraction" element="org.jgroups.blocks.BasicConnectionTable" />
+			<role name="Implementor" element="org.jgroups.blocks.BasicConnectionTable$Receiver" />
+			<role name="implementor" element="org.jgroups.blocks.BasicConnectionTable::receiver:org.jgroups.blocks.BasicConnectionTable$Receiver" />
+			<role name="Operation()" element="org.jgroups.blocks.BasicConnectionTable::receive(org.jgroups.Address, byte[], int, int):void" />
+		</instance>
+		<instance>
+			<role name="Abstraction" element="org.jgroups.blocks.BasicConnectionTable" />
+			<role name="Implementor" element="org.jgroups.logging.Log" />
+			<role name="implementor" element="org.jgroups.blocks.BasicConnectionTable::log:org.jgroups.logging.Log" />
+			<role name="Operation()" element="org.jgroups.blocks.BasicConnectionTable::removeConnection(org.jgroups.Address):void" />
+			<role name="Operation()" element="org.jgroups.blocks.BasicConnectionTable::receive(org.jgroups.Address, byte[], int, int):void" />
+			<role name="Operation()" element="org.jgroups.blocks.BasicConnectionTable::send(org.jgroups.Address, byte[], int, int):void" />
+			<role name="Operation()" element="org.jgroups.blocks.BasicConnectionTable::retainAll(java.util.Collection):void" />
+		</instance>
+		<instance>
+			<role name="Abstraction" element="org.jgroups.protocols.pbcast.GmsImpl" />
+			<role name="Implementor" element="org.jgroups.logging.Log" />
+			<role name="implementor" element="org.jgroups.protocols.pbcast.GmsImpl::log:org.jgroups.logging.Log" />
+			<role name="Operation()" element="org.jgroups.protocols.pbcast.GmsImpl::sendMergeRejectedResponse(org.jgroups.Address, org.jgroups.util.MergeId):void" />
+			<role name="Operation()" element="org.jgroups.protocols.pbcast.GmsImpl::wrongMethod(java.lang.String):void" />
+		</instance>
+		<instance>
+			<role name="Abstraction" element="org.jgroups.protocols.TP" />
+			<role name="Implementor" element="org.jgroups.util.ThreadFactory" />
+			<role name="implementor" element="org.jgroups.protocols.TP::global_thread_factory:org.jgroups.util.ThreadFactory" />
+			<role name="implementor" element="org.jgroups.protocols.TP::timer_thread_factory:org.jgroups.util.ThreadFactory" />
+			<role name="implementor" element="org.jgroups.protocols.TP::default_thread_factory:org.jgroups.util.ThreadFactory" />
+			<role name="implementor" element="org.jgroups.protocols.TP::oob_thread_factory:org.jgroups.util.ThreadFactory" />
+			<role name="Operation()" element="org.jgroups.protocols.TP::init():void" />
+			<role name="Operation()" element="org.jgroups.protocols.TP::setThreadNames():void" />
+			<role name="Operation()" element="org.jgroups.protocols.TP::unsetThreadNames():void" />
+			<role name="Operation()" element="org.jgroups.protocols.TP::setInAllThreadFactories(java.lang.String, org.jgroups.Address, java.lang.String):void" />
+		</instance>
+		<instance>
+			<role name="Abstraction" element="org.jgroups.protocols.TP" />
+			<role name="Implementor" element="org.jgroups.protocols.TP$Bundler" />
+			<role name="implementor" element="org.jgroups.protocols.TP::bundler:org.jgroups.protocols.TP$Bundler" />
+			<role name="Operation()" element="org.jgroups.protocols.TP::start():void" />
+			<role name="Operation()" element="org.jgroups.protocols.TP::stop():void" />
+			<role name="Operation()" element="org.jgroups.protocols.TP::send(org.jgroups.Message, org.jgroups.Address, boolean):void" />
+		</instance>
+		<instance>
+			<role name="Abstraction" element="org.jgroups.blocks.Request" />
+			<role name="Implementor" element="org.jgroups.logging.Log" />
+			<role name="implementor" element="org.jgroups.blocks.Request::log:org.jgroups.logging.Log" />
+			<role name="Operation()" element="org.jgroups.blocks.Request::execute():boolean" />
+		</instance>
+		<instance>
+			<role name="Abstraction" element="org.jgroups.blocks.BasicConnectionTable" />
+			<role name="Implementor" element="org.jgroups.util.SocketFactory" />
+			<role name="implementor" element="org.jgroups.blocks.BasicConnectionTable::socket_factory:org.jgroups.util.SocketFactory" />
+			<role name="Operation()" element="org.jgroups.blocks.BasicConnectionTable::stop():void" />
+		</instance>
+		<instance>
+			<role name="Abstraction" element="org.jgroups.stack.AckMcastSenderWindow$Task" />
+			<role name="Implementor" element="org.jgroups.stack.Interval" />
+			<role name="implementor" element="org.jgroups.stack.AckMcastSenderWindow$Task::intervals:org.jgroups.stack.Interval" />
+			<role name="Operation()" element="org.jgroups.stack.AckMcastSenderWindow$Task::nextInterval():long" />
+		</instance>
+		<instance>
+			<role name="Abstraction" element="org.jgroups.stack.Retransmitter$Task" />
+			<role name="Implementor" element="org.jgroups.stack.Interval" />
+			<role name="implementor" element="org.jgroups.stack.Retransmitter$Task::intervals:org.jgroups.stack.Interval" />
+			<role name="Operation()" element="org.jgroups.stack.Retransmitter$Task::nextInterval():long" />
+			<role name="Operation()" element="org.jgroups.stack.Retransmitter$Task::doSchedule():void" />
+		</instance>
+		<instance>
+			<role name="Abstraction" element="org.jgroups.blocks.Request" />
+			<role name="Implementor" element="org.jgroups.util.FutureListener" />
+			<role name="implementor" element="org.jgroups.blocks.Request::listener:org.jgroups.util.FutureListener" />
+			<role name="Operation()" element="org.jgroups.blocks.Request::setListener(org.jgroups.util.FutureListener):org.jgroups.util.NotifyingFuture" />
+			<role name="Operation()" element="org.jgroups.blocks.Request::checkCompletion(java.util.concurrent.Future):void" />
+		</instance>
+	</pattern>
+	<pattern name="Template Method">
+		<instance>
+			<role name="AbstractClass" element="org.jgroups.blocks.BasicConnectionTable" />
+			<role name="TemplateMethod()" element="org.jgroups.blocks.BasicConnectionTable::send(org.jgroups.Address, byte[], int, int):void" />
+		</instance>
+		<instance>
+			<role name="AbstractClass" element="org.jgroups.blocks.Request" />
+			<role name="TemplateMethod()" element="org.jgroups.blocks.Request::execute():boolean" />
+			<role name="TemplateMethod()" element="org.jgroups.blocks.Request::getResponsesComplete():boolean" />
+			<role name="TemplateMethod()" element="org.jgroups.blocks.Request::checkCompletion(java.util.concurrent.Future):void" />
+			<role name="TemplateMethod()" element="org.jgroups.blocks.Request::responsesComplete(long):boolean" />
+			<role name="TemplateMethod()" element="org.jgroups.blocks.Request::waitForResults(long):boolean" />
+		</instance>
+		<instance>
+			<role name="AbstractClass" element="org.jgroups.Channel" />
+			<role name="TemplateMethod()" element="org.jgroups.Channel::setSocketFactory(org.jgroups.util.SocketFactory):void" />
+			<role name="TemplateMethod()" element="org.jgroups.Channel::notifyChannelConnected(org.jgroups.Channel):void" />
+			<role name="TemplateMethod()" element="org.jgroups.Channel::notifyChannelDisconnected(org.jgroups.Channel):void" />
+			<role name="TemplateMethod()" element="org.jgroups.Channel::notifyChannelClosed(org.jgroups.Channel):void" />
+		</instance>
+		<instance>
+			<role name="AbstractClass" element="org.jgroups.protocols.BasicTCP" />
+			<role name="TemplateMethod()" element="org.jgroups.protocols.BasicTCP::sendUnicast(org.jgroups.PhysicalAddress, byte[], int, int):void" />
+			<role name="TemplateMethod()" element="org.jgroups.protocols.BasicTCP::getInfo():java.lang.String" />
+			<role name="TemplateMethod()" element="org.jgroups.protocols.BasicTCP::handleDownEvent(org.jgroups.Event):java.lang.Object" />
+		</instance>
+		<instance>
+			<role name="AbstractClass" element="org.jgroups.protocols.Discovery" />
+			<role name="TemplateMethod()" element="org.jgroups.protocols.Discovery::up(org.jgroups.Event):java.lang.Object" />
+		</instance>
+		<instance>
+			<role name="AbstractClass" element="org.jgroups.protocols.TP" />
+			<role name="TemplateMethod()" element="org.jgroups.protocols.TP::doSend(org.jgroups.util.Buffer, org.jgroups.Address, boolean):void" />
+			<role name="TemplateMethod()" element="org.jgroups.protocols.TP::sendToSingleMember(org.jgroups.Address, byte[], int, int):void" />
+			<role name="TemplateMethod()" element="org.jgroups.protocols.TP::sendToAllPhysicalAddresses(byte[], int, int):void" />
+			<role name="TemplateMethod()" element="org.jgroups.protocols.TP::registerLocalAddress(org.jgroups.Address):void" />
+		</instance>
+		<instance>
+			<role name="AbstractClass" element="org.jgroups.stack.Retransmitter$Task" />
+			<role name="TemplateMethod()" element="org.jgroups.stack.Retransmitter$Task::run():void" />
+		</instance>
+		<instance>
+			<role name="AbstractClass" element="org.jgroups.tests.ChannelTestBase$ChannelApplication" />
+			<role name="TemplateMethod()" element="org.jgroups.tests.ChannelTestBase$ChannelApplication::run():void" />
+		</instance>
+	</pattern>
+	<pattern name="Visitor" />
+	<pattern name="Proxy">
+		<instance>
+			<role name="Proxy" element="org.jgroups.View" />
+			<role name="RealSubject" element="org.jgroups.ViewId" />
+			<role name="Request()" element="org.jgroups.View::writeTo(java.io.DataOutputStream):void" />
+			<role name="Request()" element="org.jgroups.View::readFrom(java.io.DataInputStream):void" />
+		</instance>
+		<instance>
+			<role name="Proxy" element="org.jgroups.mux.MuxHeader" />
+			<role name="RealSubject" element="org.jgroups.mux.ServiceInfo" />
+			<role name="Request()" element="org.jgroups.mux.MuxHeader::writeTo(java.io.DataOutputStream):void" />
+			<role name="Request()" element="org.jgroups.mux.MuxHeader::readFrom(java.io.DataInputStream):void" />
+		</instance>
+		<instance>
+			<role name="Proxy" element="org.jgroups.protocols.FD_SOCK$FdHeader" />
+			<role name="RealSubject" element="org.jgroups.stack.IpAddress" />
+			<role name="Request()" element="org.jgroups.protocols.FD_SOCK$FdHeader::size():int" />
+		</instance>
+	</pattern>
+	<pattern name="Proxy2" />
+	<pattern name="Chain of Responsibility">
+		<instance>
+			<role name="Handler" element="org.jgroups.stack.Protocol" />
+			<role name="successor" element="org.jgroups.stack.Protocol::up_prot:org.jgroups.stack.Protocol" />
+			<role name="successor" element="org.jgroups.stack.Protocol::down_prot:org.jgroups.stack.Protocol" />
+		</instance>
+	</pattern>
+</system>
+

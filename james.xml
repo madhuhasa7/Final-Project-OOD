@@ -1,0 +1,899 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<system>
+	<pattern name="Factory Method">
+		<instance>
+			<role name="Creator" element="org.apache.james.imapserver.store.ImapMailbox" />
+			<role name="FactoryMethod()" element="org.apache.james.imapserver.store.ImapMailbox::createMessage(javax.mail.internet.MimeMessage, org.apache.james.imapserver.store.MessageFlags, java.util.Date):org.apache.james.imapserver.store.SimpleImapMessage" />
+		</instance>
+		<instance>
+			<role name="Creator" element="org.apache.james.imapserver.store.ImapMessage" />
+			<role name="FactoryMethod()" element="org.apache.james.imapserver.store.ImapMessage::getAttributes():org.apache.james.imapserver.store.ImapMessageAttributes" />
+		</instance>
+		<instance>
+			<role name="Creator" element="org.apache.james.imapserver.store.ImapStore" />
+			<role name="FactoryMethod()" element="org.apache.james.imapserver.store.ImapStore::createMailbox(org.apache.james.imapserver.store.ImapMailbox, java.lang.String, boolean):org.apache.james.imapserver.store.ImapMailbox" />
+		</instance>
+		<instance>
+			<role name="Creator" element="org.apache.james.nntpserver.repository.NNTPGroup" />
+			<role name="FactoryMethod()" element="org.apache.james.nntpserver.repository.NNTPGroup::getArticle(int):org.apache.james.nntpserver.repository.NNTPArticle" />
+			<role name="FactoryMethod()" element="org.apache.james.nntpserver.repository.NNTPGroup::addArticle(java.io.InputStream):org.apache.james.nntpserver.repository.NNTPArticle" />
+		</instance>
+		<instance>
+			<role name="Creator" element="org.apache.james.nntpserver.repository.NNTPRepository" />
+			<role name="FactoryMethod()" element="org.apache.james.nntpserver.repository.NNTPRepository::getGroup(java.lang.String):org.apache.james.nntpserver.repository.NNTPGroup" />
+		</instance>
+		<instance>
+			<role name="Creator" element="org.apache.james.services.MailRepository" />
+			<role name="FactoryMethod()" element="org.apache.james.services.MailRepository::retrieve(java.lang.String):org.apache.james.core.MailImpl" />
+		</instance>
+		<instance>
+			<role name="Creator" element="org.apache.james.services.UsersRepository" />
+			<role name="FactoryMethod()" element="org.apache.james.services.UsersRepository::getUserByName(java.lang.String):org.apache.james.services.User" />
+		</instance>
+		<instance>
+			<role name="Creator" element="org.apache.james.userrepository.AbstractJdbcUsersRepository" />
+			<role name="FactoryMethod()" element="org.apache.james.userrepository.AbstractJdbcUsersRepository::readUserFromResultSet(java.sql.ResultSet):org.apache.james.services.User" />
+		</instance>
+		<instance>
+			<role name="Creator" element="org.apache.james.util.watchdog.WatchdogFactory" />
+			<role name="FactoryMethod()" element="org.apache.james.util.watchdog.WatchdogFactory::getWatchdog(org.apache.james.util.watchdog.WatchdogTarget):org.apache.james.util.watchdog.Watchdog" />
+		</instance>
+	</pattern>
+	<pattern name="Prototype" />
+	<pattern name="Singleton">
+		<instance>
+			<role name="Singleton" element="org.apache.james.util.RFC822DateFormat" />
+			<role name="uniqueInstance" element="org.apache.james.util.RFC822DateFormat::instance:org.apache.james.util.RFC822DateFormat" />
+		</instance>
+	</pattern>
+	<pattern name="(Object)Adapter">
+		<instance>
+			<role name="Adaptee" element="org.apache.james.imapserver.ImapHandler" />
+			<role name="Adapter" element="org.apache.james.imapserver.ImapSessionImpl" />
+			<role name="adaptee" element="org.apache.james.imapserver.ImapSessionImpl::handler:org.apache.james.imapserver.ImapHandler" />
+			<role name="Request()" element="org.apache.james.imapserver.ImapSessionImpl::closeConnection():void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.apache.james.imapserver.JamesImapHost$MailboxSubscriptions" />
+			<role name="Adapter" element="org.apache.james.imapserver.JamesImapHost" />
+			<role name="adaptee" element="org.apache.james.imapserver.JamesImapHost::subscriptions:org.apache.james.imapserver.JamesImapHost$MailboxSubscriptions" />
+			<role name="Request()" element="org.apache.james.imapserver.JamesImapHost::subscribe(org.apache.james.services.User, java.lang.String):void" />
+			<role name="Request()" element="org.apache.james.imapserver.JamesImapHost::unsubscribe(org.apache.james.services.User, java.lang.String):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.apache.james.util.Lock" />
+			<role name="Adapter" element="org.apache.james.mailrepository.JDBCMailRepository" />
+			<role name="adaptee" element="org.apache.james.mailrepository.JDBCMailRepository::lock:org.apache.james.util.Lock" />
+			<role name="Request()" element="org.apache.james.mailrepository.JDBCMailRepository::unlock(java.lang.String):boolean" />
+			<role name="Request()" element="org.apache.james.mailrepository.JDBCMailRepository::lock(java.lang.String):boolean" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.apache.james.util.Lock" />
+			<role name="Adapter" element="org.apache.james.mailrepository.AvalonMailRepository" />
+			<role name="adaptee" element="org.apache.james.mailrepository.AvalonMailRepository::lock:org.apache.james.util.Lock" />
+			<role name="Request()" element="org.apache.james.mailrepository.AvalonMailRepository::unlock(java.lang.String):boolean" />
+			<role name="Request()" element="org.apache.james.mailrepository.AvalonMailRepository::lock(java.lang.String):boolean" />
+			<role name="Request()" element="org.apache.james.mailrepository.AvalonMailRepository::store(org.apache.james.core.MailImpl):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.apache.james.nntpserver.repository.ArticleIDRepository" />
+			<role name="Adapter" element="org.apache.james.nntpserver.repository.NNTPRepositoryImpl" />
+			<role name="adaptee" element="org.apache.james.nntpserver.repository.NNTPRepositoryImpl::articleIDRepo:org.apache.james.nntpserver.repository.ArticleIDRepository" />
+			<role name="Request()" element="org.apache.james.nntpserver.repository.NNTPRepositoryImpl::getArticleFromID(java.lang.String):org.apache.james.nntpserver.repository.NNTPArticle" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.apache.james.nntpserver.repository.NNTPSpooler" />
+			<role name="Adapter" element="org.apache.james.nntpserver.repository.NNTPRepositoryImpl" />
+			<role name="adaptee" element="org.apache.james.nntpserver.repository.NNTPRepositoryImpl::spool:org.apache.james.nntpserver.repository.NNTPSpooler" />
+			<role name="Request()" element="org.apache.james.nntpserver.repository.NNTPRepositoryImpl::createArticle(java.io.InputStream):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.apache.james.util.JDBCUtil" />
+			<role name="Adapter" element="org.apache.james.transport.mailets.JDBCAlias" />
+			<role name="adaptee" element="org.apache.james.transport.mailets.JDBCAlias::theJDBCUtil:org.apache.james.util.JDBCUtil" />
+			<role name="Request()" element="org.apache.james.transport.mailets.JDBCAlias::service(org.apache.mailet.Mail):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.apache.james.util.JDBCUtil" />
+			<role name="Adapter" element="org.apache.james.transport.mailets.JDBCVirtualUserTable" />
+			<role name="adaptee" element="org.apache.james.transport.mailets.JDBCVirtualUserTable::theJDBCUtil:org.apache.james.util.JDBCUtil" />
+			<role name="Request()" element="org.apache.james.transport.mailets.JDBCVirtualUserTable::mapRecipients(java.util.Map):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.apache.james.imapserver.JamesHost$OpenMailboxes" />
+			<role name="Adapter" element="org.apache.james.imapserver.JamesHost" />
+			<role name="adaptee" element="org.apache.james.imapserver.JamesHost::openMailboxes:org.apache.james.imapserver.JamesHost$OpenMailboxes" />
+			<role name="Request()" element="org.apache.james.imapserver.JamesHost::releaseMailbox(java.lang.String, org.apache.james.imapserver.ACLMailbox):void" />
+			<role name="Request()" element="org.apache.james.imapserver.JamesHost::renameMailbox(java.lang.String, java.lang.String, java.lang.String):boolean" />
+			<role name="Request()" element="org.apache.james.imapserver.JamesHost::listMailboxes(java.lang.String, java.lang.String, java.lang.String, boolean):java.util.Collection" />
+			<role name="Request()" element="org.apache.james.imapserver.JamesHost::getMailboxStatus(java.lang.String, java.lang.String, java.util.List):java.lang.String" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.apache.james.util.JDBCUtil" />
+			<role name="Adapter" element="org.apache.james.mailrepository.JDBCMailRepository" />
+			<role name="adaptee" element="org.apache.james.mailrepository.JDBCMailRepository::theJDBCUtil:org.apache.james.util.JDBCUtil" />
+			<role name="Request()" element="org.apache.james.mailrepository.JDBCMailRepository::store(org.apache.james.core.MailImpl):void" />
+			<role name="Request()" element="org.apache.james.mailrepository.JDBCMailRepository::retrieve(java.lang.String):org.apache.james.core.MailImpl" />
+			<role name="Request()" element="org.apache.james.mailrepository.JDBCMailRepository::remove(java.lang.String):void" />
+			<role name="Request()" element="org.apache.james.mailrepository.JDBCMailRepository::list():java.util.Iterator" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.apache.james.imapserver.store.ImapStore" />
+			<role name="Adapter" element="org.apache.james.imapserver.JamesImapHost" />
+			<role name="adaptee" element="org.apache.james.imapserver.JamesImapHost::store:org.apache.james.imapserver.store.ImapStore" />
+			<role name="Request()" element="org.apache.james.imapserver.JamesImapHost::getMailbox(org.apache.james.services.User, java.lang.String):org.apache.james.imapserver.store.ImapMailbox" />
+			<role name="Request()" element="org.apache.james.imapserver.JamesImapHost::createPrivateMailAccount(org.apache.james.services.User):void" />
+			<role name="Request()" element="org.apache.james.imapserver.JamesImapHost::createMailbox(org.apache.james.services.User, java.lang.String):org.apache.james.imapserver.store.ImapMailbox" />
+			<role name="Request()" element="org.apache.james.imapserver.JamesImapHost::deleteMailbox(org.apache.james.services.User, java.lang.String):void" />
+			<role name="Request()" element="org.apache.james.imapserver.JamesImapHost::renameMailbox(org.apache.james.services.User, java.lang.String, java.lang.String):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.apache.james.imapserver.RecordRepository" />
+			<role name="Adapter" element="org.apache.james.imapserver.JamesHost" />
+			<role name="adaptee" element="org.apache.james.imapserver.JamesHost::recordRep:org.apache.james.imapserver.RecordRepository" />
+			<role name="Request()" element="org.apache.james.imapserver.JamesHost::releaseMailbox(java.lang.String, org.apache.james.imapserver.ACLMailbox):void" />
+			<role name="Request()" element="org.apache.james.imapserver.JamesHost::renameMailbox(java.lang.String, java.lang.String, java.lang.String):boolean" />
+			<role name="Request()" element="org.apache.james.imapserver.JamesHost::listMailboxes(java.lang.String, java.lang.String, java.lang.String, boolean):java.util.Collection" />
+			<role name="Request()" element="org.apache.james.imapserver.JamesHost::getMailboxStatus(java.lang.String, java.lang.String, java.util.List):java.lang.String" />
+			<role name="Request()" element="org.apache.james.imapserver.JamesHost::createPrivateMailAccount(java.lang.String):boolean" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.apache.james.util.watchdog.WatchdogFactory" />
+			<role name="Adapter" element="org.apache.james.imapserver.ImapServer" />
+			<role name="adaptee" element="org.apache.james.imapserver.ImapServer::theWatchdogFactory:org.apache.james.util.watchdog.WatchdogFactory" />
+			<role name="Request()" element="org.apache.james.imapserver.ImapServer::newHandler():org.apache.avalon.cornerstone.services.connection.ConnectionHandler" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.apache.james.util.watchdog.WatchdogFactory" />
+			<role name="Adapter" element="org.apache.james.nntpserver.NNTPServer" />
+			<role name="adaptee" element="org.apache.james.nntpserver.NNTPServer::theWatchdogFactory:org.apache.james.util.watchdog.WatchdogFactory" />
+			<role name="Request()" element="org.apache.james.nntpserver.NNTPServer::newHandler():org.apache.avalon.cornerstone.services.connection.ConnectionHandler" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.apache.james.util.watchdog.WatchdogFactory" />
+			<role name="Adapter" element="org.apache.james.pop3server.POP3Server" />
+			<role name="adaptee" element="org.apache.james.pop3server.POP3Server::theWatchdogFactory:org.apache.james.util.watchdog.WatchdogFactory" />
+			<role name="Request()" element="org.apache.james.pop3server.POP3Server::newHandler():org.apache.avalon.cornerstone.services.connection.ConnectionHandler" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.apache.james.util.watchdog.WatchdogFactory" />
+			<role name="Adapter" element="org.apache.james.remotemanager.RemoteManager" />
+			<role name="adaptee" element="org.apache.james.remotemanager.RemoteManager::theWatchdogFactory:org.apache.james.util.watchdog.WatchdogFactory" />
+			<role name="Request()" element="org.apache.james.remotemanager.RemoteManager::newHandler():org.apache.avalon.cornerstone.services.connection.ConnectionHandler" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.apache.james.util.watchdog.WatchdogFactory" />
+			<role name="Adapter" element="org.apache.james.smtpserver.SMTPServer" />
+			<role name="adaptee" element="org.apache.james.smtpserver.SMTPServer::theWatchdogFactory:org.apache.james.util.watchdog.WatchdogFactory" />
+			<role name="Request()" element="org.apache.james.smtpserver.SMTPServer::newHandler():org.apache.avalon.cornerstone.services.connection.ConnectionHandler" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.apache.james.services.UsersRepository" />
+			<role name="Adapter" element="org.apache.james.remotemanager.UserManagerImpl" />
+			<role name="adaptee" element="org.apache.james.remotemanager.UserManagerImpl::users:org.apache.james.services.UsersRepository" />
+			<role name="Request()" element="org.apache.james.remotemanager.UserManagerImpl::addUser(java.lang.String, java.lang.String):boolean" />
+			<role name="Request()" element="org.apache.james.remotemanager.UserManagerImpl::deleteUser(java.lang.String):boolean" />
+			<role name="Request()" element="org.apache.james.remotemanager.UserManagerImpl::verifyUser(java.lang.String):boolean" />
+			<role name="Request()" element="org.apache.james.remotemanager.UserManagerImpl::getCountUsers():int" />
+			<role name="Request()" element="org.apache.james.remotemanager.UserManagerImpl::getUserList():java.util.ArrayList" />
+			<role name="Request()" element="org.apache.james.remotemanager.UserManagerImpl::setPassword(java.lang.String, java.lang.String):boolean" />
+			<role name="Request()" element="org.apache.james.remotemanager.UserManagerImpl::setAlias(java.lang.String, java.lang.String):boolean" />
+			<role name="Request()" element="org.apache.james.remotemanager.UserManagerImpl::unsetAlias(java.lang.String):boolean" />
+			<role name="Request()" element="org.apache.james.remotemanager.UserManagerImpl::checkAlias(java.lang.String):java.lang.String" />
+			<role name="Request()" element="org.apache.james.remotemanager.UserManagerImpl::setForward(java.lang.String, java.lang.String):boolean" />
+			<role name="Request()" element="org.apache.james.remotemanager.UserManagerImpl::unsetForward(java.lang.String):boolean" />
+			<role name="Request()" element="org.apache.james.remotemanager.UserManagerImpl::checkForward(java.lang.String):java.lang.String" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.apache.james.util.JDBCUtil" />
+			<role name="Adapter" element="org.apache.james.userrepository.AbstractJdbcUsersRepository" />
+			<role name="adaptee" element="org.apache.james.userrepository.AbstractJdbcUsersRepository::theJDBCUtil:org.apache.james.util.JDBCUtil" />
+			<role name="Request()" element="org.apache.james.userrepository.AbstractJdbcUsersRepository::doAddUser(org.apache.james.services.User):void" />
+			<role name="Request()" element="org.apache.james.userrepository.AbstractJdbcUsersRepository::doRemoveUser(org.apache.james.services.User):void" />
+			<role name="Request()" element="org.apache.james.userrepository.AbstractJdbcUsersRepository::doUpdateUser(org.apache.james.services.User):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.apache.james.mailrepository.JDBCMailRepository" />
+			<role name="Adapter" element="org.apache.james.mailrepository.MimeMessageJDBCSource" />
+			<role name="adaptee" element="org.apache.james.mailrepository.MimeMessageJDBCSource::repository:org.apache.james.mailrepository.JDBCMailRepository" />
+			<role name="Request()" element="org.apache.james.mailrepository.MimeMessageJDBCSource::getInputStream():java.io.InputStream" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.apache.james.services.UsersRepository" />
+			<role name="Adapter" element="org.apache.james.James" />
+			<role name="adaptee" element="org.apache.james.James::localusers:org.apache.james.services.UsersRepository" />
+			<role name="Request()" element="org.apache.james.James::addUser(java.lang.String, java.lang.String):boolean" />
+			<role name="Request()" element="org.apache.james.James::isLocalUser(java.lang.String):boolean" />
+			<role name="Request()" element="org.apache.james.James::storeMail(org.apache.mailet.MailAddress, org.apache.mailet.MailAddress, javax.mail.internet.MimeMessage):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.apache.james.services.UsersRepository" />
+			<role name="Adapter" element="org.apache.james.transport.mailets.AvalonListserv" />
+			<role name="adaptee" element="org.apache.james.transport.mailets.AvalonListserv::members:org.apache.james.services.UsersRepository" />
+			<role name="Request()" element="org.apache.james.transport.mailets.AvalonListserv::getMembers():java.util.Collection" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.apache.james.services.UsersRepository" />
+			<role name="Adapter" element="org.apache.james.transport.mailets.AvalonListservManager" />
+			<role name="adaptee" element="org.apache.james.transport.mailets.AvalonListservManager::members:org.apache.james.services.UsersRepository" />
+			<role name="Request()" element="org.apache.james.transport.mailets.AvalonListservManager::addAddress(org.apache.mailet.MailAddress):boolean" />
+			<role name="Request()" element="org.apache.james.transport.mailets.AvalonListservManager::removeAddress(org.apache.mailet.MailAddress):boolean" />
+			<role name="Request()" element="org.apache.james.transport.mailets.AvalonListservManager::existsAddress(org.apache.mailet.MailAddress):boolean" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.apache.james.util.JDBCUtil" />
+			<role name="Adapter" element="org.apache.james.mailrepository.MimeMessageJDBCSource" />
+			<role name="adaptee" element="org.apache.james.mailrepository.MimeMessageJDBCSource::theJDBCUtil:org.apache.james.util.JDBCUtil" />
+			<role name="Request()" element="org.apache.james.mailrepository.MimeMessageJDBCSource::getInputStream():java.io.InputStream" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.apache.james.services.MailRepository" />
+			<role name="Adapter" element="org.apache.james.transport.mailets.FromRepository" />
+			<role name="adaptee" element="org.apache.james.transport.mailets.FromRepository::repository:org.apache.james.services.MailRepository" />
+			<role name="Request()" element="org.apache.james.transport.mailets.FromRepository::service(org.apache.mailet.Mail):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.apache.james.services.MailRepository" />
+			<role name="Adapter" element="org.apache.james.transport.mailets.ToRepository" />
+			<role name="adaptee" element="org.apache.james.transport.mailets.ToRepository::repository:org.apache.james.services.MailRepository" />
+			<role name="Request()" element="org.apache.james.transport.mailets.ToRepository::service(org.apache.mailet.Mail):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.apache.james.util.RFC822DateFormat" />
+			<role name="Adapter" element="org.apache.james.transport.mailets.AbstractRedirect" />
+			<role name="adaptee" element="org.apache.james.transport.mailets.AbstractRedirect::rfc822DateFormat:org.apache.james.util.RFC822DateFormat" />
+			<role name="Request()" element="org.apache.james.transport.mailets.AbstractRedirect::service(org.apache.mailet.Mail):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.apache.james.services.SpoolRepository" />
+			<role name="Adapter" element="org.apache.james.transport.mailets.RemoteDelivery" />
+			<role name="adaptee" element="org.apache.james.transport.mailets.RemoteDelivery::outgoing:org.apache.james.services.SpoolRepository" />
+			<role name="Request()" element="org.apache.james.transport.mailets.RemoteDelivery::service(org.apache.mailet.Mail):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.apache.james.services.MailStore" />
+			<role name="Adapter" element="org.apache.james.James" />
+			<role name="adaptee" element="org.apache.james.James::mailstore:org.apache.james.services.MailStore" />
+			<role name="Request()" element="org.apache.james.James::getUserInbox(java.lang.String):org.apache.james.services.MailRepository" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.apache.james.imapserver.store.SimpleMessageAttributes" />
+			<role name="Adapter" element="org.apache.james.imapserver.store.SimpleImapMessage" />
+			<role name="adaptee" element="org.apache.james.imapserver.store.SimpleImapMessage::attributes:org.apache.james.imapserver.store.SimpleMessageAttributes" />
+			<role name="Request()" element="org.apache.james.imapserver.store.SimpleImapMessage::getAttributes():org.apache.james.imapserver.store.ImapMessageAttributes" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.apache.james.services.SpoolRepository" />
+			<role name="Adapter" element="org.apache.james.James" />
+			<role name="adaptee" element="org.apache.james.James::spool:org.apache.james.services.SpoolRepository" />
+			<role name="Request()" element="org.apache.james.James::sendMail(org.apache.mailet.Mail):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.apache.james.services.UsersStore" />
+			<role name="Adapter" element="org.apache.james.remotemanager.UserManagerImpl" />
+			<role name="adaptee" element="org.apache.james.remotemanager.UserManagerImpl::usersStore:org.apache.james.services.UsersStore" />
+			<role name="Request()" element="org.apache.james.remotemanager.UserManagerImpl::getRepositoryNames():java.util.ArrayList" />
+			<role name="Request()" element="org.apache.james.remotemanager.UserManagerImpl::setRepository(java.lang.String):boolean" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.apache.james.services.MailServer" />
+			<role name="Adapter" element="org.apache.james.remotemanager.UserManagerImpl" />
+			<role name="adaptee" element="org.apache.james.remotemanager.UserManagerImpl::mailServer:org.apache.james.services.MailServer" />
+			<role name="Request()" element="org.apache.james.remotemanager.UserManagerImpl::addUser(java.lang.String, java.lang.String):boolean" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.apache.james.services.UsersRepository" />
+			<role name="Adapter" element="org.apache.james.imapserver.JamesHost" />
+			<role name="adaptee" element="org.apache.james.imapserver.JamesHost::localUsers:org.apache.james.services.UsersRepository" />
+			<role name="Request()" element="org.apache.james.imapserver.JamesHost::isHomeServer(java.lang.String):boolean" />
+			<role name="Request()" element="org.apache.james.imapserver.JamesHost::hasLocalAccess(java.lang.String):boolean" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.apache.james.services.MailServer" />
+			<role name="Adapter" element="org.apache.james.transport.matchers.AbstractStorageQuota" />
+			<role name="adaptee" element="org.apache.james.transport.matchers.AbstractStorageQuota::mailServer:org.apache.james.services.MailServer" />
+			<role name="Request()" element="org.apache.james.transport.matchers.AbstractStorageQuota::getUsed(org.apache.mailet.MailAddress, org.apache.mailet.Mail):long" />
+		</instance>
+	</pattern>
+	<pattern name="Command">
+		<instance>
+			<role name="Receiver" element="org.apache.james.util.XMLResources" />
+			<role name="ConcreteCommand" element="org.apache.james.transport.mailets.CommandListservManager" />
+			<role name="receiver" element="org.apache.james.transport.mailets.CommandListservManager::xmlResources:org.apache.james.util.XMLResources" />
+			<role name="Execute()" element="org.apache.james.transport.mailets.CommandListservManager::service(org.apache.mailet.Mail):void" />
+		</instance>
+		<instance>
+			<role name="Receiver" element="org.apache.james.imapserver.commands.FetchCommand$FetchCommandParser" />
+			<role name="ConcreteCommand" element="org.apache.james.imapserver.commands.FetchCommand" />
+			<role name="receiver" element="org.apache.james.imapserver.commands.FetchCommand::parser:org.apache.james.imapserver.commands.FetchCommand$FetchCommandParser" />
+			<role name="Execute()" element="org.apache.james.imapserver.commands.FetchCommand::doProcess(org.apache.james.imapserver.ImapRequestLineReader, org.apache.james.imapserver.ImapResponse, org.apache.james.imapserver.ImapSession, boolean):void" />
+		</instance>
+		<instance>
+			<role name="Receiver" element="org.apache.james.imapserver.commands.SearchCommand$SearchCommandParser" />
+			<role name="ConcreteCommand" element="org.apache.james.imapserver.commands.SearchCommand" />
+			<role name="receiver" element="org.apache.james.imapserver.commands.SearchCommand::parser:org.apache.james.imapserver.commands.SearchCommand$SearchCommandParser" />
+			<role name="Execute()" element="org.apache.james.imapserver.commands.SearchCommand::doProcess(org.apache.james.imapserver.ImapRequestLineReader, org.apache.james.imapserver.ImapResponse, org.apache.james.imapserver.ImapSession, boolean):void" />
+		</instance>
+		<instance>
+			<role name="Receiver" element="org.apache.james.imapserver.commands.StoreCommand$StoreCommandParser" />
+			<role name="ConcreteCommand" element="org.apache.james.imapserver.commands.StoreCommand" />
+			<role name="receiver" element="org.apache.james.imapserver.commands.StoreCommand::parser:org.apache.james.imapserver.commands.StoreCommand$StoreCommandParser" />
+			<role name="Execute()" element="org.apache.james.imapserver.commands.StoreCommand::doProcess(org.apache.james.imapserver.ImapRequestLineReader, org.apache.james.imapserver.ImapResponse, org.apache.james.imapserver.ImapSession, boolean):void" />
+		</instance>
+		<instance>
+			<role name="Receiver" element="org.apache.mailet.MailAddress" />
+			<role name="ConcreteCommand" element="org.apache.james.transport.matchers.CommandForListserv" />
+			<role name="receiver" element="org.apache.james.transport.matchers.CommandForListserv::listservAddress:org.apache.mailet.MailAddress" />
+			<role name="Execute()" element="org.apache.james.transport.matchers.CommandForListserv::matchRecipient(org.apache.mailet.MailAddress):boolean" />
+		</instance>
+		<instance>
+			<role name="Receiver" element="org.apache.mailet.MailAddress" />
+			<role name="ConcreteCommand" element="org.apache.james.transport.matchers.CommandListservMatcher" />
+			<role name="receiver" element="org.apache.james.transport.matchers.CommandListservMatcher::listservAddress:org.apache.mailet.MailAddress" />
+			<role name="Execute()" element="org.apache.james.transport.matchers.CommandListservMatcher::matchRecipient(org.apache.mailet.MailAddress):boolean" />
+		</instance>
+		<instance>
+			<role name="Receiver" element="org.apache.james.transport.mailets.ICommandListservManager" />
+			<role name="ConcreteCommand" element="org.apache.james.transport.mailets.listservcommands.BaseCommand" />
+			<role name="receiver" element="org.apache.james.transport.mailets.listservcommands.BaseCommand::commandListservManager:org.apache.james.transport.mailets.ICommandListservManager" />
+			<role name="Execute()" element="org.apache.james.transport.mailets.listservcommands.BaseCommand::init(org.apache.james.transport.mailets.ICommandListservManager, org.apache.avalon.framework.configuration.Configuration):void" />
+		</instance>
+	</pattern>
+	<pattern name="Composite">
+		<instance>
+			<role name="Component" element="org.apache.james.imapserver.commands.IdSet" />
+			<role name="Composite" element="org.apache.james.imapserver.commands.CommandParser$CompoundIdSet" />
+			<role name="Operation()" element="org.apache.james.imapserver.commands.CommandParser$CompoundIdSet::includes(long):boolean" />
+		</instance>
+	</pattern>
+	<pattern name="Decorator">
+		<instance>
+			<role name="Component" element="org.apache.mailet.MatcherConfig" />
+			<role name="Decorator" element="org.apache.mailet.GenericMatcher" />
+			<role name="component" element="org.apache.mailet.GenericMatcher::config:org.apache.mailet.MatcherConfig" />
+			<role name="Operation()" element="org.apache.mailet.GenericMatcher::getCondition():java.lang.String" />
+			<role name="Operation()" element="org.apache.mailet.GenericMatcher::getMatcherName():java.lang.String" />
+		</instance>
+		<instance>
+			<role name="Component" element="org.apache.mailet.MailetConfig" />
+			<role name="Decorator" element="org.apache.mailet.GenericMailet" />
+			<role name="component" element="org.apache.mailet.GenericMailet::config:org.apache.mailet.MailetConfig" />
+			<role name="Operation()" element="org.apache.mailet.GenericMailet::getInitParameter(java.lang.String):java.lang.String" />
+			<role name="Operation()" element="org.apache.mailet.GenericMailet::getInitParameterNames():java.util.Iterator" />
+			<role name="Operation()" element="org.apache.mailet.GenericMailet::getMailetName():java.lang.String" />
+		</instance>
+	</pattern>
+	<pattern name="Observer">
+		<instance>
+			<role name="Observer" element="org.apache.mailet.Mailet" />
+			<role name="Subject" element="org.apache.james.transport.LinearProcessor" />
+			<role name="Notify()" element="org.apache.james.transport.LinearProcessor::dispose():void" />
+		</instance>
+	</pattern>
+	<pattern name="State">
+		<instance>
+			<role name="State" element="org.apache.james.imapserver.ImapSession" />
+			<role name="Context" element="org.apache.james.imapserver.ImapHandler" />
+			<role name="state" element="org.apache.james.imapserver.ImapHandler::session:org.apache.james.imapserver.ImapSession" />
+			<role name="Request()" element="org.apache.james.imapserver.ImapHandler::handleConnection(java.net.Socket):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.apache.james.pop3server.POP3Handler" />
+			<role name="State" element="org.apache.james.services.MailRepository" />
+			<role name="state" element="org.apache.james.pop3server.POP3Handler::userInbox:org.apache.james.services.MailRepository" />
+			<role name="Request()" element="org.apache.james.pop3server.POP3Handler::stat():void" />
+			<role name="Request()" element="org.apache.james.pop3server.POP3Handler::doQUIT(java.lang.String, java.lang.String, java.lang.String):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.apache.james.nntpserver.repository.NNTPSpooler$SpoolerRunnable" />
+			<role name="State" element="org.apache.james.nntpserver.repository.NNTPRepository" />
+			<role name="state" element="org.apache.james.nntpserver.repository.NNTPSpooler$SpoolerRunnable::repo:org.apache.james.nntpserver.repository.NNTPRepository" />
+			<role name="Request()" element="org.apache.james.nntpserver.repository.NNTPSpooler$SpoolerRunnable::process(java.io.File):void" />
+		</instance>
+		<instance>
+			<role name="State" element="org.apache.james.services.UsersRepository" />
+			<role name="Context" element="org.apache.james.remotemanager.RemoteManagerHandler" />
+			<role name="state" element="org.apache.james.remotemanager.RemoteManagerHandler::users:org.apache.james.services.UsersRepository" />
+			<role name="Request()" element="org.apache.james.remotemanager.RemoteManagerHandler::doADDUSER(java.lang.String):boolean" />
+			<role name="Request()" element="org.apache.james.remotemanager.RemoteManagerHandler::doSETPASSWORD(java.lang.String):boolean" />
+			<role name="Request()" element="org.apache.james.remotemanager.RemoteManagerHandler::doDELUSER(java.lang.String):boolean" />
+			<role name="Request()" element="org.apache.james.remotemanager.RemoteManagerHandler::doLISTUSERS(java.lang.String):boolean" />
+			<role name="Request()" element="org.apache.james.remotemanager.RemoteManagerHandler::doCOUNTUSERS(java.lang.String):boolean" />
+			<role name="Request()" element="org.apache.james.remotemanager.RemoteManagerHandler::doVERIFY(java.lang.String):boolean" />
+			<role name="Request()" element="org.apache.james.remotemanager.RemoteManagerHandler::doSETALIAS(java.lang.String):boolean" />
+			<role name="Request()" element="org.apache.james.remotemanager.RemoteManagerHandler::doSETFORWARDING(java.lang.String):boolean" />
+			<role name="Request()" element="org.apache.james.remotemanager.RemoteManagerHandler::doSHOWALIAS(java.lang.String):boolean" />
+			<role name="Request()" element="org.apache.james.remotemanager.RemoteManagerHandler::doSHOWFORWARDING(java.lang.String):boolean" />
+			<role name="Request()" element="org.apache.james.remotemanager.RemoteManagerHandler::doUNSETALIAS(java.lang.String):boolean" />
+			<role name="Request()" element="org.apache.james.remotemanager.RemoteManagerHandler::doUNSETFORWARDING(java.lang.String):boolean" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.apache.james.client.UserManagerAdminClient" />
+			<role name="State" element="org.apache.james.remotemanager.UserManager" />
+			<role name="state" element="org.apache.james.client.UserManagerAdminClient::userManager:org.apache.james.remotemanager.UserManager" />
+			<role name="Request()" element="org.apache.james.client.UserManagerAdminClient::listRepositories(java.lang.String[]):void" />
+			<role name="Request()" element="org.apache.james.client.UserManagerAdminClient::selectRepository(java.lang.String[]):void" />
+			<role name="Request()" element="org.apache.james.client.UserManagerAdminClient::addUser(java.lang.String[]):void" />
+			<role name="Request()" element="org.apache.james.client.UserManagerAdminClient::deleteUser(java.lang.String[]):void" />
+			<role name="Request()" element="org.apache.james.client.UserManagerAdminClient::verifyUser(java.lang.String[]):void" />
+			<role name="Request()" element="org.apache.james.client.UserManagerAdminClient::listUsers():void" />
+			<role name="Request()" element="org.apache.james.client.UserManagerAdminClient::countUsers():void" />
+			<role name="Request()" element="org.apache.james.client.UserManagerAdminClient::setPassword(java.lang.String[]):void" />
+			<role name="Request()" element="org.apache.james.client.UserManagerAdminClient::setAlias(java.lang.String[]):void" />
+			<role name="Request()" element="org.apache.james.client.UserManagerAdminClient::unsetAlias(java.lang.String[]):void" />
+			<role name="Request()" element="org.apache.james.client.UserManagerAdminClient::checkAlias(java.lang.String[]):void" />
+			<role name="Request()" element="org.apache.james.client.UserManagerAdminClient::setForward(java.lang.String[]):void" />
+			<role name="Request()" element="org.apache.james.client.UserManagerAdminClient::unsetForward(java.lang.String[]):void" />
+			<role name="Request()" element="org.apache.james.client.UserManagerAdminClient::checkForward(java.lang.String[]):void" />
+		</instance>
+		<instance>
+			<role name="State" element="org.apache.james.services.MailServer" />
+			<role name="Context" element="org.apache.james.fetchpop.FetchPOP" />
+			<role name="state" element="org.apache.james.fetchpop.FetchPOP::server:org.apache.james.services.MailServer" />
+			<role name="Request()" element="org.apache.james.fetchpop.FetchPOP::targetTriggered(java.lang.String):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.apache.james.nntpserver.NNTPHandler" />
+			<role name="State" element="org.apache.james.util.watchdog.Watchdog" />
+			<role name="state" element="org.apache.james.nntpserver.NNTPHandler::theWatchdog:org.apache.james.util.watchdog.Watchdog" />
+			<role name="Request()" element="org.apache.james.nntpserver.NNTPHandler::handleConnection(java.net.Socket):void" />
+			<role name="Request()" element="org.apache.james.nntpserver.NNTPHandler::doOVER(java.lang.String):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.apache.james.pop3server.POP3Handler" />
+			<role name="State" element="org.apache.james.util.watchdog.Watchdog" />
+			<role name="state" element="org.apache.james.pop3server.POP3Handler::theWatchdog:org.apache.james.util.watchdog.Watchdog" />
+			<role name="Request()" element="org.apache.james.pop3server.POP3Handler::handleConnection(java.net.Socket):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.apache.james.remotemanager.RemoteManagerHandler" />
+			<role name="State" element="org.apache.james.util.watchdog.Watchdog" />
+			<role name="state" element="org.apache.james.remotemanager.RemoteManagerHandler::theWatchdog:org.apache.james.util.watchdog.Watchdog" />
+			<role name="Request()" element="org.apache.james.remotemanager.RemoteManagerHandler::handleConnection(java.net.Socket):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.apache.james.smtpserver.SMTPHandler" />
+			<role name="State" element="org.apache.james.util.watchdog.Watchdog" />
+			<role name="state" element="org.apache.james.smtpserver.SMTPHandler::theWatchdog:org.apache.james.util.watchdog.Watchdog" />
+			<role name="Request()" element="org.apache.james.smtpserver.SMTPHandler::handleConnection(java.net.Socket):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.apache.james.util.watchdog.BytesReadResetInputStream" />
+			<role name="State" element="org.apache.james.util.watchdog.Watchdog" />
+			<role name="state" element="org.apache.james.util.watchdog.BytesReadResetInputStream::watchdog:org.apache.james.util.watchdog.Watchdog" />
+			<role name="Request()" element="org.apache.james.util.watchdog.BytesReadResetInputStream::read(byte[], int, int):int" />
+			<role name="Request()" element="org.apache.james.util.watchdog.BytesReadResetInputStream::read():int" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.apache.james.util.watchdog.BytesWrittenResetOutputStream" />
+			<role name="State" element="org.apache.james.util.watchdog.Watchdog" />
+			<role name="state" element="org.apache.james.util.watchdog.BytesWrittenResetOutputStream::watchdog:org.apache.james.util.watchdog.Watchdog" />
+			<role name="Request()" element="org.apache.james.util.watchdog.BytesWrittenResetOutputStream::write(byte[], int, int):void" />
+			<role name="Request()" element="org.apache.james.util.watchdog.BytesWrittenResetOutputStream::write(int):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.apache.james.nntpserver.NNTPHandler" />
+			<role name="State" element="org.apache.james.nntpserver.repository.NNTPGroup" />
+			<role name="state" element="org.apache.james.nntpserver.NNTPHandler::group:org.apache.james.nntpserver.repository.NNTPGroup" />
+			<role name="Request()" element="org.apache.james.nntpserver.NNTPHandler::doSTAT(java.lang.String):void" />
+			<role name="Request()" element="org.apache.james.nntpserver.NNTPHandler::doBODY(java.lang.String):void" />
+			<role name="Request()" element="org.apache.james.nntpserver.NNTPHandler::doHEAD(java.lang.String):void" />
+			<role name="Request()" element="org.apache.james.nntpserver.NNTPHandler::doARTICLE(java.lang.String):void" />
+			<role name="Request()" element="org.apache.james.nntpserver.NNTPHandler::doNEXT(java.lang.String):void" />
+			<role name="Request()" element="org.apache.james.nntpserver.NNTPHandler::doLAST(java.lang.String):void" />
+			<role name="Request()" element="org.apache.james.nntpserver.NNTPHandler::doGROUP(java.lang.String):void" />
+			<role name="Request()" element="org.apache.james.nntpserver.NNTPHandler::doLISTGROUP(java.lang.String):void" />
+			<role name="Request()" element="org.apache.james.nntpserver.NNTPHandler::getRange(java.lang.String):org.apache.james.nntpserver.repository.NNTPArticle[]" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.apache.james.nntpserver.NNTPHandler" />
+			<role name="State" element="org.apache.james.util.SimplifiedDateFormat" />
+			<role name="state" element="org.apache.james.nntpserver.NNTPHandler::DF_RFC2980:org.apache.james.util.SimplifiedDateFormat" />
+			<role name="state" element="org.apache.james.nntpserver.NNTPHandler::DF_RFC977:org.apache.james.util.SimplifiedDateFormat" />
+			<role name="Request()" element="org.apache.james.nntpserver.NNTPHandler::doDATE(java.lang.String):void" />
+			<role name="Request()" element="org.apache.james.nntpserver.NNTPHandler::getDateFrom(java.lang.String):java.util.Date" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.apache.james.imapserver.JamesImapHost" />
+			<role name="State" element="org.apache.james.imapserver.store.ImapStore" />
+			<role name="state" element="org.apache.james.imapserver.JamesImapHost::store:org.apache.james.imapserver.store.ImapStore" />
+			<role name="Request()" element="org.apache.james.imapserver.JamesImapHost::getMailbox(org.apache.james.services.User, java.lang.String):org.apache.james.imapserver.store.ImapMailbox" />
+			<role name="Request()" element="org.apache.james.imapserver.JamesImapHost::createPrivateMailAccount(org.apache.james.services.User):void" />
+			<role name="Request()" element="org.apache.james.imapserver.JamesImapHost::createMailbox(org.apache.james.services.User, java.lang.String):org.apache.james.imapserver.store.ImapMailbox" />
+			<role name="Request()" element="org.apache.james.imapserver.JamesImapHost::deleteMailbox(org.apache.james.services.User, java.lang.String):void" />
+			<role name="Request()" element="org.apache.james.imapserver.JamesImapHost::renameMailbox(org.apache.james.services.User, java.lang.String, java.lang.String):void" />
+			<role name="Request()" element="org.apache.james.imapserver.JamesImapHost::listMailboxes(org.apache.james.services.User, java.lang.String, boolean):java.util.Collection" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.apache.james.imapserver.JamesHost" />
+			<role name="State" element="org.apache.james.imapserver.RecordRepository" />
+			<role name="state" element="org.apache.james.imapserver.JamesHost::recordRep:org.apache.james.imapserver.RecordRepository" />
+			<role name="Request()" element="org.apache.james.imapserver.JamesHost::initialize():void" />
+			<role name="Request()" element="org.apache.james.imapserver.JamesHost::getAbsoluteMailbox(java.lang.String, java.lang.String):org.apache.james.imapserver.ACLMailbox" />
+			<role name="Request()" element="org.apache.james.imapserver.JamesHost::createAbsoluteMailbox(java.lang.String, java.lang.String):org.apache.james.imapserver.ACLMailbox" />
+			<role name="Request()" element="org.apache.james.imapserver.JamesHost::releaseMailbox(java.lang.String, org.apache.james.imapserver.ACLMailbox):void" />
+			<role name="Request()" element="org.apache.james.imapserver.JamesHost::deleteAbsoluteMailbox(java.lang.String, java.lang.String):boolean" />
+			<role name="Request()" element="org.apache.james.imapserver.JamesHost::renameMailbox(java.lang.String, java.lang.String, java.lang.String):boolean" />
+			<role name="Request()" element="org.apache.james.imapserver.JamesHost::listMailboxes(java.lang.String, java.lang.String, java.lang.String, boolean):java.util.Collection" />
+			<role name="Request()" element="org.apache.james.imapserver.JamesHost::getMailboxStatus(java.lang.String, java.lang.String, java.util.List):java.lang.String" />
+			<role name="Request()" element="org.apache.james.imapserver.JamesHost::createPrivateMailAccount(java.lang.String):boolean" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.apache.james.smtpserver.SMTPHandler" />
+			<role name="State" element="org.apache.james.smtpserver.SMTPHandlerConfigurationData" />
+			<role name="state" element="org.apache.james.smtpserver.SMTPHandler::theConfigData:org.apache.james.smtpserver.SMTPHandlerConfigurationData" />
+			<role name="Request()" element="org.apache.james.smtpserver.SMTPHandler::handleConnection(java.net.Socket):void" />
+			<role name="Request()" element="org.apache.james.smtpserver.SMTPHandler::doHELO(java.lang.String):void" />
+			<role name="Request()" element="org.apache.james.smtpserver.SMTPHandler::doEHLO(java.lang.String):void" />
+			<role name="Request()" element="org.apache.james.smtpserver.SMTPHandler::doPlainAuth(java.lang.String):void" />
+			<role name="Request()" element="org.apache.james.smtpserver.SMTPHandler::doLoginAuth(java.lang.String):void" />
+			<role name="Request()" element="org.apache.james.smtpserver.SMTPHandler::doMailSize(java.lang.String):boolean" />
+			<role name="Request()" element="org.apache.james.smtpserver.SMTPHandler::doRCPT(java.lang.String):void" />
+			<role name="Request()" element="org.apache.james.smtpserver.SMTPHandler::doDATA(java.lang.String):void" />
+			<role name="Request()" element="org.apache.james.smtpserver.SMTPHandler::processMailHeaders(org.apache.james.core.MailHeaders):org.apache.james.core.MailHeaders" />
+			<role name="Request()" element="org.apache.james.smtpserver.SMTPHandler::processMail(org.apache.james.core.MailHeaders, java.io.InputStream):void" />
+			<role name="Request()" element="org.apache.james.smtpserver.SMTPHandler::doQUIT(java.lang.String):void" />
+			<role name="Request()" element="org.apache.james.smtpserver.SMTPHandler::doUnknownCmd(java.lang.String, java.lang.String):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.apache.james.imapserver.ImapServer" />
+			<role name="State" element="org.apache.james.util.watchdog.WatchdogFactory" />
+			<role name="state" element="org.apache.james.imapserver.ImapServer::theWatchdogFactory:org.apache.james.util.watchdog.WatchdogFactory" />
+			<role name="Request()" element="org.apache.james.imapserver.ImapServer::newHandler():org.apache.avalon.cornerstone.services.connection.ConnectionHandler" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.apache.james.nntpserver.NNTPServer" />
+			<role name="State" element="org.apache.james.util.watchdog.WatchdogFactory" />
+			<role name="state" element="org.apache.james.nntpserver.NNTPServer::theWatchdogFactory:org.apache.james.util.watchdog.WatchdogFactory" />
+			<role name="Request()" element="org.apache.james.nntpserver.NNTPServer::newHandler():org.apache.avalon.cornerstone.services.connection.ConnectionHandler" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.apache.james.pop3server.POP3Server" />
+			<role name="State" element="org.apache.james.util.watchdog.WatchdogFactory" />
+			<role name="state" element="org.apache.james.pop3server.POP3Server::theWatchdogFactory:org.apache.james.util.watchdog.WatchdogFactory" />
+			<role name="Request()" element="org.apache.james.pop3server.POP3Server::newHandler():org.apache.avalon.cornerstone.services.connection.ConnectionHandler" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.apache.james.remotemanager.RemoteManager" />
+			<role name="State" element="org.apache.james.util.watchdog.WatchdogFactory" />
+			<role name="state" element="org.apache.james.remotemanager.RemoteManager::theWatchdogFactory:org.apache.james.util.watchdog.WatchdogFactory" />
+			<role name="Request()" element="org.apache.james.remotemanager.RemoteManager::newHandler():org.apache.avalon.cornerstone.services.connection.ConnectionHandler" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.apache.james.smtpserver.SMTPServer" />
+			<role name="State" element="org.apache.james.util.watchdog.WatchdogFactory" />
+			<role name="state" element="org.apache.james.smtpserver.SMTPServer::theWatchdogFactory:org.apache.james.util.watchdog.WatchdogFactory" />
+			<role name="Request()" element="org.apache.james.smtpserver.SMTPServer::newHandler():org.apache.avalon.cornerstone.services.connection.ConnectionHandler" />
+		</instance>
+		<instance>
+			<role name="State" element="org.apache.james.core.MimeMessageSource" />
+			<role name="Context" element="org.apache.james.core.MimeMessageWrapper" />
+			<role name="state" element="org.apache.james.core.MimeMessageWrapper::source:org.apache.james.core.MimeMessageSource" />
+			<role name="Request()" element="org.apache.james.core.MimeMessageWrapper::getSourceId():java.lang.String" />
+			<role name="Request()" element="org.apache.james.core.MimeMessageWrapper::loadHeaders():void" />
+			<role name="Request()" element="org.apache.james.core.MimeMessageWrapper::loadMessage():void" />
+			<role name="Request()" element="org.apache.james.core.MimeMessageWrapper::writeTo(java.io.OutputStream):void" />
+			<role name="Request()" element="org.apache.james.core.MimeMessageWrapper::writeTo(java.io.OutputStream, java.io.OutputStream, java.lang.String[]):void" />
+		</instance>
+		<instance>
+			<role name="State" element="org.apache.james.services.SpoolRepository" />
+			<role name="Context" element="org.apache.james.transport.JamesSpoolManager" />
+			<role name="state" element="org.apache.james.transport.JamesSpoolManager::spool:org.apache.james.services.SpoolRepository" />
+			<role name="Request()" element="org.apache.james.transport.JamesSpoolManager::run():void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.apache.james.remotemanager.UserManagerImpl" />
+			<role name="State" element="org.apache.james.services.UsersRepository" />
+			<role name="state" element="org.apache.james.remotemanager.UserManagerImpl::users:org.apache.james.services.UsersRepository" />
+			<role name="Request()" element="org.apache.james.remotemanager.UserManagerImpl::addUser(java.lang.String, java.lang.String):boolean" />
+			<role name="Request()" element="org.apache.james.remotemanager.UserManagerImpl::deleteUser(java.lang.String):boolean" />
+			<role name="Request()" element="org.apache.james.remotemanager.UserManagerImpl::verifyUser(java.lang.String):boolean" />
+			<role name="Request()" element="org.apache.james.remotemanager.UserManagerImpl::getCountUsers():int" />
+			<role name="Request()" element="org.apache.james.remotemanager.UserManagerImpl::getUserList():java.util.ArrayList" />
+			<role name="Request()" element="org.apache.james.remotemanager.UserManagerImpl::setPassword(java.lang.String, java.lang.String):boolean" />
+			<role name="Request()" element="org.apache.james.remotemanager.UserManagerImpl::setAlias(java.lang.String, java.lang.String):boolean" />
+			<role name="Request()" element="org.apache.james.remotemanager.UserManagerImpl::unsetAlias(java.lang.String):boolean" />
+			<role name="Request()" element="org.apache.james.remotemanager.UserManagerImpl::checkAlias(java.lang.String):java.lang.String" />
+			<role name="Request()" element="org.apache.james.remotemanager.UserManagerImpl::setForward(java.lang.String, java.lang.String):boolean" />
+			<role name="Request()" element="org.apache.james.remotemanager.UserManagerImpl::unsetForward(java.lang.String):boolean" />
+			<role name="Request()" element="org.apache.james.remotemanager.UserManagerImpl::checkForward(java.lang.String):java.lang.String" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.apache.james.remotemanager.RemoteManager" />
+			<role name="State" element="org.apache.james.services.UsersStore" />
+			<role name="state" element="org.apache.james.remotemanager.RemoteManager::usersStore:org.apache.james.services.UsersStore" />
+			<role name="Request()" element="org.apache.james.remotemanager.RemoteManager::compose(org.apache.avalon.framework.component.ComponentManager):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.apache.james.James" />
+			<role name="State" element="org.apache.james.services.UsersRepository" />
+			<role name="state" element="org.apache.james.James::localusers:org.apache.james.services.UsersRepository" />
+			<role name="Request()" element="org.apache.james.James::isLocalUser(java.lang.String):boolean" />
+			<role name="Request()" element="org.apache.james.James::storeMail(org.apache.mailet.MailAddress, org.apache.mailet.MailAddress, javax.mail.internet.MimeMessage):void" />
+			<role name="Request()" element="org.apache.james.James::addUser(java.lang.String, java.lang.String):boolean" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.apache.james.transport.mailets.CommandListservProcessor" />
+			<role name="State" element="org.apache.james.services.UsersRepository" />
+			<role name="state" element="org.apache.james.transport.mailets.CommandListservProcessor::usersRepository:org.apache.james.services.UsersRepository" />
+			<role name="Request()" element="org.apache.james.transport.mailets.CommandListservProcessor::getMembers():java.util.Collection" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.apache.james.transport.mailets.AvalonListserv" />
+			<role name="State" element="org.apache.james.services.UsersRepository" />
+			<role name="state" element="org.apache.james.transport.mailets.AvalonListserv::members:org.apache.james.services.UsersRepository" />
+			<role name="Request()" element="org.apache.james.transport.mailets.AvalonListserv::getMembers():java.util.Collection" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.apache.james.transport.mailets.AvalonListservManager" />
+			<role name="State" element="org.apache.james.services.UsersRepository" />
+			<role name="state" element="org.apache.james.transport.mailets.AvalonListservManager::members:org.apache.james.services.UsersRepository" />
+			<role name="Request()" element="org.apache.james.transport.mailets.AvalonListservManager::addAddress(org.apache.mailet.MailAddress):boolean" />
+			<role name="Request()" element="org.apache.james.transport.mailets.AvalonListservManager::removeAddress(org.apache.mailet.MailAddress):boolean" />
+			<role name="Request()" element="org.apache.james.transport.mailets.AvalonListservManager::existsAddress(org.apache.mailet.MailAddress):boolean" />
+		</instance>
+		<instance>
+			<role name="State" element="org.apache.james.transport.mailets.ICommandListservManager" />
+			<role name="Context" element="org.apache.james.transport.mailets.CommandListservFooter" />
+			<role name="state" element="org.apache.james.transport.mailets.CommandListservFooter::commandListservManager:org.apache.james.transport.mailets.ICommandListservManager" />
+			<role name="Request()" element="org.apache.james.transport.mailets.CommandListservFooter::init():void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.apache.james.nntpserver.NNTPHandler" />
+			<role name="State" element="org.apache.james.nntpserver.NNTPHandlerConfigurationData" />
+			<role name="state" element="org.apache.james.nntpserver.NNTPHandler::theConfigData:org.apache.james.nntpserver.NNTPHandlerConfigurationData" />
+			<role name="Request()" element="org.apache.james.nntpserver.NNTPHandler::handleConnection(java.net.Socket):void" />
+			<role name="Request()" element="org.apache.james.nntpserver.NNTPHandler::doNEWNEWS(java.lang.String):void" />
+			<role name="Request()" element="org.apache.james.nntpserver.NNTPHandler::doNEWGROUPS(java.lang.String):void" />
+			<role name="Request()" element="org.apache.james.nntpserver.NNTPHandler::doLIST(java.lang.String):void" />
+			<role name="Request()" element="org.apache.james.nntpserver.NNTPHandler::doIHAVE(java.lang.String):void" />
+			<role name="Request()" element="org.apache.james.nntpserver.NNTPHandler::doSTAT(java.lang.String):void" />
+			<role name="Request()" element="org.apache.james.nntpserver.NNTPHandler::doBODY(java.lang.String):void" />
+			<role name="Request()" element="org.apache.james.nntpserver.NNTPHandler::doHEAD(java.lang.String):void" />
+			<role name="Request()" element="org.apache.james.nntpserver.NNTPHandler::doARTICLE(java.lang.String):void" />
+			<role name="Request()" element="org.apache.james.nntpserver.NNTPHandler::doGROUP(java.lang.String):void" />
+			<role name="Request()" element="org.apache.james.nntpserver.NNTPHandler::doMODEREADER(java.lang.String):void" />
+			<role name="Request()" element="org.apache.james.nntpserver.NNTPHandler::doLISTGROUP(java.lang.String):void" />
+			<role name="Request()" element="org.apache.james.nntpserver.NNTPHandler::doLISTOVERVIEWFMT():void" />
+			<role name="Request()" element="org.apache.james.nntpserver.NNTPHandler::processMessage(org.apache.james.core.MailHeaders, java.io.InputStream):void" />
+			<role name="Request()" element="org.apache.james.nntpserver.NNTPHandler::getRange(java.lang.String):org.apache.james.nntpserver.repository.NNTPArticle[]" />
+			<role name="Request()" element="org.apache.james.nntpserver.NNTPHandler::isAuthenticated():boolean" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.apache.james.pop3server.POP3Handler" />
+			<role name="State" element="org.apache.james.pop3server.POP3HandlerConfigurationData" />
+			<role name="state" element="org.apache.james.pop3server.POP3Handler::theConfigData:org.apache.james.pop3server.POP3HandlerConfigurationData" />
+			<role name="Request()" element="org.apache.james.pop3server.POP3Handler::handleConnection(java.net.Socket):void" />
+			<role name="Request()" element="org.apache.james.pop3server.POP3Handler::doPASS(java.lang.String, java.lang.String, java.lang.String):void" />
+			<role name="Request()" element="org.apache.james.pop3server.POP3Handler::doRETR(java.lang.String, java.lang.String, java.lang.String):void" />
+			<role name="Request()" element="org.apache.james.pop3server.POP3Handler::doTOP(java.lang.String, java.lang.String, java.lang.String):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.apache.james.remotemanager.RemoteManagerHandler" />
+			<role name="State" element="org.apache.james.remotemanager.RemoteManagerHandlerConfigurationData" />
+			<role name="state" element="org.apache.james.remotemanager.RemoteManagerHandler::theConfigData:org.apache.james.remotemanager.RemoteManagerHandlerConfigurationData" />
+			<role name="Request()" element="org.apache.james.remotemanager.RemoteManagerHandler::setConfigurationData(org.apache.james.remotemanager.RemoteManagerHandlerConfigurationData):void" />
+			<role name="Request()" element="org.apache.james.remotemanager.RemoteManagerHandler::handleConnection(java.net.Socket):void" />
+			<role name="Request()" element="org.apache.james.remotemanager.RemoteManagerHandler::resetHandler():void" />
+			<role name="Request()" element="org.apache.james.remotemanager.RemoteManagerHandler::doADDUSER(java.lang.String):boolean" />
+			<role name="Request()" element="org.apache.james.remotemanager.RemoteManagerHandler::doUSER(java.lang.String):boolean" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.apache.james.transport.mailets.FromRepository" />
+			<role name="State" element="org.apache.james.services.MailRepository" />
+			<role name="state" element="org.apache.james.transport.mailets.FromRepository::repository:org.apache.james.services.MailRepository" />
+			<role name="Request()" element="org.apache.james.transport.mailets.FromRepository::service(org.apache.mailet.Mail):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.apache.james.transport.mailets.ToRepository" />
+			<role name="State" element="org.apache.james.services.MailRepository" />
+			<role name="state" element="org.apache.james.transport.mailets.ToRepository::repository:org.apache.james.services.MailRepository" />
+			<role name="Request()" element="org.apache.james.transport.mailets.ToRepository::service(org.apache.mailet.Mail):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.apache.james.imapserver.ImapHandler" />
+			<role name="State" element="org.apache.james.imapserver.ImapHandlerConfigurationData" />
+			<role name="state" element="org.apache.james.imapserver.ImapHandler::theConfigData:org.apache.james.imapserver.ImapHandlerConfigurationData" />
+			<role name="Request()" element="org.apache.james.imapserver.ImapHandler::handleConnection(java.net.Socket):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.apache.james.imapserver.ImapHandler" />
+			<role name="State" element="org.apache.james.util.watchdog.Watchdog" />
+			<role name="state" element="org.apache.james.imapserver.ImapHandler::theWatchdog:org.apache.james.util.watchdog.Watchdog" />
+			<role name="Request()" element="org.apache.james.imapserver.ImapHandler::handleConnection(java.net.Socket):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.apache.james.transport.mailets.RemoteDelivery" />
+			<role name="State" element="org.apache.james.services.SpoolRepository" />
+			<role name="state" element="org.apache.james.transport.mailets.RemoteDelivery::outgoing:org.apache.james.services.SpoolRepository" />
+			<role name="Request()" element="org.apache.james.transport.mailets.RemoteDelivery::run():void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.apache.james.James" />
+			<role name="State" element="org.apache.james.services.MailStore" />
+			<role name="state" element="org.apache.james.James::mailstore:org.apache.james.services.MailStore" />
+			<role name="Request()" element="org.apache.james.James::initialize():void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.apache.james.imapserver.FileMailbox" />
+			<role name="State" element="org.apache.james.imapserver.HighestUID" />
+			<role name="state" element="org.apache.james.imapserver.FileMailbox::highestUID:org.apache.james.imapserver.HighestUID" />
+			<role name="Request()" element="org.apache.james.imapserver.FileMailbox::getNextUID():int" />
+			<role name="Request()" element="org.apache.james.imapserver.FileMailbox::store(javax.mail.internet.MimeMessage, java.lang.String, org.apache.james.imapserver.MessageAttributes, org.apache.james.imapserver.Flags):boolean" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.apache.james.imapserver.commands.ArgumentTest$ParseChecker" />
+			<role name="State" element="org.apache.james.imapserver.commands.ImapArgument" />
+			<role name="state" element="org.apache.james.imapserver.commands.ArgumentTest$ParseChecker::arg:org.apache.james.imapserver.commands.ImapArgument" />
+			<role name="Request()" element="org.apache.james.imapserver.commands.ArgumentTest$ParseChecker::check(java.lang.Object, java.lang.String):void" />
+			<role name="Request()" element="org.apache.james.imapserver.commands.ArgumentTest$ParseChecker::checkFail(java.lang.String, java.lang.String):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.apache.james.remotemanager.UserManagerImpl" />
+			<role name="State" element="org.apache.james.services.UsersStore" />
+			<role name="state" element="org.apache.james.remotemanager.UserManagerImpl::usersStore:org.apache.james.services.UsersStore" />
+			<role name="Request()" element="org.apache.james.remotemanager.UserManagerImpl::compose(org.apache.avalon.framework.component.ComponentManager):void" />
+			<role name="Request()" element="org.apache.james.remotemanager.UserManagerImpl::getRepositoryNames():java.util.ArrayList" />
+			<role name="Request()" element="org.apache.james.remotemanager.UserManagerImpl::setRepository(java.lang.String):boolean" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.apache.james.James" />
+			<role name="State" element="org.apache.james.services.UsersStore" />
+			<role name="state" element="org.apache.james.James::usersStore:org.apache.james.services.UsersStore" />
+			<role name="Request()" element="org.apache.james.James::initialize():void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.apache.james.smtpserver.SMTPServer" />
+			<role name="State" element="org.apache.mailet.MailetContext" />
+			<role name="state" element="org.apache.james.smtpserver.SMTPServer::mailetcontext:org.apache.mailet.MailetContext" />
+			<role name="Request()" element="org.apache.james.smtpserver.SMTPServer::configure(org.apache.avalon.framework.configuration.Configuration):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.apache.james.remotemanager.UserManagerImpl" />
+			<role name="State" element="org.apache.james.services.MailServer" />
+			<role name="state" element="org.apache.james.remotemanager.UserManagerImpl::mailServer:org.apache.james.services.MailServer" />
+			<role name="Request()" element="org.apache.james.remotemanager.UserManagerImpl::addUser(java.lang.String, java.lang.String):boolean" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.apache.james.imapserver.JamesHost" />
+			<role name="State" element="org.apache.james.services.UsersRepository" />
+			<role name="state" element="org.apache.james.imapserver.JamesHost::localUsers:org.apache.james.services.UsersRepository" />
+			<role name="Request()" element="org.apache.james.imapserver.JamesHost::isHomeServer(java.lang.String):boolean" />
+			<role name="Request()" element="org.apache.james.imapserver.JamesHost::hasLocalAccess(java.lang.String):boolean" />
+		</instance>
+		<instance>
+			<role name="Context" element="org.apache.james.util.watchdog.InaccurateTimeoutWatchdog" />
+			<role name="State" element="org.apache.james.util.watchdog.WatchdogTarget" />
+			<role name="state" element="org.apache.james.util.watchdog.InaccurateTimeoutWatchdog::triggerTarget:org.apache.james.util.watchdog.WatchdogTarget" />
+			<role name="Request()" element="org.apache.james.util.watchdog.InaccurateTimeoutWatchdog::run():void" />
+		</instance>
+	</pattern>
+	<pattern name="Strategy" />
+	<pattern name="Bridge">
+		<instance>
+			<role name="Abstraction" element="org.apache.james.transport.mailets.listservcommands.BaseCommand" />
+			<role name="Implementor" element="org.apache.james.transport.mailets.ICommandListservManager" />
+			<role name="implementor" element="org.apache.james.transport.mailets.listservcommands.BaseCommand::commandListservManager:org.apache.james.transport.mailets.ICommandListservManager" />
+			<role name="Operation()" element="org.apache.james.transport.mailets.listservcommands.BaseCommand::getUsersRepository():org.apache.james.services.UsersRepository" />
+			<role name="Operation()" element="org.apache.james.transport.mailets.listservcommands.BaseCommand::getStandardProperties():java.util.Properties" />
+			<role name="Operation()" element="org.apache.james.transport.mailets.listservcommands.BaseCommand::initXMLResources(java.lang.String[]):org.apache.james.util.XMLResources[]" />
+		</instance>
+		<instance>
+			<role name="Abstraction" element="org.apache.james.core.AbstractJamesService" />
+			<role name="Implementor" element="org.apache.james.services.JamesConnectionManager" />
+			<role name="implementor" element="org.apache.james.core.AbstractJamesService::connectionManager:org.apache.james.services.JamesConnectionManager" />
+			<role name="Operation()" element="org.apache.james.core.AbstractJamesService::configure(org.apache.avalon.framework.configuration.Configuration):void" />
+			<role name="Operation()" element="org.apache.james.core.AbstractJamesService::initialize():void" />
+		</instance>
+		<instance>
+			<role name="Abstraction" element="org.apache.james.transport.mailets.listservcommands.BaseCommand" />
+			<role name="Implementor" element="org.apache.mailet.MailetContext" />
+			<role name="implementor" element="org.apache.james.transport.mailets.listservcommands.BaseCommand::mailetContext:org.apache.mailet.MailetContext" />
+			<role name="Operation()" element="org.apache.james.transport.mailets.listservcommands.BaseCommand::log(java.lang.String):void" />
+			<role name="Operation()" element="org.apache.james.transport.mailets.listservcommands.BaseCommand::log(java.lang.String, java.lang.Throwable):void" />
+		</instance>
+		<instance>
+			<role name="Abstraction" element="org.apache.james.transport.matchers.AbstractStorageQuota" />
+			<role name="Implementor" element="org.apache.james.services.UsersRepository" />
+			<role name="implementor" element="org.apache.james.transport.matchers.AbstractStorageQuota::localusers:org.apache.james.services.UsersRepository" />
+			<role name="Operation()" element="org.apache.james.transport.matchers.AbstractStorageQuota::getPrimaryName(java.lang.String):java.lang.String" />
+		</instance>
+		<instance>
+			<role name="Abstraction" element="org.apache.james.transport.matchers.AbstractStorageQuota" />
+			<role name="Implementor" element="org.apache.james.services.MailServer" />
+			<role name="implementor" element="org.apache.james.transport.matchers.AbstractStorageQuota::mailServer:org.apache.james.services.MailServer" />
+			<role name="Operation()" element="org.apache.james.transport.matchers.AbstractStorageQuota::getUsed(org.apache.mailet.MailAddress, org.apache.mailet.Mail):long" />
+		</instance>
+		<instance>
+			<role name="Abstraction" element="org.apache.james.transport.matchers.AbstractStorageQuota" />
+			<role name="Implementor" element="org.apache.james.services.UsersStore" />
+			<role name="implementor" element="org.apache.james.transport.matchers.AbstractStorageQuota::usersStore:org.apache.james.services.UsersStore" />
+			<role name="Operation()" element="org.apache.james.transport.matchers.AbstractStorageQuota::init():void" />
+		</instance>
+	</pattern>
+	<pattern name="Template Method">
+		<instance>
+			<role name="AbstractClass" element="org.apache.james.imapserver.commands.AbstractAclCommand" />
+			<role name="TemplateMethod()" element="org.apache.james.imapserver.commands.AbstractAclCommand::process(org.apache.james.imapserver.ImapRequest, org.apache.james.imapserver.ImapSession):boolean" />
+		</instance>
+		<instance>
+			<role name="AbstractClass" element="org.apache.james.test.AbstractProtocolTest$ServerResponse$ElementTest" />
+			<role name="TemplateMethod()" element="org.apache.james.test.AbstractProtocolTest$ServerResponse$ElementTest::test(java.util.ListIterator, java.lang.String):void" />
+			<role name="TemplateMethod()" element="org.apache.james.test.AbstractProtocolTest$ServerResponse$ElementTest::test(java.util.ListIterator):void" />
+			<role name="TemplateMethod()" element="org.apache.james.test.AbstractProtocolTest$ServerResponse$ElementTest::softTest(java.util.ListIterator, java.lang.String):boolean" />
+		</instance>
+		<instance>
+			<role name="AbstractClass" element="org.apache.james.imapserver.commands.CommandTemplate" />
+			<role name="TemplateMethod()" element="org.apache.james.imapserver.commands.CommandTemplate::process(org.apache.james.imapserver.ImapRequestLineReader, org.apache.james.imapserver.ImapResponse, org.apache.james.imapserver.ImapSession):void" />
+			<role name="TemplateMethod()" element="org.apache.james.imapserver.commands.CommandTemplate::getExpectedMessage():java.lang.String" />
+		</instance>
+		<instance>
+			<role name="AbstractClass" element="org.apache.james.core.MimeMessageSource" />
+			<role name="TemplateMethod()" element="org.apache.james.core.MimeMessageSource::getMessageSize():long" />
+		</instance>
+		<instance>
+			<role name="AbstractClass" element="org.apache.james.mailrepository.filepair.AbstractFileRepository" />
+			<role name="TemplateMethod()" element="org.apache.james.mailrepository.filepair.AbstractFileRepository::initialize():void" />
+		</instance>
+		<instance>
+			<role name="AbstractClass" element="org.apache.james.transport.mailets.AbstractVirtualUserTable" />
+			<role name="TemplateMethod()" element="org.apache.james.transport.mailets.AbstractVirtualUserTable::service(org.apache.mailet.Mail):void" />
+		</instance>
+		<instance>
+			<role name="AbstractClass" element="org.apache.james.transport.mailets.GenericListserv" />
+			<role name="TemplateMethod()" element="org.apache.james.transport.mailets.GenericListserv::service(org.apache.mailet.Mail):void" />
+		</instance>
+		<instance>
+			<role name="AbstractClass" element="org.apache.james.transport.mailets.GenericListservManager" />
+			<role name="TemplateMethod()" element="org.apache.james.transport.mailets.GenericListservManager::service(org.apache.mailet.Mail):void" />
+		</instance>
+		<instance>
+			<role name="AbstractClass" element="org.apache.james.transport.matchers.AbstractQuotaMatcher" />
+			<role name="TemplateMethod()" element="org.apache.james.transport.matchers.AbstractQuotaMatcher::isOverQuota(org.apache.mailet.MailAddress, org.apache.mailet.Mail):boolean" />
+		</instance>
+		<instance>
+			<role name="AbstractClass" element="org.apache.james.userrepository.AbstractJdbcUsersRepository" />
+			<role name="TemplateMethod()" element="org.apache.james.userrepository.AbstractJdbcUsersRepository::getAllUsers():java.util.Collection" />
+			<role name="TemplateMethod()" element="org.apache.james.userrepository.AbstractJdbcUsersRepository::doAddUser(org.apache.james.services.User):void" />
+			<role name="TemplateMethod()" element="org.apache.james.userrepository.AbstractJdbcUsersRepository::doUpdateUser(org.apache.james.services.User):void" />
+			<role name="TemplateMethod()" element="org.apache.james.userrepository.AbstractJdbcUsersRepository::getUserByName(java.lang.String, boolean):org.apache.james.services.User" />
+		</instance>
+		<instance>
+			<role name="AbstractClass" element="org.apache.james.userrepository.AbstractUsersRepository" />
+			<role name="TemplateMethod()" element="org.apache.james.userrepository.AbstractUsersRepository::listUserNames():java.util.List" />
+			<role name="TemplateMethod()" element="org.apache.james.userrepository.AbstractUsersRepository::getUserByName(java.lang.String, boolean):org.apache.james.services.User" />
+			<role name="TemplateMethod()" element="org.apache.james.userrepository.AbstractUsersRepository::addUser(org.apache.james.services.User):boolean" />
+			<role name="TemplateMethod()" element="org.apache.james.userrepository.AbstractUsersRepository::updateUser(org.apache.james.services.User):boolean" />
+			<role name="TemplateMethod()" element="org.apache.james.userrepository.AbstractUsersRepository::removeUser(java.lang.String):void" />
+		</instance>
+		<instance>
+			<role name="AbstractClass" element="org.apache.james.util.JDBCUtil" />
+			<role name="TemplateMethod()" element="org.apache.james.util.JDBCUtil::subclassLogWrapper(java.lang.String):void" />
+		</instance>
+		<instance>
+			<role name="AbstractClass" element="org.apache.james.util.mail.handlers.AbstractDataContentHandler" />
+			<role name="TemplateMethod()" element="org.apache.james.util.mail.handlers.AbstractDataContentHandler::updateDataFlavor():void" />
+			<role name="TemplateMethod()" element="org.apache.james.util.mail.handlers.AbstractDataContentHandler::getContent(javax.activation.DataSource):java.lang.Object" />
+		</instance>
+		<instance>
+			<role name="AbstractClass" element="org.apache.mailet.GenericRecipientMatcher" />
+			<role name="TemplateMethod()" element="org.apache.mailet.GenericRecipientMatcher::match(org.apache.mailet.Mail):java.util.Collection" />
+		</instance>
+	</pattern>
+	<pattern name="Visitor" />
+	<pattern name="Proxy">
+		<instance>
+			<role name="Proxy" element="org.apache.james.util.RFC977DateFormat" />
+			<role name="RealSubject" element="org.apache.james.util.SynchronizedDateFormat" />
+			<role name="Request()" element="org.apache.james.util.RFC977DateFormat::format(java.util.Date):java.lang.String" />
+			<role name="Request()" element="org.apache.james.util.RFC977DateFormat::parse(java.lang.String):java.util.Date" />
+			<role name="Request()" element="org.apache.james.util.RFC977DateFormat::setTimeZone(java.util.TimeZone):void" />
+			<role name="Request()" element="org.apache.james.util.RFC977DateFormat::getTimeZone():java.util.TimeZone" />
+			<role name="Request()" element="org.apache.james.util.RFC977DateFormat::setLenient(boolean):void" />
+			<role name="Request()" element="org.apache.james.util.RFC977DateFormat::isLenient():boolean" />
+		</instance>
+	</pattern>
+	<pattern name="Proxy2" />
+	<pattern name="Chain of Responsibility" />
+</system>
+

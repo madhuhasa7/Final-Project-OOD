@@ -1,0 +1,2024 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<system>
+	<pattern name="Factory Method">
+		<instance>
+			<role name="Creator" element="artofillusion.animation.distortion.Distortion" />
+			<role name="FactoryMethod()" element="artofillusion.animation.distortion.Distortion::duplicate():artofillusion.animation.distortion.Distortion" />
+		</instance>
+		<instance>
+			<role name="Creator" element="artofillusion.animation.Gesture" />
+			<role name="FactoryMethod()" element="artofillusion.animation.Gesture::blend(artofillusion.animation.Gesture[], double[]):artofillusion.animation.Gesture" />
+		</instance>
+		<instance>
+			<role name="Creator" element="artofillusion.animation.Keyframe" />
+			<role name="FactoryMethod()" element="artofillusion.animation.Keyframe::duplicate():artofillusion.animation.Keyframe" />
+			<role name="FactoryMethod()" element="artofillusion.animation.Keyframe::duplicate(java.lang.Object):artofillusion.animation.Keyframe" />
+			<role name="FactoryMethod()" element="artofillusion.animation.Keyframe::blend(artofillusion.animation.Keyframe, double, double):artofillusion.animation.Keyframe" />
+			<role name="FactoryMethod()" element="artofillusion.animation.Keyframe::blend(artofillusion.animation.Keyframe, artofillusion.animation.Keyframe, double, double, double):artofillusion.animation.Keyframe" />
+			<role name="FactoryMethod()" element="artofillusion.animation.Keyframe::blend(artofillusion.animation.Keyframe, artofillusion.animation.Keyframe, artofillusion.animation.Keyframe, double, double, double, double):artofillusion.animation.Keyframe" />
+		</instance>
+		<instance>
+			<role name="Creator" element="artofillusion.animation.Track" />
+			<role name="FactoryMethod()" element="artofillusion.animation.Track::duplicate(java.lang.Object):artofillusion.animation.Track" />
+		</instance>
+		<instance>
+			<role name="Creator" element="artofillusion.material.Material" />
+			<role name="FactoryMethod()" element="artofillusion.material.Material::getDefaultMapping(artofillusion.object.Object3D):artofillusion.material.MaterialMapping" />
+			<role name="FactoryMethod()" element="artofillusion.material.Material::duplicate():artofillusion.material.Material" />
+		</instance>
+		<instance>
+			<role name="Creator" element="artofillusion.material.MaterialMapping" />
+			<role name="FactoryMethod()" element="artofillusion.material.MaterialMapping::duplicate(artofillusion.object.Object3D, artofillusion.material.Material):artofillusion.material.MaterialMapping" />
+			<role name="FactoryMethod()" element="artofillusion.material.MaterialMapping::duplicate():artofillusion.material.MaterialMapping" />
+		</instance>
+		<instance>
+			<role name="Creator" element="artofillusion.object.Mesh" />
+			<role name="FactoryMethod()" element="artofillusion.object.Mesh::duplicate():artofillusion.object.Object3D" />
+			<role name="FactoryMethod()" element="artofillusion.object.Mesh::createMeshViewer(artofillusion.ui.MeshEditController, buoy.widget.RowContainer):artofillusion.MeshViewer" />
+		</instance>
+		<instance>
+			<role name="Creator" element="artofillusion.object.Object3D" />
+			<role name="FactoryMethod()" element="artofillusion.object.Object3D::duplicate():artofillusion.object.Object3D" />
+			<role name="FactoryMethod()" element="artofillusion.object.Object3D::getPoseKeyframe():artofillusion.animation.Keyframe" />
+			<role name="FactoryMethod()" element="artofillusion.object.Object3D::getBounds():artofillusion.math.BoundingBox" />
+		</instance>
+		<instance>
+			<role name="Creator" element="artofillusion.ObjectEditorWindow" />
+			<role name="FactoryMethod()" element="artofillusion.ObjectEditorWindow::createViewerCanvas(int, buoy.widget.RowContainer):artofillusion.ViewerCanvas" />
+		</instance>
+		<instance>
+			<role name="Creator" element="artofillusion.raytracer.RTObject" />
+			<role name="FactoryMethod()" element="artofillusion.raytracer.RTObject::checkIntersection(artofillusion.raytracer.Ray):artofillusion.raytracer.SurfaceIntersection" />
+			<role name="FactoryMethod()" element="artofillusion.raytracer.RTObject::getBounds():artofillusion.math.BoundingBox" />
+		</instance>
+		<instance>
+			<role name="Creator" element="artofillusion.texture.ParameterValue" />
+			<role name="FactoryMethod()" element="artofillusion.texture.ParameterValue::duplicate():artofillusion.texture.ParameterValue" />
+		</instance>
+		<instance>
+			<role name="Creator" element="artofillusion.texture.Texture" />
+			<role name="FactoryMethod()" element="artofillusion.texture.Texture::getDefaultMapping(artofillusion.object.Object3D):artofillusion.texture.TextureMapping" />
+			<role name="FactoryMethod()" element="artofillusion.texture.Texture::duplicate():artofillusion.texture.Texture" />
+		</instance>
+		<instance>
+			<role name="Creator" element="artofillusion.texture.TextureMapping" />
+			<role name="FactoryMethod()" element="artofillusion.texture.TextureMapping::duplicate(artofillusion.object.Object3D, artofillusion.texture.Texture):artofillusion.texture.TextureMapping" />
+			<role name="FactoryMethod()" element="artofillusion.texture.TextureMapping::duplicate():artofillusion.texture.TextureMapping" />
+		</instance>
+	</pattern>
+	<pattern name="Prototype" />
+	<pattern name="Singleton">
+		<instance>
+			<role name="Singleton" element="artofillusion.raytracer.SurfaceIntersection" />
+			<role name="uniqueInstance" element="artofillusion.raytracer.SurfaceIntersection::NO_INTERSECTION:artofillusion.raytracer.SurfaceIntersection" />
+		</instance>
+		<instance>
+			<role name="Singleton" element="artofillusion.spmanager.SPManagerFrame" />
+			<role name="uniqueInstance" element="artofillusion.spmanager.SPManagerFrame::spmFrame:artofillusion.spmanager.SPManagerFrame" />
+		</instance>
+	</pattern>
+	<pattern name="(Object)Adapter">
+		<instance>
+			<role name="Adapter" element="artofillusion.LayoutWindow" />
+			<role name="Adaptee" element="artofillusion.UndoStack" />
+			<role name="adaptee" element="artofillusion.LayoutWindow::undoStack:artofillusion.UndoStack" />
+			<role name="Request()" element="artofillusion.LayoutWindow::updateMenus():void" />
+			<role name="Request()" element="artofillusion.LayoutWindow::setUndoRecord(artofillusion.UndoRecord):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="artofillusion.animation.ProceduralPositionTrack" />
+			<role name="Adaptee" element="artofillusion.object.ObjectInfo" />
+			<role name="adaptee" element="artofillusion.animation.ProceduralPositionTrack::info:artofillusion.object.ObjectInfo" />
+			<role name="Request()" element="artofillusion.animation.ProceduralPositionTrack::acceptEdits(artofillusion.procedural.ProcedureEditor):void" />
+			<role name="Request()" element="artofillusion.animation.ProceduralPositionTrack::editProperties(artofillusion.procedural.ProcedureEditor):void" />
+			<role name="Request()" element="artofillusion.animation.ProceduralPositionTrack::apply(double):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="artofillusion.animation.ProceduralPositionTrack" />
+			<role name="Adaptee" element="artofillusion.animation.Timecourse" />
+			<role name="adaptee" element="artofillusion.animation.ProceduralPositionTrack::tc:artofillusion.animation.Timecourse" />
+			<role name="Request()" element="artofillusion.animation.ProceduralPositionTrack::acceptEdits(artofillusion.procedural.ProcedureEditor):void" />
+			<role name="Request()" element="artofillusion.animation.ProceduralPositionTrack::apply(double):void" />
+			<role name="Request()" element="artofillusion.animation.ProceduralPositionTrack::duplicate(java.lang.Object):artofillusion.animation.Track" />
+			<role name="Request()" element="artofillusion.animation.ProceduralPositionTrack::copy(artofillusion.animation.Track):void" />
+			<role name="Request()" element="artofillusion.animation.ProceduralPositionTrack::getKeyTimes():double[]" />
+			<role name="Request()" element="artofillusion.animation.ProceduralPositionTrack::moveKeyframe(int, double):int" />
+			<role name="Request()" element="artofillusion.animation.ProceduralPositionTrack::deleteKeyframe(int):void" />
+			<role name="Request()" element="artofillusion.animation.ProceduralPositionTrack::writeToStream(java.io.DataOutputStream, artofillusion.Scene):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="artofillusion.animation.ProceduralRotationTrack" />
+			<role name="Adaptee" element="artofillusion.object.ObjectInfo" />
+			<role name="adaptee" element="artofillusion.animation.ProceduralRotationTrack::info:artofillusion.object.ObjectInfo" />
+			<role name="Request()" element="artofillusion.animation.ProceduralRotationTrack::acceptEdits(artofillusion.procedural.ProcedureEditor):void" />
+			<role name="Request()" element="artofillusion.animation.ProceduralRotationTrack::editProperties(artofillusion.procedural.ProcedureEditor):void" />
+			<role name="Request()" element="artofillusion.animation.ProceduralRotationTrack::apply(double):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="artofillusion.animation.ProceduralRotationTrack" />
+			<role name="Adaptee" element="artofillusion.animation.Timecourse" />
+			<role name="adaptee" element="artofillusion.animation.ProceduralRotationTrack::tc:artofillusion.animation.Timecourse" />
+			<role name="Request()" element="artofillusion.animation.ProceduralRotationTrack::acceptEdits(artofillusion.procedural.ProcedureEditor):void" />
+			<role name="Request()" element="artofillusion.animation.ProceduralRotationTrack::apply(double):void" />
+			<role name="Request()" element="artofillusion.animation.ProceduralRotationTrack::duplicate(java.lang.Object):artofillusion.animation.Track" />
+			<role name="Request()" element="artofillusion.animation.ProceduralRotationTrack::copy(artofillusion.animation.Track):void" />
+			<role name="Request()" element="artofillusion.animation.ProceduralRotationTrack::getKeyTimes():double[]" />
+			<role name="Request()" element="artofillusion.animation.ProceduralRotationTrack::moveKeyframe(int, double):int" />
+			<role name="Request()" element="artofillusion.animation.ProceduralRotationTrack::deleteKeyframe(int):void" />
+			<role name="Request()" element="artofillusion.animation.ProceduralRotationTrack::writeToStream(java.io.DataOutputStream, artofillusion.Scene):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="artofillusion.animation.PositionTrack" />
+			<role name="Adaptee" element="artofillusion.object.ObjectInfo" />
+			<role name="adaptee" element="artofillusion.animation.PositionTrack::info:artofillusion.object.ObjectInfo" />
+			<role name="Request()" element="artofillusion.animation.PositionTrack::apply(double):void" />
+			<role name="Request()" element="artofillusion.animation.PositionTrack::edit(artofillusion.LayoutWindow):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="artofillusion.animation.PositionTrack" />
+			<role name="Adaptee" element="artofillusion.animation.Timecourse" />
+			<role name="adaptee" element="artofillusion.animation.PositionTrack::tc:artofillusion.animation.Timecourse" />
+			<role name="Request()" element="artofillusion.animation.PositionTrack::apply(double):void" />
+			<role name="Request()" element="artofillusion.animation.PositionTrack::duplicate(java.lang.Object):artofillusion.animation.Track" />
+			<role name="Request()" element="artofillusion.animation.PositionTrack::copy(artofillusion.animation.Track):void" />
+			<role name="Request()" element="artofillusion.animation.PositionTrack::getKeyTimes():double[]" />
+			<role name="Request()" element="artofillusion.animation.PositionTrack::moveKeyframe(int, double):int" />
+			<role name="Request()" element="artofillusion.animation.PositionTrack::deleteKeyframe(int):void" />
+			<role name="Request()" element="artofillusion.animation.PositionTrack::isNullTrack():boolean" />
+			<role name="Request()" element="artofillusion.animation.PositionTrack::writeToStream(java.io.DataOutputStream, artofillusion.Scene):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="artofillusion.animation.RotationTrack" />
+			<role name="Adaptee" element="artofillusion.object.ObjectInfo" />
+			<role name="adaptee" element="artofillusion.animation.RotationTrack::info:artofillusion.object.ObjectInfo" />
+			<role name="Request()" element="artofillusion.animation.RotationTrack::apply(double):void" />
+			<role name="Request()" element="artofillusion.animation.RotationTrack::edit(artofillusion.LayoutWindow):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="artofillusion.animation.RotationTrack" />
+			<role name="Adaptee" element="artofillusion.animation.Timecourse" />
+			<role name="adaptee" element="artofillusion.animation.RotationTrack::tc:artofillusion.animation.Timecourse" />
+			<role name="Request()" element="artofillusion.animation.RotationTrack::apply(double):void" />
+			<role name="Request()" element="artofillusion.animation.RotationTrack::duplicate(java.lang.Object):artofillusion.animation.Track" />
+			<role name="Request()" element="artofillusion.animation.RotationTrack::copy(artofillusion.animation.Track):void" />
+			<role name="Request()" element="artofillusion.animation.RotationTrack::getKeyTimes():double[]" />
+			<role name="Request()" element="artofillusion.animation.RotationTrack::moveKeyframe(int, double):int" />
+			<role name="Request()" element="artofillusion.animation.RotationTrack::deleteKeyframe(int):void" />
+			<role name="Request()" element="artofillusion.animation.RotationTrack::isNullTrack():boolean" />
+			<role name="Request()" element="artofillusion.animation.RotationTrack::writeToStream(java.io.DataOutputStream, artofillusion.Scene):void" />
+			<role name="Request()" element="artofillusion.animation.RotationTrack::initFromStream(java.io.DataInputStream, artofillusion.Scene):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="artofillusion.animation.distortion.CustomDistortionTrack" />
+			<role name="Adaptee" element="artofillusion.object.ObjectInfo" />
+			<role name="adaptee" element="artofillusion.animation.distortion.CustomDistortionTrack::info:artofillusion.object.ObjectInfo" />
+			<role name="Request()" element="artofillusion.animation.distortion.CustomDistortionTrack::acceptEdits(artofillusion.procedural.ProcedureEditor):void" />
+			<role name="Request()" element="artofillusion.animation.distortion.CustomDistortionTrack::apply(double):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="artofillusion.animation.distortion.CustomDistortionTrack" />
+			<role name="Adaptee" element="artofillusion.animation.Timecourse" />
+			<role name="adaptee" element="artofillusion.animation.distortion.CustomDistortionTrack::tc:artofillusion.animation.Timecourse" />
+			<role name="Request()" element="artofillusion.animation.distortion.CustomDistortionTrack::acceptEdits(artofillusion.procedural.ProcedureEditor):void" />
+			<role name="Request()" element="artofillusion.animation.distortion.CustomDistortionTrack::apply(double):void" />
+			<role name="Request()" element="artofillusion.animation.distortion.CustomDistortionTrack::duplicate(java.lang.Object):artofillusion.animation.Track" />
+			<role name="Request()" element="artofillusion.animation.distortion.CustomDistortionTrack::copy(artofillusion.animation.Track):void" />
+			<role name="Request()" element="artofillusion.animation.distortion.CustomDistortionTrack::getKeyTimes():double[]" />
+			<role name="Request()" element="artofillusion.animation.distortion.CustomDistortionTrack::moveKeyframe(int, double):int" />
+			<role name="Request()" element="artofillusion.animation.distortion.CustomDistortionTrack::deleteKeyframe(int):void" />
+			<role name="Request()" element="artofillusion.animation.distortion.CustomDistortionTrack::writeToStream(java.io.DataOutputStream, artofillusion.Scene):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="artofillusion.animation.TextureTrack" />
+			<role name="Adaptee" element="artofillusion.object.ObjectInfo" />
+			<role name="adaptee" element="artofillusion.animation.TextureTrack::info:artofillusion.object.ObjectInfo" />
+			<role name="Request()" element="artofillusion.animation.TextureTrack::apply(double):void" />
+			<role name="Request()" element="artofillusion.animation.TextureTrack::writeToStream(java.io.DataOutputStream, artofillusion.Scene):void" />
+			<role name="Request()" element="artofillusion.animation.TextureTrack::initFromStream(java.io.DataInputStream, artofillusion.Scene):void" />
+			<role name="Request()" element="artofillusion.animation.TextureTrack::edit(artofillusion.LayoutWindow):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="artofillusion.animation.TextureTrack" />
+			<role name="Adaptee" element="artofillusion.animation.Timecourse" />
+			<role name="adaptee" element="artofillusion.animation.TextureTrack::tc:artofillusion.animation.Timecourse" />
+			<role name="Request()" element="artofillusion.animation.TextureTrack::apply(double):void" />
+			<role name="Request()" element="artofillusion.animation.TextureTrack::duplicate(java.lang.Object):artofillusion.animation.Track" />
+			<role name="Request()" element="artofillusion.animation.TextureTrack::copy(artofillusion.animation.Track):void" />
+			<role name="Request()" element="artofillusion.animation.TextureTrack::getKeyTimes():double[]" />
+			<role name="Request()" element="artofillusion.animation.TextureTrack::moveKeyframe(int, double):int" />
+			<role name="Request()" element="artofillusion.animation.TextureTrack::deleteKeyframe(int):void" />
+			<role name="Request()" element="artofillusion.animation.TextureTrack::isNullTrack():boolean" />
+			<role name="Request()" element="artofillusion.animation.TextureTrack::writeToStream(java.io.DataOutputStream, artofillusion.Scene):void" />
+			<role name="Request()" element="artofillusion.animation.TextureTrack::edit(artofillusion.LayoutWindow):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="artofillusion.animation.PoseTrack" />
+			<role name="Adaptee" element="artofillusion.object.ObjectInfo" />
+			<role name="adaptee" element="artofillusion.animation.PoseTrack::info:artofillusion.object.ObjectInfo" />
+			<role name="Request()" element="artofillusion.animation.PoseTrack::apply(double):void" />
+			<role name="Request()" element="artofillusion.animation.PoseTrack::initFromStream(java.io.DataInputStream, artofillusion.Scene):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="artofillusion.animation.PoseTrack" />
+			<role name="Adaptee" element="artofillusion.animation.Timecourse" />
+			<role name="adaptee" element="artofillusion.animation.PoseTrack::tc:artofillusion.animation.Timecourse" />
+			<role name="Request()" element="artofillusion.animation.PoseTrack::apply(double):void" />
+			<role name="Request()" element="artofillusion.animation.PoseTrack::duplicate(java.lang.Object):artofillusion.animation.Track" />
+			<role name="Request()" element="artofillusion.animation.PoseTrack::copy(artofillusion.animation.Track):void" />
+			<role name="Request()" element="artofillusion.animation.PoseTrack::getKeyTimes():double[]" />
+			<role name="Request()" element="artofillusion.animation.PoseTrack::moveKeyframe(int, double):int" />
+			<role name="Request()" element="artofillusion.animation.PoseTrack::deleteKeyframe(int):void" />
+			<role name="Request()" element="artofillusion.animation.PoseTrack::isNullTrack():boolean" />
+			<role name="Request()" element="artofillusion.animation.PoseTrack::writeToStream(java.io.DataOutputStream, artofillusion.Scene):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="artofillusion.animation.distortion.BendTrack" />
+			<role name="Adaptee" element="artofillusion.object.ObjectInfo" />
+			<role name="adaptee" element="artofillusion.animation.distortion.BendTrack::info:artofillusion.object.ObjectInfo" />
+			<role name="Request()" element="artofillusion.animation.distortion.BendTrack::apply(double):void" />
+			<role name="Request()" element="artofillusion.animation.distortion.BendTrack::edit(artofillusion.LayoutWindow):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="artofillusion.animation.distortion.BendTrack" />
+			<role name="Adaptee" element="artofillusion.animation.Timecourse" />
+			<role name="adaptee" element="artofillusion.animation.distortion.BendTrack::tc:artofillusion.animation.Timecourse" />
+			<role name="Request()" element="artofillusion.animation.distortion.BendTrack::apply(double):void" />
+			<role name="Request()" element="artofillusion.animation.distortion.BendTrack::duplicate(java.lang.Object):artofillusion.animation.Track" />
+			<role name="Request()" element="artofillusion.animation.distortion.BendTrack::copy(artofillusion.animation.Track):void" />
+			<role name="Request()" element="artofillusion.animation.distortion.BendTrack::getKeyTimes():double[]" />
+			<role name="Request()" element="artofillusion.animation.distortion.BendTrack::moveKeyframe(int, double):int" />
+			<role name="Request()" element="artofillusion.animation.distortion.BendTrack::deleteKeyframe(int):void" />
+			<role name="Request()" element="artofillusion.animation.distortion.BendTrack::isNullTrack():boolean" />
+			<role name="Request()" element="artofillusion.animation.distortion.BendTrack::writeToStream(java.io.DataOutputStream, artofillusion.Scene):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="artofillusion.animation.distortion.ScaleTrack" />
+			<role name="Adaptee" element="artofillusion.object.ObjectInfo" />
+			<role name="adaptee" element="artofillusion.animation.distortion.ScaleTrack::info:artofillusion.object.ObjectInfo" />
+			<role name="Request()" element="artofillusion.animation.distortion.ScaleTrack::apply(double):void" />
+			<role name="Request()" element="artofillusion.animation.distortion.ScaleTrack::edit(artofillusion.LayoutWindow):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="artofillusion.animation.distortion.ScaleTrack" />
+			<role name="Adaptee" element="artofillusion.animation.Timecourse" />
+			<role name="adaptee" element="artofillusion.animation.distortion.ScaleTrack::tc:artofillusion.animation.Timecourse" />
+			<role name="Request()" element="artofillusion.animation.distortion.ScaleTrack::apply(double):void" />
+			<role name="Request()" element="artofillusion.animation.distortion.ScaleTrack::duplicate(java.lang.Object):artofillusion.animation.Track" />
+			<role name="Request()" element="artofillusion.animation.distortion.ScaleTrack::copy(artofillusion.animation.Track):void" />
+			<role name="Request()" element="artofillusion.animation.distortion.ScaleTrack::getKeyTimes():double[]" />
+			<role name="Request()" element="artofillusion.animation.distortion.ScaleTrack::moveKeyframe(int, double):int" />
+			<role name="Request()" element="artofillusion.animation.distortion.ScaleTrack::deleteKeyframe(int):void" />
+			<role name="Request()" element="artofillusion.animation.distortion.ScaleTrack::isNullTrack():boolean" />
+			<role name="Request()" element="artofillusion.animation.distortion.ScaleTrack::writeToStream(java.io.DataOutputStream, artofillusion.Scene):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="artofillusion.animation.distortion.SkeletonShapeTrack" />
+			<role name="Adaptee" element="artofillusion.object.ObjectInfo" />
+			<role name="adaptee" element="artofillusion.animation.distortion.SkeletonShapeTrack::info:artofillusion.object.ObjectInfo" />
+			<role name="Request()" element="artofillusion.animation.distortion.SkeletonShapeTrack::apply(double):void" />
+			<role name="Request()" element="artofillusion.animation.distortion.SkeletonShapeTrack::copy(artofillusion.animation.Track):void" />
+			<role name="Request()" element="artofillusion.animation.distortion.SkeletonShapeTrack::initFromStream(java.io.DataInputStream, artofillusion.Scene):void" />
+			<role name="Request()" element="artofillusion.animation.distortion.SkeletonShapeTrack::edit(artofillusion.LayoutWindow):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="artofillusion.animation.distortion.SkeletonShapeTrack" />
+			<role name="Adaptee" element="artofillusion.animation.Timecourse" />
+			<role name="adaptee" element="artofillusion.animation.distortion.SkeletonShapeTrack::tc:artofillusion.animation.Timecourse" />
+			<role name="Request()" element="artofillusion.animation.distortion.SkeletonShapeTrack::apply(double):void" />
+			<role name="Request()" element="artofillusion.animation.distortion.SkeletonShapeTrack::duplicate(java.lang.Object):artofillusion.animation.Track" />
+			<role name="Request()" element="artofillusion.animation.distortion.SkeletonShapeTrack::copy(artofillusion.animation.Track):void" />
+			<role name="Request()" element="artofillusion.animation.distortion.SkeletonShapeTrack::getKeyTimes():double[]" />
+			<role name="Request()" element="artofillusion.animation.distortion.SkeletonShapeTrack::moveKeyframe(int, double):int" />
+			<role name="Request()" element="artofillusion.animation.distortion.SkeletonShapeTrack::deleteKeyframe(int):void" />
+			<role name="Request()" element="artofillusion.animation.distortion.SkeletonShapeTrack::isNullTrack():boolean" />
+			<role name="Request()" element="artofillusion.animation.distortion.SkeletonShapeTrack::writeToStream(java.io.DataOutputStream, artofillusion.Scene):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="artofillusion.animation.distortion.TwistTrack" />
+			<role name="Adaptee" element="artofillusion.object.ObjectInfo" />
+			<role name="adaptee" element="artofillusion.animation.distortion.TwistTrack::info:artofillusion.object.ObjectInfo" />
+			<role name="Request()" element="artofillusion.animation.distortion.TwistTrack::apply(double):void" />
+			<role name="Request()" element="artofillusion.animation.distortion.TwistTrack::edit(artofillusion.LayoutWindow):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="artofillusion.animation.distortion.TwistTrack" />
+			<role name="Adaptee" element="artofillusion.animation.Timecourse" />
+			<role name="adaptee" element="artofillusion.animation.distortion.TwistTrack::tc:artofillusion.animation.Timecourse" />
+			<role name="Request()" element="artofillusion.animation.distortion.TwistTrack::apply(double):void" />
+			<role name="Request()" element="artofillusion.animation.distortion.TwistTrack::duplicate(java.lang.Object):artofillusion.animation.Track" />
+			<role name="Request()" element="artofillusion.animation.distortion.TwistTrack::copy(artofillusion.animation.Track):void" />
+			<role name="Request()" element="artofillusion.animation.distortion.TwistTrack::getKeyTimes():double[]" />
+			<role name="Request()" element="artofillusion.animation.distortion.TwistTrack::moveKeyframe(int, double):int" />
+			<role name="Request()" element="artofillusion.animation.distortion.TwistTrack::deleteKeyframe(int):void" />
+			<role name="Request()" element="artofillusion.animation.distortion.TwistTrack::isNullTrack():boolean" />
+			<role name="Request()" element="artofillusion.animation.distortion.TwistTrack::writeToStream(java.io.DataOutputStream, artofillusion.Scene):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="artofillusion.animation.VisibilityTrack" />
+			<role name="Adaptee" element="artofillusion.object.ObjectInfo" />
+			<role name="adaptee" element="artofillusion.animation.VisibilityTrack::info:artofillusion.object.ObjectInfo" />
+			<role name="Request()" element="artofillusion.animation.VisibilityTrack::apply(double):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="artofillusion.animation.VisibilityTrack" />
+			<role name="Adaptee" element="artofillusion.animation.Timecourse" />
+			<role name="adaptee" element="artofillusion.animation.VisibilityTrack::tc:artofillusion.animation.Timecourse" />
+			<role name="Request()" element="artofillusion.animation.VisibilityTrack::apply(double):void" />
+			<role name="Request()" element="artofillusion.animation.VisibilityTrack::duplicate(java.lang.Object):artofillusion.animation.Track" />
+			<role name="Request()" element="artofillusion.animation.VisibilityTrack::copy(artofillusion.animation.Track):void" />
+			<role name="Request()" element="artofillusion.animation.VisibilityTrack::getKeyTimes():double[]" />
+			<role name="Request()" element="artofillusion.animation.VisibilityTrack::moveKeyframe(int, double):int" />
+			<role name="Request()" element="artofillusion.animation.VisibilityTrack::deleteKeyframe(int):void" />
+			<role name="Request()" element="artofillusion.animation.VisibilityTrack::isNullTrack():boolean" />
+			<role name="Request()" element="artofillusion.animation.VisibilityTrack::writeToStream(java.io.DataOutputStream, artofillusion.Scene):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="artofillusion.animation.ConstraintTrack" />
+			<role name="Adaptee" element="artofillusion.object.ObjectInfo" />
+			<role name="adaptee" element="artofillusion.animation.ConstraintTrack::info:artofillusion.object.ObjectInfo" />
+			<role name="Request()" element="artofillusion.animation.ConstraintTrack::apply(double):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="artofillusion.object.TriangleMesh" />
+			<role name="Adaptee" element="artofillusion.animation.Skeleton" />
+			<role name="adaptee" element="artofillusion.object.TriangleMesh::skeleton:artofillusion.animation.Skeleton" />
+			<role name="Request()" element="artofillusion.object.TriangleMesh::copyObject(artofillusion.object.Object3D):void" />
+			<role name="Request()" element="artofillusion.object.TriangleMesh::setSize(double, double, double):void" />
+			<role name="Request()" element="artofillusion.object.TriangleMesh::applyPoseKeyframe(artofillusion.animation.Keyframe):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="artofillusion.object.SplineMesh" />
+			<role name="Adaptee" element="artofillusion.animation.Skeleton" />
+			<role name="adaptee" element="artofillusion.object.SplineMesh::skeleton:artofillusion.animation.Skeleton" />
+			<role name="Request()" element="artofillusion.object.SplineMesh::copyObject(artofillusion.object.Object3D):void" />
+			<role name="Request()" element="artofillusion.object.SplineMesh::setSize(double, double, double):void" />
+			<role name="Request()" element="artofillusion.object.SplineMesh::applyPoseKeyframe(artofillusion.animation.Keyframe):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.Scene" />
+			<role name="Adapter" element="artofillusion.LayoutWindow" />
+			<role name="adaptee" element="artofillusion.LayoutWindow::theScene:artofillusion.Scene" />
+			<role name="Request()" element="artofillusion.LayoutWindow::confirmClose():boolean" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.ui.TreeList" />
+			<role name="Adapter" element="artofillusion.LayoutWindow" />
+			<role name="adaptee" element="artofillusion.LayoutWindow::itemTree:artofillusion.ui.TreeList" />
+			<role name="Request()" element="artofillusion.LayoutWindow::updateMenus():void" />
+			<role name="Request()" element="artofillusion.LayoutWindow::showPopupMenu(buoy.widget.Widget, int, int):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.ui.ToolPalette" />
+			<role name="Adapter" element="artofillusion.TriMeshEditorWindow" />
+			<role name="adaptee" element="artofillusion.TriMeshEditorWindow::modes:artofillusion.ui.ToolPalette" />
+			<role name="Request()" element="artofillusion.TriMeshEditorWindow::setTool(artofillusion.ui.EditingTool):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.ui.ToolPalette" />
+			<role name="Adapter" element="artofillusion.SplineMeshEditorWindow" />
+			<role name="adaptee" element="artofillusion.SplineMeshEditorWindow::modes:artofillusion.ui.ToolPalette" />
+			<role name="Request()" element="artofillusion.SplineMeshEditorWindow::setTool(artofillusion.ui.EditingTool):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="artofillusion.ObjectViewer" />
+			<role name="Adaptee" element="artofillusion.object.ObjectInfo" />
+			<role name="adaptee" element="artofillusion.ObjectViewer::thisObjectInScene:artofillusion.object.ObjectInfo" />
+			<role name="Request()" element="artofillusion.ObjectViewer::estimateDepthRange():double[]" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.object.CSGObject" />
+			<role name="Adapter" element="artofillusion.CSGEditorWindow" />
+			<role name="adaptee" element="artofillusion.CSGEditorWindow::oldObject:artofillusion.object.CSGObject" />
+			<role name="adaptee" element="artofillusion.CSGEditorWindow::theObject:artofillusion.object.CSGObject" />
+			<role name="Request()" element="artofillusion.CSGEditorWindow::doOk():void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.object.TriangleMesh" />
+			<role name="Adapter" element="artofillusion.TriMeshEditorWindow" />
+			<role name="adaptee" element="artofillusion.TriMeshEditorWindow::mesh:artofillusion.object.TriangleMesh" />
+			<role name="Request()" element="artofillusion.TriMeshEditorWindow::setMesh(artofillusion.object.Mesh):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.ui.ValueField" />
+			<role name="Adapter" element="artofillusion.raster.Raster" />
+			<role name="adaptee" element="artofillusion.raster.Raster::smoothField:artofillusion.ui.ValueField" />
+			<role name="adaptee" element="artofillusion.raster.Raster::errorField:artofillusion.ui.ValueField" />
+			<role name="Request()" element="artofillusion.raster.Raster::recordConfiguration():boolean" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.ui.ValueField" />
+			<role name="Adapter" element="artofillusion.raytracer.Raytracer" />
+			<role name="adaptee" element="artofillusion.raytracer.Raytracer::rayDepthField:artofillusion.ui.ValueField" />
+			<role name="adaptee" element="artofillusion.raytracer.Raytracer::rayCutoffField:artofillusion.ui.ValueField" />
+			<role name="adaptee" element="artofillusion.raytracer.Raytracer::stepSizeField:artofillusion.ui.ValueField" />
+			<role name="adaptee" element="artofillusion.raytracer.Raytracer::smoothField:artofillusion.ui.ValueField" />
+			<role name="adaptee" element="artofillusion.raytracer.Raytracer::extraGIField:artofillusion.ui.ValueField" />
+			<role name="adaptee" element="artofillusion.raytracer.Raytracer::extraGIEnvField:artofillusion.ui.ValueField" />
+			<role name="adaptee" element="artofillusion.raytracer.Raytracer::errorField:artofillusion.ui.ValueField" />
+			<role name="adaptee" element="artofillusion.raytracer.Raytracer::globalPhotonsField:artofillusion.ui.ValueField" />
+			<role name="adaptee" element="artofillusion.raytracer.Raytracer::globalNeighborPhotonsField:artofillusion.ui.ValueField" />
+			<role name="adaptee" element="artofillusion.raytracer.Raytracer::causticsPhotonsField:artofillusion.ui.ValueField" />
+			<role name="adaptee" element="artofillusion.raytracer.Raytracer::causticsNeighborPhotonsField:artofillusion.ui.ValueField" />
+			<role name="adaptee" element="artofillusion.raytracer.Raytracer::volumePhotonsField:artofillusion.ui.ValueField" />
+			<role name="adaptee" element="artofillusion.raytracer.Raytracer::volumeNeighborPhotonsField:artofillusion.ui.ValueField" />
+			<role name="Request()" element="artofillusion.raytracer.Raytracer::recordConfiguration():boolean" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.Scene" />
+			<role name="Adapter" element="artofillusion.raster.Raster" />
+			<role name="adaptee" element="artofillusion.raster.Raster::theScene:artofillusion.Scene" />
+			<role name="Request()" element="artofillusion.raster.Raster::renderScene(artofillusion.Scene, artofillusion.Camera, artofillusion.RenderListener, artofillusion.object.SceneCamera):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.Scene" />
+			<role name="Adapter" element="artofillusion.raytracer.Raytracer" />
+			<role name="adaptee" element="artofillusion.raytracer.Raytracer::theScene:artofillusion.Scene" />
+			<role name="Request()" element="artofillusion.raytracer.Raytracer::renderScene(artofillusion.Scene, artofillusion.Camera, artofillusion.RenderListener, artofillusion.object.SceneCamera):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.Camera" />
+			<role name="Adapter" element="artofillusion.raster.Raster" />
+			<role name="adaptee" element="artofillusion.raster.Raster::theCamera:artofillusion.Camera" />
+			<role name="Request()" element="artofillusion.raster.Raster::renderScene(artofillusion.Scene, artofillusion.Camera, artofillusion.RenderListener, artofillusion.object.SceneCamera):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.Camera" />
+			<role name="Adapter" element="artofillusion.raytracer.Raytracer" />
+			<role name="adaptee" element="artofillusion.raytracer.Raytracer::theCamera:artofillusion.Camera" />
+			<role name="Request()" element="artofillusion.raytracer.Raytracer::renderScene(artofillusion.Scene, artofillusion.Camera, artofillusion.RenderListener, artofillusion.object.SceneCamera):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.image.ImageOrValue" />
+			<role name="Adapter" element="artofillusion.texture.ImageMapTexture" />
+			<role name="adaptee" element="artofillusion.texture.ImageMapTexture::transparency:artofillusion.image.ImageOrValue" />
+			<role name="adaptee" element="artofillusion.texture.ImageMapTexture::specularity:artofillusion.image.ImageOrValue" />
+			<role name="adaptee" element="artofillusion.texture.ImageMapTexture::shininess:artofillusion.image.ImageOrValue" />
+			<role name="adaptee" element="artofillusion.texture.ImageMapTexture::roughness:artofillusion.image.ImageOrValue" />
+			<role name="adaptee" element="artofillusion.texture.ImageMapTexture::cloudiness:artofillusion.image.ImageOrValue" />
+			<role name="adaptee" element="artofillusion.texture.ImageMapTexture::bump:artofillusion.image.ImageOrValue" />
+			<role name="Request()" element="artofillusion.texture.ImageMapTexture::getTextureSpec(artofillusion.texture.TextureSpec, double, double, double, double, double, double, double[]):void" />
+			<role name="Request()" element="artofillusion.texture.ImageMapTexture::getTransparency(artofillusion.math.RGBColor, double, double, double, double, double, double, double[]):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.image.ImageOrColor" />
+			<role name="Adapter" element="artofillusion.texture.ImageMapTexture" />
+			<role name="adaptee" element="artofillusion.texture.ImageMapTexture::diffuseColor:artofillusion.image.ImageOrColor" />
+			<role name="adaptee" element="artofillusion.texture.ImageMapTexture::specularColor:artofillusion.image.ImageOrColor" />
+			<role name="adaptee" element="artofillusion.texture.ImageMapTexture::transparentColor:artofillusion.image.ImageOrColor" />
+			<role name="adaptee" element="artofillusion.texture.ImageMapTexture::emissiveColor:artofillusion.image.ImageOrColor" />
+			<role name="Request()" element="artofillusion.texture.ImageMapTexture::getTextureSpec(artofillusion.texture.TextureSpec, double, double, double, double, double, double, double[]):void" />
+			<role name="Request()" element="artofillusion.texture.ImageMapTexture::getTransparency(artofillusion.math.RGBColor, double, double, double, double, double, double, double[]):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="artofillusion.RenderingDialog" />
+			<role name="Adaptee" element="artofillusion.image.ComplexImage" />
+			<role name="adaptee" element="artofillusion.RenderingDialog::originalImage:artofillusion.image.ComplexImage" />
+			<role name="Request()" element="artofillusion.RenderingDialog::imageComplete(artofillusion.image.ComplexImage):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.MeshViewer" />
+			<role name="Adapter" element="artofillusion.texture.UVMappingWindow" />
+			<role name="adaptee" element="artofillusion.texture.UVMappingWindow::meshView:artofillusion.MeshViewer" />
+			<role name="Request()" element="artofillusion.texture.UVMappingWindow::setSelection(boolean[]):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.texture.UVMappingViewer" />
+			<role name="Adapter" element="artofillusion.texture.UVMappingWindow" />
+			<role name="adaptee" element="artofillusion.texture.UVMappingWindow::mapView:artofillusion.texture.UVMappingViewer" />
+			<role name="Request()" element="artofillusion.texture.UVMappingWindow::objectChanged():void" />
+			<role name="Request()" element="artofillusion.texture.UVMappingWindow::setTool(artofillusion.ui.EditingTool):void" />
+			<role name="Request()" element="artofillusion.texture.UVMappingWindow::updateImage():void" />
+			<role name="Request()" element="artofillusion.texture.UVMappingWindow::updateMenus():void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="artofillusion.texture.CylindricalMapping" />
+			<role name="Adaptee" element="artofillusion.math.Mat4" />
+			<role name="adaptee" element="artofillusion.texture.CylindricalMapping::fromLocal:artofillusion.math.Mat4" />
+			<role name="Request()" element="artofillusion.texture.CylindricalMapping::getSpecIntermed(artofillusion.texture.TextureSpec, double, double, double, double, double, double, double[]):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="artofillusion.texture.SphericalMapping" />
+			<role name="Adaptee" element="artofillusion.math.Mat4" />
+			<role name="adaptee" element="artofillusion.texture.SphericalMapping::fromLocal:artofillusion.math.Mat4" />
+			<role name="Request()" element="artofillusion.texture.SphericalMapping::getSpecIntermed(artofillusion.texture.TextureSpec, double, double, double, double, double, double, double[]):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="artofillusion.texture.ProjectionMapping" />
+			<role name="Adaptee" element="artofillusion.TextureParameter" />
+			<role name="adaptee" element="artofillusion.texture.ProjectionMapping::xparam:artofillusion.TextureParameter" />
+			<role name="adaptee" element="artofillusion.texture.ProjectionMapping::yparam:artofillusion.TextureParameter" />
+			<role name="adaptee" element="artofillusion.texture.ProjectionMapping::zparam:artofillusion.TextureParameter" />
+			<role name="Request()" element="artofillusion.texture.ProjectionMapping::findTextureCoordinates(artofillusion.object.Mesh):artofillusion.math.Vec2[]" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="artofillusion.texture.UVMapping" />
+			<role name="Adaptee" element="artofillusion.TextureParameter" />
+			<role name="adaptee" element="artofillusion.texture.UVMapping::uparam:artofillusion.TextureParameter" />
+			<role name="adaptee" element="artofillusion.texture.UVMapping::vparam:artofillusion.TextureParameter" />
+			<role name="Request()" element="artofillusion.texture.UVMapping::findTextureCoordinates(artofillusion.object.Mesh):artofillusion.math.Vec2[]" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.math.RGBColor" />
+			<role name="Adapter" element="artofillusion.raytracer.DisplacedTrianglePhotonSource" />
+			<role name="adaptee" element="artofillusion.raytracer.DisplacedTrianglePhotonSource::color:artofillusion.math.RGBColor" />
+			<role name="Request()" element="artofillusion.raytracer.DisplacedTrianglePhotonSource::generatePhotons(artofillusion.raytracer.PhotonMap, double, artofillusion.util.ThreadManager):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.math.RGBColor" />
+			<role name="Adapter" element="artofillusion.raytracer.TrianglePhotonSource" />
+			<role name="adaptee" element="artofillusion.raytracer.TrianglePhotonSource::color:artofillusion.math.RGBColor" />
+			<role name="Request()" element="artofillusion.raytracer.TrianglePhotonSource::generatePhotons(artofillusion.raytracer.PhotonMap, double, artofillusion.util.ThreadManager):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.math.CoordinateSystem" />
+			<role name="Adapter" element="artofillusion.raytracer.DirectionalPhotonSource" />
+			<role name="adaptee" element="artofillusion.raytracer.DirectionalPhotonSource::coords:artofillusion.math.CoordinateSystem" />
+			<role name="Request()" element="artofillusion.raytracer.DirectionalPhotonSource::generatePhotons(artofillusion.raytracer.PhotonMap, double, artofillusion.util.ThreadManager):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.math.CoordinateSystem" />
+			<role name="Adapter" element="artofillusion.raytracer.SpotlightPhotonSource" />
+			<role name="adaptee" element="artofillusion.raytracer.SpotlightPhotonSource::coords:artofillusion.math.CoordinateSystem" />
+			<role name="Request()" element="artofillusion.raytracer.SpotlightPhotonSource::generatePhotons(artofillusion.raytracer.PhotonMap, double, artofillusion.util.ThreadManager):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="artofillusion.ObjectTextureDialog" />
+			<role name="Adaptee" element="artofillusion.Scene" />
+			<role name="adaptee" element="artofillusion.ObjectTextureDialog::scene:artofillusion.Scene" />
+			<role name="Request()" element="artofillusion.ObjectTextureDialog::itemRemoved(int, java.lang.Object):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.math.RGBColor" />
+			<role name="Adapter" element="artofillusion.material.UniformMaterial" />
+			<role name="adaptee" element="artofillusion.material.UniformMaterial::transparencyColor:artofillusion.math.RGBColor" />
+			<role name="adaptee" element="artofillusion.material.UniformMaterial::matColor:artofillusion.math.RGBColor" />
+			<role name="adaptee" element="artofillusion.material.UniformMaterial::scatteringColor:artofillusion.math.RGBColor" />
+			<role name="Request()" element="artofillusion.material.UniformMaterial::duplicate():artofillusion.material.Material" />
+			<role name="Request()" element="artofillusion.material.UniformMaterial::edit(buoy.widget.BFrame, artofillusion.Scene):void" />
+			<role name="Request()" element="artofillusion.material.UniformMaterial::writeToFile(java.io.DataOutputStream, artofillusion.Scene):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.math.RGBColor" />
+			<role name="Adapter" element="artofillusion.object.DirectionalLight$DirectionalLightKeyframe" />
+			<role name="adaptee" element="artofillusion.object.DirectionalLight$DirectionalLightKeyframe::color:artofillusion.math.RGBColor" />
+			<role name="Request()" element="artofillusion.object.DirectionalLight$DirectionalLightKeyframe::blend(artofillusion.animation.Keyframe, double, double):artofillusion.animation.Keyframe" />
+			<role name="Request()" element="artofillusion.object.DirectionalLight$DirectionalLightKeyframe::blend(artofillusion.animation.Keyframe, artofillusion.animation.Keyframe, double, double, double):artofillusion.animation.Keyframe" />
+			<role name="Request()" element="artofillusion.object.DirectionalLight$DirectionalLightKeyframe::blend(artofillusion.animation.Keyframe, artofillusion.animation.Keyframe, artofillusion.animation.Keyframe, double, double, double, double):artofillusion.animation.Keyframe" />
+			<role name="Request()" element="artofillusion.object.DirectionalLight$DirectionalLightKeyframe::equals(artofillusion.animation.Keyframe):boolean" />
+			<role name="Request()" element="artofillusion.object.DirectionalLight$DirectionalLightKeyframe::writeToStream(java.io.DataOutputStream):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.math.RGBColor" />
+			<role name="Adapter" element="artofillusion.object.PointLight$PointLightKeyframe" />
+			<role name="adaptee" element="artofillusion.object.PointLight$PointLightKeyframe::color:artofillusion.math.RGBColor" />
+			<role name="Request()" element="artofillusion.object.PointLight$PointLightKeyframe::blend(artofillusion.animation.Keyframe, double, double):artofillusion.animation.Keyframe" />
+			<role name="Request()" element="artofillusion.object.PointLight$PointLightKeyframe::blend(artofillusion.animation.Keyframe, artofillusion.animation.Keyframe, double, double, double):artofillusion.animation.Keyframe" />
+			<role name="Request()" element="artofillusion.object.PointLight$PointLightKeyframe::blend(artofillusion.animation.Keyframe, artofillusion.animation.Keyframe, artofillusion.animation.Keyframe, double, double, double, double):artofillusion.animation.Keyframe" />
+			<role name="Request()" element="artofillusion.object.PointLight$PointLightKeyframe::equals(artofillusion.animation.Keyframe):boolean" />
+			<role name="Request()" element="artofillusion.object.PointLight$PointLightKeyframe::writeToStream(java.io.DataOutputStream):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.math.RGBColor" />
+			<role name="Adapter" element="artofillusion.object.SpotLight$SpotLightKeyframe" />
+			<role name="adaptee" element="artofillusion.object.SpotLight$SpotLightKeyframe::color:artofillusion.math.RGBColor" />
+			<role name="Request()" element="artofillusion.object.SpotLight$SpotLightKeyframe::blend(artofillusion.animation.Keyframe, double, double):artofillusion.animation.Keyframe" />
+			<role name="Request()" element="artofillusion.object.SpotLight$SpotLightKeyframe::blend(artofillusion.animation.Keyframe, artofillusion.animation.Keyframe, double, double, double):artofillusion.animation.Keyframe" />
+			<role name="Request()" element="artofillusion.object.SpotLight$SpotLightKeyframe::blend(artofillusion.animation.Keyframe, artofillusion.animation.Keyframe, artofillusion.animation.Keyframe, double, double, double, double):artofillusion.animation.Keyframe" />
+			<role name="Request()" element="artofillusion.object.SpotLight$SpotLightKeyframe::equals(artofillusion.animation.Keyframe):boolean" />
+			<role name="Request()" element="artofillusion.object.SpotLight$SpotLightKeyframe::writeToStream(java.io.DataOutputStream):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="artofillusion.raytracer.RTCube$CubeIntersection" />
+			<role name="Adaptee" element="artofillusion.math.Vec3" />
+			<role name="adaptee" element="artofillusion.raytracer.RTCube$CubeIntersection::pos:artofillusion.math.Vec3" />
+			<role name="Request()" element="artofillusion.raytracer.RTCube$CubeIntersection::intersectionProperties(artofillusion.texture.TextureSpec, artofillusion.math.Vec3, artofillusion.math.Vec3, double, double):void" />
+			<role name="Request()" element="artofillusion.raytracer.RTCube$CubeIntersection::intersectionTransparency(int, artofillusion.math.RGBColor, double, double, double):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="artofillusion.raytracer.RTCylinder$CylinderIntersection" />
+			<role name="Adaptee" element="artofillusion.math.Vec3" />
+			<role name="adaptee" element="artofillusion.raytracer.RTCylinder$CylinderIntersection::trueNorm:artofillusion.math.Vec3" />
+			<role name="adaptee" element="artofillusion.raytracer.RTCylinder$CylinderIntersection::pos:artofillusion.math.Vec3" />
+			<role name="Request()" element="artofillusion.raytracer.RTCylinder$CylinderIntersection::intersectionProperties(artofillusion.texture.TextureSpec, artofillusion.math.Vec3, artofillusion.math.Vec3, double, double):void" />
+			<role name="Request()" element="artofillusion.raytracer.RTCylinder$CylinderIntersection::intersectionTransparency(int, artofillusion.math.RGBColor, double, double, double):void" />
+			<role name="Request()" element="artofillusion.raytracer.RTCylinder$CylinderIntersection::trueNormal(artofillusion.math.Vec3):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="artofillusion.raytracer.RTDisplacedTriangle$DisplacedTriangleIntersection" />
+			<role name="Adaptee" element="artofillusion.math.Vec3" />
+			<role name="adaptee" element="artofillusion.raytracer.RTDisplacedTriangle$DisplacedTriangleIntersection::rint:artofillusion.math.Vec3[]" />
+			<role name="adaptee" element="artofillusion.raytracer.RTDisplacedTriangle$DisplacedTriangleIntersection::interp:artofillusion.math.Vec3" />
+			<role name="Request()" element="artofillusion.raytracer.RTDisplacedTriangle$DisplacedTriangleIntersection::intersectionPoint(int, artofillusion.math.Vec3):void" />
+			<role name="Request()" element="artofillusion.raytracer.RTDisplacedTriangle$DisplacedTriangleIntersection::intersectionProperties(artofillusion.texture.TextureSpec, artofillusion.math.Vec3, artofillusion.math.Vec3, double, double):void" />
+			<role name="Request()" element="artofillusion.raytracer.RTDisplacedTriangle$DisplacedTriangleIntersection::trueNormal(artofillusion.math.Vec3):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="artofillusion.raytracer.RTEllipsoid$EllipsoidIntersection" />
+			<role name="Adaptee" element="artofillusion.math.Vec3" />
+			<role name="adaptee" element="artofillusion.raytracer.RTEllipsoid$EllipsoidIntersection::trueNorm:artofillusion.math.Vec3" />
+			<role name="adaptee" element="artofillusion.raytracer.RTEllipsoid$EllipsoidIntersection::pos:artofillusion.math.Vec3" />
+			<role name="Request()" element="artofillusion.raytracer.RTEllipsoid$EllipsoidIntersection::intersectionProperties(artofillusion.texture.TextureSpec, artofillusion.math.Vec3, artofillusion.math.Vec3, double, double):void" />
+			<role name="Request()" element="artofillusion.raytracer.RTEllipsoid$EllipsoidIntersection::intersectionTransparency(int, artofillusion.math.RGBColor, double, double, double):void" />
+			<role name="Request()" element="artofillusion.raytracer.RTEllipsoid$EllipsoidIntersection::trueNormal(artofillusion.math.Vec3):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="artofillusion.raytracer.RTImplicitObject$ImplicitIntersection" />
+			<role name="Adaptee" element="artofillusion.math.Vec3" />
+			<role name="adaptee" element="artofillusion.raytracer.RTImplicitObject$ImplicitIntersection::rint:artofillusion.math.Vec3[]" />
+			<role name="adaptee" element="artofillusion.raytracer.RTImplicitObject$ImplicitIntersection::norm:artofillusion.math.Vec3" />
+			<role name="adaptee" element="artofillusion.raytracer.RTImplicitObject$ImplicitIntersection::pos:artofillusion.math.Vec3" />
+			<role name="Request()" element="artofillusion.raytracer.RTImplicitObject$ImplicitIntersection::intersectionPoint(int, artofillusion.math.Vec3):void" />
+			<role name="Request()" element="artofillusion.raytracer.RTImplicitObject$ImplicitIntersection::intersectionProperties(artofillusion.texture.TextureSpec, artofillusion.math.Vec3, artofillusion.math.Vec3, double, double):void" />
+			<role name="Request()" element="artofillusion.raytracer.RTImplicitObject$ImplicitIntersection::intersectionTransparency(int, artofillusion.math.RGBColor, double, double, double):void" />
+			<role name="Request()" element="artofillusion.raytracer.RTImplicitObject$ImplicitIntersection::trueNormal(artofillusion.math.Vec3):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="artofillusion.raytracer.RTSphere$SphereIntersection" />
+			<role name="Adaptee" element="artofillusion.math.Vec3" />
+			<role name="adaptee" element="artofillusion.raytracer.RTSphere$SphereIntersection::trueNorm:artofillusion.math.Vec3" />
+			<role name="adaptee" element="artofillusion.raytracer.RTSphere$SphereIntersection::pos:artofillusion.math.Vec3" />
+			<role name="Request()" element="artofillusion.raytracer.RTSphere$SphereIntersection::intersectionProperties(artofillusion.texture.TextureSpec, artofillusion.math.Vec3, artofillusion.math.Vec3, double, double):void" />
+			<role name="Request()" element="artofillusion.raytracer.RTSphere$SphereIntersection::intersectionTransparency(int, artofillusion.math.RGBColor, double, double, double):void" />
+			<role name="Request()" element="artofillusion.raytracer.RTSphere$SphereIntersection::trueNormal(artofillusion.math.Vec3):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.math.Vec3" />
+			<role name="Adapter" element="artofillusion.raytracer.RTDisplacedTriangle" />
+			<role name="adaptee" element="artofillusion.raytracer.RTDisplacedTriangle::trueNorm:artofillusion.math.Vec3" />
+			<role name="Request()" element="artofillusion.raytracer.RTDisplacedTriangle::intersectsBox(artofillusion.math.BoundingBox):boolean" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.math.Vec3" />
+			<role name="Adapter" element="artofillusion.raytracer.RTTriangle" />
+			<role name="adaptee" element="artofillusion.raytracer.RTTriangle::trueNorm:artofillusion.math.Vec3" />
+			<role name="adaptee" element="artofillusion.raytracer.RTTriangle::vert1:artofillusion.math.Vec3" />
+			<role name="Request()" element="artofillusion.raytracer.RTTriangle::checkIntersection(artofillusion.raytracer.Ray):artofillusion.raytracer.SurfaceIntersection" />
+			<role name="Request()" element="artofillusion.raytracer.RTTriangle::intersectsBox(artofillusion.math.BoundingBox):boolean" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.math.Mat4" />
+			<role name="Adapter" element="artofillusion.raytracer.RTCube" />
+			<role name="adaptee" element="artofillusion.raytracer.RTCube::toLocal:artofillusion.math.Mat4" />
+			<role name="Request()" element="artofillusion.raytracer.RTCube::checkIntersection(artofillusion.raytracer.Ray):artofillusion.raytracer.SurfaceIntersection" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.math.Mat4" />
+			<role name="Adapter" element="artofillusion.raytracer.RTCylinder" />
+			<role name="adaptee" element="artofillusion.raytracer.RTCylinder::toLocal:artofillusion.math.Mat4" />
+			<role name="Request()" element="artofillusion.raytracer.RTCylinder::checkIntersection(artofillusion.raytracer.Ray):artofillusion.raytracer.SurfaceIntersection" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.math.Mat4" />
+			<role name="Adapter" element="artofillusion.raytracer.RTEllipsoid" />
+			<role name="adaptee" element="artofillusion.raytracer.RTEllipsoid::toLocal:artofillusion.math.Mat4" />
+			<role name="Request()" element="artofillusion.raytracer.RTEllipsoid::checkIntersection(artofillusion.raytracer.Ray):artofillusion.raytracer.SurfaceIntersection" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.math.Mat4" />
+			<role name="Adapter" element="artofillusion.raytracer.RTImplicitObject" />
+			<role name="adaptee" element="artofillusion.raytracer.RTImplicitObject::toLocal:artofillusion.math.Mat4" />
+			<role name="adaptee" element="artofillusion.raytracer.RTImplicitObject::fromLocal:artofillusion.math.Mat4" />
+			<role name="Request()" element="artofillusion.raytracer.RTImplicitObject::checkIntersection(artofillusion.raytracer.Ray):artofillusion.raytracer.SurfaceIntersection" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="artofillusion.ui.Compound3DManipulator" />
+			<role name="Adaptee" element="artofillusion.ui.Compound3DManipulator$RotationHandle" />
+			<role name="adaptee" element="artofillusion.ui.Compound3DManipulator::currentRotationHandle:artofillusion.ui.Compound3DManipulator$RotationHandle" />
+			<role name="adaptee" element="artofillusion.ui.Compound3DManipulator::activeRotationHandleSet:artofillusion.ui.Compound3DManipulator$RotationHandle[]" />
+			<role name="adaptee" element="artofillusion.ui.Compound3DManipulator::xyzRotHandles:artofillusion.ui.Compound3DManipulator$RotationHandle[]" />
+			<role name="adaptee" element="artofillusion.ui.Compound3DManipulator::uvRotationHandle:artofillusion.ui.Compound3DManipulator$RotationHandle[]" />
+			<role name="adaptee" element="artofillusion.ui.Compound3DManipulator::npqRotHandles:artofillusion.ui.Compound3DManipulator$RotationHandle[]" />
+			<role name="Request()" element="artofillusion.ui.Compound3DManipulator::draw(artofillusion.ViewerCanvas, artofillusion.math.BoundingBox):void" />
+			<role name="Request()" element="artofillusion.ui.Compound3DManipulator::mousePressed(buoy.event.WidgetMouseEvent, artofillusion.ViewerCanvas, artofillusion.math.BoundingBox):boolean" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.texture.TextureMapping" />
+			<role name="Adapter" element="artofillusion.texture.UVMappedTriangle" />
+			<role name="adaptee" element="artofillusion.texture.UVMappedTriangle::map:artofillusion.texture.TextureMapping" />
+			<role name="Request()" element="artofillusion.texture.UVMappedTriangle::getTextureSpec(artofillusion.texture.TextureSpec, double, double, double, double, double, double):void" />
+			<role name="Request()" element="artofillusion.texture.UVMappedTriangle::getTransparency(artofillusion.math.RGBColor, double, double, double, double, double, double):void" />
+			<role name="Request()" element="artofillusion.texture.UVMappedTriangle::getDisplacement(double, double, double, double, double):double" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.texture.TextureMapping" />
+			<role name="Adapter" element="artofillusion.texture.UVWMappedTriangle" />
+			<role name="adaptee" element="artofillusion.texture.UVWMappedTriangle::map:artofillusion.texture.TextureMapping" />
+			<role name="Request()" element="artofillusion.texture.UVWMappedTriangle::getTextureSpec(artofillusion.texture.TextureSpec, double, double, double, double, double, double):void" />
+			<role name="Request()" element="artofillusion.texture.UVWMappedTriangle::getTransparency(artofillusion.math.RGBColor, double, double, double, double, double, double):void" />
+			<role name="Request()" element="artofillusion.texture.UVWMappedTriangle::getDisplacement(double, double, double, double, double):double" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.texture.LinearMapping3D" />
+			<role name="Adapter" element="artofillusion.texture.Linear3DTriangle" />
+			<role name="adaptee" element="artofillusion.texture.Linear3DTriangle::map:artofillusion.texture.LinearMapping3D" />
+			<role name="Request()" element="artofillusion.texture.Linear3DTriangle::getTextureSpec(artofillusion.texture.TextureSpec, double, double, double, double, double, double):void" />
+			<role name="Request()" element="artofillusion.texture.Linear3DTriangle::getTransparency(artofillusion.math.RGBColor, double, double, double, double, double, double):void" />
+			<role name="Request()" element="artofillusion.texture.Linear3DTriangle::getDisplacement(double, double, double, double, double):double" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.texture.NonlinearMapping2D" />
+			<role name="Adapter" element="artofillusion.texture.Nonlinear2DTriangle" />
+			<role name="adaptee" element="artofillusion.texture.Nonlinear2DTriangle::map:artofillusion.texture.NonlinearMapping2D" />
+			<role name="Request()" element="artofillusion.texture.Nonlinear2DTriangle::getTextureSpec(artofillusion.texture.TextureSpec, double, double, double, double, double, double):void" />
+			<role name="Request()" element="artofillusion.texture.Nonlinear2DTriangle::getTransparency(artofillusion.math.RGBColor, double, double, double, double, double, double):void" />
+			<role name="Request()" element="artofillusion.texture.Nonlinear2DTriangle::getDisplacement(double, double, double, double, double):double" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.texture.ProjectionMapping" />
+			<role name="Adapter" element="artofillusion.texture.Linear2DTriangle" />
+			<role name="adaptee" element="artofillusion.texture.Linear2DTriangle::map:artofillusion.texture.ProjectionMapping" />
+			<role name="Request()" element="artofillusion.texture.Linear2DTriangle::getTextureSpec(artofillusion.texture.TextureSpec, double, double, double, double, double, double):void" />
+			<role name="Request()" element="artofillusion.texture.Linear2DTriangle::getTransparency(artofillusion.math.RGBColor, double, double, double, double, double, double):void" />
+			<role name="Request()" element="artofillusion.texture.Linear2DTriangle::getDisplacement(double, double, double, double, double):double" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.texture.UniformMapping" />
+			<role name="Adapter" element="artofillusion.texture.UniformTriangle" />
+			<role name="adaptee" element="artofillusion.texture.UniformTriangle::map:artofillusion.texture.UniformMapping" />
+			<role name="Request()" element="artofillusion.texture.UniformTriangle::getTextureSpec(artofillusion.texture.TextureSpec, double, double, double, double, double, double):void" />
+			<role name="Request()" element="artofillusion.texture.UniformTriangle::getTransparency(artofillusion.math.RGBColor, double, double, double, double, double, double):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.texture.LayeredMapping" />
+			<role name="Adapter" element="artofillusion.texture.LayeredTexture" />
+			<role name="adaptee" element="artofillusion.texture.LayeredTexture::mapping:artofillusion.texture.LayeredMapping" />
+			<role name="Request()" element="artofillusion.texture.LayeredTexture::getAverageSpec(artofillusion.texture.TextureSpec, double, double[]):void" />
+			<role name="Request()" element="artofillusion.texture.LayeredTexture::hasComponent(int):boolean" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.texture.UniformTexture" />
+			<role name="Adapter" element="artofillusion.texture.UniformMapping" />
+			<role name="adaptee" element="artofillusion.texture.UniformMapping::texture:artofillusion.texture.UniformTexture" />
+			<role name="Request()" element="artofillusion.texture.UniformMapping::getTextureSpec(artofillusion.math.Vec3, artofillusion.texture.TextureSpec, double, double, double, double[]):void" />
+			<role name="Request()" element="artofillusion.texture.UniformMapping::getTransparency(artofillusion.math.Vec3, artofillusion.math.RGBColor, double, double, double, double[]):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.object.ObjectInfo" />
+			<role name="Adapter" element="artofillusion.ui.ObjectTreeElement" />
+			<role name="adaptee" element="artofillusion.ui.ObjectTreeElement::info:artofillusion.object.ObjectInfo" />
+			<role name="Request()" element="artofillusion.ui.ObjectTreeElement::getLabel():java.lang.String" />
+			<role name="Request()" element="artofillusion.ui.ObjectTreeElement::canAcceptAsParent(artofillusion.ui.TreeElement):boolean" />
+			<role name="Request()" element="artofillusion.ui.ObjectTreeElement::addChild(artofillusion.ui.TreeElement, int):void" />
+			<role name="Request()" element="artofillusion.ui.ObjectTreeElement::removeChild(java.lang.Object):void" />
+			<role name="Request()" element="artofillusion.ui.ObjectTreeElement::isGray():boolean" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.animation.ObjectRef" />
+			<role name="Adapter" element="artofillusion.animation.ObjectRefTreeElement" />
+			<role name="adaptee" element="artofillusion.animation.ObjectRefTreeElement::ref:artofillusion.animation.ObjectRef" />
+			<role name="Request()" element="artofillusion.animation.ObjectRefTreeElement::getLabel():java.lang.String" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.object.ProceduralDirectionalLight" />
+			<role name="Adapter" element="artofillusion.object.ProceduralDirectionalLight$ProceduralLightKeyframe" />
+			<role name="adaptee" element="artofillusion.object.ProceduralDirectionalLight$ProceduralLightKeyframe::light:artofillusion.object.ProceduralDirectionalLight" />
+			<role name="Request()" element="artofillusion.object.ProceduralDirectionalLight$ProceduralLightKeyframe::getGraphValues():double[]" />
+			<role name="Request()" element="artofillusion.object.ProceduralDirectionalLight$ProceduralLightKeyframe::setGraphValues(double[]):void" />
+			<role name="Request()" element="artofillusion.object.ProceduralDirectionalLight$ProceduralLightKeyframe::blend(artofillusion.animation.Keyframe, double, double):artofillusion.animation.Keyframe" />
+			<role name="Request()" element="artofillusion.object.ProceduralDirectionalLight$ProceduralLightKeyframe::blend(artofillusion.animation.Keyframe, artofillusion.animation.Keyframe, double, double, double):artofillusion.animation.Keyframe" />
+			<role name="Request()" element="artofillusion.object.ProceduralDirectionalLight$ProceduralLightKeyframe::blend(artofillusion.animation.Keyframe, artofillusion.animation.Keyframe, artofillusion.animation.Keyframe, double, double, double, double):artofillusion.animation.Keyframe" />
+			<role name="Request()" element="artofillusion.object.ProceduralDirectionalLight$ProceduralLightKeyframe::equals(artofillusion.animation.Keyframe):boolean" />
+			<role name="Request()" element="artofillusion.object.ProceduralDirectionalLight$ProceduralLightKeyframe::writeToStream(java.io.DataOutputStream):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.object.ProceduralPointLight" />
+			<role name="Adapter" element="artofillusion.object.ProceduralPointLight$ProceduralLightKeyframe" />
+			<role name="adaptee" element="artofillusion.object.ProceduralPointLight$ProceduralLightKeyframe::light:artofillusion.object.ProceduralPointLight" />
+			<role name="Request()" element="artofillusion.object.ProceduralPointLight$ProceduralLightKeyframe::getGraphValues():double[]" />
+			<role name="Request()" element="artofillusion.object.ProceduralPointLight$ProceduralLightKeyframe::setGraphValues(double[]):void" />
+			<role name="Request()" element="artofillusion.object.ProceduralPointLight$ProceduralLightKeyframe::blend(artofillusion.animation.Keyframe, double, double):artofillusion.animation.Keyframe" />
+			<role name="Request()" element="artofillusion.object.ProceduralPointLight$ProceduralLightKeyframe::blend(artofillusion.animation.Keyframe, artofillusion.animation.Keyframe, double, double, double):artofillusion.animation.Keyframe" />
+			<role name="Request()" element="artofillusion.object.ProceduralPointLight$ProceduralLightKeyframe::blend(artofillusion.animation.Keyframe, artofillusion.animation.Keyframe, artofillusion.animation.Keyframe, double, double, double, double):artofillusion.animation.Keyframe" />
+			<role name="Request()" element="artofillusion.object.ProceduralPointLight$ProceduralLightKeyframe::equals(artofillusion.animation.Keyframe):boolean" />
+			<role name="Request()" element="artofillusion.object.ProceduralPointLight$ProceduralLightKeyframe::writeToStream(java.io.DataOutputStream):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.script.ScriptedObject" />
+			<role name="Adapter" element="artofillusion.script.ScriptedObject$ScriptedObjectKeyframe" />
+			<role name="adaptee" element="artofillusion.script.ScriptedObject$ScriptedObjectKeyframe::script:artofillusion.script.ScriptedObject" />
+			<role name="Request()" element="artofillusion.script.ScriptedObject$ScriptedObjectKeyframe::getGraphValues():double[]" />
+			<role name="Request()" element="artofillusion.script.ScriptedObject$ScriptedObjectKeyframe::setGraphValues(double[]):void" />
+			<role name="Request()" element="artofillusion.script.ScriptedObject$ScriptedObjectKeyframe::equals(artofillusion.animation.Keyframe):boolean" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.math.RGBColor" />
+			<role name="Adapter" element="artofillusion.view.FlatVertexShader" />
+			<role name="adaptee" element="artofillusion.view.FlatVertexShader::meshColor:artofillusion.math.RGBColor" />
+			<role name="Request()" element="artofillusion.view.FlatVertexShader::getColor(int, int, artofillusion.math.RGBColor):void" />
+			<role name="Request()" element="artofillusion.view.FlatVertexShader::getTextureSpec(artofillusion.texture.TextureSpec):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.math.RGBColor" />
+			<role name="Adapter" element="artofillusion.view.ParameterVertexShader" />
+			<role name="adaptee" element="artofillusion.view.ParameterVertexShader::lowColor:artofillusion.math.RGBColor" />
+			<role name="adaptee" element="artofillusion.view.ParameterVertexShader::highColor:artofillusion.math.RGBColor" />
+			<role name="Request()" element="artofillusion.view.ParameterVertexShader::getColor(int, int, artofillusion.math.RGBColor):void" />
+			<role name="Request()" element="artofillusion.view.ParameterVertexShader::getTextureSpec(artofillusion.texture.TextureSpec):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.math.RGBColor" />
+			<role name="Adapter" element="artofillusion.view.SmoothVertexShader" />
+			<role name="adaptee" element="artofillusion.view.SmoothVertexShader::meshColor:artofillusion.math.RGBColor" />
+			<role name="Request()" element="artofillusion.view.SmoothVertexShader::getColor(int, int, artofillusion.math.RGBColor):void" />
+			<role name="Request()" element="artofillusion.view.SmoothVertexShader::getTextureSpec(artofillusion.texture.TextureSpec):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.math.RGBColor" />
+			<role name="Adapter" element="artofillusion.view.SelectionVertexShader" />
+			<role name="adaptee" element="artofillusion.view.SelectionVertexShader::selectionColor:artofillusion.math.RGBColor" />
+			<role name="Request()" element="artofillusion.view.SelectionVertexShader::getColor(int, int, artofillusion.math.RGBColor):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.math.RGBColor" />
+			<role name="Adapter" element="artofillusion.view.ConstantVertexShader" />
+			<role name="adaptee" element="artofillusion.view.ConstantVertexShader::meshColor:artofillusion.math.RGBColor" />
+			<role name="Request()" element="artofillusion.view.ConstantVertexShader::getColor(int, int, artofillusion.math.RGBColor):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.ViewerCanvas" />
+			<role name="Adapter" element="artofillusion.view.GLCanvasDrawer" />
+			<role name="adaptee" element="artofillusion.view.GLCanvasDrawer::view:artofillusion.ViewerCanvas" />
+			<role name="Request()" element="artofillusion.view.GLCanvasDrawer::drawBorder():void" />
+			<role name="Request()" element="artofillusion.view.GLCanvasDrawer::drawHRule(int, java.awt.Color):void" />
+			<role name="Request()" element="artofillusion.view.GLCanvasDrawer::drawVRule(int, java.awt.Color):void" />
+			<role name="Request()" element="artofillusion.view.GLCanvasDrawer::drawBox(int, int, int, int, java.awt.Color):void" />
+			<role name="Request()" element="artofillusion.view.GLCanvasDrawer::drawBoxes(java.util.List, java.awt.Color):void" />
+			<role name="Request()" element="artofillusion.view.GLCanvasDrawer::renderBox(int, int, int, int, double, java.awt.Color):void" />
+			<role name="Request()" element="artofillusion.view.GLCanvasDrawer::renderBoxes(java.util.List, java.util.List, java.awt.Color):void" />
+			<role name="Request()" element="artofillusion.view.GLCanvasDrawer::drawLine(java.awt.Point, java.awt.Point, java.awt.Color):void" />
+			<role name="Request()" element="artofillusion.view.GLCanvasDrawer::renderLine(artofillusion.math.Vec2, double, artofillusion.math.Vec2, double, artofillusion.Camera, java.awt.Color):void" />
+			<role name="Request()" element="artofillusion.view.GLCanvasDrawer::drawString(java.lang.String, int, int, java.awt.Color):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.ViewerCanvas" />
+			<role name="Adapter" element="artofillusion.view.SoftwareCanvasDrawer" />
+			<role name="adaptee" element="artofillusion.view.SoftwareCanvasDrawer::view:artofillusion.ViewerCanvas" />
+			<role name="Request()" element="artofillusion.view.SoftwareCanvasDrawer::drawDraggedShape(java.awt.Shape):void" />
+			<role name="Request()" element="artofillusion.view.SoftwareCanvasDrawer::drawBorder():void" />
+			<role name="Request()" element="artofillusion.view.SoftwareCanvasDrawer::renderLine(artofillusion.math.Vec2, double, artofillusion.math.Vec2, double, artofillusion.Camera, java.awt.Color):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.object.SceneCamera" />
+			<role name="Adapter" element="artofillusion.raytracer.Raytracer" />
+			<role name="adaptee" element="artofillusion.raytracer.Raytracer::sceneCamera:artofillusion.object.SceneCamera" />
+			<role name="Request()" element="artofillusion.raytracer.Raytracer::renderScene(artofillusion.Scene, artofillusion.Camera, artofillusion.RenderListener, artofillusion.object.SceneCamera):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="artofillusion.object.CSGObject" />
+			<role name="Adaptee" element="artofillusion.math.BoundingBox" />
+			<role name="adaptee" element="artofillusion.object.CSGObject::bounds:artofillusion.math.BoundingBox" />
+			<role name="Request()" element="artofillusion.object.CSGObject::setSize(double, double, double):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="artofillusion.object.Cube" />
+			<role name="Adaptee" element="artofillusion.math.BoundingBox" />
+			<role name="adaptee" element="artofillusion.object.Cube::bounds:artofillusion.math.BoundingBox" />
+			<role name="Request()" element="artofillusion.object.Cube::getWireframeMesh():artofillusion.WireframeMesh" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="artofillusion.object.SplineMesh" />
+			<role name="Adaptee" element="artofillusion.math.BoundingBox" />
+			<role name="adaptee" element="artofillusion.object.SplineMesh::bounds:artofillusion.math.BoundingBox" />
+			<role name="Request()" element="artofillusion.object.SplineMesh::setSize(double, double, double):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="artofillusion.object.TriangleMesh" />
+			<role name="Adaptee" element="artofillusion.math.BoundingBox" />
+			<role name="adaptee" element="artofillusion.object.TriangleMesh::bounds:artofillusion.math.BoundingBox" />
+			<role name="Request()" element="artofillusion.object.TriangleMesh::setSize(double, double, double):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="artofillusion.animation.ConstraintTrack" />
+			<role name="Adaptee" element="artofillusion.math.Vec3" />
+			<role name="adaptee" element="artofillusion.animation.ConstraintTrack::pos:artofillusion.math.Vec3" />
+			<role name="adaptee" element="artofillusion.animation.ConstraintTrack::orient:artofillusion.math.Vec3" />
+			<role name="Request()" element="artofillusion.animation.ConstraintTrack::apply(double):void" />
+			<role name="Request()" element="artofillusion.animation.ConstraintTrack::writeToStream(java.io.DataOutputStream, artofillusion.Scene):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="artofillusion.animation.distortion.CustomDistortion" />
+			<role name="Adaptee" element="artofillusion.math.Mat4" />
+			<role name="adaptee" element="artofillusion.animation.distortion.CustomDistortion::preTransform:artofillusion.math.Mat4" />
+			<role name="adaptee" element="artofillusion.animation.distortion.CustomDistortion::postTransform:artofillusion.math.Mat4" />
+			<role name="Request()" element="artofillusion.animation.distortion.CustomDistortion::isIdenticalTo(artofillusion.animation.distortion.Distortion):boolean" />
+			<role name="Request()" element="artofillusion.animation.distortion.CustomDistortion::transform(artofillusion.object.Mesh):artofillusion.object.Mesh" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.object.SceneCamera" />
+			<role name="Adapter" element="artofillusion.RenderingDialog" />
+			<role name="adaptee" element="artofillusion.RenderingDialog::cameraForFilters:artofillusion.object.SceneCamera" />
+			<role name="Request()" element="artofillusion.RenderingDialog::imageComplete(artofillusion.image.ComplexImage):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.raytracer.RTCube" />
+			<role name="Adapter" element="artofillusion.raytracer.RTCube$CubeIntersection" />
+			<role name="adaptee" element="artofillusion.raytracer.RTCube$CubeIntersection::cube:artofillusion.raytracer.RTCube" />
+			<role name="Request()" element="artofillusion.raytracer.RTCube$CubeIntersection::intersectionProperties(artofillusion.texture.TextureSpec, artofillusion.math.Vec3, artofillusion.math.Vec3, double, double):void" />
+			<role name="Request()" element="artofillusion.raytracer.RTCube$CubeIntersection::intersectionTransparency(int, artofillusion.math.RGBColor, double, double, double):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.raytracer.RTDisplacedTriangle" />
+			<role name="Adapter" element="artofillusion.raytracer.RTDisplacedTriangle$DisplacedTriangleIntersection" />
+			<role name="adaptee" element="artofillusion.raytracer.RTDisplacedTriangle$DisplacedTriangleIntersection::rtTri:artofillusion.raytracer.RTDisplacedTriangle" />
+			<role name="Request()" element="artofillusion.raytracer.RTDisplacedTriangle$DisplacedTriangleIntersection::intersectionProperties(artofillusion.texture.TextureSpec, artofillusion.math.Vec3, artofillusion.math.Vec3, double, double):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.raytracer.RTImplicitObject" />
+			<role name="Adapter" element="artofillusion.raytracer.RTImplicitObject$ImplicitIntersection" />
+			<role name="adaptee" element="artofillusion.raytracer.RTImplicitObject$ImplicitIntersection::obj:artofillusion.raytracer.RTImplicitObject" />
+			<role name="Request()" element="artofillusion.raytracer.RTImplicitObject$ImplicitIntersection::intersectionProperties(artofillusion.texture.TextureSpec, artofillusion.math.Vec3, artofillusion.math.Vec3, double, double):void" />
+			<role name="Request()" element="artofillusion.raytracer.RTImplicitObject$ImplicitIntersection::intersectionTransparency(int, artofillusion.math.RGBColor, double, double, double):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.object.Sphere" />
+			<role name="Adapter" element="artofillusion.raytracer.RTEllipsoid" />
+			<role name="adaptee" element="artofillusion.raytracer.RTEllipsoid::theSphere:artofillusion.object.Sphere" />
+			<role name="Request()" element="artofillusion.raytracer.RTEllipsoid::getTextureMapping():artofillusion.texture.TextureMapping" />
+			<role name="Request()" element="artofillusion.raytracer.RTEllipsoid::getMaterialMapping():artofillusion.material.MaterialMapping" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.object.Sphere" />
+			<role name="Adapter" element="artofillusion.raytracer.RTSphere" />
+			<role name="adaptee" element="artofillusion.raytracer.RTSphere::theSphere:artofillusion.object.Sphere" />
+			<role name="Request()" element="artofillusion.raytracer.RTSphere::getTextureMapping():artofillusion.texture.TextureMapping" />
+			<role name="Request()" element="artofillusion.raytracer.RTSphere::getMaterialMapping():artofillusion.material.MaterialMapping" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.object.Cube" />
+			<role name="Adapter" element="artofillusion.raytracer.RTCube" />
+			<role name="adaptee" element="artofillusion.raytracer.RTCube::theCube:artofillusion.object.Cube" />
+			<role name="Request()" element="artofillusion.raytracer.RTCube::getTextureMapping():artofillusion.texture.TextureMapping" />
+			<role name="Request()" element="artofillusion.raytracer.RTCube::getMaterialMapping():artofillusion.material.MaterialMapping" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.object.Cylinder" />
+			<role name="Adapter" element="artofillusion.raytracer.RTCylinder" />
+			<role name="adaptee" element="artofillusion.raytracer.RTCylinder::theCylinder:artofillusion.object.Cylinder" />
+			<role name="Request()" element="artofillusion.raytracer.RTCylinder::getMaterialMapping():artofillusion.material.MaterialMapping" />
+			<role name="Request()" element="artofillusion.raytracer.RTCylinder::getTextureMapping():artofillusion.texture.TextureMapping" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.object.ImplicitObject" />
+			<role name="Adapter" element="artofillusion.raytracer.RTImplicitObject" />
+			<role name="adaptee" element="artofillusion.raytracer.RTImplicitObject::theObject:artofillusion.object.ImplicitObject" />
+			<role name="Request()" element="artofillusion.raytracer.RTImplicitObject::getTextureMapping():artofillusion.texture.TextureMapping" />
+			<role name="Request()" element="artofillusion.raytracer.RTImplicitObject::getMaterialMapping():artofillusion.material.MaterialMapping" />
+			<role name="Request()" element="artofillusion.raytracer.RTImplicitObject::checkIntersection(artofillusion.raytracer.Ray):artofillusion.raytracer.SurfaceIntersection" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.math.BoundingBox" />
+			<role name="Adapter" element="artofillusion.raytracer.RTDisplacedTriangle" />
+			<role name="adaptee" element="artofillusion.raytracer.RTDisplacedTriangle::bounds:artofillusion.math.BoundingBox" />
+			<role name="Request()" element="artofillusion.raytracer.RTDisplacedTriangle::intersectsBox(artofillusion.math.BoundingBox):boolean" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.RenderListener" />
+			<role name="Adapter" element="artofillusion.raster.Raster" />
+			<role name="adaptee" element="artofillusion.raster.Raster::listener:artofillusion.RenderListener" />
+			<role name="Request()" element="artofillusion.raster.Raster::cancelRendering(artofillusion.Scene):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.RenderListener" />
+			<role name="Adapter" element="artofillusion.raytracer.Raytracer" />
+			<role name="adaptee" element="artofillusion.raytracer.Raytracer::listener:artofillusion.RenderListener" />
+			<role name="Request()" element="artofillusion.raytracer.Raytracer::cancelRendering(artofillusion.Scene):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.math.Vec3" />
+			<role name="Adapter" element="artofillusion.texture.Nonlinear2DTriangle" />
+			<role name="adaptee" element="artofillusion.texture.Nonlinear2DTriangle::t1:artofillusion.math.Vec3" />
+			<role name="adaptee" element="artofillusion.texture.Nonlinear2DTriangle::t2:artofillusion.math.Vec3" />
+			<role name="adaptee" element="artofillusion.texture.Nonlinear2DTriangle::t3:artofillusion.math.Vec3" />
+			<role name="Request()" element="artofillusion.texture.Nonlinear2DTriangle::getTextureSpec(artofillusion.texture.TextureSpec, double, double, double, double, double, double):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.math.CoordinateSystem" />
+			<role name="Adapter" element="artofillusion.material.LinearMaterialMapping" />
+			<role name="adaptee" element="artofillusion.material.LinearMaterialMapping::coords:artofillusion.math.CoordinateSystem" />
+			<role name="Request()" element="artofillusion.material.LinearMaterialMapping::duplicate(artofillusion.object.Object3D, artofillusion.material.Material):artofillusion.material.MaterialMapping" />
+			<role name="Request()" element="artofillusion.material.LinearMaterialMapping::copy(artofillusion.material.MaterialMapping):void" />
+			<role name="Request()" element="artofillusion.material.LinearMaterialMapping::writeToFile(java.io.DataOutputStream):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.object.Object3D" />
+			<role name="Adapter" element="artofillusion.ObjectMaterialDialog" />
+			<role name="adaptee" element="artofillusion.ObjectMaterialDialog::firstObj:artofillusion.object.Object3D" />
+			<role name="Request()" element="artofillusion.ObjectMaterialDialog::itemRemoved(int, java.lang.Object):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="artofillusion.animation.distortion.IKDistortion" />
+			<role name="Adaptee" element="artofillusion.animation.Actor" />
+			<role name="adaptee" element="artofillusion.animation.distortion.IKDistortion::actor:artofillusion.animation.Actor" />
+			<role name="Request()" element="artofillusion.animation.distortion.IKDistortion::transform(artofillusion.object.Mesh):artofillusion.object.Mesh" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="artofillusion.animation.distortion.PoseDistortion" />
+			<role name="Adaptee" element="artofillusion.animation.Actor" />
+			<role name="adaptee" element="artofillusion.animation.distortion.PoseDistortion::actor:artofillusion.animation.Actor" />
+			<role name="Request()" element="artofillusion.animation.distortion.PoseDistortion::transform(artofillusion.object.Mesh):artofillusion.object.Mesh" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="artofillusion.animation.distortion.SkeletonShapeDistortion" />
+			<role name="Adaptee" element="artofillusion.animation.Actor" />
+			<role name="adaptee" element="artofillusion.animation.distortion.SkeletonShapeDistortion::actor:artofillusion.animation.Actor" />
+			<role name="Request()" element="artofillusion.animation.distortion.SkeletonShapeDistortion::transform(artofillusion.object.Mesh):artofillusion.object.Mesh" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.MaterialPreviewer" />
+			<role name="Adapter" element="artofillusion.ObjectMaterialDialog" />
+			<role name="adaptee" element="artofillusion.ObjectMaterialDialog::preview:artofillusion.MaterialPreviewer" />
+			<role name="Request()" element="artofillusion.ObjectMaterialDialog::itemRemoved(int, java.lang.Object):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.MaterialPreviewer" />
+			<role name="Adapter" element="artofillusion.ObjectTextureDialog" />
+			<role name="adaptee" element="artofillusion.ObjectTextureDialog::preview:artofillusion.MaterialPreviewer" />
+			<role name="Request()" element="artofillusion.ObjectTextureDialog::itemRemoved(int, java.lang.Object):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="artofillusion.ObjectTextureDialog" />
+			<role name="Adaptee" element="artofillusion.texture.LayeredMapping" />
+			<role name="adaptee" element="artofillusion.ObjectTextureDialog::layeredMap:artofillusion.texture.LayeredMapping" />
+			<role name="Request()" element="artofillusion.ObjectTextureDialog::itemRemoved(int, java.lang.Object):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.animation.Track" />
+			<role name="Adapter" element="artofillusion.animation.TrackTreeElement" />
+			<role name="adaptee" element="artofillusion.animation.TrackTreeElement::theTrack:artofillusion.animation.Track" />
+			<role name="Request()" element="artofillusion.animation.TrackTreeElement::getLabel():java.lang.String" />
+			<role name="Request()" element="artofillusion.animation.TrackTreeElement::canAcceptAsParent(artofillusion.ui.TreeElement):boolean" />
+			<role name="Request()" element="artofillusion.animation.TrackTreeElement::isGray():boolean" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.math.Vec3" />
+			<role name="Adapter" element="artofillusion.ui.Compound3DManipulator" />
+			<role name="adaptee" element="artofillusion.ui.Compound3DManipulator::center:artofillusion.math.Vec3" />
+			<role name="adaptee" element="artofillusion.ui.Compound3DManipulator::xaxis:artofillusion.math.Vec3" />
+			<role name="adaptee" element="artofillusion.ui.Compound3DManipulator::yaxis:artofillusion.math.Vec3" />
+			<role name="adaptee" element="artofillusion.ui.Compound3DManipulator::zaxis:artofillusion.math.Vec3" />
+			<role name="Request()" element="artofillusion.ui.Compound3DManipulator::draw(artofillusion.ViewerCanvas, artofillusion.math.BoundingBox):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.object.SpotLight" />
+			<role name="Adapter" element="artofillusion.raytracer.SpotlightPhotonSource" />
+			<role name="adaptee" element="artofillusion.raytracer.SpotlightPhotonSource::light:artofillusion.object.SpotLight" />
+			<role name="Request()" element="artofillusion.raytracer.SpotlightPhotonSource::generatePhotons(artofillusion.raytracer.PhotonMap, double, artofillusion.util.ThreadManager):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="artofillusion.animation.distortion.PoseDistortion" />
+			<role name="Adaptee" element="artofillusion.animation.Keyframe" />
+			<role name="adaptee" element="artofillusion.animation.distortion.PoseDistortion::pose:artofillusion.animation.Keyframe" />
+			<role name="Request()" element="artofillusion.animation.distortion.PoseDistortion::isIdenticalTo(artofillusion.animation.distortion.Distortion):boolean" />
+			<role name="Request()" element="artofillusion.animation.distortion.PoseDistortion::duplicate():artofillusion.animation.distortion.Distortion" />
+			<role name="Request()" element="artofillusion.animation.distortion.PoseDistortion::transform(artofillusion.object.Mesh):artofillusion.object.Mesh" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.image.filter.ImageFilter" />
+			<role name="Adapter" element="artofillusion.animation.FilterParameterTrack" />
+			<role name="adaptee" element="artofillusion.animation.FilterParameterTrack::filter:artofillusion.image.filter.ImageFilter" />
+			<role name="Request()" element="artofillusion.animation.FilterParameterTrack::apply(double):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.math.Vec3" />
+			<role name="Adapter" element="artofillusion.view.FlatVertexShader" />
+			<role name="adaptee" element="artofillusion.view.FlatVertexShader::viewDir:artofillusion.math.Vec3" />
+			<role name="Request()" element="artofillusion.view.FlatVertexShader::getColor(int, int, artofillusion.math.RGBColor):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.math.Vec3" />
+			<role name="Adapter" element="artofillusion.view.ParameterVertexShader" />
+			<role name="adaptee" element="artofillusion.view.ParameterVertexShader::viewDir:artofillusion.math.Vec3" />
+			<role name="Request()" element="artofillusion.view.ParameterVertexShader::getColor(int, int, artofillusion.math.RGBColor):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.math.Vec3" />
+			<role name="Adapter" element="artofillusion.view.SmoothVertexShader" />
+			<role name="adaptee" element="artofillusion.view.SmoothVertexShader::viewDir:artofillusion.math.Vec3" />
+			<role name="Request()" element="artofillusion.view.SmoothVertexShader::getColor(int, int, artofillusion.math.RGBColor):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.math.Vec3" />
+			<role name="Adapter" element="artofillusion.view.TexturedVertexShader" />
+			<role name="adaptee" element="artofillusion.view.TexturedVertexShader::viewDir:artofillusion.math.Vec3" />
+			<role name="Request()" element="artofillusion.view.TexturedVertexShader::getColor(int, int, artofillusion.math.RGBColor):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.RenderingTriangle" />
+			<role name="Adapter" element="artofillusion.raytracer.RTDisplacedTriangle" />
+			<role name="adaptee" element="artofillusion.raytracer.RTDisplacedTriangle::tri:artofillusion.RenderingTriangle" />
+			<role name="Request()" element="artofillusion.raytracer.RTDisplacedTriangle::getTextureMapping():artofillusion.texture.TextureMapping" />
+			<role name="Request()" element="artofillusion.raytracer.RTDisplacedTriangle::checkIntersection(artofillusion.raytracer.Ray):artofillusion.raytracer.SurfaceIntersection" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.RenderingTriangle" />
+			<role name="Adapter" element="artofillusion.raytracer.RTTriangle" />
+			<role name="adaptee" element="artofillusion.raytracer.RTTriangle::tri:artofillusion.RenderingTriangle" />
+			<role name="Request()" element="artofillusion.raytracer.RTTriangle::getTextureMapping():artofillusion.texture.TextureMapping" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.RenderingTriangle" />
+			<role name="Adapter" element="artofillusion.raytracer.RTTriangleLowMemory" />
+			<role name="adaptee" element="artofillusion.raytracer.RTTriangleLowMemory::tri:artofillusion.RenderingTriangle" />
+			<role name="Request()" element="artofillusion.raytracer.RTTriangleLowMemory::getTextureMapping():artofillusion.texture.TextureMapping" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.RenderingTriangle" />
+			<role name="Adapter" element="artofillusion.raytracer.TrianglePhotonSource" />
+			<role name="adaptee" element="artofillusion.raytracer.TrianglePhotonSource::tri:artofillusion.RenderingTriangle" />
+			<role name="Request()" element="artofillusion.raytracer.TrianglePhotonSource::generatePhotons(artofillusion.raytracer.PhotonMap, double, artofillusion.util.ThreadManager):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.texture.ParameterValue" />
+			<role name="Adapter" element="artofillusion.view.ParameterVertexShader" />
+			<role name="adaptee" element="artofillusion.view.ParameterVertexShader::param:artofillusion.texture.ParameterValue" />
+			<role name="Request()" element="artofillusion.view.ParameterVertexShader::getColor(int, int, artofillusion.math.RGBColor):void" />
+			<role name="Request()" element="artofillusion.view.ParameterVertexShader::getTextureSpec(artofillusion.texture.TextureSpec):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="artofillusion.math.BoundingBox" />
+			<role name="Adapter" element="artofillusion.ui.Compound3DManipulator" />
+			<role name="adaptee" element="artofillusion.ui.Compound3DManipulator::selectionBounds:artofillusion.math.BoundingBox" />
+			<role name="Request()" element="artofillusion.ui.Compound3DManipulator::mousePressed(buoy.event.WidgetMouseEvent, artofillusion.ViewerCanvas, artofillusion.math.BoundingBox):boolean" />
+		</instance>
+	</pattern>
+	<pattern name="Command" />
+	<pattern name="Composite">
+		<instance>
+			<role name="Component" element="artofillusion.animation.Track" />
+			<role name="Composite" element="artofillusion.animation.PoseTrack" />
+			<role name="Operation()" element="artofillusion.animation.PoseTrack::apply(double):void" />
+			<role name="Operation()" element="artofillusion.animation.PoseTrack::writeToStream(java.io.DataOutputStream, artofillusion.Scene):void" />
+			<role name="Operation()" element="artofillusion.animation.PoseTrack::initFromStream(java.io.DataInputStream, artofillusion.Scene):void" />
+		</instance>
+		<instance>
+			<role name="Component" element="artofillusion.texture.TextureMapping" />
+			<role name="Composite" element="artofillusion.texture.LayeredMapping" />
+			<role name="Operation()" element="artofillusion.texture.LayeredMapping::getTextureSpec(artofillusion.math.Vec3, artofillusion.texture.TextureSpec, double, double, double, double[]):void" />
+			<role name="Operation()" element="artofillusion.texture.LayeredMapping::getTransparency(artofillusion.math.Vec3, artofillusion.math.RGBColor, double, double, double, double[]):void" />
+			<role name="Operation()" element="artofillusion.texture.LayeredMapping::getDisplacement(artofillusion.math.Vec3, double, double, double[]):double" />
+		</instance>
+	</pattern>
+	<pattern name="Decorator">
+		<instance>
+			<role name="Component" element="artofillusion.object.Object3D" />
+			<role name="Decorator" element="artofillusion.object.ObjectWrapper" />
+			<role name="component" element="artofillusion.object.ObjectWrapper::theObject:artofillusion.object.Object3D" />
+			<role name="Operation()" element="artofillusion.object.ObjectWrapper::getBounds():artofillusion.math.BoundingBox" />
+			<role name="Operation()" element="artofillusion.object.ObjectWrapper::getWireframeMesh():artofillusion.WireframeMesh" />
+			<role name="Operation()" element="artofillusion.object.ObjectWrapper::getPoseKeyframe():artofillusion.animation.Keyframe" />
+			<role name="Operation()" element="artofillusion.object.ObjectWrapper::applyPoseKeyframe(artofillusion.animation.Keyframe):void" />
+		</instance>
+		<instance>
+			<role name="Component" element="artofillusion.animation.Keyframe" />
+			<role name="Decorator" element="artofillusion.object.CSGObject$CSGKeyframe" />
+			<role name="component" element="artofillusion.object.CSGObject$CSGKeyframe::key1:artofillusion.animation.Keyframe" />
+			<role name="component" element="artofillusion.object.CSGObject$CSGKeyframe::key2:artofillusion.animation.Keyframe" />
+			<role name="Operation()" element="artofillusion.object.CSGObject$CSGKeyframe::duplicate():artofillusion.animation.Keyframe" />
+			<role name="Operation()" element="artofillusion.object.CSGObject$CSGKeyframe::duplicate(java.lang.Object):artofillusion.animation.Keyframe" />
+			<role name="Operation()" element="artofillusion.object.CSGObject$CSGKeyframe::blend(artofillusion.animation.Keyframe, double, double):artofillusion.animation.Keyframe" />
+			<role name="Operation()" element="artofillusion.object.CSGObject$CSGKeyframe::blend(artofillusion.animation.Keyframe, artofillusion.animation.Keyframe, double, double, double):artofillusion.animation.Keyframe" />
+			<role name="Operation()" element="artofillusion.object.CSGObject$CSGKeyframe::blend(artofillusion.animation.Keyframe, artofillusion.animation.Keyframe, artofillusion.animation.Keyframe, double, double, double, double):artofillusion.animation.Keyframe" />
+			<role name="Operation()" element="artofillusion.object.CSGObject$CSGKeyframe::equals(artofillusion.animation.Keyframe):boolean" />
+			<role name="Operation()" element="artofillusion.object.CSGObject$CSGKeyframe::writeToStream(java.io.DataOutputStream):void" />
+		</instance>
+		<instance>
+			<role name="Component" element="artofillusion.raster.Fragment" />
+			<role name="Decorator" element="artofillusion.raster.TransparentFragment" />
+			<role name="component" element="artofillusion.raster.TransparentFragment::next:artofillusion.raster.Fragment" />
+			<role name="Operation()" element="artofillusion.raster.TransparentFragment::getOpaqueDepth():float" />
+			<role name="Operation()" element="artofillusion.raster.TransparentFragment::insertNextFragment(artofillusion.raster.Fragment):artofillusion.raster.Fragment" />
+		</instance>
+		<instance>
+			<role name="Component" element="artofillusion.animation.distortion.Distortion" />
+			<role name="Decorator" element="artofillusion.animation.distortion.BendDistortion" />
+			<role name="component" element="artofillusion.animation.distortion.BendDistortion::previous:artofillusion.animation.distortion.Distortion" />
+			<role name="Operation()" element="artofillusion.animation.distortion.BendDistortion::isIdenticalTo(artofillusion.animation.distortion.Distortion):boolean" />
+			<role name="Operation()" element="artofillusion.animation.distortion.BendDistortion::duplicate():artofillusion.animation.distortion.Distortion" />
+			<role name="Operation()" element="artofillusion.animation.distortion.BendDistortion::transform(artofillusion.object.Mesh):artofillusion.object.Mesh" />
+		</instance>
+		<instance>
+			<role name="Component" element="artofillusion.animation.distortion.Distortion" />
+			<role name="Decorator" element="artofillusion.animation.distortion.CustomDistortion" />
+			<role name="component" element="artofillusion.animation.distortion.CustomDistortion::previous:artofillusion.animation.distortion.Distortion" />
+			<role name="Operation()" element="artofillusion.animation.distortion.CustomDistortion::isIdenticalTo(artofillusion.animation.distortion.Distortion):boolean" />
+			<role name="Operation()" element="artofillusion.animation.distortion.CustomDistortion::duplicate():artofillusion.animation.distortion.Distortion" />
+			<role name="Operation()" element="artofillusion.animation.distortion.CustomDistortion::transform(artofillusion.object.Mesh):artofillusion.object.Mesh" />
+		</instance>
+		<instance>
+			<role name="Component" element="artofillusion.animation.distortion.Distortion" />
+			<role name="Decorator" element="artofillusion.animation.distortion.IKDistortion" />
+			<role name="component" element="artofillusion.animation.distortion.IKDistortion::previous:artofillusion.animation.distortion.Distortion" />
+			<role name="Operation()" element="artofillusion.animation.distortion.IKDistortion::isIdenticalTo(artofillusion.animation.distortion.Distortion):boolean" />
+			<role name="Operation()" element="artofillusion.animation.distortion.IKDistortion::duplicate():artofillusion.animation.distortion.Distortion" />
+			<role name="Operation()" element="artofillusion.animation.distortion.IKDistortion::transform(artofillusion.object.Mesh):artofillusion.object.Mesh" />
+		</instance>
+		<instance>
+			<role name="Component" element="artofillusion.animation.distortion.Distortion" />
+			<role name="Decorator" element="artofillusion.animation.distortion.PoseDistortion" />
+			<role name="component" element="artofillusion.animation.distortion.PoseDistortion::previous:artofillusion.animation.distortion.Distortion" />
+			<role name="Operation()" element="artofillusion.animation.distortion.PoseDistortion::isIdenticalTo(artofillusion.animation.distortion.Distortion):boolean" />
+			<role name="Operation()" element="artofillusion.animation.distortion.PoseDistortion::duplicate():artofillusion.animation.distortion.Distortion" />
+			<role name="Operation()" element="artofillusion.animation.distortion.PoseDistortion::transform(artofillusion.object.Mesh):artofillusion.object.Mesh" />
+		</instance>
+		<instance>
+			<role name="Component" element="artofillusion.animation.distortion.Distortion" />
+			<role name="Decorator" element="artofillusion.animation.distortion.ScaleDistortion" />
+			<role name="component" element="artofillusion.animation.distortion.ScaleDistortion::previous:artofillusion.animation.distortion.Distortion" />
+			<role name="Operation()" element="artofillusion.animation.distortion.ScaleDistortion::isIdenticalTo(artofillusion.animation.distortion.Distortion):boolean" />
+			<role name="Operation()" element="artofillusion.animation.distortion.ScaleDistortion::duplicate():artofillusion.animation.distortion.Distortion" />
+			<role name="Operation()" element="artofillusion.animation.distortion.ScaleDistortion::transform(artofillusion.object.Mesh):artofillusion.object.Mesh" />
+		</instance>
+		<instance>
+			<role name="Component" element="artofillusion.animation.distortion.Distortion" />
+			<role name="Decorator" element="artofillusion.animation.distortion.ShatterDistortion" />
+			<role name="component" element="artofillusion.animation.distortion.ShatterDistortion::previous:artofillusion.animation.distortion.Distortion" />
+			<role name="Operation()" element="artofillusion.animation.distortion.ShatterDistortion::isIdenticalTo(artofillusion.animation.distortion.Distortion):boolean" />
+			<role name="Operation()" element="artofillusion.animation.distortion.ShatterDistortion::duplicate():artofillusion.animation.distortion.Distortion" />
+			<role name="Operation()" element="artofillusion.animation.distortion.ShatterDistortion::transform(artofillusion.object.Mesh):artofillusion.object.Mesh" />
+		</instance>
+		<instance>
+			<role name="Component" element="artofillusion.animation.distortion.Distortion" />
+			<role name="Decorator" element="artofillusion.animation.distortion.SkeletonShapeDistortion" />
+			<role name="component" element="artofillusion.animation.distortion.SkeletonShapeDistortion::previous:artofillusion.animation.distortion.Distortion" />
+			<role name="Operation()" element="artofillusion.animation.distortion.SkeletonShapeDistortion::isIdenticalTo(artofillusion.animation.distortion.Distortion):boolean" />
+			<role name="Operation()" element="artofillusion.animation.distortion.SkeletonShapeDistortion::duplicate():artofillusion.animation.distortion.Distortion" />
+			<role name="Operation()" element="artofillusion.animation.distortion.SkeletonShapeDistortion::transform(artofillusion.object.Mesh):artofillusion.object.Mesh" />
+		</instance>
+		<instance>
+			<role name="Component" element="artofillusion.animation.distortion.Distortion" />
+			<role name="Decorator" element="artofillusion.animation.distortion.TwistDistortion" />
+			<role name="component" element="artofillusion.animation.distortion.TwistDistortion::previous:artofillusion.animation.distortion.Distortion" />
+			<role name="Operation()" element="artofillusion.animation.distortion.TwistDistortion::isIdenticalTo(artofillusion.animation.distortion.Distortion):boolean" />
+			<role name="Operation()" element="artofillusion.animation.distortion.TwistDistortion::duplicate():artofillusion.animation.distortion.Distortion" />
+			<role name="Operation()" element="artofillusion.animation.distortion.TwistDistortion::transform(artofillusion.object.Mesh):artofillusion.object.Mesh" />
+		</instance>
+		<instance>
+			<role name="Component" element="artofillusion.view.VertexShader" />
+			<role name="Decorator" element="artofillusion.view.SelectionVertexShader" />
+			<role name="component" element="artofillusion.view.SelectionVertexShader::shader:artofillusion.view.VertexShader" />
+			<role name="Operation()" element="artofillusion.view.SelectionVertexShader::getColor(int, int, artofillusion.math.RGBColor):void" />
+			<role name="Operation()" element="artofillusion.view.SelectionVertexShader::isUniformFace(int):boolean" />
+		</instance>
+	</pattern>
+	<pattern name="Observer">
+		<instance>
+			<role name="Observer" element="artofillusion.animation.Track" />
+			<role name="Subject" element="artofillusion.object.ObjectInfo" />
+			<role name="Notify()" element="artofillusion.object.ObjectInfo::duplicate(artofillusion.object.Object3D):artofillusion.object.ObjectInfo" />
+			<role name="Notify()" element="artofillusion.object.ObjectInfo::copyInfo(artofillusion.object.ObjectInfo):void" />
+		</instance>
+		<instance>
+			<role name="Observer" element="artofillusion.ListChangeListener" />
+			<role name="Subject" element="artofillusion.Scene" />
+			<role name="Notify()" element="artofillusion.Scene::addMaterial(artofillusion.material.Material):void" />
+			<role name="Notify()" element="artofillusion.Scene::removeMaterial(int):void" />
+			<role name="Notify()" element="artofillusion.Scene::addTexture(artofillusion.texture.Texture):void" />
+			<role name="Notify()" element="artofillusion.Scene::removeTexture(int):void" />
+			<role name="Notify()" element="artofillusion.Scene::changeMaterial(int):void" />
+			<role name="Notify()" element="artofillusion.Scene::changeTexture(int):void" />
+		</instance>
+		<instance>
+			<role name="Observer" element="artofillusion.animation.Keyframe" />
+			<role name="Subject" element="artofillusion.animation.Timecourse" />
+			<role name="Notify()" element="artofillusion.animation.Timecourse::duplicate(java.lang.Object):artofillusion.animation.Timecourse" />
+			<role name="Notify()" element="artofillusion.animation.Timecourse::subdivide(int):artofillusion.animation.Timecourse" />
+			<role name="Notify()" element="artofillusion.animation.Timecourse::evaluate(double, int):artofillusion.animation.Keyframe" />
+		</instance>
+		<instance>
+			<role name="Observer" element="artofillusion.texture.Texture" />
+			<role name="Subject" element="artofillusion.texture.LayeredMapping" />
+			<role name="Notify()" element="artofillusion.texture.LayeredMapping::getAverageSpec(artofillusion.texture.TextureSpec, double, double[]):void" />
+		</instance>
+		<instance>
+			<role name="Observer" element="artofillusion.ui.TreeElement" />
+			<role name="Subject" element="artofillusion.ui.TreeList" />
+			<role name="Notify()" element="artofillusion.ui.TreeList::findElement(java.lang.Object):artofillusion.ui.TreeElement" />
+			<role name="Notify()" element="artofillusion.ui.TreeList::findElement(java.lang.Object, artofillusion.ui.TreeElement):artofillusion.ui.TreeElement" />
+			<role name="Notify()" element="artofillusion.ui.TreeList::removeObject(java.lang.Object):void" />
+			<role name="Notify()" element="artofillusion.ui.TreeList::getSelectedObjects():java.lang.Object[]" />
+			<role name="Notify()" element="artofillusion.ui.TreeList::getVisibleObjects():java.lang.Object[]" />
+			<role name="Notify()" element="artofillusion.ui.TreeList::paint(buoy.event.RepaintEvent):void" />
+			<role name="Notify()" element="artofillusion.ui.TreeList::mouseDragged(buoy.event.MouseDraggedEvent):void" />
+			<role name="Notify()" element="artofillusion.ui.TreeList::mouseReleased(buoy.event.MouseReleasedEvent):void" />
+			<role name="Notify()" element="artofillusion.ui.TreeList::dragTargetOk(artofillusion.ui.TreeElement):boolean" />
+		</instance>
+		<instance>
+			<role name="Observer" element="artofillusion.texture.ParameterValue" />
+			<role name="Subject" element="artofillusion.object.Object3D" />
+			<role name="Notify()" element="artofillusion.object.Object3D::getAverageParameterValues():double[]" />
+			<role name="Notify()" element="artofillusion.object.Object3D::writeToFile(java.io.DataOutputStream, artofillusion.Scene):void" />
+		</instance>
+		<instance>
+			<role name="Observer" element="artofillusion.texture.ParameterValue" />
+			<role name="Subject" element="artofillusion.object.SplineMesh$SplineMeshKeyframe" />
+			<role name="Notify()" element="artofillusion.object.SplineMesh$SplineMeshKeyframe::duplicate(java.lang.Object):artofillusion.animation.Keyframe" />
+			<role name="Notify()" element="artofillusion.object.SplineMesh$SplineMeshKeyframe::textureChanged(artofillusion.TextureParameter[], artofillusion.TextureParameter[]):void" />
+			<role name="Notify()" element="artofillusion.object.SplineMesh$SplineMeshKeyframe::writeToStream(java.io.DataOutputStream):void" />
+		</instance>
+		<instance>
+			<role name="Observer" element="artofillusion.texture.ParameterValue" />
+			<role name="Subject" element="artofillusion.object.TriangleMesh$TriangleMeshKeyframe" />
+			<role name="Notify()" element="artofillusion.object.TriangleMesh$TriangleMeshKeyframe::duplicate(java.lang.Object):artofillusion.animation.Keyframe" />
+			<role name="Notify()" element="artofillusion.object.TriangleMesh$TriangleMeshKeyframe::textureChanged(artofillusion.TextureParameter[], artofillusion.TextureParameter[]):void" />
+			<role name="Notify()" element="artofillusion.object.TriangleMesh$TriangleMeshKeyframe::writeToStream(java.io.DataOutputStream):void" />
+		</instance>
+		<instance>
+			<role name="Observer" element="artofillusion.animation.Gesture" />
+			<role name="Subject" element="artofillusion.animation.Actor" />
+			<role name="Notify()" element="artofillusion.animation.Actor::setTexture(artofillusion.texture.Texture, artofillusion.texture.TextureMapping):void" />
+			<role name="Notify()" element="artofillusion.animation.Actor::setParameterValues(artofillusion.texture.ParameterValue[]):void" />
+			<role name="Notify()" element="artofillusion.animation.Actor::setParameterValue(artofillusion.TextureParameter, artofillusion.texture.ParameterValue):void" />
+			<role name="Notify()" element="artofillusion.animation.Actor::shapeMeshFromGestures(artofillusion.object.Object3D):void" />
+		</instance>
+		<instance>
+			<role name="Observer" element="artofillusion.view.ViewerControl" />
+			<role name="Subject" element="artofillusion.ViewerCanvas" />
+			<role name="Notify()" element="artofillusion.ViewerCanvas::buildChoices(buoy.widget.RowContainer):void" />
+		</instance>
+	</pattern>
+	<pattern name="State">
+		<instance>
+			<role name="State" element="artofillusion.ui.EditingWindow" />
+			<role name="Context" element="artofillusion.ExternalObjectEditingWindow" />
+			<role name="state" element="artofillusion.ExternalObjectEditingWindow::parentWindow:artofillusion.ui.EditingWindow" />
+			<role name="Request()" element="artofillusion.ExternalObjectEditingWindow::doOk():void" />
+		</instance>
+		<instance>
+			<role name="State" element="artofillusion.ui.EditingWindow" />
+			<role name="Context" element="artofillusion.animation.ActorEditorWindow" />
+			<role name="state" element="artofillusion.animation.ActorEditorWindow::theWindow:artofillusion.ui.EditingWindow" />
+			<role name="Request()" element="artofillusion.animation.ActorEditorWindow::doExtract():void" />
+			<role name="Request()" element="artofillusion.animation.ActorEditorWindow::doOk():void" />
+		</instance>
+		<instance>
+			<role name="State" element="artofillusion.ui.EditingWindow" />
+			<role name="Context" element="artofillusion.script.ScriptedObjectEditorWindow" />
+			<role name="state" element="artofillusion.script.ScriptedObjectEditorWindow::window:artofillusion.ui.EditingWindow" />
+			<role name="Request()" element="artofillusion.script.ScriptedObjectEditorWindow::commitChanges():void" />
+		</instance>
+		<instance>
+			<role name="State" element="artofillusion.ui.EditingWindow" />
+			<role name="Context" element="artofillusion.ui.TreeList" />
+			<role name="state" element="artofillusion.ui.TreeList::window:artofillusion.ui.EditingWindow" />
+			<role name="Request()" element="artofillusion.ui.TreeList::mouseReleased(buoy.event.MouseReleasedEvent):void" />
+		</instance>
+		<instance>
+			<role name="State" element="artofillusion.ui.EditingWindow" />
+			<role name="Context" element="artofillusion.UndoRecord" />
+			<role name="state" element="artofillusion.UndoRecord::theWindow:artofillusion.ui.EditingWindow" />
+			<role name="Request()" element="artofillusion.UndoRecord::execute():artofillusion.UndoRecord" />
+		</instance>
+		<instance>
+			<role name="State" element="artofillusion.animation.Track" />
+			<role name="Context" element="artofillusion.object.ObjectInfo" />
+			<role name="state" element="artofillusion.object.ObjectInfo::tracks:artofillusion.animation.Track[]" />
+			<role name="Request()" element="artofillusion.object.ObjectInfo::duplicate(artofillusion.object.Object3D):artofillusion.object.ObjectInfo" />
+			<role name="Request()" element="artofillusion.object.ObjectInfo::copyInfo(artofillusion.object.ObjectInfo):void" />
+		</instance>
+		<instance>
+			<role name="State" element="artofillusion.object.Object3D" />
+			<role name="Context" element="artofillusion.animation.JointEditorDialog" />
+			<role name="state" element="artofillusion.animation.JointEditorDialog::oldMesh:artofillusion.object.Object3D" />
+			<role name="Request()" element="artofillusion.animation.JointEditorDialog::doCancel():void" />
+		</instance>
+		<instance>
+			<role name="State" element="artofillusion.object.Object3D" />
+			<role name="Context" element="artofillusion.animation.ActorEditorWindow$EditCallback" />
+			<role name="state" element="artofillusion.animation.ActorEditorWindow$EditCallback::editObject:artofillusion.object.Object3D" />
+			<role name="Request()" element="artofillusion.animation.ActorEditorWindow$EditCallback::run():void" />
+		</instance>
+		<instance>
+			<role name="State" element="artofillusion.procedural.ProcedureOwner" />
+			<role name="Context" element="artofillusion.procedural.ProcedureEditor" />
+			<role name="state" element="artofillusion.procedural.ProcedureEditor::owner:artofillusion.procedural.ProcedureOwner" />
+			<role name="Request()" element="artofillusion.procedural.ProcedureEditor::getInsertMenu():buoy.widget.BMenu" />
+			<role name="Request()" element="artofillusion.procedural.ProcedureEditor::actionPerformed(buoy.event.CommandEvent):void" />
+			<role name="Request()" element="artofillusion.procedural.ProcedureEditor::doOk():void" />
+			<role name="Request()" element="artofillusion.procedural.ProcedureEditor::updatePreview():void" />
+		</instance>
+		<instance>
+			<role name="State" element="artofillusion.ui.PopupMenuManager" />
+			<role name="Context" element="artofillusion.ui.TreeList" />
+			<role name="state" element="artofillusion.ui.TreeList::popupManager:artofillusion.ui.PopupMenuManager" />
+			<role name="Request()" element="artofillusion.ui.TreeList::showPopupIfNeeded(buoy.event.WidgetMouseEvent):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="artofillusion.RenderSetupDialog" />
+			<role name="State" element="artofillusion.Renderer" />
+			<role name="state" element="artofillusion.RenderSetupDialog::currentRenderer:artofillusion.Renderer" />
+			<role name="Request()" element="artofillusion.RenderSetupDialog::showDialog():void" />
+			<role name="Request()" element="artofillusion.RenderSetupDialog::doRender():void" />
+			<role name="Request()" element="artofillusion.RenderSetupDialog::renderImmediately(buoy.widget.BFrame, artofillusion.Scene):void" />
+			<role name="Request()" element="artofillusion.RenderSetupDialog::rendererChanged():void" />
+		</instance>
+		<instance>
+			<role name="Context" element="artofillusion.ApplicationPreferences" />
+			<role name="State" element="artofillusion.Renderer" />
+			<role name="state" element="artofillusion.ApplicationPreferences::defaultRenderer:artofillusion.Renderer" />
+			<role name="state" element="artofillusion.ApplicationPreferences::objectPreviewRenderer:artofillusion.Renderer" />
+			<role name="state" element="artofillusion.ApplicationPreferences::texturePreviewRenderer:artofillusion.Renderer" />
+			<role name="Request()" element="artofillusion.ApplicationPreferences::setDefaultRenderer(artofillusion.Renderer):void" />
+			<role name="Request()" element="artofillusion.ApplicationPreferences::setObjectPreviewRenderer(artofillusion.Renderer):void" />
+			<role name="Request()" element="artofillusion.ApplicationPreferences::setTexturePreviewRenderer(artofillusion.Renderer):void" />
+		</instance>
+		<instance>
+			<role name="State" element="artofillusion.texture.Texture" />
+			<role name="Context" element="artofillusion.ArtOfIllusion" />
+			<role name="state" element="artofillusion.ArtOfIllusion::clipboardTexture:artofillusion.texture.Texture[]" />
+			<role name="Request()" element="artofillusion.ArtOfIllusion::copyToClipboard(artofillusion.object.ObjectInfo[], artofillusion.Scene):void" />
+			<role name="Request()" element="artofillusion.ArtOfIllusion::pasteClipboard(artofillusion.LayoutWindow):void" />
+		</instance>
+		<instance>
+			<role name="State" element="artofillusion.texture.Texture" />
+			<role name="Context" element="artofillusion.Scene" />
+			<role name="state" element="artofillusion.Scene::environTexture:artofillusion.texture.Texture" />
+			<role name="Request()" element="artofillusion.Scene::removeTexture(int):void" />
+			<role name="Request()" element="artofillusion.Scene::initFromStream(java.io.DataInputStream, boolean):void" />
+			<role name="Request()" element="artofillusion.Scene::writeToStream(java.io.DataOutputStream):void" />
+		</instance>
+		<instance>
+			<role name="State" element="artofillusion.texture.Texture" />
+			<role name="Context" element="artofillusion.CSGDialog" />
+			<role name="state" element="artofillusion.CSGDialog::texture:artofillusion.texture.Texture" />
+			<role name="Request()" element="artofillusion.CSGDialog::makePreview():void" />
+		</instance>
+		<instance>
+			<role name="State" element="artofillusion.ui.EditingWindow" />
+			<role name="Context" element="artofillusion.SceneViewer" />
+			<role name="state" element="artofillusion.SceneViewer::parentFrame:artofillusion.ui.EditingWindow" />
+			<role name="Request()" element="artofillusion.SceneViewer::mousePressed(buoy.event.WidgetMouseEvent):void" />
+			<role name="Request()" element="artofillusion.SceneViewer::mouseReleased(buoy.event.WidgetMouseEvent):void" />
+			<role name="Request()" element="artofillusion.SceneViewer::mouseClicked(buoy.event.MouseClickedEvent):void" />
+		</instance>
+		<instance>
+			<role name="State" element="artofillusion.texture.TextureMapping" />
+			<role name="Context" element="artofillusion.Scene" />
+			<role name="state" element="artofillusion.Scene::environMapping:artofillusion.texture.TextureMapping" />
+			<role name="Request()" element="artofillusion.Scene::writeToStream(java.io.DataOutputStream):void" />
+		</instance>
+		<instance>
+			<role name="State" element="artofillusion.texture.TextureMapping" />
+			<role name="Context" element="artofillusion.TextureMappingDialog" />
+			<role name="state" element="artofillusion.TextureMappingDialog::map:artofillusion.texture.TextureMapping" />
+			<role name="Request()" element="artofillusion.TextureMappingDialog::mappingChanged():void" />
+			<role name="Request()" element="artofillusion.TextureMappingDialog::setPreviewMapping(artofillusion.texture.TextureMapping):void" />
+		</instance>
+		<instance>
+			<role name="State" element="artofillusion.material.Material" />
+			<role name="Context" element="artofillusion.ArtOfIllusion" />
+			<role name="state" element="artofillusion.ArtOfIllusion::clipboardMaterial:artofillusion.material.Material[]" />
+			<role name="Request()" element="artofillusion.ArtOfIllusion::copyToClipboard(artofillusion.object.ObjectInfo[], artofillusion.Scene):void" />
+			<role name="Request()" element="artofillusion.ArtOfIllusion::pasteClipboard(artofillusion.LayoutWindow):void" />
+		</instance>
+		<instance>
+			<role name="State" element="artofillusion.animation.Keyframe" />
+			<role name="Context" element="artofillusion.animation.Timecourse" />
+			<role name="state" element="artofillusion.animation.Timecourse::value:artofillusion.animation.Keyframe[]" />
+			<role name="Request()" element="artofillusion.animation.Timecourse::duplicate(java.lang.Object):artofillusion.animation.Timecourse" />
+			<role name="Request()" element="artofillusion.animation.Timecourse::subdivide(int):artofillusion.animation.Timecourse" />
+			<role name="Request()" element="artofillusion.animation.Timecourse::evaluate(double, int):artofillusion.animation.Keyframe" />
+		</instance>
+		<instance>
+			<role name="State" element="artofillusion.image.ImageMap" />
+			<role name="Context" element="artofillusion.image.ImageOrColor" />
+			<role name="state" element="artofillusion.image.ImageOrColor::map:artofillusion.image.ImageMap" />
+			<role name="Request()" element="artofillusion.image.ImageOrColor::getColor(artofillusion.math.RGBColor, boolean, boolean, double, double, double, double):void" />
+			<role name="Request()" element="artofillusion.image.ImageOrColor::getAverageColor(artofillusion.math.RGBColor):void" />
+		</instance>
+		<instance>
+			<role name="State" element="artofillusion.image.ImageMap" />
+			<role name="Context" element="artofillusion.image.ImageOrValue" />
+			<role name="state" element="artofillusion.image.ImageOrValue::map:artofillusion.image.ImageMap" />
+			<role name="Request()" element="artofillusion.image.ImageOrValue::getValue(boolean, boolean, double, double, double, double):float" />
+			<role name="Request()" element="artofillusion.image.ImageOrValue::getGradient(artofillusion.math.Vec2, boolean, boolean, double, double, double, double):void" />
+			<role name="Request()" element="artofillusion.image.ImageOrValue::getAverageValue():float" />
+		</instance>
+		<instance>
+			<role name="Context" element="artofillusion.texture.UVMappedTriangle" />
+			<role name="State" element="artofillusion.texture.TextureMapping" />
+			<role name="state" element="artofillusion.texture.UVMappedTriangle::map:artofillusion.texture.TextureMapping" />
+			<role name="Request()" element="artofillusion.texture.UVMappedTriangle::setMesh(artofillusion.RenderingMesh, artofillusion.texture.TextureMapping, int):void" />
+			<role name="Request()" element="artofillusion.texture.UVMappedTriangle::getTextureSpec(artofillusion.texture.TextureSpec, double, double, double, double, double, double):void" />
+			<role name="Request()" element="artofillusion.texture.UVMappedTriangle::getTransparency(artofillusion.math.RGBColor, double, double, double, double, double, double):void" />
+			<role name="Request()" element="artofillusion.texture.UVMappedTriangle::getDisplacement(double, double, double, double, double):double" />
+		</instance>
+		<instance>
+			<role name="Context" element="artofillusion.texture.UVWMappedTriangle" />
+			<role name="State" element="artofillusion.texture.TextureMapping" />
+			<role name="state" element="artofillusion.texture.UVWMappedTriangle::map:artofillusion.texture.TextureMapping" />
+			<role name="Request()" element="artofillusion.texture.UVWMappedTriangle::setMesh(artofillusion.RenderingMesh, artofillusion.texture.TextureMapping, int):void" />
+			<role name="Request()" element="artofillusion.texture.UVWMappedTriangle::getTextureSpec(artofillusion.texture.TextureSpec, double, double, double, double, double, double):void" />
+			<role name="Request()" element="artofillusion.texture.UVWMappedTriangle::getTransparency(artofillusion.math.RGBColor, double, double, double, double, double, double):void" />
+			<role name="Request()" element="artofillusion.texture.UVWMappedTriangle::getDisplacement(double, double, double, double, double):double" />
+		</instance>
+		<instance>
+			<role name="Context" element="artofillusion.texture.Nonlinear2DTriangle" />
+			<role name="State" element="artofillusion.texture.NonlinearMapping2D" />
+			<role name="state" element="artofillusion.texture.Nonlinear2DTriangle::map:artofillusion.texture.NonlinearMapping2D" />
+			<role name="Request()" element="artofillusion.texture.Nonlinear2DTriangle::setParameters(double[], double[], double[], artofillusion.RenderingMesh):void" />
+			<role name="Request()" element="artofillusion.texture.Nonlinear2DTriangle::getTextureSpec(artofillusion.texture.TextureSpec, double, double, double, double, double, double):void" />
+			<role name="Request()" element="artofillusion.texture.Nonlinear2DTriangle::getTransparency(artofillusion.math.RGBColor, double, double, double, double, double, double):void" />
+			<role name="Request()" element="artofillusion.texture.Nonlinear2DTriangle::getDisplacement(double, double, double, double, double):double" />
+		</instance>
+		<instance>
+			<role name="State" element="artofillusion.texture.Texture" />
+			<role name="Context" element="artofillusion.texture.LayeredMapping" />
+			<role name="state" element="artofillusion.texture.LayeredMapping::texture:artofillusion.texture.Texture[]" />
+			<role name="Request()" element="artofillusion.texture.LayeredMapping::addLayer(artofillusion.texture.Texture):void" />
+			<role name="Request()" element="artofillusion.texture.LayeredMapping::getAverageSpec(artofillusion.texture.TextureSpec, double, double[]):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="artofillusion.MoveScaleRotateObjectTool" />
+			<role name="State" element="artofillusion.object.Object3D" />
+			<role name="state" element="artofillusion.MoveScaleRotateObjectTool::originalObjects:artofillusion.object.Object3D[]" />
+			<role name="Request()" element="artofillusion.MoveScaleRotateObjectTool::handleDragged(artofillusion.ui.Compound3DManipulator$HandleDraggedEvent):void" />
+			<role name="Request()" element="artofillusion.MoveScaleRotateObjectTool::transformObjects(artofillusion.ui.Compound3DManipulator$HandleDraggedEvent):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="artofillusion.ScaleObjectTool" />
+			<role name="State" element="artofillusion.object.Object3D" />
+			<role name="state" element="artofillusion.ScaleObjectTool::oldObj:artofillusion.object.Object3D[]" />
+			<role name="Request()" element="artofillusion.ScaleObjectTool::mouseDraggedScaleOp(buoy.event.WidgetMouseEvent, artofillusion.ViewerCanvas):void" />
+		</instance>
+		<instance>
+			<role name="State" element="artofillusion.animation.distortion.Distortion" />
+			<role name="Context" element="artofillusion.object.ObjectInfo" />
+			<role name="state" element="artofillusion.object.ObjectInfo::distortion:artofillusion.animation.distortion.Distortion" />
+			<role name="state" element="artofillusion.object.ObjectInfo::prevDistortion:artofillusion.animation.distortion.Distortion" />
+			<role name="Request()" element="artofillusion.object.ObjectInfo::duplicate(artofillusion.object.Object3D):artofillusion.object.ObjectInfo" />
+			<role name="Request()" element="artofillusion.object.ObjectInfo::copyInfo(artofillusion.object.ObjectInfo):void" />
+			<role name="Request()" element="artofillusion.object.ObjectInfo::addDistortion(artofillusion.animation.distortion.Distortion):void" />
+			<role name="Request()" element="artofillusion.object.ObjectInfo::checkDistortionChanged():void" />
+			<role name="Request()" element="artofillusion.object.ObjectInfo::getDistortedObject(double):artofillusion.object.Object3D" />
+		</instance>
+		<instance>
+			<role name="Context" element="artofillusion.animation.SkeletonTool" />
+			<role name="State" element="artofillusion.object.Mesh" />
+			<role name="state" element="artofillusion.animation.SkeletonTool::oldMesh:artofillusion.object.Mesh" />
+			<role name="state" element="artofillusion.animation.SkeletonTool::mesh:artofillusion.object.Mesh" />
+			<role name="Request()" element="artofillusion.animation.SkeletonTool::drawOverlay(artofillusion.ViewerCanvas):void" />
+			<role name="Request()" element="artofillusion.animation.SkeletonTool::mousePressed(buoy.event.WidgetMouseEvent, artofillusion.ViewerCanvas):void" />
+			<role name="Request()" element="artofillusion.animation.SkeletonTool::mouseDragged(buoy.event.WidgetMouseEvent, artofillusion.ViewerCanvas):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="artofillusion.raytracer.RTImplicitObject" />
+			<role name="State" element="artofillusion.object.ImplicitObject" />
+			<role name="state" element="artofillusion.raytracer.RTImplicitObject::theObject:artofillusion.object.ImplicitObject" />
+			<role name="Request()" element="artofillusion.raytracer.RTImplicitObject::checkIntersection(artofillusion.raytracer.Ray):artofillusion.raytracer.SurfaceIntersection" />
+		</instance>
+		<instance>
+			<role name="State" element="artofillusion.texture.ParameterValue" />
+			<role name="Context" element="artofillusion.Scene" />
+			<role name="state" element="artofillusion.Scene::environParamValue:artofillusion.texture.ParameterValue[]" />
+			<role name="Request()" element="artofillusion.Scene::writeToStream(java.io.DataOutputStream):void" />
+		</instance>
+		<instance>
+			<role name="State" element="artofillusion.texture.ParameterValue" />
+			<role name="Context" element="artofillusion.RenderingMesh" />
+			<role name="state" element="artofillusion.RenderingMesh::param:artofillusion.texture.ParameterValue[]" />
+			<role name="Request()" element="artofillusion.RenderingMesh::setParameters(artofillusion.texture.ParameterValue[]):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="artofillusion.ui.ToolButtonWidget" />
+			<role name="State" element="artofillusion.ui.ToolButton" />
+			<role name="state" element="artofillusion.ui.ToolButtonWidget::button:artofillusion.ui.ToolButton" />
+			<role name="Request()" element="artofillusion.ui.ToolButtonWidget::paint(buoy.event.RepaintEvent):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="artofillusion.ui.ValueField" />
+			<role name="State" element="artofillusion.ui.ValueChecker" />
+			<role name="state" element="artofillusion.ui.ValueField::check:artofillusion.ui.ValueChecker" />
+			<role name="Request()" element="artofillusion.ui.ValueField::isValid(double):boolean" />
+		</instance>
+		<instance>
+			<role name="Context" element="artofillusion.CameraFilterDialog" />
+			<role name="State" element="artofillusion.Renderer" />
+			<role name="state" element="artofillusion.CameraFilterDialog::previewRenderer:artofillusion.Renderer" />
+			<role name="Request()" element="artofillusion.CameraFilterDialog::renderPreview():void" />
+			<role name="Request()" element="artofillusion.CameraFilterDialog::doConfigure():void" />
+		</instance>
+		<instance>
+			<role name="Context" element="artofillusion.RenderingDialog" />
+			<role name="State" element="artofillusion.Renderer" />
+			<role name="state" element="artofillusion.RenderingDialog::renderer:artofillusion.Renderer" />
+			<role name="Request()" element="artofillusion.RenderingDialog::doCancel():void" />
+			<role name="Request()" element="artofillusion.RenderingDialog::nextFrame():void" />
+		</instance>
+		<instance>
+			<role name="Context" element="artofillusion.raster.Raster" />
+			<role name="State" element="artofillusion.RenderListener" />
+			<role name="state" element="artofillusion.raster.Raster::listener:artofillusion.RenderListener" />
+			<role name="Request()" element="artofillusion.raster.Raster::cancelRendering(artofillusion.Scene):void" />
+			<role name="Request()" element="artofillusion.raster.Raster::updateImage():void" />
+			<role name="Request()" element="artofillusion.raster.Raster::updateFinalImage():void" />
+			<role name="Request()" element="artofillusion.raster.Raster::finish(artofillusion.image.ComplexImage):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="artofillusion.raytracer.Raytracer" />
+			<role name="State" element="artofillusion.RenderListener" />
+			<role name="state" element="artofillusion.raytracer.Raytracer::listener:artofillusion.RenderListener" />
+			<role name="Request()" element="artofillusion.raytracer.Raytracer::cancelRendering(artofillusion.Scene):void" />
+			<role name="Request()" element="artofillusion.raytracer.Raytracer::buildPhotonMap():void" />
+			<role name="Request()" element="artofillusion.raytracer.Raytracer::run():void" />
+			<role name="Request()" element="artofillusion.raytracer.Raytracer::finish():void" />
+		</instance>
+		<instance>
+			<role name="Context" element="artofillusion.object.SplineMesh$SplineMeshKeyframe" />
+			<role name="State" element="artofillusion.texture.ParameterValue" />
+			<role name="state" element="artofillusion.object.SplineMesh$SplineMeshKeyframe::paramValue:artofillusion.texture.ParameterValue[]" />
+			<role name="Request()" element="artofillusion.object.SplineMesh$SplineMeshKeyframe::duplicate(java.lang.Object):artofillusion.animation.Keyframe" />
+			<role name="Request()" element="artofillusion.object.SplineMesh$SplineMeshKeyframe::textureChanged(artofillusion.TextureParameter[], artofillusion.TextureParameter[]):void" />
+			<role name="Request()" element="artofillusion.object.SplineMesh$SplineMeshKeyframe::writeToStream(java.io.DataOutputStream):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="artofillusion.object.TriangleMesh$TriangleMeshKeyframe" />
+			<role name="State" element="artofillusion.texture.ParameterValue" />
+			<role name="state" element="artofillusion.object.TriangleMesh$TriangleMeshKeyframe::paramValue:artofillusion.texture.ParameterValue[]" />
+			<role name="Request()" element="artofillusion.object.TriangleMesh$TriangleMeshKeyframe::duplicate(java.lang.Object):artofillusion.animation.Keyframe" />
+			<role name="Request()" element="artofillusion.object.TriangleMesh$TriangleMeshKeyframe::textureChanged(artofillusion.TextureParameter[], artofillusion.TextureParameter[]):void" />
+			<role name="Request()" element="artofillusion.object.TriangleMesh$TriangleMeshKeyframe::writeToStream(java.io.DataOutputStream):void" />
+		</instance>
+		<instance>
+			<role name="State" element="artofillusion.material.MaterialMapping" />
+			<role name="Context" element="artofillusion.MaterialMappingDialog" />
+			<role name="state" element="artofillusion.MaterialMappingDialog::map:artofillusion.material.MaterialMapping" />
+			<role name="Request()" element="artofillusion.MaterialMappingDialog::mappingChanged():void" />
+		</instance>
+		<instance>
+			<role name="Context" element="artofillusion.ObjectMaterialDialog" />
+			<role name="State" element="artofillusion.object.Object3D" />
+			<role name="state" element="artofillusion.ObjectMaterialDialog::firstObj:artofillusion.object.Object3D" />
+			<role name="Request()" element="artofillusion.ObjectMaterialDialog::doOk():void" />
+		</instance>
+		<instance>
+			<role name="Context" element="artofillusion.animation.Actor" />
+			<role name="State" element="artofillusion.animation.Gesture" />
+			<role name="state" element="artofillusion.animation.Actor::gesture:artofillusion.animation.Gesture[]" />
+			<role name="Request()" element="artofillusion.animation.Actor::setTexture(artofillusion.texture.Texture, artofillusion.texture.TextureMapping):void" />
+			<role name="Request()" element="artofillusion.animation.Actor::setParameterValues(artofillusion.texture.ParameterValue[]):void" />
+			<role name="Request()" element="artofillusion.animation.Actor::setParameterValue(artofillusion.TextureParameter, artofillusion.texture.ParameterValue):void" />
+			<role name="Request()" element="artofillusion.animation.Actor::shapeMeshFromGestures(artofillusion.object.Object3D):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="artofillusion.raytracer.Raytracer" />
+			<role name="State" element="artofillusion.raytracer.RTObject" />
+			<role name="state" element="artofillusion.raytracer.Raytracer::sceneObject:artofillusion.raytracer.RTObject[]" />
+			<role name="Request()" element="artofillusion.raytracer.Raytracer::buildScene(artofillusion.Scene, artofillusion.Camera):void" />
+			<role name="Request()" element="artofillusion.raytracer.Raytracer::buildTree():void" />
+			<role name="Request()" element="artofillusion.raytracer.Raytracer::buildPhotonMap():void" />
+			<role name="Request()" element="artofillusion.raytracer.Raytracer::generatePhotons(artofillusion.raytracer.PhotonMap):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="artofillusion.raytracer.CubePhotonSource" />
+			<role name="State" element="artofillusion.texture.TextureMapping" />
+			<role name="state" element="artofillusion.raytracer.CubePhotonSource::texMap:artofillusion.texture.TextureMapping" />
+			<role name="Request()" element="artofillusion.raytracer.CubePhotonSource::generateOnePhoton(artofillusion.raytracer.PhotonMap, artofillusion.raytracer.Ray, artofillusion.math.Vec3):float" />
+		</instance>
+		<instance>
+			<role name="Context" element="artofillusion.raytracer.CylinderPhotonSource" />
+			<role name="State" element="artofillusion.texture.TextureMapping" />
+			<role name="state" element="artofillusion.raytracer.CylinderPhotonSource::texMap:artofillusion.texture.TextureMapping" />
+			<role name="Request()" element="artofillusion.raytracer.CylinderPhotonSource::generateOnePhoton(artofillusion.raytracer.PhotonMap, artofillusion.raytracer.Ray, artofillusion.math.Vec3):float" />
+		</instance>
+		<instance>
+			<role name="Context" element="artofillusion.raytracer.EllipsoidPhotonSource" />
+			<role name="State" element="artofillusion.texture.TextureMapping" />
+			<role name="state" element="artofillusion.raytracer.EllipsoidPhotonSource::texMap:artofillusion.texture.TextureMapping" />
+			<role name="Request()" element="artofillusion.raytracer.EllipsoidPhotonSource::generateOnePhoton(artofillusion.raytracer.PhotonMap, artofillusion.raytracer.Ray, artofillusion.math.Vec3):float" />
+		</instance>
+		<instance>
+			<role name="Context" element="artofillusion.ObjectTextureDialog" />
+			<role name="State" element="artofillusion.texture.Texture" />
+			<role name="state" element="artofillusion.ObjectTextureDialog::oldTexture:artofillusion.texture.Texture" />
+			<role name="Request()" element="artofillusion.ObjectTextureDialog::selectionChanged(buoy.event.SelectionChangedEvent):void" />
+		</instance>
+		<instance>
+			<role name="State" element="artofillusion.texture.TextureMapping" />
+			<role name="Context" element="artofillusion.ObjectTextureDialog" />
+			<role name="state" element="artofillusion.ObjectTextureDialog::oldMapping:artofillusion.texture.TextureMapping" />
+			<role name="Request()" element="artofillusion.ObjectTextureDialog::selectionChanged(buoy.event.SelectionChangedEvent):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="artofillusion.ObjectMaterialDialog" />
+			<role name="State" element="artofillusion.material.Material" />
+			<role name="state" element="artofillusion.ObjectMaterialDialog::oldMaterial:artofillusion.material.Material" />
+			<role name="Request()" element="artofillusion.ObjectMaterialDialog::selectionChanged():void" />
+		</instance>
+		<instance>
+			<role name="Context" element="artofillusion.object.SceneCamera" />
+			<role name="State" element="artofillusion.image.filter.ImageFilter" />
+			<role name="state" element="artofillusion.object.SceneCamera::filter:artofillusion.image.filter.ImageFilter[]" />
+			<role name="Request()" element="artofillusion.object.SceneCamera::applyImageFilters(artofillusion.image.ComplexImage, artofillusion.Scene, artofillusion.math.CoordinateSystem):void" />
+			<role name="Request()" element="artofillusion.object.SceneCamera::writeToFile(java.io.DataOutputStream, artofillusion.Scene):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="artofillusion.raytracer.Raytracer" />
+			<role name="State" element="artofillusion.raytracer.RTLight" />
+			<role name="state" element="artofillusion.raytracer.Raytracer::light:artofillusion.raytracer.RTLight[]" />
+			<role name="Request()" element="artofillusion.raytracer.Raytracer::getDirectLight(artofillusion.raytracer.RaytracerContext, artofillusion.math.Vec3, artofillusion.math.Vec3, boolean, artofillusion.math.Vec3, int, artofillusion.raytracer.OctreeNode, int, double, artofillusion.material.MaterialMapping, artofillusion.material.MaterialMapping, artofillusion.math.Mat4, artofillusion.math.Mat4, boolean):void" />
+			<role name="Request()" element="artofillusion.raytracer.Raytracer::getScatteredLight(artofillusion.raytracer.RaytracerContext, int, artofillusion.raytracer.OctreeNode, double, double, artofillusion.material.MaterialMapping, artofillusion.material.MaterialMapping, artofillusion.math.Mat4, artofillusion.math.Mat4):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="artofillusion.math.Noise" />
+			<role name="State" element="artofillusion.math.Noise$NoiseGenerator" />
+			<role name="state" element="artofillusion.math.Noise::generator:artofillusion.math.Noise$NoiseGenerator" />
+			<role name="Request()" element="artofillusion.math.Noise::value(double, double, double):double" />
+			<role name="Request()" element="artofillusion.math.Noise::calcGradient(artofillusion.math.Vec3, double, double, double):void" />
+			<role name="Request()" element="artofillusion.math.Noise::calcVector(artofillusion.math.Vec3, double, double, double):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="artofillusion.raster.Raster" />
+			<role name="State" element="artofillusion.raster.Fragment" />
+			<role name="state" element="artofillusion.raster.Raster::fragment:artofillusion.raster.Fragment[]" />
+			<role name="Request()" element="artofillusion.raster.Raster::updateImage():void" />
+			<role name="Request()" element="artofillusion.raster.Raster::createFinalImage(artofillusion.math.Vec3, artofillusion.math.Vec3, artofillusion.math.Vec3, artofillusion.math.Vec3):artofillusion.image.ComplexImage" />
+			<role name="Request()" element="artofillusion.raster.Raster::recordRow(int, int, int, artofillusion.raster.RasterContext):void" />
+			<role name="Request()" element="artofillusion.raster.Raster::renderTriangleGouraud(artofillusion.math.Vec2, float, double, double, artofillusion.math.RGBColor, artofillusion.math.RGBColor, artofillusion.math.Vec2, float, double, double, artofillusion.math.RGBColor, artofillusion.math.RGBColor, artofillusion.math.Vec2, float, double, double, artofillusion.math.RGBColor, artofillusion.math.RGBColor, artofillusion.RenderingTriangle, double, double, boolean, artofillusion.raster.ObjectMaterialInfo, artofillusion.raster.RasterContext):void" />
+			<role name="Request()" element="artofillusion.raster.Raster::renderTriangleHybrid(artofillusion.math.Vec2, float, artofillusion.math.Vec3, artofillusion.math.Vec3, double, double, artofillusion.math.RGBColor, artofillusion.math.Vec2, float, artofillusion.math.Vec3, artofillusion.math.Vec3, double, double, artofillusion.math.RGBColor, artofillusion.math.Vec2, float, artofillusion.math.Vec3, artofillusion.math.Vec3, double, double, artofillusion.math.RGBColor, artofillusion.RenderingTriangle, artofillusion.math.Vec3, artofillusion.math.Vec3, double, double, boolean, artofillusion.raster.ObjectMaterialInfo, artofillusion.raster.RasterContext):void" />
+			<role name="Request()" element="artofillusion.raster.Raster::renderTrianglePhong(artofillusion.math.Vec2, float, artofillusion.math.Vec3, artofillusion.math.Vec3, double, double, artofillusion.math.Vec2, float, artofillusion.math.Vec3, artofillusion.math.Vec3, double, double, artofillusion.math.Vec2, float, artofillusion.math.Vec3, artofillusion.math.Vec3, double, double, artofillusion.RenderingTriangle, artofillusion.math.Vec3, artofillusion.math.Vec3, double, boolean, boolean, artofillusion.raster.ObjectMaterialInfo, artofillusion.raster.RasterContext):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="artofillusion.procedural.ImageModule" />
+			<role name="State" element="artofillusion.image.ImageMap" />
+			<role name="state" element="artofillusion.procedural.ImageModule::map:artofillusion.image.ImageMap" />
+			<role name="Request()" element="artofillusion.procedural.ImageModule::setMap(artofillusion.image.ImageMap):void" />
+			<role name="Request()" element="artofillusion.procedural.ImageModule::getColor(int, artofillusion.math.RGBColor, double):void" />
+			<role name="Request()" element="artofillusion.procedural.ImageModule::getAverageValue(int, double):double" />
+			<role name="Request()" element="artofillusion.procedural.ImageModule::getValueGradient(int, artofillusion.math.Vec3, double):void" />
+			<role name="Request()" element="artofillusion.procedural.ImageModule::drawContents(java.awt.Graphics2D):void" />
+			<role name="Request()" element="artofillusion.procedural.ImageModule::edit(buoy.widget.BFrame, artofillusion.Scene):boolean" />
+			<role name="Request()" element="artofillusion.procedural.ImageModule::readFromStream(java.io.DataInputStream, artofillusion.Scene):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="artofillusion.animation.distortion.PoseDistortion" />
+			<role name="State" element="artofillusion.animation.Keyframe" />
+			<role name="state" element="artofillusion.animation.distortion.PoseDistortion::pose:artofillusion.animation.Keyframe" />
+			<role name="Request()" element="artofillusion.animation.distortion.PoseDistortion::isIdenticalTo(artofillusion.animation.distortion.Distortion):boolean" />
+			<role name="Request()" element="artofillusion.animation.distortion.PoseDistortion::duplicate():artofillusion.animation.distortion.Distortion" />
+			<role name="Request()" element="artofillusion.animation.distortion.PoseDistortion::transform(artofillusion.object.Mesh):artofillusion.object.Mesh" />
+		</instance>
+		<instance>
+			<role name="Context" element="artofillusion.raytracer.RTDisplacedTriangle" />
+			<role name="State" element="artofillusion.RenderingTriangle" />
+			<role name="state" element="artofillusion.raytracer.RTDisplacedTriangle::tri:artofillusion.RenderingTriangle" />
+			<role name="Request()" element="artofillusion.raytracer.RTDisplacedTriangle::checkIntersection(artofillusion.raytracer.Ray):artofillusion.raytracer.SurfaceIntersection" />
+		</instance>
+		<instance>
+			<role name="Context" element="artofillusion.raster.Raster" />
+			<role name="State" element="artofillusion.texture.TextureMapping" />
+			<role name="state" element="artofillusion.raster.Raster::envMapping:artofillusion.texture.TextureMapping" />
+			<role name="Request()" element="artofillusion.raster.Raster::calcLight(artofillusion.math.Vec3, artofillusion.math.Vec3, artofillusion.math.Vec3, artofillusion.math.Vec3, double, artofillusion.math.RGBColor, artofillusion.math.RGBColor, artofillusion.math.RGBColor, artofillusion.raster.RasterContext):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="artofillusion.raytracer.Raytracer" />
+			<role name="State" element="artofillusion.texture.TextureMapping" />
+			<role name="state" element="artofillusion.raytracer.Raytracer::envMapping:artofillusion.texture.TextureMapping" />
+			<role name="Request()" element="artofillusion.raytracer.Raytracer::spawnEyeRay(artofillusion.raytracer.RaytracerContext, int, int, int, int):double" />
+			<role name="Request()" element="artofillusion.raytracer.Raytracer::spawnRay(artofillusion.raytracer.RaytracerContext, int, artofillusion.raytracer.OctreeNode, artofillusion.raytracer.RTObject, artofillusion.material.MaterialMapping, artofillusion.material.MaterialMapping, artofillusion.math.Mat4, artofillusion.math.Mat4, int, double, boolean, boolean):double" />
+		</instance>
+		<instance>
+			<role name="Context" element="artofillusion.raytracer.TrianglePhotonSource" />
+			<role name="State" element="artofillusion.RenderingTriangle" />
+			<role name="state" element="artofillusion.raytracer.TrianglePhotonSource::tri:artofillusion.RenderingTriangle" />
+			<role name="Request()" element="artofillusion.raytracer.TrianglePhotonSource::generatePhotons(artofillusion.raytracer.PhotonMap, double, artofillusion.util.ThreadManager):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="artofillusion.view.ParameterVertexShader" />
+			<role name="State" element="artofillusion.texture.ParameterValue" />
+			<role name="state" element="artofillusion.view.ParameterVertexShader::param:artofillusion.texture.ParameterValue" />
+			<role name="Request()" element="artofillusion.view.ParameterVertexShader::getColor(int, int, artofillusion.math.RGBColor):void" />
+			<role name="Request()" element="artofillusion.view.ParameterVertexShader::getTextureSpec(artofillusion.texture.TextureSpec):void" />
+		</instance>
+		<instance>
+			<role name="Context" element="artofillusion.ObjectMaterialDialog" />
+			<role name="State" element="artofillusion.material.MaterialMapping" />
+			<role name="state" element="artofillusion.ObjectMaterialDialog::oldMapping:artofillusion.material.MaterialMapping" />
+			<role name="Request()" element="artofillusion.ObjectMaterialDialog::selectionChanged():void" />
+		</instance>
+	</pattern>
+	<pattern name="Strategy" />
+	<pattern name="Bridge">
+		<instance>
+			<role name="Implementor" element="artofillusion.ui.EditingWindow" />
+			<role name="Abstraction" element="artofillusion.ui.EditingTool" />
+			<role name="implementor" element="artofillusion.ui.EditingTool::theWindow:artofillusion.ui.EditingWindow" />
+			<role name="Operation()" element="artofillusion.ui.EditingTool::activate():void" />
+		</instance>
+		<instance>
+			<role name="Abstraction" element="artofillusion.ObjectViewer" />
+			<role name="Implementor" element="artofillusion.ui.MeshEditController" />
+			<role name="implementor" element="artofillusion.ObjectViewer::controller:artofillusion.ui.MeshEditController" />
+			<role name="Operation()" element="artofillusion.ObjectViewer::updateImage():void" />
+			<role name="Operation()" element="artofillusion.ObjectViewer::getDisplayCoordinates():artofillusion.math.CoordinateSystem" />
+		</instance>
+		<instance>
+			<role name="Abstraction" element="artofillusion.ui.MeshEditingTool" />
+			<role name="Implementor" element="artofillusion.ui.MeshEditController" />
+			<role name="implementor" element="artofillusion.ui.MeshEditingTool::controller:artofillusion.ui.MeshEditController" />
+			<role name="Operation()" element="artofillusion.ui.MeshEditingTool::findSelectionBounds(artofillusion.Camera):artofillusion.math.BoundingBox" />
+		</instance>
+		<instance>
+			<role name="Abstraction" element="artofillusion.ViewerCanvas" />
+			<role name="Implementor" element="artofillusion.view.CanvasDrawer" />
+			<role name="implementor" element="artofillusion.ViewerCanvas::drawer:artofillusion.view.CanvasDrawer" />
+			<role name="Operation()" element="artofillusion.ViewerCanvas::setTemplateImage(java.awt.Image):void" />
+			<role name="Operation()" element="artofillusion.ViewerCanvas::drawDraggedShape(java.awt.Shape):void" />
+			<role name="Operation()" element="artofillusion.ViewerCanvas::drawBorder():void" />
+			<role name="Operation()" element="artofillusion.ViewerCanvas::drawHRule(int, java.awt.Color):void" />
+			<role name="Operation()" element="artofillusion.ViewerCanvas::drawVRule(int, java.awt.Color):void" />
+			<role name="Operation()" element="artofillusion.ViewerCanvas::drawBox(int, int, int, int, java.awt.Color):void" />
+			<role name="Operation()" element="artofillusion.ViewerCanvas::drawBoxes(java.util.List, java.awt.Color):void" />
+			<role name="Operation()" element="artofillusion.ViewerCanvas::renderBox(int, int, int, int, double, java.awt.Color):void" />
+			<role name="Operation()" element="artofillusion.ViewerCanvas::renderBoxes(java.util.List, java.util.List, java.awt.Color):void" />
+			<role name="Operation()" element="artofillusion.ViewerCanvas::drawLine(java.awt.Point, java.awt.Point, java.awt.Color):void" />
+			<role name="Operation()" element="artofillusion.ViewerCanvas::renderLine(artofillusion.math.Vec3, artofillusion.math.Vec3, artofillusion.Camera, java.awt.Color):void" />
+			<role name="Operation()" element="artofillusion.ViewerCanvas::renderLine(artofillusion.math.Vec2, double, artofillusion.math.Vec2, double, artofillusion.Camera, java.awt.Color):void" />
+			<role name="Operation()" element="artofillusion.ViewerCanvas::renderWireframe(artofillusion.WireframeMesh, artofillusion.Camera, java.awt.Color):void" />
+			<role name="Operation()" element="artofillusion.ViewerCanvas::renderMeshTransparent(artofillusion.RenderingMesh, artofillusion.view.VertexShader, artofillusion.Camera, artofillusion.math.Vec3, boolean[]):void" />
+			<role name="Operation()" element="artofillusion.ViewerCanvas::renderMesh(artofillusion.RenderingMesh, artofillusion.view.VertexShader, artofillusion.Camera, boolean, boolean[]):void" />
+			<role name="Operation()" element="artofillusion.ViewerCanvas::drawString(java.lang.String, int, int, java.awt.Color):void" />
+			<role name="Operation()" element="artofillusion.ViewerCanvas::drawImage(java.awt.Image, int, int):void" />
+			<role name="Operation()" element="artofillusion.ViewerCanvas::renderImage(java.awt.Image, artofillusion.math.Vec3, artofillusion.math.Vec3, artofillusion.math.Vec3, artofillusion.math.Vec3):void" />
+			<role name="Operation()" element="artofillusion.ViewerCanvas::drawShape(java.awt.Shape, java.awt.Color):void" />
+			<role name="Operation()" element="artofillusion.ViewerCanvas::fillShape(java.awt.Shape, java.awt.Color):void" />
+		</instance>
+		<instance>
+			<role name="Abstraction" element="artofillusion.ViewerCanvas" />
+			<role name="Implementor" element="artofillusion.ui.PopupMenuManager" />
+			<role name="implementor" element="artofillusion.ViewerCanvas::popupManager:artofillusion.ui.PopupMenuManager" />
+			<role name="Operation()" element="artofillusion.ViewerCanvas::showPopupIfNeeded(buoy.event.WidgetMouseEvent):void" />
+		</instance>
+		<instance>
+			<role name="Abstraction" element="artofillusion.object.Object3D" />
+			<role name="Implementor" element="artofillusion.texture.ParameterValue" />
+			<role name="implementor" element="artofillusion.object.Object3D::paramValue:artofillusion.texture.ParameterValue[]" />
+			<role name="Operation()" element="artofillusion.object.Object3D::getAverageParameterValues():double[]" />
+			<role name="Operation()" element="artofillusion.object.Object3D::writeToFile(java.io.DataOutputStream, artofillusion.Scene):void" />
+		</instance>
+		<instance>
+			<role name="Implementor" element="artofillusion.texture.TextureMapping" />
+			<role name="Abstraction" element="artofillusion.object.Object3D" />
+			<role name="implementor" element="artofillusion.object.Object3D::texMapping:artofillusion.texture.TextureMapping" />
+			<role name="Operation()" element="artofillusion.object.Object3D::writeToFile(java.io.DataOutputStream, artofillusion.Scene):void" />
+		</instance>
+		<instance>
+			<role name="Abstraction" element="artofillusion.material.MaterialMapping" />
+			<role name="Implementor" element="artofillusion.material.Material" />
+			<role name="implementor" element="artofillusion.material.MaterialMapping::material:artofillusion.material.Material" />
+			<role name="Operation()" element="artofillusion.material.MaterialMapping::isScattering():boolean" />
+			<role name="Operation()" element="artofillusion.material.MaterialMapping::castsShadows():boolean" />
+		</instance>
+		<instance>
+			<role name="Abstraction" element="artofillusion.object.Object3D" />
+			<role name="Implementor" element="artofillusion.material.MaterialMapping" />
+			<role name="implementor" element="artofillusion.object.Object3D::matMapping:artofillusion.material.MaterialMapping" />
+			<role name="Operation()" element="artofillusion.object.Object3D::writeToFile(java.io.DataOutputStream, artofillusion.Scene):void" />
+		</instance>
+	</pattern>
+	<pattern name="Template Method">
+		<instance>
+			<role name="AbstractClass" element="artofillusion.animation.MeshGesture" />
+			<role name="TemplateMethod()" element="artofillusion.animation.MeshGesture::blendSurface(artofillusion.animation.MeshGesture, artofillusion.animation.MeshGesture[], double[]):void" />
+		</instance>
+		<instance>
+			<role name="AbstractClass" element="artofillusion.MeshEditorWindow" />
+			<role name="TemplateMethod()" element="artofillusion.MeshEditorWindow::undoCommand():void" />
+			<role name="TemplateMethod()" element="artofillusion.MeshEditorWindow::redoCommand():void" />
+			<role name="TemplateMethod()" element="artofillusion.MeshEditorWindow::setPointsCommand():void" />
+			<role name="TemplateMethod()" element="artofillusion.MeshEditorWindow::transformPointsCommand():void" />
+			<role name="TemplateMethod()" element="artofillusion.MeshEditorWindow::randomizeCommand():void" />
+			<role name="TemplateMethod()" element="artofillusion.MeshEditorWindow::centerCommand():void" />
+			<role name="TemplateMethod()" element="artofillusion.MeshEditorWindow::setVertexParametersCommand():void" />
+			<role name="TemplateMethod()" element="artofillusion.MeshEditorWindow::setFaceParametersCommand():void" />
+			<role name="TemplateMethod()" element="artofillusion.MeshEditorWindow::bindSkeletonCommand():void" />
+		</instance>
+		<instance>
+			<role name="AbstractClass" element="artofillusion.object.ImplicitObject" />
+			<role name="TemplateMethod()" element="artofillusion.object.ImplicitObject::getFieldGradient(double, double, double, double, double, artofillusion.math.Vec3):void" />
+		</instance>
+		<instance>
+			<role name="AbstractClass" element="artofillusion.object.ObjectCollection" />
+			<role name="TemplateMethod()" element="artofillusion.object.ObjectCollection::getObjects(artofillusion.object.ObjectInfo, boolean, artofillusion.Scene):java.util.Enumeration" />
+		</instance>
+		<instance>
+			<role name="AbstractClass" element="artofillusion.ObjectEditorWindow" />
+			<role name="TemplateMethod()" element="artofillusion.ObjectEditorWindow::initialize():void" />
+		</instance>
+		<instance>
+			<role name="AbstractClass" element="artofillusion.ObjectViewer" />
+			<role name="TemplateMethod()" element="artofillusion.ObjectViewer::updateImage():void" />
+		</instance>
+		<instance>
+			<role name="AbstractClass" element="artofillusion.texture.TextureMapping" />
+			<role name="TemplateMethod()" element="artofillusion.texture.TextureMapping::getParameters():artofillusion.TextureParameter[]" />
+		</instance>
+	</pattern>
+	<pattern name="Visitor" />
+	<pattern name="Proxy">
+		<instance>
+			<role name="Proxy" element="artofillusion.animation.PoseTrack" />
+			<role name="RealSubject" element="artofillusion.animation.WeightTrack" />
+			<role name="Request()" element="artofillusion.animation.PoseTrack::duplicate(java.lang.Object):artofillusion.animation.Track" />
+			<role name="Request()" element="artofillusion.animation.PoseTrack::initFromStream(java.io.DataInputStream, artofillusion.Scene):void" />
+		</instance>
+		<instance>
+			<role name="Proxy" element="artofillusion.animation.ConstraintTrack" />
+			<role name="RealSubject" element="artofillusion.animation.WeightTrack" />
+			<role name="Request()" element="artofillusion.animation.ConstraintTrack::duplicate(java.lang.Object):artofillusion.animation.Track" />
+			<role name="Request()" element="artofillusion.animation.ConstraintTrack::writeToStream(java.io.DataOutputStream, artofillusion.Scene):void" />
+			<role name="Request()" element="artofillusion.animation.ConstraintTrack::initFromStream(java.io.DataInputStream, artofillusion.Scene):void" />
+		</instance>
+		<instance>
+			<role name="Proxy" element="artofillusion.animation.IKTrack" />
+			<role name="RealSubject" element="artofillusion.animation.WeightTrack" />
+			<role name="Request()" element="artofillusion.animation.IKTrack::duplicate(java.lang.Object):artofillusion.animation.Track" />
+			<role name="Request()" element="artofillusion.animation.IKTrack::writeToStream(java.io.DataOutputStream, artofillusion.Scene):void" />
+			<role name="Request()" element="artofillusion.animation.IKTrack::initFromStream(java.io.DataInputStream, artofillusion.Scene):void" />
+		</instance>
+		<instance>
+			<role name="Proxy" element="artofillusion.animation.PositionTrack" />
+			<role name="RealSubject" element="artofillusion.animation.WeightTrack" />
+			<role name="Request()" element="artofillusion.animation.PositionTrack::duplicate(java.lang.Object):artofillusion.animation.Track" />
+			<role name="Request()" element="artofillusion.animation.PositionTrack::writeToStream(java.io.DataOutputStream, artofillusion.Scene):void" />
+			<role name="Request()" element="artofillusion.animation.PositionTrack::initFromStream(java.io.DataInputStream, artofillusion.Scene):void" />
+		</instance>
+		<instance>
+			<role name="Proxy" element="artofillusion.animation.ProceduralPositionTrack" />
+			<role name="RealSubject" element="artofillusion.animation.WeightTrack" />
+			<role name="Request()" element="artofillusion.animation.ProceduralPositionTrack::duplicate(java.lang.Object):artofillusion.animation.Track" />
+			<role name="Request()" element="artofillusion.animation.ProceduralPositionTrack::writeToStream(java.io.DataOutputStream, artofillusion.Scene):void" />
+			<role name="Request()" element="artofillusion.animation.ProceduralPositionTrack::initFromStream(java.io.DataInputStream, artofillusion.Scene):void" />
+		</instance>
+		<instance>
+			<role name="Proxy" element="artofillusion.animation.ProceduralRotationTrack" />
+			<role name="RealSubject" element="artofillusion.animation.WeightTrack" />
+			<role name="Request()" element="artofillusion.animation.ProceduralRotationTrack::duplicate(java.lang.Object):artofillusion.animation.Track" />
+			<role name="Request()" element="artofillusion.animation.ProceduralRotationTrack::writeToStream(java.io.DataOutputStream, artofillusion.Scene):void" />
+			<role name="Request()" element="artofillusion.animation.ProceduralRotationTrack::initFromStream(java.io.DataInputStream, artofillusion.Scene):void" />
+		</instance>
+		<instance>
+			<role name="Proxy" element="artofillusion.animation.RotationTrack" />
+			<role name="RealSubject" element="artofillusion.animation.WeightTrack" />
+			<role name="Request()" element="artofillusion.animation.RotationTrack::duplicate(java.lang.Object):artofillusion.animation.Track" />
+			<role name="Request()" element="artofillusion.animation.RotationTrack::writeToStream(java.io.DataOutputStream, artofillusion.Scene):void" />
+			<role name="Request()" element="artofillusion.animation.RotationTrack::initFromStream(java.io.DataInputStream, artofillusion.Scene):void" />
+		</instance>
+		<instance>
+			<role name="Proxy" element="artofillusion.animation.TextureTrack" />
+			<role name="RealSubject" element="artofillusion.animation.WeightTrack" />
+			<role name="Request()" element="artofillusion.animation.TextureTrack::duplicate(java.lang.Object):artofillusion.animation.Track" />
+			<role name="Request()" element="artofillusion.animation.TextureTrack::writeToStream(java.io.DataOutputStream, artofillusion.Scene):void" />
+			<role name="Request()" element="artofillusion.animation.TextureTrack::initFromStream(java.io.DataInputStream, artofillusion.Scene):void" />
+		</instance>
+		<instance>
+			<role name="Proxy" element="artofillusion.animation.distortion.BendTrack" />
+			<role name="RealSubject" element="artofillusion.animation.WeightTrack" />
+			<role name="Request()" element="artofillusion.animation.distortion.BendTrack::duplicate(java.lang.Object):artofillusion.animation.Track" />
+			<role name="Request()" element="artofillusion.animation.distortion.BendTrack::writeToStream(java.io.DataOutputStream, artofillusion.Scene):void" />
+			<role name="Request()" element="artofillusion.animation.distortion.BendTrack::initFromStream(java.io.DataInputStream, artofillusion.Scene):void" />
+		</instance>
+		<instance>
+			<role name="Proxy" element="artofillusion.animation.distortion.CustomDistortionTrack" />
+			<role name="RealSubject" element="artofillusion.animation.WeightTrack" />
+			<role name="Request()" element="artofillusion.animation.distortion.CustomDistortionTrack::duplicate(java.lang.Object):artofillusion.animation.Track" />
+			<role name="Request()" element="artofillusion.animation.distortion.CustomDistortionTrack::writeToStream(java.io.DataOutputStream, artofillusion.Scene):void" />
+			<role name="Request()" element="artofillusion.animation.distortion.CustomDistortionTrack::initFromStream(java.io.DataInputStream, artofillusion.Scene):void" />
+		</instance>
+		<instance>
+			<role name="Proxy" element="artofillusion.animation.distortion.ScaleTrack" />
+			<role name="RealSubject" element="artofillusion.animation.WeightTrack" />
+			<role name="Request()" element="artofillusion.animation.distortion.ScaleTrack::duplicate(java.lang.Object):artofillusion.animation.Track" />
+			<role name="Request()" element="artofillusion.animation.distortion.ScaleTrack::writeToStream(java.io.DataOutputStream, artofillusion.Scene):void" />
+			<role name="Request()" element="artofillusion.animation.distortion.ScaleTrack::initFromStream(java.io.DataInputStream, artofillusion.Scene):void" />
+		</instance>
+		<instance>
+			<role name="Proxy" element="artofillusion.animation.distortion.SkeletonShapeTrack" />
+			<role name="RealSubject" element="artofillusion.animation.WeightTrack" />
+			<role name="Request()" element="artofillusion.animation.distortion.SkeletonShapeTrack::duplicate(java.lang.Object):artofillusion.animation.Track" />
+			<role name="Request()" element="artofillusion.animation.distortion.SkeletonShapeTrack::writeToStream(java.io.DataOutputStream, artofillusion.Scene):void" />
+			<role name="Request()" element="artofillusion.animation.distortion.SkeletonShapeTrack::initFromStream(java.io.DataInputStream, artofillusion.Scene):void" />
+		</instance>
+		<instance>
+			<role name="Proxy" element="artofillusion.animation.distortion.TwistTrack" />
+			<role name="RealSubject" element="artofillusion.animation.WeightTrack" />
+			<role name="Request()" element="artofillusion.animation.distortion.TwistTrack::duplicate(java.lang.Object):artofillusion.animation.Track" />
+			<role name="Request()" element="artofillusion.animation.distortion.TwistTrack::writeToStream(java.io.DataOutputStream, artofillusion.Scene):void" />
+			<role name="Request()" element="artofillusion.animation.distortion.TwistTrack::initFromStream(java.io.DataInputStream, artofillusion.Scene):void" />
+		</instance>
+		<instance>
+			<role name="Proxy" element="artofillusion.animation.Score" />
+			<role name="RealSubject" element="artofillusion.LayoutWindow" />
+			<role name="Request()" element="artofillusion.animation.Score::setUndoRecord(artofillusion.UndoRecord):void" />
+			<role name="Request()" element="artofillusion.animation.Score::setModified():void" />
+			<role name="Request()" element="artofillusion.animation.Score::getScene():artofillusion.Scene" />
+		</instance>
+	</pattern>
+	<pattern name="Proxy2" />
+	<pattern name="Chain of Responsibility">
+		<instance>
+			<role name="Handler" element="artofillusion.ui.TreeElement" />
+			<role name="successor" element="artofillusion.ui.TreeElement::parent:artofillusion.ui.TreeElement" />
+		</instance>
+	</pattern>
+</system>
+

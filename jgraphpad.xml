@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<system>
+	<pattern name="Factory Method">
+		<instance>
+			<role name="Creator" element="org.microplatform.Document" />
+			<role name="FactoryMethod()" element="org.microplatform.Document::getFile():org.microplatform.io.IFile" />
+		</instance>
+		<instance>
+			<role name="Creator" element="org.microplatform.io.FileService" />
+			<role name="FactoryMethod()" element="org.microplatform.io.FileService::open(java.lang.String, java.lang.String, org.microplatform.io.ExtensionFilter):org.microplatform.io.FileService$Open" />
+			<role name="FactoryMethod()" element="org.microplatform.io.FileService::save(java.lang.String, java.lang.String, org.microplatform.io.ExtensionFilter, java.lang.String, java.lang.String):org.microplatform.io.FileService$Save" />
+		</instance>
+		<instance>
+			<role name="Creator" element="org.microplatform.io.IFile" />
+			<role name="FactoryMethod()" element="org.microplatform.io.IFile::read(java.io.InputStream):org.microplatform.io.IFile" />
+		</instance>
+	</pattern>
+	<pattern name="Prototype" />
+	<pattern name="Singleton">
+		<instance>
+			<role name="Singleton" element="org.jgraph.pad.jgraphpad.util.JGraphParallelEdgeRouter" />
+			<role name="uniqueInstance" element="org.jgraph.pad.jgraphpad.util.JGraphParallelEdgeRouter::sharedInstance:org.jgraph.pad.jgraphpad.util.JGraphParallelEdgeRouter" />
+		</instance>
+		<instance>
+			<role name="Singleton" element="org.jgraph.pad.jgraphpad.util.ShadowBorder" />
+			<role name="uniqueInstance" element="org.jgraph.pad.jgraphpad.util.ShadowBorder::sharedInstance:org.jgraph.pad.jgraphpad.util.ShadowBorder" />
+		</instance>
+		<instance>
+			<role name="Singleton" element="org.jgraph.plugins.codecs.JGraphJGX" />
+			<role name="uniqueInstance" element="org.jgraph.plugins.codecs.JGraphJGX::_instance:org.jgraph.plugins.codecs.JGraphJGX" />
+		</instance>
+		<instance>
+			<role name="Singleton" element="org.jgraph.plugins.gpgraph.GPGraphTools" />
+			<role name="uniqueInstance" element="org.jgraph.plugins.gpgraph.GPGraphTools::instance:org.jgraph.plugins.gpgraph.GPGraphTools" />
+		</instance>
+		<instance>
+			<role name="Singleton" element="org.jgraph.plugins.gpgraph.Touch" />
+			<role name="uniqueInstance" element="org.jgraph.plugins.gpgraph.Touch::instance:org.jgraph.plugins.gpgraph.Touch" />
+		</instance>
+		<instance>
+			<role name="Singleton" element="org.jgraph.plugins.layouts.JGraphLayoutRegistry" />
+			<role name="uniqueInstance" element="org.jgraph.plugins.layouts.JGraphLayoutRegistry::sharedJGraphLayoutRegistry:org.jgraph.plugins.layouts.JGraphLayoutRegistry" />
+		</instance>
+		<instance>
+			<role name="Singleton" element="org.jgraph.plugins.misc.JGParallelEdgeRouter" />
+			<role name="uniqueInstance" element="org.jgraph.plugins.misc.JGParallelEdgeRouter::sharedInstance:org.jgraph.plugins.misc.JGParallelEdgeRouter" />
+		</instance>
+		<instance>
+			<role name="Singleton" element="org.jgraph.plugins.misc.JGraphParallelEdgeRouter" />
+			<role name="uniqueInstance" element="org.jgraph.plugins.misc.JGraphParallelEdgeRouter::sharedInstance:org.jgraph.plugins.misc.JGraphParallelEdgeRouter" />
+		</instance>
+		<instance>
+			<role name="Singleton" element="org.microplatform.BarFactory" />
+			<role name="uniqueInstance" element="org.microplatform.BarFactory::_instance:org.microplatform.BarFactory" />
+		</instance>
+		<instance>
+			<role name="Singleton" element="org.microplatform.io.FileService" />
+			<role name="uniqueInstance" element="org.microplatform.io.FileService::service:org.microplatform.io.FileService" />
+		</instance>
+		<instance>
+			<role name="Singleton" element="org.microplatform.io.PreferencesService" />
+			<role name="uniqueInstance" element="org.microplatform.io.PreferencesService::service:org.microplatform.io.PreferencesService" />
+		</instance>
+		<instance>
+			<role name="Singleton" element="org.microplatform.loaders.LocaleChangeAdapter" />
+			<role name="uniqueInstance" element="org.microplatform.loaders.LocaleChangeAdapter::localeChangeAdapter:org.microplatform.loaders.LocaleChangeAdapter" />
+		</instance>
+	</pattern>
+	<pattern name="(Object)Adapter">
+		<instance>
+			<role name="Adaptee" element="org.jgraph.plugins.layouts.RadialTreeLayoutAlgorithm" />
+			<role name="Adapter" element="org.jgraph.plugins.layouts.RadialTreeLayoutSettings" />
+			<role name="adaptee" element="org.jgraph.plugins.layouts.RadialTreeLayoutSettings::layout:org.jgraph.plugins.layouts.RadialTreeLayoutAlgorithm" />
+			<role name="Request()" element="org.jgraph.plugins.layouts.RadialTreeLayoutSettings::apply():void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.jgraph.plugins.layouts.SugiyamaLayoutAlgorithm" />
+			<role name="Adapter" element="org.jgraph.plugins.layouts.SugiyamaLayoutSettings" />
+			<role name="adaptee" element="org.jgraph.plugins.layouts.SugiyamaLayoutSettings::layout:org.jgraph.plugins.layouts.SugiyamaLayoutAlgorithm" />
+			<role name="Request()" element="org.jgraph.plugins.layouts.SugiyamaLayoutSettings::revert():void" />
+			<role name="Request()" element="org.jgraph.plugins.layouts.SugiyamaLayoutSettings::apply():void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.jgraph.plugins.layouts.TreeLayoutAlgorithm" />
+			<role name="Adapter" element="org.jgraph.plugins.layouts.TreeLayoutSettings" />
+			<role name="adaptee" element="org.jgraph.plugins.layouts.TreeLayoutSettings::layout:org.jgraph.plugins.layouts.TreeLayoutAlgorithm" />
+			<role name="Request()" element="org.jgraph.plugins.layouts.TreeLayoutSettings::revert():void" />
+			<role name="Request()" element="org.jgraph.plugins.layouts.TreeLayoutSettings::apply():void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.jgraph.plugins.layouts.AnnealingLayoutAlgorithm" />
+			<role name="Adapter" element="org.jgraph.plugins.layouts.AnnealingLayoutSettings" />
+			<role name="adaptee" element="org.jgraph.plugins.layouts.AnnealingLayoutSettings::layout:org.jgraph.plugins.layouts.AnnealingLayoutAlgorithm" />
+			<role name="Request()" element="org.jgraph.plugins.layouts.AnnealingLayoutSettings::apply():void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.jgraph.plugins.layouts.GEMLayoutAlgorithm" />
+			<role name="Adapter" element="org.jgraph.plugins.layouts.GEMLayoutSettings" />
+			<role name="adaptee" element="org.jgraph.plugins.layouts.GEMLayoutSettings::layout:org.jgraph.plugins.layouts.GEMLayoutAlgorithm" />
+			<role name="Request()" element="org.jgraph.plugins.layouts.GEMLayoutSettings::apply():void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="org.jgraph.plugins.library.LibraryDecorator" />
+			<role name="Adaptee" element="org.jgraph.plugins.library.GPOverviewPanel" />
+			<role name="adaptee" element="org.jgraph.plugins.library.LibraryDecorator::gpOverviewPanel:org.jgraph.plugins.library.GPOverviewPanel" />
+			<role name="Request()" element="org.jgraph.plugins.library.LibraryDecorator::setDocument(org.microplatform.Document):void" />
+		</instance>
+		<instance>
+			<role name="Adapter" element="org.jgraph.plugins.library.LibraryDecorator" />
+			<role name="Adaptee" element="org.jgraph.plugins.library.GPSplitPane" />
+			<role name="adaptee" element="org.jgraph.plugins.library.LibraryDecorator::splitPane:org.jgraph.plugins.library.GPSplitPane" />
+			<role name="Request()" element="org.jgraph.plugins.library.LibraryDecorator::setDocument(org.microplatform.Document):void" />
+		</instance>
+		<instance>
+			<role name="Adaptee" element="org.jgraph.pad.jgraphpad.GPDocument" />
+			<role name="Adapter" element="org.jgraph.pad.subjgraph.GPMarqueeHandler" />
+			<role name="adaptee" element="org.jgraph.pad.subjgraph.GPMarqueeHandler::document:org.jgraph.pad.jgraphpad.GPDocument" />
+			<role name="Request()" element="org.jgraph.pad.subjgraph.GPMarqueeHandler::setDocument(org.microplatform.Document):void" />
+		</instance>
+	</pattern>
+	<pattern name="Command" />
+	<pattern name="Composite" />
+	<pattern name="Decorator" />
+	<pattern name="Observer" />
+	<pattern name="State">
+		<instance>
+			<role name="Context" element="org.microplatform.loaders.PluginInvoker" />
+			<role name="State" element="org.microplatform.loaders.PluginInvoker$IBrowserDriver" />
+			<role name="state" element="org.microplatform.loaders.PluginInvoker::browserDriver:org.microplatform.loaders.PluginInvoker$IBrowserDriver" />
+			<role name="Request()" element="org.microplatform.loaders.PluginInvoker::execJavascript(java.lang.String):void" />
+		</instance>
+	</pattern>
+	<pattern name="Strategy" />
+	<pattern name="Bridge" />
+	<pattern name="Template Method">
+		<instance>
+			<role name="AbstractClass" element="org.jgraph.pad.actionsbase.eager.AbstractActionList" />
+			<role name="TemplateMethod()" element="org.jgraph.pad.actionsbase.eager.AbstractActionList::getMenuComponents():java.awt.Component[]" />
+			<role name="TemplateMethod()" element="org.jgraph.pad.actionsbase.eager.AbstractActionList::getToolComponents():java.awt.Component[]" />
+		</instance>
+		<instance>
+			<role name="AbstractClass" element="org.jgraph.pad.actionsbase.eager.AbstractActionListCell" />
+			<role name="TemplateMethod()" element="org.jgraph.pad.actionsbase.eager.AbstractActionListCell::getItems():java.lang.Object[]" />
+			<role name="TemplateMethod()" element="org.jgraph.pad.actionsbase.eager.AbstractActionListCell::actionPerformed(java.awt.event.ActionEvent):void" />
+		</instance>
+		<instance>
+			<role name="AbstractClass" element="org.jgraph.pad.actionsbase.eager.AbstractActionRadioButton" />
+			<role name="TemplateMethod()" element="org.jgraph.pad.actionsbase.eager.AbstractActionRadioButton::getMenuComponents():java.awt.Component[]" />
+			<role name="TemplateMethod()" element="org.jgraph.pad.actionsbase.eager.AbstractActionRadioButton::getToolComponents():java.awt.Component[]" />
+		</instance>
+		<instance>
+			<role name="AbstractClass" element="org.jgraph.pad.actionsbase.eager.AbstractActionToggle" />
+			<role name="TemplateMethod()" element="org.jgraph.pad.actionsbase.eager.AbstractActionToggle::update():void" />
+		</instance>
+		<instance>
+			<role name="AbstractClass" element="org.jgraph.plugins.layouts.JGraphLayoutAlgorithm" />
+			<role name="TemplateMethod()" element="org.jgraph.plugins.layouts.JGraphLayoutAlgorithm::run(org.jgraph.JGraph, java.lang.Object[]):void" />
+			<role name="TemplateMethod()" element="org.jgraph.plugins.layouts.JGraphLayoutAlgorithm::applyLayout(org.jgraph.JGraph, org.jgraph.plugins.layouts.JGraphLayoutAlgorithm, java.lang.Object[], java.lang.Object[]):void" />
+		</instance>
+	</pattern>
+	<pattern name="Visitor" />
+	<pattern name="Proxy" />
+	<pattern name="Proxy2" />
+	<pattern name="Chain of Responsibility" />
+</system>
+

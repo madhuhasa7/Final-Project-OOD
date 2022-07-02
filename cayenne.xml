@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<system>
+	<pattern name="Factory Method" />
+	<pattern name="Prototype" />
+	<pattern name="Singleton">
+		<instance>
+			<role name="Singleton" element="test.UntitledDomainMap" />
+			<role name="uniqueInstance" element="test.UntitledDomainMap::instance:test.UntitledDomainMap" />
+		</instance>
+		<instance>
+			<role name="Singleton" element="test.UntitledDomainMap" />
+			<role name="uniqueInstance" element="test.UntitledDomainMap::instance:test.UntitledDomainMap" />
+		</instance>
+		<instance>
+			<role name="Singleton" element="test.cayenne.M1" />
+			<role name="uniqueInstance" element="test.cayenne.M1::instance:test.cayenne.M1" />
+		</instance>
+		<instance>
+			<role name="Singleton" element="org.apache.cayenne.itest.cpa.ItestSetup" />
+			<role name="uniqueInstance" element="org.apache.cayenne.itest.cpa.ItestSetup::sharedInstance:org.apache.cayenne.itest.cpa.ItestSetup" />
+		</instance>
+		<instance>
+			<role name="Singleton" element="org.apache.cayenne.itest.OpenEJBContainer" />
+			<role name="uniqueInstance" element="org.apache.cayenne.itest.OpenEJBContainer::singletonContainer:org.apache.cayenne.itest.OpenEJBContainer" />
+		</instance>
+		<instance>
+			<role name="Singleton" element="org.apache.cayenne.itest.pojo.ItestSetup" />
+			<role name="uniqueInstance" element="org.apache.cayenne.itest.pojo.ItestSetup::sharedInstance:org.apache.cayenne.itest.pojo.ItestSetup" />
+		</instance>
+		<instance>
+			<role name="Singleton" element="org.apache.cayenne.tutorial.persistent.client.UntitledDomainMap" />
+			<role name="uniqueInstance" element="org.apache.cayenne.tutorial.persistent.client.UntitledDomainMap::instance:org.apache.cayenne.tutorial.persistent.client.UntitledDomainMap" />
+		</instance>
+		<instance>
+			<role name="Singleton" element="org.apache.cayenne.tutorial.persistent.UntitledDomainMap" />
+			<role name="uniqueInstance" element="org.apache.cayenne.tutorial.persistent.UntitledDomainMap::instance:org.apache.cayenne.tutorial.persistent.UntitledDomainMap" />
+		</instance>
+		<instance>
+			<role name="Singleton" element="org.apache.cayenne.tutorial.persistent.client.UntitledDomainMap" />
+			<role name="uniqueInstance" element="org.apache.cayenne.tutorial.persistent.client.UntitledDomainMap::instance:org.apache.cayenne.tutorial.persistent.client.UntitledDomainMap" />
+		</instance>
+		<instance>
+			<role name="Singleton" element="org.apache.cayenne.tutorial.persistent.UntitledDomainMap" />
+			<role name="uniqueInstance" element="org.apache.cayenne.tutorial.persistent.UntitledDomainMap::instance:org.apache.cayenne.tutorial.persistent.UntitledDomainMap" />
+		</instance>
+	</pattern>
+	<pattern name="(Object)Adapter" />
+	<pattern name="Command" />
+	<pattern name="Composite" />
+	<pattern name="Decorator" />
+	<pattern name="Observer" />
+	<pattern name="State" />
+	<pattern name="Strategy" />
+	<pattern name="Bridge" />
+	<pattern name="Template Method">
+		<instance>
+			<role name="AbstractClass" element="org.apache.cayenne.itest.ResultSetTemplate" />
+			<role name="TemplateMethod()" element="org.apache.cayenne.itest.ResultSetTemplate::execute(java.lang.String):void" />
+		</instance>
+		<instance>
+			<role name="AbstractClass" element="org.apache.cayenne.itest.RowTemplate" />
+			<role name="TemplateMethod()" element="org.apache.cayenne.itest.RowTemplate::readResultSet(java.sql.ResultSet, java.lang.String):void" />
+		</instance>
+	</pattern>
+	<pattern name="Visitor" />
+	<pattern name="Proxy" />
+	<pattern name="Proxy2" />
+	<pattern name="Chain of Responsibility" />
+</system>
+
